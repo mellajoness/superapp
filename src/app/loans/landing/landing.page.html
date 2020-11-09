@@ -1,0 +1,229 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="header">
+     <ion-icon name="arrow-back-outline" class="menu" (click)="gotoSuperAppHome()"></ion-icon>
+     <div class="loanstext">Loans</div>
+     <ion-icon name="home-outline" class="menu" (click)="gotoSuperAppHome()"></ion-icon>
+   </div>
+
+   <div class="headerbox">
+    <div class="headerboxtext">Your total loan balance is </div>
+    <div class="totalloanamount">&#8358;{{totalLoanBalance | number:'1.0-0'}}</div>
+ </div>
+
+    
+
+  <!-- <div class="profilediv"> 
+    <div class="profilepixrow">
+      <img src="../../../assets/imgs/loan/photograph.jpg"  class="photo">
+     <div class="profilename">Hi,{{userInfo?.FirstName}} </div>
+    </div>
+    <div>
+    <div class="totalloantext">Total Loan Balance</div>
+    <div class="totalloanamount">&#8358;{{totalLoanBalance | number:'1.2-2'}}</div>
+  </div>
+</div> -->
+  
+  <!-- <div class="loanicon">
+    <div class="loanstext">Loans</div>
+    <ion-icon name="arrow-forward-outline" class="forward"></ion-icon>
+  </div>  -->
+
+<div class="carda"  *ngIf="carda" >
+    <div *ngFor="let l of loanBalances; let i = index" (click)="loanBalance(l)" [ngClass]="'kwikmoney'">
+      <div class="lineamount">
+        <div class="border"></div>
+      <h5>
+       {{l.loanType}}
+      </h5>
+    </div>
+        <div class="loanamount">&#8358;{{l.totalOutstanding |  number:'1.0-0'}}</div>
+    </div>
+  </div>  
+
+  <div class="cardb" *ngIf="cardb" >
+    <div *ngFor="let l of loanBalances; let i = index" (click)="loanBalance(l)" [ngClass]="'kwikmoney'">
+      <div class="lineamount">
+        <div class="border"></div>
+      <h5>
+        {{l.loanType}}
+      </h5>
+    </div>
+        <div class="loanamount">&#8358;{{l.totalOutstanding | number:'1.0-0'}}</div>
+    </div>
+  </div>
+
+  
+
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" pullFactor="0.5" pullMin="10" pullMax="58" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+ </ion-refresher>
+
+  <div class="loanaction">
+    <div class="box" (click)="gotoAllLoanOffers()">
+      <div class="loanicon">
+       <img src="../../../assets/imgs/loan/requestforloan.png" >
+       </div>
+     <div class="loanloanactiontitle">Request For Loan</div>
+     <div class="Loanrequesttext">Request for a loan within your global limit</div>
+    </div>
+
+    <div class="box" (click)="gotoLonTopUpOffers()">
+      <div class="loanicon2">
+       <img src="../../../assets/imgs/loan/topup.png" >
+       </div>
+     <div class="toploanactiontitle">Loan Top Up</div>
+     <div class="requesttext">Request for a loan TopUp</div>
+    </div>
+
+    <div class="box" (click)="extendLoan()">
+      <div class="loanicon">
+       <img src="../../../assets/imgs/loan/extendicon.png" >
+       </div>
+     <div class="loanactiontitle">Extend Loan</div>
+     <div class="requesttext">Extend a running loan</div>
+    </div>
+   </div>
+
+
+
+
+   <div class="loanaction">
+    <div class="box" (click)="payLoan()">
+      <div class="loanicon">
+       <img src="../../../assets/imgs/loan/payloan.png" >
+       </div>
+     <div class="payloanactiontitle">Pay Your Loan</div>
+     <div class="requesttext">Pay an existing loan </div>
+    </div>
+
+    
+      <div class="box" (click)="goToBalance()">
+      <div class="loanicon">
+       <img src="../../../assets/imgs/loan/balance.png" >
+       </div>
+       <div class="loanactiontitle">Balance</div>
+       <div class="requesttext">Check all loan balances</div>
+    </div>
+
+    <div class="box" (click)="goToActivity()">
+      <div class="loanicon" >
+       <img src="../../../assets/imgs/loan/activityicon.png" >
+       </div>
+       <div class="loanactiontitle">Recent Activity</div>
+       <div class="requesttext">View your recent activities</div>
+    </div>
+
+    
+   </div>
+
+
+
+   <!-- <div class="loanaction">
+    <div class="box" (click)="goToBalance()">
+      <div class="loanicon">
+       <img src="../../../assets/imgs/loan/balance.png" >
+       </div>
+     <div class="loanactiontitle">Balance</div>
+     <div class="requesttext">Check all loan balances</div>
+    </div>
+
+
+    <div class="box" (click)="goToActivity()">
+      <div class="loanicon" >
+       <img src="../../../assets/imgs/loan/activityicon.png" >
+       </div>
+     <div class="loanactiontitle">Recent Activity</div>
+     <div class="requesttext">View your recent activities</div>
+    </div>
+   </div> -->
+
+
+
+
+
+
+
+
+   <div class="row">
+    <div class="col">
+      <div class="tabs">
+        <div class="tab" >
+          <input type="checkbox" id="chck2"> 
+          <label  class="tab-label" for="chck2" (click)="toggle()">{{buttonName}}</label>
+        
+          <div class="tab-content">
+         
+          
+
+             <div class="loanaction">
+              <div class="box" (click)="goToHistory()">
+                <div class="loanicon">
+                 <img src="../../../assets/imgs/loan/historyicon.png" >
+                 </div>
+               <div class="thloanactiontitle">Transaction History</div>
+               <div class="threquesttext">View your transaction history </div>
+              </div>
+          
+          
+              <div class="box" (click)="goToTc()">
+                <div class="loanicon">
+                 <img src="../../../assets/imgs/loan/t&cs.png" >
+                 </div>
+               <div class="tcloanactiontitle">Terms And Conditions</div>
+               <div class="tcrequesttext">Read terms and conditions  </div>
+              </div>
+             </div>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  
+   <!-- <button class="view">
+    View All
+   </button> -->
+
+
+
+   <!-- <h2 (click)="networktest()">NETWORK</h2> -->
+
+
+   
+
+   <div class="parentactivity" *ngIf="hasActivities" >
+   <div class="bodytwo"  *ngFor="let a of activities; let i = index" >
+      <div class="activity">
+         <div class="acttype">{{a.action}}</div>
+         <div class="date">{{a.entryDate | date}}</div>
+      </div>
+
+      <div class="moneyicon" *ngIf="a.type==='Debit'"> 
+       <div class="actmoneydebit">- &#8358;{{a.amount | number:'1.0-0'}}</div>
+       <ion-icon name="arrow-up-outline" class="upicon"></ion-icon>
+      </div>
+
+      <div class="moneyicon" *ngIf="a.type==='Credit'"> 
+        <div class="actmoneycredit">+ &#8358;{{a.amount | number:'1.0-0'}}</div>
+        <ion-icon name="arrow-down-outline" class="downicon"></ion-icon>
+       </div>
+   </div>
+   </div>
+
+
+   
+
+  
+
+
+
+</ion-content>

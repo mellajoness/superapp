@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div [routerLink]="['/investments', 'landing']" routerDirection="back" class="icon-container nav">
+        <img src="assets/icon/left-arrow.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3></h3>
+      </div>
+      <div class="icon-container settings">
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="instruction-section">
+    <h3><b> What do you want to invest in?</b></h3>
+  </div>
+
+  <div class="goal-item-container">
+
+    <div class="goal-item" [routerLink]="['/investments', 'invest', 'fixed-deposit']">
+      <div class="icon-container">
+        <img class="goal-item-icon" src="assets/icon/plan-icns/fixed-deposit.svg" alt="">
+      </div>
+      <div class="goal-detail-container">
+        <h6>Fixed Deposit</h6>
+        <p class="fade">With 4% to 10% per annum as interests, you can save on your terms for a minimum of three months.
+        </p>
+      </div>
+    </div>
+
+    <div class="goal-item">
+      <div class="icon-container">
+        <img class="goal-item-icon" src="assets/icon/plan-icns/treasury.svg" alt="">
+      </div>
+      <div class="goal-detail-container">
+        <h6>Treasury Bills</h6>
+        <p class="fade">You can save on your terms with interest rates ranging from 4% to 10% per annum, minimum
+          duration of 3 months.</p>
+      </div>
+    </div>
+
+    <div class="goal-item" (click)="performValidation()">
+      <div class="icon-container">
+        <img class="fd-icon" src="assets/icon/plan-icns/fd-calculator.svg" alt="">
+      </div>
+      <div class="goal-detail-container">
+        <h6>Fixed Deposit Calculator</h6>
+      </div>
+    </div>
+
+  </div>
+
+
+</ion-content>

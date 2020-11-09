@@ -1,0 +1,125 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Betting</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div>
+<!-- BETTING CONTAINER BEGINS -->
+      <ng-container *ngIf="bettingOffers">
+        <div class="item-wrapper-2" (click)="billSelected(bettingAsBill)">
+          <ion-label class="stacked-label">Betting Company</ion-label>
+          <div class="pt-10 pl-10 pr-05 item-space-between">
+            <div>
+              <ion-text>{{bettingBiller.billerName}}</ion-text>
+            </div>
+            <div>
+              <ion-icon class="text08 care-color" name="caret-down"></ion-icon>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-wrapper" *ngIf="!busy">
+          <ion-label class="stacked-label">{{bettingBiller.billerName}} Offer</ion-label>
+          <ion-select [disabled]="busy_" class="mtt-05" interface="popover" mode="ios" placeholder="Select {{bettingBiller.billerName}} Offer" name="billPlans"
+            [selectedText]="selectedBillOffer" [(ngModel)]="selectedBillOffer" [ngModelOptions]="{standalone: true}"
+            (ionChange)="billOfferSelected()">
+            <ion-select-option *ngFor="let offer of bettingOffers.paymentitems" value="{{offer.paymentitemname}}">
+              {{offer.paymentitemname}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper" *ngIf="beneficiaries && !newBeneficiaryChange && !busy">
+          <ion-label class="stacked-label">{{bettingBiller.billerName}} ID</ion-label>
+          <ion-select [disabled]="busy_" class="mtt-05" interface="popover" mode="ios"
+            placeholder="Select Betting ID"
+            name="selectedBeneficiary" [selectedText]="selectedBeneficiary" [(ngModel)]="selectedBeneficiary"
+            [ngModelOptions]="{standalone: true}" (ionChange)="beneficiarySelected()">
+            <ion-select-option *ngFor="let benef of beneficiaries" value="{{benef.beneficiaryId}}">
+              {{benef.beneficiaryAlias}} - {{benef.beneficiaryId}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+        
+        <div class="item-wrapper" *ngIf="!busy && (!beneficiaries || newBeneficiaryChange)">
+          <ion-label class="stacked-label">{{bettingBiller.billerName}} ID</ion-label>
+          <ion-input [disabled]="busy_" class="pt-05 pl-10" inputmode="numeric" type="text" maxLength="24" minLength="4" placeholder="Enter your {{bettingBiller.billerName}} ID"
+          (ionChange)="uniqueIdChange()" [(ngModel)]="uniqueID"></ion-input>
+        </div>
+
+        <div *ngIf="beneficiaries && !busy" class="form-bg item-v-center item-space-between mb-10 text-white text08" color="light">
+          <ion-toggle mode="md" slot="start" name="kiwi" color="secondary" (ionChange)="newBeneficiary()"
+            [(ngModel)]="newBeneficiaryChange" [ngModelOptions]="{standalone: true}" [disabled]="busy_"></ion-toggle>
+          <ion-label>New {{bettingBiller.billerName}} ID</ion-label>
+        </div>
+
+        <div *ngIf="userDetails" class="mt-10 user-details">
+          <div class="py-05">
+            <div class="text-center">
+              <ion-text>Customer Name:</ion-text>
+              <p class="fw700 ion-no-margin">{{userDetails.fullName}}</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item-wrapper" *ngIf="!busy">
+          <ion-label class="stacked-label">Amount</ion-label>
+          <ion-input [disabled]="bettingOfferObj && bettingOfferObj.amount !== '0'" class="pt-05 pl-10" inputmode="numeric" type="text" minLength="2"
+            placeholder="Enter Amount" (ionChange)="amountChange()" [(ngModel)]="amount"></ion-input>
+        </div>
+        <div *ngIf="amount" class="py-05">
+          <ion-text>Convenience Fee: <span>&#8358;{{convenienceFee}}</span></ion-text>
+        </div>
+
+        <div class="item-wrapper" *ngIf="doSaveBeneficiary">
+          <ion-label class="stacked-label">{{bettingBiller.billerName}} ID Alias</ion-label>
+          <ion-input [disabled]="busy_" class="pt-05 pl-10" type="text" placeholder="Enter Meter Number Alias"
+            (ionChange)="beneficiaryAliasChange()" [(ngModel)]="beneficiaryAlias" [ngModelOptions]="{standalone: true}"
+            maxLength="20"></ion-input>
+        </div>
+
+        <ion-list mode="md" class="list-bg" *ngIf="(!beneficiaries || newBeneficiaryChange) && !busy">
+          <ion-item lines="none" class="item-bg">
+            <ion-checkbox [disabled]="busy_" class="mr-10 ml-0" mode="md" slot="start" name="doSaveBeneficiary" color="primary" [(ngModel)]="doSaveBeneficiary" (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+            <ion-label class="ion-text-wrap">Save {{bettingBiller.billerName}} ID</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="item-v-center" *ngIf="busy || busy_">
+          <ion-spinner *ngIf="busy || busy_" name="bubbles" mode="ios" color="primary"></ion-spinner>
+        </div>
+
+        <ion-button required class="no-transform payment-button mt-20" fill="clear" expand="block" (click)="userDetails ? makePayment() : validatePayment()"
+          [disabled]="busy || busy_ || !amount || (!beneficiaries && !uniqueID) || (doSaveBeneficiary && !beneficiaryAlias) || (beneficiaries && !newBeneficiaryChange && !selectedBeneficiary) || !selectedBillOffer">
+          {{userDetails ? 'Make Payment' : 'Confirm Payment'}}
+        </ion-button>
+      </ng-container>
+<!-- BETTING CONTAINER ENDS -->
+
+<!-- SKELETON CONTAINER BEGINS -->
+      <ng-container *ngIf="!bettingOffers">
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+      </ng-container>
+<!-- SKELETON CONTAINER ENDS -->
+
+    </div>
+  </div>
+</ion-content>

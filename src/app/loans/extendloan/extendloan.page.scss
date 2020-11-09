@@ -1,0 +1,161 @@
+.header{
+  display:flex;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15PX;
+  padding-bottom: 15px;
+}
+.menu{
+  font-size:1.7em;
+  color: gray;
+}
+.loanstext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size:1.1em;
+  line-height: 22px;
+  color: #3348A1;
+  display: flex;
+  align-items: center;
+  // padding-left: 20px;
+  // padding-right: 15px;
+  // padding-top: 60px;
+ }
+ .body{
+     padding-left: 15px;
+     padding-right: 15px;
+     padding-top: 60px;
+ }
+ .photo{
+  width: 99%;
+  padding-top: 20px;
+ }
+ .headerbox{
+  background-color: #0E237E;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 30px;
+ }
+ .headerboxtext{
+  font-family: Gilroy;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 1em;
+    line-height: 22px;
+    padding-top: 15px;
+    padding-right: 20px;
+    color: #9C9E9B;
+    padding-left: 20px;
+    padding-right: 15px;
+ }
+ .totalloanamount{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.4em;
+  line-height: 22px;
+  color: #ffffff;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+ }
+ .loanaction{
+  display: flex;
+  justify-content: space-between;
+  // padding-top: 20px;
+}
+
+.loanactiontitle{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  // text-align: right;
+  color: #0E237E;
+  padding-top: 10px;
+}
+.requesttext{
+  font-family: Gilroy;
+  font-size: 11px;
+  line-height: 16px;
+  color: #000000;
+  // padding-top:5px;
+  // padding-left: 15px;
+  padding-right: 5px;
+  padding-top: 2px;
+}
+.requesttextdate{
+  font-family: Gilroy;
+  font-size:10px;
+  line-height: 16px;
+  color: #000000;
+  padding-top: 2px;
+
+  // padding-left: 15px;
+  padding-right: 5px;
+}   
+ion-input {
+  --padding-top: 10px;
+  --padding-end: 0;
+  --padding-bottom: 10px;
+  --padding-start: 8px;
+  --font-size: inherit;
+  --margin-top: 41px;
+  --border-radius: 5px;
+  --height: 50px;
+  --border: 1px solid gray;
+  --padding-left: 10px;
+  --padding-right: 10px;
+}
+.loanamount{
+font-family: Gilroy;
+font-size: 1.0em;
+line-height: 16px;
+text-align: center;
+color: #000000;
+}
+.form{
+  margin-top: 40px;
+}
+.noLoan{
+  padding-left: 15px;
+    padding-right: 15px;
+    font-family: Gilroy;
+    font-size: 1.2em;
+    line-height: 16px;
+}
+.card{
+  // box-shadow: none;
+  height: 100px;
+  border-radius: 5px;
+  border: 1px solid #AAAAAA;
+  box-sizing: border-box;
+  align-items: center;
+  display: flex;
+  padding-left: 5px;
+  // margin-left: 10px;
+  // margin-right: 10px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  box-shadow: 4px 6px #eeeeee;
+}
+.content{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.daterow{
+  display: flex;
+  padding-top: 10px;
+}
+.due{
+  font-family: Gilroy;
+  font-size: 10px;
+  line-height: 16px;
+  color: #000000;
+  font-weight: bold;
+}

@@ -1,0 +1,167 @@
+.header{
+  display:flex;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15PX;
+  padding-bottom: 15px;
+  align-items: center;
+}
+.menu{
+  font-size:1.7em;
+  color: gray;
+}
+.bar-header {
+  border: 0px !important;
+  border-bottom-color: transparent !important;
+  background-image: none !important;
+  border-bottom: none !important;
+}
+.loanstext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size:1.1em;
+  line-height: 22px;
+  color: #3348A1;
+  // padding-left: 20px;
+  // padding-right: 15px;
+  // padding-top: 60px;
+ }
+ .body{
+     padding-left: 15px;
+     padding-right: 15px;
+     padding-top: 60px;
+ }
+ .photo{
+  width: 99%;
+  padding-top: 20px;
+ }
+ .headerbox{
+  background-color: #0E237E;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 30px;
+ }
+ .headerboxtext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #9C9E9B;
+  padding-left: 20px;
+  padding-right: 15px;
+  padding-top: 30px;
+ }
+ .totalloanamount{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.4em;
+  line-height: 22px;
+  color: #ffffff;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+ }
+ .loanaction{
+  display: flex;
+  justify-content: space-between;
+  // padding-top: 20px;
+}
+.box{
+  // height: 130px;
+  // border-radius: 5px;
+  // width: 48%;
+  // border: 1px solid #AAAAAA;
+  // box-sizing: border-box;
+}
+.loanactiontitle{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #0E237E;
+  padding-top: 15px;
+  // padding-left: 15px;
+  // padding-right: 5px;
+}
+.requesttext{
+  font-family: Gilroy-Medium;
+  font-size: 11px;
+  line-height: 16px;
+  color: #000000;
+  // padding-right: 5px;
+}
+.requesttextdate{
+  font-family: Gilroy-Medium;
+  font-size: 9px;
+  line-height: 12px;
+  color: #000000;
+  padding-top: 3px;
+  // padding-right: 5px;
+  padding-left: 2px;
+}
+ion-input {
+  --padding-top: 10px;
+  --padding-end: 0;
+  --padding-bottom: 10px;
+  --padding-start: 8px;
+  --font-size: inherit;
+  --margin-top: 41px;
+  --border-radius: 5px;
+  --height: 50px;
+  --border: 1px solid gray;
+  --padding-left: 10px;
+  --padding-right: 10px;
+}
+.loanamount{
+font-family: Gilroy;
+font-size: 1.0em;
+line-height: 16px;
+text-align: center;
+color: #000000;
+}
+.form{
+  margin-top: 40px;
+}
+.noLoan{
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
+.card{
+  // box-shadow: none;
+  height: 100px;
+  border-radius: 5px;
+  border: 1px solid #AAAAAA;
+  box-sizing: border-box;
+  align-items: center;
+  display: flex;
+  padding-left: 6px;
+  margin-top: 15px;
+  box-sizing: border-box;
+  box-shadow: 4px 6px #eeeeee
+}
+ion-row{
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.daterow{
+  display: flex;
+  padding-top: 15px;
+}
+.due{
+  font-family: Gilroy;
+  font-size: 10px;
+  line-height: 16px;
+  color: #000000;
+  font-weight: bold;
+}
+.content{
+  margin-left: 7px;
+  margin-right: 7px;
+}

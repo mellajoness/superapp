@@ -1,0 +1,24 @@
+<ion-content padding>
+
+  <div [ngClass]="'check'">
+    <p>Credit Check</p>
+  </div>
+
+  <div [ngClass]="'pic'">
+    <ion-img src="../../assets/img/speed.png"></ion-img>
+  </div>
+
+  <div [ngClass]="'note'" >
+    <p>In line with CBN directive, we are required to conduct a credit check. You will be charged N200 only if you proceed beyound this point without collecting a loan</p>
+    <!-- <p>{{checkMsg}}</p> -->
+  </div>
+
+  <div [ngClass]="'next'">
+      <button ion-button (click)="accept()"><span>Accept</span> </button>
+  </div>
+
+  <div [ngClass]="'reject'">
+    <p (click)="close()">Reject</p>
+  </div>
+
+</ion-content>

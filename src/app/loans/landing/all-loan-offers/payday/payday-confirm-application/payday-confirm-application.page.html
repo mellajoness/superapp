@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar>
+   
+   <div class="header">
+    <ion-icon name="arrow-back-outline" class="menu" (click)="goBack()"></ion-icon>
+    <div class="loanstext">Confirm Loan</div>
+    <ion-icon name="" class="menu"></ion-icon>
+  </div>
+
+ 
+  
+  <img src="../../../../../../assets/imgs/loan/loanprogessbar3.png"  class="photo">
+
+  <div class="headerbox">
+     <div class="headerboxtext">Your Loan Amount is</div>
+     <div class="totalloanamount">&#8358;{{eligibilityInfo.total_Eligible_Amount | number:'1.0-0'}}</div>
+  </div>
+
+
+
+
+  
+
+  
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content>
+  <div class=" body">
+  <div class="confirm">
+
+    <div>
+      <p>Bank</p>
+      <p>Fidelity Bank</p>
+    </div>
+
+    <div>
+      <p>Account number</p>
+      <p>{{eligibilityInfo?.account_Number}}</p>
+    </div>
+
+    <div>
+      <p>Loan Amount</p>
+      <p><span>&#8358;</span>{{inputedLoanAmount | number:'1.0-0'}}</p>
+    </div>
+
+    <div *ngIf="eligibilityInfo?.loan_Category == 'Personal'">
+      <p>Loan term</p>
+      <p>{{eligibilityInfo?.tenor}} months</p>
+    </div>
+
+    <div  *ngIf="eligibilityInfo?.interestRate != 0">
+      <p>Loan interest</p>
+      <p>{{eligibilityInfo?.interestRate}}% per month</p>
+    </div>
+
+    <div *ngIf="eligibilityInfo?.managementRate != 0">
+      <p>Management Fee</p>
+      <p>{{eligibilityInfo?.managementRate}}%</p>
+    </div>
+
+    <div *ngIf="eligibilityInfo?.insuranceFlatFee != 0">
+      <p>Insurance Flat Fee</p>
+      <p>{{eligibilityInfo?.insuranceFlatFee}}</p>
+    </div>
+
+    <div *ngIf="eligibilityInfo?.managementFlatFee != 0">
+      <p>Management Flat Fee</p>
+      <p><span>&#8358;</span>{{eligibilityInfo?.managementFlatFee}}</p>
+    </div>
+
+    <div *ngIf="eligibilityInfo?.insuranceRate != 0">
+      <p>Insurance Fee</p>
+      <p>{{eligibilityInfo?.insuranceRate}}%</p>
+    </div>
+
+    <div *ngIf="isTop">
+      <p>Interest + Fees</p>
+      <p><span>&#8358;</span>{{repaymentCalc?.isTopupInterestFee | number:'1.0-0'}}</p>
+    </div>
+
+    <div>
+      <p>Date due</p>
+      <p>{{eligibilityInfo?.dueDate | date}}</p>
+    </div>
+
+    <div>
+      <p>Credit Check Charges</p>
+      <p><span>&#8358;</span>{{eligibilityInfo?.creditCheckFlatAmount | number:'1.0-0' }}</p>
+    </div>
+
+  </div>
+
+  <div class="terms">
+    <p>Convenience charge of <a class="charge"> ₦{{eligibilityInfo?.serviceCharge | number:'1.0-0'}}</a> applies. Please confirm that you have read and agree to the 
+      <a (click)="openTermsAndConditions()">Terms and Conditions</a>
+    </p>
+  </div>
+
+  <div class="next">
+    <button ion-button (click)="disbursePaydayLoan()"><span>Accept</span> </button>
+  </div>
+
+
+
+
+  <div class="changed">
+    <p (click)="declineLoan()">Reject</p>
+  </div>
+</div>
+</ion-content>

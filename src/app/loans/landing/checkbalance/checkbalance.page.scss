@@ -1,0 +1,352 @@
+.header{
+  display:flex;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15PX;
+  padding-bottom: 15px;
+}
+.menu{
+  font-size:1.7em;
+  color: gray;
+}
+.loanstext{
+  font-family: Gilroy;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 22px;
+    color: #3348A1;
+    padding-left: 20px;
+    // padding-top: 22px;
+ }
+ .body{
+     padding-left: 15px;
+     padding-right: 15px;
+     padding-top: 60px;
+ }
+ .photo{
+  width: 99%;
+  padding-top: 20px;
+ }
+ .headerbox{
+  background-color: #0E237E;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+ }
+ .headerboxtext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  color: #9C9E9B;
+  padding-top:20px;
+  padding-right: 20px;
+ 
+ }
+ .totalloanamount{ 
+   font-family: Gilroy;
+   font-style: normal;
+   font-weight: 800;
+   font-size: 18px;
+   line-height: 22px;
+   color: #FFFFFF;
+   padding-top: 10px;
+   padding-bottom:20px;
+   padding-left: 15px;
+   padding-right: 15px;
+ }
+
+ .loanaction{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+
+}
+.box{
+  height: 130px;
+  border-radius: 5px;
+  width: 48%;
+  border: 1px solid #AAAAAA;
+  box-sizing: border-box;
+}
+.loanactiontitle{
+  font-family: Gilroy;
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 21px;
+  padding-top: 15px;
+  padding-right: 5px;
+  color: #0E237E;
+}
+.requesttext{
+  font-family: Gilroy-Medium;
+  font-size: 11px;
+  line-height: 16px;
+  color: #000000;
+  padding-right: 5px;
+}
+
+.date{
+  font-family: Gilroy-Medium;
+  font-size: 8px;
+  line-height: 16px;
+  color: #000000;
+  padding-top: 1px;
+}
+.nobal{
+  padding-top: 30px;
+  padding-left: 15px;
+  padding-left: 15px;
+}
+ion-input {
+  --padding-top: 10px;
+  --padding-end: 0;
+  --padding-bottom: 10px;
+  --padding-start: 8px;
+  --font-size: inherit;
+  --margin-top: 41px;
+  --border-radius: 5px;
+  --height: 50px;
+  --border: 1px solid gray;
+  --padding-left: 10px;
+  --padding-right: 10px;
+}
+.loanamount{
+font-family: Gilroy;
+font-size: 1.0em;
+line-height: 16px;
+text-align: center;
+color: #9C9E9B;
+}
+.btn{
+  height: 50px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #0E237E;
+    margin-left: 15px;
+    margin-right: 15px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.card{
+  // box-shadow: none;
+  height: 100px;
+  border-radius: 5px;
+  border: 1px solid #AAAAAA;
+  box-sizing: border-box;
+  align-items: center;
+  display: flex;
+  margin-top: 10px;
+  padding-left:3px;
+  padding-right: 2px;
+  box-sizing: border-box;
+  box-shadow: 4px 6px #eeeeee;
+  // margin-left: 4px;
+  // margin-right: 4px;
+}
+
+
+
+   /* Show background if class is active */
+   .show-background {
+    border-style: none;
+    background: var(--ion-color-primary);
+  }
+  
+  /* Remove bottom border on md */
+  .header-md::after {
+    background-image: none;
+  }
+  
+  /* Remove bottom border on ios */
+  .header-ios ion-toolbar:last-child {
+    --border-width: 0;
+  }
+  
+  .total {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #e5e5e5;
+  }
+  
+  .total,
+  .pay {
+    margin: 0 !important;
+  }
+  
+  .pay {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    span {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 30px;
+      line-height: 36px;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+    }
+  
+    button {
+      width: 101px;
+      height: 41px;
+      border: 2px solid #ffffff;
+      box-sizing: border-box;
+      border-radius: 30px;
+      background-color: #243c71 !important;
+      color: #ffffff;
+      span {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 16px;
+        text-align: center;
+        color: #ffffff;
+      }
+    }
+  }
+  
+  .loan {
+    padding-left: 20px;
+    padding-right: 20px;
+    p {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 19px;
+      color: #e5e5e5;
+    }
+  }
+  
+  .graph {
+    // height: 242px;
+    border-radius: 7px;
+    margin-left: 15px;
+    margin-right: 15px;;
+    .holder {
+      align-items: center;
+      margin-top: 40px;
+      canvas {
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 7px solid #9C9E9B;
+      }
+    }
+    .nobalance{ 
+      padding-left: 15px;
+      padding-right: 15px;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+  
+  .active {
+    padding-left: 20px;
+    padding-right: 20px;
+    p {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      color: #e5e5e5;
+    }
+  }
+  
+  .line {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    div:nth-child(1) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    div:nth-child(2) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.01em;
+        color: #ffffff;
+      }
+    }
+  
+    div:nth-child(3) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+        letter-spacing: 0.01em;
+        color: #e5e5e5;
+      }
+    }
+  
+    div:nth-child(4) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      ion-icon {
+        color: white;
+        font-size: 25px;
+      }
+    }
+  
+    .for{
+      text-align: center;
+      p{
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        color: #ffffff;
+      }
+    }
+  }
+  .content{
+    margin-left: 7px;
+    margin-right: 7px;
+  }
+  .daterow{
+    display: flex;
+    padding-top: 15px;
+  }
+  .due{
+    font-family: Gilroy;
+    font-size: 10px;
+    line-height: 16px;
+    color: #000000;
+    font-weight: bold;
+  }

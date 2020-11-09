@@ -1,0 +1,30 @@
+
+
+<ion-content padding>
+
+  <div class="parent">
+  <div [ngClass]="'check'">
+    <p>Congratulations</p>
+  </div>
+
+  <div [ngClass]="'pic'">
+    <ion-img src="../../assets/imgs/loan/clap.png" class="creditcheckicon"></ion-img>
+  </div>
+
+  <div [ngClass]="'note'" padding  *ngIf ="params">
+    <p>{{params.message}}</p>
+  </div>
+
+  <div class="owediv">
+    <!-- <p class="you">You will owe</p> -->
+    <p class="interest">Your Loan + Interest + Fees is</p>
+    <p class="money">&#8358;{{params.loanInterestFee  | number:'1.0-0'}}</p>
+    
+  </div>
+
+  <div [ngClass]="'next'">
+      <button ion-button (click)="gotoDashboard()"><span>Done</span> </button>
+  </div>
+
+</div>
+</ion-content>

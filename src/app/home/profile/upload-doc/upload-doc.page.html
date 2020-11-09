@@ -1,0 +1,107 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" [routerLink]="['/','home', 'profile']" routerDirection="back">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons class="pr-10" slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="header-bg-white">
+  <div class="page-wrapper page-wrapper-white custom">
+
+    <div class="section-header">
+      <h3>Document Upload</h3>
+    </div>
+
+    <div class="upload-form-container">
+      <div class="upload-item-container">
+        <div class="title">
+          <h4>Utility Bill (for proof of address)</h4>
+        </div>
+        <div class="upload-buttons">
+          <ion-button *ngIf="!utilBillName" class="btn-u pct-100" size="small">Choose File</ion-button>
+          <ion-button *ngIf="utilBillName" class="btn-u pct-100" size="small">{{utilBillName}}</ion-button>
+          <ion-button (click)="billInput.click()" class="btn-p pct-100 grey" size="small">
+            <ion-icon src="assets/icon/uploadImg.svg"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+      <div class="upload-item-container">
+        <div class="title">
+          <h4>Signature</h4>
+        </div>
+        <div class="upload-buttons">
+          <ion-button *ngIf="!signatureName" class="btn-u pct-100" size="small">Choose File</ion-button>
+          <ion-button *ngIf="signatureName" class="btn-u pct-100" size="small">{{signatureName}}</ion-button>
+          <ion-button (click)="signatureInput.click()" class="btn-p pct-100 grey" size="small">
+            <ion-icon src="assets/icon/uploadImg.svg"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+      <div class="select">
+        <form [formGroup]="idTypeForm" class="select-form">
+           <ion-item lines="none" class="full-width fl margin-bottom-10 id-type-item">
+            <ion-label>Select ID Type</ion-label>
+            <ion-select formControlName="idType" class="input-item-select" mode="ios">
+              <ion-select-option  *ngFor="let validId of ValidID" [value]="validId">{{validId}}</ion-select-option>
+            </ion-select>
+         </ion-item>
+        </form>
+       </div>
+
+      <div class="upload-item-container">
+        <div class="title">
+          <h4>Valid ID</h4>
+        </div>
+        <div class="upload-buttons">
+          <ion-button *ngIf="!IDName" class="btn-u pct-100" size="small">Choose File</ion-button>
+          <ion-button *ngIf="IDName" class="btn-u pct-100" size="small">{{IDName}}</ion-button>
+          <ion-button (click)="idInput.click()" class="btn-p pct-100 grey" size="small">
+            <ion-icon src="assets/icon/uploadImg.svg"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+      <div class="form-container">
+         
+        <form>          
+          <div class="file-input-container" style="display: none;">
+            <label> Upload Valid ID
+              <input (change)="onIDFileChanged($event)" 
+              #idInput type="file" ng2FileSelect [uploader]="idUploader" />
+              <ion-icon *ngIf="idUploader?.queue?.length > 0" color="secondary" name="checkbox-outline"></ion-icon>
+            </label>
+          </div>
+
+          <div class="file-input-container" style="display: none;">
+              <input (change)="onSignatureFileChanged($event)" 
+              #signatureInput type="file" ng2FileSelect [uploader]="signatureUploader" />
+              <ion-icon *ngIf="signatureUploader?.queue?.length > 0" color="secondary" name="checkbox-outline"></ion-icon>
+          </div>
+
+          <div class="file-input-container" style="display: none;">
+              <input (change)="onBillFileChanged($event)" 
+              #billInput type="file" ng2FileSelect [uploader]="utilUploader" />
+              <ion-icon *ngIf="utilUploader?.queue?.length > 0" color="secondary" name="checkbox-outline"></ion-icon>
+          </div>
+          
+         
+        </form>
+      </div> 
+
+      <div class="button-container">
+        <button *ngIf="documentState" (click)="upload()">Next</button>
+      </div>
+    </div>
+  </div>
+</ion-content>

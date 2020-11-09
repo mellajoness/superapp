@@ -1,0 +1,46 @@
+.parent {
+    padding-left: 40px;
+    padding-right: 40px;
+
+}
+
+.border {
+    margin-top: 15px;
+    border: 5px solid #E7E7E7;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 10px
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.searchicon {
+    font-size: 1.3em;
+    color: #c3c5c2;
+    position: relative;
+    right: 40px;
+}
+
+.card {
+    width: 100%;
+    padding: 10px;
+}
+
+.direction {
+    background-color: #0E237E!important;
+    color: #fff;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 20px;
+}

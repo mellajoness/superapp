@@ -1,0 +1,63 @@
+<ion-content no-padding fullscreen>
+
+  <div [ngClass]="'ion-header'">
+      <div [ngClass]="'header-overlay'">
+        <ion-toolbar mode="ios">
+            <ion-buttons slot="start">
+                <ion-button (click)="closeModal()">
+                  <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+                </ion-button>
+              </ion-buttons> 
+          <ion-title>Confirm Loan</ion-title>
+        </ion-toolbar>
+        <div [ngClass]="'offers'">
+          <p>50% Complete</p>
+          <ion-img src="../../assets/img/progress2.png"></ion-img>
+        
+          <div [ngClass]="'line'">
+            <p>Loan Offers</p>
+            <p>Select Bank</p>
+            <p>Payment Card</p>
+            <p>Confirm Loan</p>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="parent">
+      <div class="how">Your loan offer is</div>
+       <div class="max">&#8358;90000</div>
+       <div class="how">15% due in 14 days</div>
+       <div class="row">
+       <div class="left">
+          <div class="text">Bank Name</div>
+          <div class="text">Account No</div>
+          <div class="text">Loan Amount</div>
+          <div class="text">Loan Term</div>
+          <div class="text">Loan Interest</div>
+       </div>
+   
+       <div class="right">
+         <div class="textvalue">Fidelity</div>
+         <div class="textvalue">500***900</div>
+         <div class="textvalue">&#8358;90000</div>
+         <div class="textvalue">12 Days</div>
+         <div class="textvalue">8%</div>
+       </div>
+     </div>
+     
+   
+   <div class="tctext"> Please confirm that you have read and agreed to the <a class="tc" (click)="terms()">Disclaimer</a> and <a class="tc" (click)="terms()">Terms and Conditions</a></div>
+   
+   
+     <div class="btn" (click)="accept()">
+       GET THE MONEY IN THE BANK
+     </div>
+   
+     <div (click)="changed()" class="change">I changed my mind</div>
+     </div>
+
+    </ion-content>

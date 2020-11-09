@@ -1,0 +1,68 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div [routerLink]="['/investments', 'invest']" routerDirection="back" class="icon-container nav">
+        <img src="assets/icon/left-arrow.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3></h3>
+      </div>
+      <div class="icon-container settings">
+        <!-- <img src="assets/icon/cog.svg" alt=""> -->
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+
+    <div class="form-container">
+      <div class="form-instruction-container">
+        <h4>How much would you like to deposit?</h4>
+      </div>
+
+      <div class="form-input-container">
+        <form [formGroup]="formOne">
+          <ion-item>
+            <ion-label class="form-input-label ion-float-left" position="floating">Amount <span
+                id="currency">(₦)</span></ion-label>
+            <ion-input [min]="sD.investLimit && sD.investLimit.minFDAmount ? sD.investLimit.minFDAmount : 100000" 
+                       [max]="sD.investLimit && sD.investLimit.maxFDAmount ? sD.investLimit.maxFDAmount : 999999999999"
+                       formControlName="amount" type="number" placeholder="N100 000" maxlength="12" (ionChange)="amountToCheck($event)">
+            </ion-input>
+          </ion-item>
+          <span *ngIf="amount" style="color: #f04141;font-size: 12px;font-style: italic;">Enter a minimum amount of ₦{{sD.investLimit && sD.investLimit.minFDAmount ? sD.investLimit.minFDAmount.toLocaleString() : '100,000'}}</span>
+        </form>
+      </div>
+    </div>
+
+    <div class="select-tenure-container">
+      <div class="form-instruction-container">
+        <h4>Select a tenor.</h4>
+      </div>
+      <div class="select-tenue">
+        <ion-item>
+          <ion-label>Tenor</ion-label>
+          <form [formGroup]="formTwo">
+            <ion-select formControlName="term" (ionChange)="calculateFd()" [disabled]="!formOne.valid"
+              value="Choose tenor" okText="Okay" cancelText="Dismiss">
+              <ion-select-option *ngFor=" let tenor of tenors" [value]="tenor">{{tenor}} Days</ion-select-option>
+            </ion-select>
+          </form>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <div class="result-container">
+    <p>Amount on maturity</p>
+    <h2 *ngIf="!depositRate" class="amount-maturity"><span id="currency"><b>₦</b></span>0.00</h2>
+    <h2 *ngIf="depositRate" class="amount-maturity"><span id="currency"><b>₦</b></span>{{depositRate | currency: 'NGN': ' '}}</h2>
+    <div class="invest-btn-container">
+      <ion-button (click)="openFDWithDetails()" [disabled]="!(this.formOne.valid && this.formTwo.valid)">Proceed</ion-button>
+    </div>
+  </div>
+</ion-footer>

@@ -1,0 +1,88 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Success</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="mt-30">
+
+      <div class="text-center">
+        <h4 class="pt-20 fw700">
+          Transaction Successful
+        </h4>
+      </div>
+
+      <div *ngIf="sharedData.billsPaymentsMode !== 'wallet'" class=" item-v-center">
+        <div class="my-30">
+          <img src="../../../../assets/icon/success.png" />
+        </div>
+      </div>
+
+      <ng-container *ngIf="sharedData.billsPaymentsMode === 'wallet'">      
+        <div *ngIf="sharedData.wallet.pageView === 'withdrawal'" class=" item-v-center">
+          <div class="text-black mx-10 my-30 text-center text12">
+            <ion-text>Your &#8358;{{sharedData.paymentInfo}}</ion-text>
+          </div>
+        </div>
+
+        <div *ngIf="sharedData.wallet.pageView === 'fundwallet-bank'" class=" item-v-center">
+          <div class="text-black mx-10 my-30 text-center text12">
+            <ion-text>&#8358;{{sharedData.paymentInfo}}</ion-text>
+          </div>
+        </div>
+
+        <div *ngIf="sharedData.wallet.pageView === 'fundwallet-card'" class=" item-v-center">
+          <div class="text-black mx-10 my-30 text-center text12">
+            <ion-text>&#8358;{{sharedData.paymentInfo}}</ion-text>
+          </div>
+        </div>
+
+        <div *ngIf="sharedData.wallet.pageView === 'transfer-wallet'" class=" item-v-center">
+          <div class="text-black mx-10 my-30 text-center text12">
+            <ion-text>Your &#8358;{{sharedData.paymentInfo}}</ion-text>
+          </div>
+        </div>
+
+        <div *ngIf="sharedData.wallet.pageView === 'transfer-bank'" class=" item-v-center">
+          <div class="text-black mx-10 my-30 text-center text12">
+            <ion-text>Your &#8358;{{sharedData.paymentInfo}}</ion-text>
+          </div>
+        </div>
+
+      </ng-container>
+
+      <div *ngIf="(sharedData.billsPaymentsMode === 'electricity' || sharedData.billsPaymentsMode === 'boropower') &&
+              sharedData.paymentDetails && sharedData.paymentDetails.value && sharedData.paymentDetails.accountType === '1'" class="text-center px-15 success-text">
+        <ion-text>
+          Token - <span class="fw700">{{sharedData.paymentDetails.value}}</span>
+        </ion-text>
+      </div>
+
+      <div class="text-center px-15 py-20 success-text">
+        <ion-text>
+          Thank you! An automated receipt will be sent to your registered email address
+        </ion-text>
+      </div>
+
+    </div>
+
+    <ion-button required class="no-transform payment-button mt-20" fill="clear" expand="block" (click)="goBack()">
+      Done
+    </ion-button>
+  </div>
+
+
+</ion-content>

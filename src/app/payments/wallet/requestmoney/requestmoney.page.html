@@ -1,0 +1,43 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Request Money</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="item-wrapper-5 mb-05">
+      <ion-label class="stacked-label">Contact</ion-label>
+      <div class="pt-10 pl-20">
+        <ion-text>07039347005</ion-text>
+      </div>
+    </div>
+    
+    <div class="item-wrapper mb-05">
+      <ion-label class="stacked-label">Amount</ion-label>
+      <ion-input class="pt-05 pl-20" inputmode="numeric" type="text" placeholder="Enter Amount" (ionChange)="amountChange()" [(ngModel)]="amount"></ion-input>
+    </div>
+    
+    <div class="item-wrapper-grow mb-05">
+      <ion-label class="stacked-label-grow">Comment</ion-label>
+      <ion-textarea class="pt-10 pl-20" type="text" placeholder="Enter Comment" pattern="[a-zA-Z0-9 ]*" rows="6"
+       (ionChange)="commentChange()" [(ngModel)]="comment"></ion-textarea>
+    </div>
+    
+    <ion-button (click)="send()" class="no-transform payment-button mt-30" fill="clear" expand="block">
+      Send
+    </ion-button>
+
+  </div>
+</ion-content>

@@ -1,0 +1,79 @@
+ 
+  <ion-header class="bar-header">
+    <div class="header">
+      <ion-icon name="arrow-back-outline" class="menu" (click)="goBack()"></ion-icon>
+      <!-- <ion-icon name="ellipsis-vertical" class="menu"></ion-icon> -->
+    </div>
+  </ion-header>
+  
+
+  <div class="loanhistorydiv">
+  <div class="history">Transaction History</div> <div class="loantype"> / {{LoanType}}</div>
+  </div>
+  <div class="you">Here is how much loan you have collected and how much you have paid back </div>
+
+  
+<ion-content> 
+  <div class="body" *ngFor="let l of LoanTransHistory">
+    <div  class="firstrow">
+        <div class="transid">{{l.loanType}}</div>
+        <div class="date">{{l.dateDisbused | date}}</div>
+    </div>
+
+    <div class="disbmoneyrow">
+    <div class="loandistext">Loan Disbursement</div>
+
+    <div class="moneyicon">
+     <div class="money">+ &#8358;{{l.amountDisbused | number:'1.0-0'}}</div>
+     <ion-icon name="arrow-down-outline" class="upicon"></ion-icon>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
+    <!-- <ion-icon name="arrow-back" class="backarrow"  (click)="goBack()"></ion-icon>
+    <ion-title>
+      Personal Loan History
+    </ion-title>
+</ion-header>
+
+<ion-content fullscreen>
+<div [ngClass]="'section'">
+  <div [ngClass]="'how'">
+    <p>Here's how much loan you've collected and how much you've paid back</p>
+  </div>
+
+</div>
+
+<div class="loan">
+  <p>Loan ID</p>
+  <p>Date</p>
+  <p>Amount</p>
+</div>
+
+<div class="repaymentholder" *ngFor="let l of LoanTransHistory">
+
+  <div>
+    <p>{{l.loanAccount}}</p>
+  </div>
+
+  <div>
+    <p>{{l.dateDisbused | date}}</p>
+  </div>
+
+  <div>
+    <span>&#8358;{{l.amountDisbused | number:'1.2-2'}}</span>
+  </div>
+
+ </div> -->
+
+     
+</ion-content>
+

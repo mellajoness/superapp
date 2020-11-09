@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div>
+        <!-- <img src="assets/icon/left-arrow.svg" alt=""> -->
+      </div>
+      <div class="header-title">
+        <!-- <h5>Please enter your pin below</h5> -->
+      </div>
+      <div class="icon-container settings" (click)="dismiss()">
+          <img src="assets/icon/cancel.svg" alt="">
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+
+    <div class="code-container">
+      <h4>{{planData.groupSavingCode}}</h4>
+      <!-- groupSavingCode -->
+    </div>
+  
+    <div class="shareButton-container">
+      <ion-button class="shareBtn" style="margin:auto" (click)="socialShare()"> Share Code
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

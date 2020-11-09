@@ -1,0 +1,172 @@
+ion-content{
+    --padding-start: 10px;
+    --padding-end: 10px;
+}
+
+
+.payment-mode{
+    width: 100%;
+
+    .mode-btn{
+        margin-top: 20px;
+    }
+}
+
+.custom-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem 1rem;
+}
+
+.payment-source-container{
+    padding: 10px;
+    height: auto;
+    width: 100%;
+}
+
+.source-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px 5px;
+    cursor: pointer;
+    height: 60px;
+
+    p{
+        color: #323A5D;
+    }
+}
+
+.source-item:active {
+    background-color: rgb(230, 217, 252);
+    border-radius: 4px;
+}
+
+.wallet-item, .card-item, .account-item {
+    border-radius: 4px;
+}
+
+.account-item{
+    margin-bottom: 20px;
+    .number{
+        margin: 5px;
+    }
+    .balance{
+        margin: 5px;
+        font-size: 12px;
+        color: rgb(206, 204, 209);
+    }
+}
+
+.card-item{
+    height: 50px;
+}
+
+.item-header{
+    color: #323A5D;
+    text-align: start;
+    
+    h5 {
+        font-size: 13px;
+    }
+}
+
+.form-container {
+    margin-top: 10%;
+    padding: 20px;
+    height: auto;
+   
+
+    #currency{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+}
+
+.form-instruction-container{
+    h3{
+        margin-bottom: 10%;
+        text-align: start;
+    }
+}
+
+
+.form-input-container {
+    ion-label{
+        --padding-start: 0;
+    }
+}
+
+.form-button-container{
+    margin-top: 5vh;
+
+    ion-button{
+        --padding-start: 15px;
+        --padding-end: 15px;
+        --padding-top: 20px;
+        --padding-bottom: 20px;
+    }
+}
+.form-button-item{
+    --min-height: 100px;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    p{
+        color: #70758e;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    h6{
+        color: #323A5D;
+        font-size: 18px;
+    }
+}
+
+
+.column-1 {
+    width: 50%;
+    text-align: start;
+}
+.column-2 {
+    width: 50%;
+    text-align: end;
+}
+
+#primary{
+    color: #0E237E;
+}
+
+#green{
+    color: #41AAA8;
+}
+
+.caveat{
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 550;
+    p a{
+        color: #0c3697 ;
+    }
+}
+
+.submit-button-container{
+    margin-top: 20px;
+    width: 100%;
+
+    ion-button{
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    width: 100%;
+    }
+
+}

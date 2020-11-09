@@ -1,0 +1,163 @@
+ion-title {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: white;
+  }
+  
+  .ion-header {
+    background: linear-gradient(0deg, #174075 34.38%, #247ba0 100%);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    height: 153px;
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+    .header-overlay {
+      background: linear-gradient(0deg, #174075 34.38%, #247ba0 100%);
+      padding-bottom: 20px;
+      height: 100%;
+    }
+    ion-toolbar {
+      --background: transparent !important;
+      ion-buttons ion-button ion-icon {
+        color: white;
+        font-size: 30px;
+      }
+    }
+  
+    ion-back-button{
+      --color: #FFFFFF;
+    }
+  }
+  
+  .offers {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    ion-img {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    p {
+      color: white;
+      font-family: Lato;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+    }
+    .line {
+      display: flex;
+      justify-content: space-between;
+      padding-left: 20px;
+      padding-right: 20px;
+      p {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 11px;
+        color: white;
+      }
+    }
+    ion-img,
+    .line {
+      margin: 0 !important;
+    }
+  }
+
+  .row{
+    display: flex;
+    padding-top: 30px;
+    justify-content: center;
+  }
+  .parent{
+    padding-top: 165px;
+   
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .how{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.2em;
+    color: #0a2a63;
+     text-align: center;
+  }
+  .max{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.9em;
+    color: #0a2a63;
+    padding-top: 10px;
+   text-align: center;
+  }
+
+  .btn{
+    border: 1px solid #185484;
+    color: #185484;
+    height: 50px;
+    margin-top:26px;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.2em;
+  }
+  .change{
+    text-align: center;
+    padding-top: 40px;
+    color: #185484;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.0em;
+    padding-bottom: 20px;
+  }
+.row{
+  display: flex;
+  padding-left: 20px;
+}
+  .left{
+   
+    width: 50%;
+
+  }
+  .right{
+   
+    width: 50%;
+  }
+  .text{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.0em;
+    color: #185484;
+    padding-top: 10px;
+  }
+  .tctext{
+    color: gray;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.9em;
+    padding-top: 20px;
+    // text-align: center;
+  }
+  .tc{
+    color: #185484;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.9em;  
+  }

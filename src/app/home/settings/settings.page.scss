@@ -1,0 +1,28 @@
+
+.parent {
+    padding: 20px;
+    // background-color: #fafafa;
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20px;
+    align-items: center;
+}
+
+.title {
+    font-family: Gilroy-Medium;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.2em;
+    line-height: 22px;
+    color: #1D2628;
+}
+
+ion-item {
+    --border-color: #EAEEF4;
+}

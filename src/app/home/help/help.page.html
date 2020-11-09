@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="profile-section">
+      <!-- <div class="profile-img-container" (click)="toggleMenu()">
+        <img class="profile-img" src="../../../assets/icon/logo.png" alt="">
+      </div> -->
+      <div class="w100">
+        <!-- <h5>Hello, {{userProfile?.firstName}} {{userProfile?.lastName}}</h5> -->
+        <h5 class="ml-20 text-center fidelityblue">Help</h5>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+
+  <div class="mt-10">
+      <ion-item lines="full" detail="true" (click)="go('https://sqlvae7svwgvdevoto.blob.core.windows.net/superappdocs/About-Us.pdf')" >
+        <ion-label class="ml-10 ion-padding-vertical">About Us</ion-label>
+      </ion-item>
+
+      <ion-item lines="full" detail="true"
+      (click)="go('https://sqlvae7svwgvdevoto.blob.core.windows.net/superappdocs/Data-Privacy-and-Security.pdf')">
+        <ion-label class="ml-10 ion-padding-vertical">Privacy & Security</ion-label>
+      </ion-item>
+
+      <ion-item lines="full" detail="true"  (click)="go('https://sqlvae7svwgvdevoto.blob.core.windows.net/superappdocs/TERMS-and-Conditions.pdf')">
+        <ion-label class="ml-10 ion-padding-vertical">Terms & Conditions</ion-label>
+      </ion-item>
+
+      <ion-item lines="full" detail="true"  (click)="go('https://sqlvae7svwgvdevoto.blob.core.windows.net/superappdocs/Contact-Us.pdf')">
+        <ion-label class="ml-10 ion-padding-vertical">Contact Us</ion-label>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label class="ml-10 ion-padding-vertical">
+          Version
+        </ion-label>
+        <p>{{MobileAppVersion}}</p>
+      </ion-item>
+  </div>
+
+</ion-content>

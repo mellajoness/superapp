@@ -1,0 +1,96 @@
+ion-content {
+  --background: url("../../../assets/img/app_bg.png") no-repeat center center / cover !important;
+  --ion-text-color: var(--ion-color-primary-contrast);
+  --background-size: cover;
+  --background-repeat: no-repeat;
+}
+.header{
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.please{
+  
+    padding-left:20px;
+    text-align: center;
+
+}
+.success{
+font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 1.7em;
+line-height: 30px;
+color: white;
+text-align: center;
+padding-top: 60px;
+padding-left: 20px;
+padding-right: 20px;
+}
+.money{
+  font-family: Lato;
+  font-style: normal;
+  font-weight:bold;
+  padding-top:40px;
+  padding-left:20px;
+  text-align: center;
+  padding-right: 20px;
+  font-size: 1.9em;
+}
+.parent{
+    padding-top:67px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.btn{
+  width: 100%;
+  text-align: center;
+  border: 1px solid white;
+  height: 50px;
+  border-radius: 5px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.text{
+  font-family: Lato;
+  font-style: normal;
+  font-size:1.3em;
+  line-height: 17px;
+  color: white;
+ 
+}
+.good{
+height: 169px;
+width: 169px;
+margin-top: 102px;
+}
+.namepay{
+  color: white;
+  text-align: center;
+}
+.two{
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+}
+.pleasemoney{
+  padding-left: 5px;
+}
+.circle{
+  height: 155px;
+  width: 156px;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-top: 55px;
+}
+.move{
+  justify-content: center;
+  display: flex;
+}

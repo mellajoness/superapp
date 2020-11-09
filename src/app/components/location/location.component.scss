@@ -1,0 +1,50 @@
+ion-content {
+    --overflow: hidden;
+    display: grid;
+}
+
+.scroll {
+    overflow: auto;
+    padding-bottom: 320px;
+    height: 100%;
+    background-color: #fafafa;
+    margin-top: 10px;
+}
+
+
+.parent {
+    padding-left: 40px;
+    padding-right: 40px;
+
+}
+
+.border {
+    margin-top: 15px;
+    border: 5px solid #E7E7E7;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 10px
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.searchicon {
+    font-size: 1.3em;
+    color: #c3c5c2;
+    position: relative;
+    right: 40px;
+}
+
+.card {
+    width: 100%;
+    margin: 8px 20px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 18px 30px rgba(50, 165, 217, 0.1);
+    border-radius: 8px;
+}

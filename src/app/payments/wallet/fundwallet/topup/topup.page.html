@@ -1,0 +1,55 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="mt-10">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="title-text">How much will you like to top-up your wallet with?</ion-text>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="mt-10 w100">
+          <div class="item-wrapper w100">
+            <ion-label class="stacked-label">Amount</ion-label>
+            <ion-input class="pt-05 pl-20" inputmode="numeric" type="text" placeholder="Enter Amount" (ionChange)="amountChange()" [(ngModel)]="amount"></ion-input>
+          </div>
+          
+          <div class="item-wrapper mb-05 w100">
+            <ion-label class="stacked-label">Narration</ion-label>
+            <ion-input class="pt-05 pl-20" type="text" placeholder="Enter Narration" (ionChange)="narrationChange()" [(ngModel)]="narration"></ion-input>
+          </div>
+          
+          <div class="w100" *ngIf="sharedData.wallet.pageView === 'fundwallet-bank'">
+            <ion-button [disabled]="!amount || !narration" (click)="proceed('payments/validate', 'fundwallet-bank')" class="no-transform payment-button mt-30" fill="clear" expand="block">
+              Proceed
+            </ion-button>
+          </div>
+
+          <div class="w100" *ngIf="sharedData.wallet.pageView === 'fundwallet-card'">
+            <ion-button [disabled]="!amount || !narration" (click)="proceed('payments/payment', 'fundwallet-card')" class="no-transform payment-button mt-30" fill="clear" expand="block">
+              Proceed
+            </ion-button>
+          </div>
+        </ion-row>
+
+      </ion-grid>
+    </div>
+  </div>
+
+</ion-content>

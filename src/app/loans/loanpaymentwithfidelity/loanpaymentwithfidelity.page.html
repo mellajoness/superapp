@@ -1,0 +1,48 @@
+
+<ion-content>
+  <div class="header">
+    <ion-icon name="arrow-back-outline" class="menu"  (click)="goBack()" ></ion-icon>
+    <div class="loanstext">Pay Loan</div>
+    <ion-icon name="" class="menu"></ion-icon>
+  </div>
+
+
+  <div class="headerbox">
+     <div class="headerboxtext">Your outstanding {{loanData.loanType}} loan is </div>
+     <div class="totalloanamount">&#8358;{{ loanBalance | number:'1.0-0'}}</div>
+  </div>
+
+
+  <div class="parent">
+   
+
+    <!-- <ion-item> -->
+      <!-- <ion-label>Gender</ion-label> -->
+      <div class="border">
+      <ion-select   placeholder="Select an Account" [(ngModel)]="account">
+        <ion-label></ion-label>
+        <ion-select-option value={{loanData.operativeAcct}}>{{loanData.operativeAcct}}</ion-select-option>
+        
+      </ion-select>
+    </div>
+    <!-- </ion-item> -->
+ 
+   <!-- <div class="input"> 
+      <ion-input placeholder="Enter Amount" type="tel"></ion-input>
+    </div> -->
+
+    <!-- <div class="input"> 
+      <ion-input placeholder="Enter OTP" type="tel"></ion-input>
+    </div> -->
+
+ 
+
+<div class="btn" (click)="payment()"> 
+  <div class="text">Pay</div> 
+</div>
+  </div>
+  
+  
+ 
+
+</ion-content>

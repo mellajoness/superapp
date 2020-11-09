@@ -1,0 +1,37 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div [routerLink]="['/investments', 'save', 'group-type']" routerDirection="back" class="icon-container nav">
+        <img src="assets/icon/left-arrow.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3></h3>
+      </div>
+      <div class="icon-container settings">
+          <!-- <img src="assets/icon/cog.svg" alt=""> -->
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <div class="instruction-section">
+    <h3><b>Choose an action</b></h3>
+  </div>
+
+
+  <div class="choice-item" [routerLink]="['/investments', 'save', 'grp-create-chlng']"> 
+    <img src="assets/icon/challenge-icns/add-circle.svg" alt="">
+    <div>
+      <h5>Create a challenge</h5>
+    </div>
+  </div>
+
+  <div class="choice-item" [routerLink]="['/investments', 'save', 'grp-join-chlng']"> 
+    <img src="assets/icon/challenge-icns/infinity.svg" alt="">
+    <div>
+      <h5>Join a challenge</h5>
+    </div>
+  </div>
+</ion-content>

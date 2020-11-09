@@ -1,0 +1,135 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div [routerLink]="['/','investments', 'landing']" routerDirection="back" class="icon-container nav">
+        <img src="assets/icon/left-arrow.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3>{{plan.goalName}}</h3>
+      </div>
+      <div class="icon-container settings">
+        <img *ngIf="plan.isGoalAccountFunded === true && goalBalance !== 0" src="assets/icon/ellipsis.svg" alt="" (click)="presentPopover($event)">
+        <ion-icon *ngIf="plan.isGoalAccountFunded === false && isGroupAdmin" (click)="presentDeleteGoal()" style="font-size: 20px;" color="primary" name="trash-outline"></ion-icon>
+        <ion-icon *ngIf="goalBalance === 0 && !isGroupAdmin" (click)="presentOptOut()" style="font-size: 20px;" color="primary" name="exit-outline"></ion-icon>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="plan-item-container">
+    <div class="plan-item">
+      <div class="plan-item-header-section">
+        <h5>Group Balance </h5>
+        <ion-badge class="savings-type-badge">{{plan.savingsType}}</ion-badge>
+      </div>
+      <div class="status">
+        <h3 class="account-balance"><span
+            id="currency"><b>₦</b></span>{{plan.principalContribution | currency: 'NGN': ' '}}</h3>
+      </div>
+      <div class="plan-item-amount-section">
+        <h3 class="account-balance"></h3>
+        <p class="target">Group Target</p>
+      </div>
+      <div class="pia-title-section">
+        <p class="status-text"*ngIf="plan.isGoalAccountFunded">{{percentageAmount}}% achieved</p>
+        <p class="status-text" *ngIf="!plan.isGoalAccountFunded">0% achieved</p>
+        <h3 class="amount"><span id="currency"><b>₦</b></span>{{plan.targetAmount | currency: 'NGN': ' '}}</h3>
+      </div>
+
+      <div class="progress-container" *ngIf="plan.isGoalAccountFunded">
+        <ion-progress-bar [value]="progress"></ion-progress-bar> 
+      </div>
+    </div>
+  </div>
+
+  <div class="action-buttons-container">
+    <div class="top-up" (click)="openTopUp()">
+      <div class="action-button">
+        <img src="assets/icon/plan-icns/up-arrow.svg" alt="">
+      </div>
+      <p *ngIf="plan.isGoalAccountFunded === true">Top Up</p>
+      <p *ngIf="plan.isGoalAccountFunded === false">Fund</p>
+    </div>
+    <div class="withdraw" (click)="confirmLiquidate()" *ngIf="plan.isGoalAccountFunded === true">
+      <div class="action-button">
+        <img src="assets/icon/plan-icns/down-arrow.svg" alt="">
+      </div>
+      <p>Withdraw</p>
+    </div>
+    <!-- Not funded button -->
+    <div class="withdraw" *ngIf="!plan.isGoalAccountFunded === true">
+      <div class="action-button-inactive">
+        <img src="assets/icon/plan-icns/down-arrow-inactive.svg" alt="">
+      </div>
+      <p>Withdraw</p>
+    </div>
+    <!-- Transaction History Button-->
+    <div class="tran-hist" (click)="openHistory(plan)">
+      <div class="action-button">
+        <!-- <img src="assets/icon/plan-icns/bar-chart.svg" alt=""> -->
+        <img src="assets/icon/plan-icns/t-history.svg" alt="">
+      </div>
+      <p>Transactions</p>
+    </div>
+  </div>
+
+  <div class="summary-container">
+    <hr>
+
+    <div class="hightlight">
+      <div class="row row-1">
+        <div class="column-1">
+          <p>Start Date</p>
+          <h6 *ngIf="plan.startDate !== '0001-01-01T00:00:00'">{{plan.startDate | date:'mediumDate'}}</h6>
+          <h6 *ngIf="plan.startDate === '0001-01-01T00:00:00'">***, ***, 20**</h6>
+        </div>
+        <div class="column-2">
+          <p>Maturity Date</p>
+          <h6 *ngIf="plan.maturityDate !== '0001-01-01T00:00:00'">{{plan.maturityDate | date:'mediumDate'}}</h6>
+          <h6 *ngIf="plan.maturityDate === '0001-01-01T00:00:00'">***, ***, 20**</h6>
+        </div>
+      </div>
+      <div class="row row-2">
+        <div class="column-1">
+          <p>Status</p>
+          <h6 *ngIf="plan.isGoalAccountFunded === true">Active</h6>
+          <h6 *ngIf="!plan.isGoalAccountFunded === true">Inactive</h6>
+        </div>
+        <div class="column-2" *ngIf="!plan?.yieldInterest === false">
+          <p>Interest p.a</p>
+          <h6>{{plan.interestRate}}%</h6>
+        </div>
+      </div>
+      <div class="row row-3" *ngIf="plan.isGoalAccountFunded === true">
+        <div class="column-1">
+          <p>Members</p>
+          <h6>{{plan.countOfGroupMembers}}</h6>
+        </div>
+        <div class="column-2" *ngIf="!plan?.yieldInterest === false">
+          <p>Type</p>
+          <h6>Challenges</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="share-container">
+    <div class="top-section">
+      <h5>Group Members</h5>
+      <ion-button class="clr-btn" size="small" fill="outline" (click)="shareModal()">INVITE</ion-button>
+    </div>
+    <div class="bottom-section">
+      <div class="row row-4" *ngIf="plan.isGoalAccountFunded">
+        <div class="column-1">
+          <p>You</p>
+          <h6 *ngIf="isGroupAdmin">Admin</h6>
+          <h6 *ngIf="!isGroupAdmin">Member</h6>
+        </div>
+        <div class="column-2">
+          <p><span id="currency"><b>₦</b></span>{{plan.frequencyAmount | number}}</p>
+          <h6>{{plan.frequencyOfSaving | titlecase}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

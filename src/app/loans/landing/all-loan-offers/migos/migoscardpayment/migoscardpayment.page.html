@@ -1,0 +1,80 @@
+
+<ion-header>
+  <div class="header">
+    <ion-icon name="arrow-back-outline" class="menu"  (click)="goBack()" ></ion-icon>
+    <div class="loanstext">Select Amount</div>
+    <ion-icon name="" class="menu"></ion-icon>
+  </div>
+</ion-header>
+
+ <div class="iconmessage">
+   <img src="../../../assets/imgs/loan/loanofferprogress1.png"  class="photo">
+   <div class="headerboxtext">Please select an account</div>
+ </div>
+
+<ion-content>
+    <div class="parent" (click)="selectAccount()">
+      <div class="row">
+       <div class="money">GT Bank</div>   <ion-img src="../../../../assets/img/arrowforward.png" class="arrow"></ion-img>
+      </div>
+      <div class="rate">000 **** 098</div>
+    </div>
+
+    <div class="changecard" (click)="addCard()")>
+     <div class="headerboxtext">I think i will use a new account</div>
+    </div>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<ion-content no-padding fullscreen>
+  <div [ngClass]="'ion-header'">
+    <div [ngClass]="'header-overlay'">
+      <ion-toolbar transparent  mode="ios">
+        <img src="../../../assets/img/arrow-left.png"><img>
+        <ion-title>Add payment card</ion-title> 
+      </ion-toolbar>
+        <div [ngClass]="'offers'">
+          <p>75% Complete</p>
+          <ion-img src="../../../../../assets/img/progress3.png"></ion-img>
+        
+          <div [ngClass]="'line'">
+            <p>Loan Offers</p>
+            <p>Select Bank</p>
+            <p>Payment Card</p>
+            <p>Confirm Loan</p>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+
+    <div class="body">
+     <div class="eligible">Please select a card</div>
+    </div>
+ 
+    <div class="parent" (click)="goToConfirm()">
+      <div class="row">
+        <div class="money">GT Bank</div> 
+        <div class="rate">226***788</div>
+      
+       <ion-img src="../../../../assets/img/arrowforward.png" class="arrow"></ion-img>
+      </div>
+     
+    </div>
+
+    <div class="addcard">Add a new card</div>
+
+</ion-content> -->

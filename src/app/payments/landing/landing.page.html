@@ -1,0 +1,176 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Payments & Lifestyle</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+      <div class="icons">
+        <div class="notification" (click)="proceed('payments/notifications')">
+          <img src="../../../assets/icon/bell.svg" class="img">
+          <ion-badge class="number item-inline-center">99</ion-badge>
+          <!-- <div class="number">9</div> -->
+        </div>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content scrollY="false">
+
+
+  <div class="container">
+
+    <div class="w-100 tab-parent top mt-30">
+      <ion-segment mode="ios" class="tab-segment" [(ngModel)]="segment.top" [value]="segment.topValue" (ngModelChange)="segmentTopChanged($event)">
+        <ion-segment-button class="tab-button" value="billspayments">
+          <ion-label class="font-10px mtt-02 tab-label">Payment</ion-label>
+          <ion-icon class="w-40 h-40" src="../../../assets/icon/trupay/landing/payment.svg"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button class="tab-button" value="travel">
+          <ion-label class="font-10px mtt-02 tab-label">Travel</ion-label>
+          <ion-icon class="w-40 h-40" src="../../../assets/icon/trupay/landing/travel.svg"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button class="tab-button" value="insurance">
+          <ion-label class="font-10px mtt-02 tab-label">Insurance</ion-label>
+          <ion-icon class="w-40 h-40" src="../../../assets/icon/trupay/landing/insurance.svg"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button class="tab-button" value="tax">
+          <ion-label class="font-10px mtt-02 tab-label">Tax</ion-label>
+          <ion-icon class="w-40 h-40" src="../../../assets/icon/trupay/landing/tax.svg"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button class="tab-button" value="sendmoney">
+          <ion-label class="font-10px mtt-02 tab-label">Transfer</ion-label>
+          <ion-icon class="w-40 h-40" src="../../../assets/icon/trupay/landing/sendmoney.svg"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+
+
+    <div class="parent" *ngIf="false">
+      <!-- <div class="banner">
+        <div class="wallet">Open a fidelity bank account</div>
+      </div> -->
+
+      <div *ngIf="pageReady" class="pb-20">
+
+        <div class="box-1">
+          <div class="firstbox" (click)="proceed('payments/billspayments')">
+            <img src="../../../assets/icon/payment.svg" class="img">
+            <div class="mobile">Payment</div>
+
+          </div>
+
+          <div *ngIf="!sharedData.userProfile['walletAcctNumber']" class="secondbox"
+            (click)="proceed('payments/wallet/walletcreation')">
+            <img src="../../../assets/icon/wallet.svg" class="img">
+            <div class="mobile">Create Wallet</div>
+          </div>
+
+          <div *ngIf="sharedData.userProfile['walletAcctNumber']" class="secondbox"
+            (click)="proceed('payments/wallet')">
+            <img src="../../../assets/icon/wallet.svg" class="img">
+            <div class="mobile">Wallet</div>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="firstbox" (click)="comingsoon()">
+            <img src="../../../assets/icon/tax.svg" class="img">
+            <div class="mobile">Tax</div>
+          </div>
+
+          <div class="secondbox" (click)="proceed('payments/travel')">
+            <img src="../../../assets/icon/travel.svg" class="img">
+            <div class="mobile">Travel</div>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="firstbox" (click)="comingsoon()">
+            <img src="../../../assets/icon/shopping.svg" class="img">
+            <div class="mobile">Shopping</div>
+          </div>
+
+          <div class="secondbox" (click)="comingsoon()">
+            <img src="../../../assets/icon/remittance.svg" class="img">
+            <div class="mobile">Remittance</div>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="firstbox" (click)="proceed('payments/exchangerate')">
+            <img src="../../../assets/icon/exchange-rate.svg" class="img">
+            <div class="mobile">Exchange Rate Checker</div>
+          </div>
+
+          <div class="secondbox" (click)="proceed('payments/atmlocations')">
+            <img src="../../../assets/icon/atm.svg" class="img">
+            <div class="mobile">ATM Locations</div>
+          </div>
+        </div>
+
+      </div>
+
+      <ng-container *ngIf="false && !pageReady">
+
+        <div class="box" *ngFor="let item of [0,1,2]">
+          <ion-skeleton-text class="firstbox_skeleton" style="height: 156px;" animated></ion-skeleton-text>
+          <ion-skeleton-text class="secondbox_skeleton" style="height: 156px;" animated></ion-skeleton-text>
+        </div>
+
+      </ng-container>
+
+
+
+
+    </div>
+
+    <div class="pic-box">
+      <!-- <div [@fade]="state" (@fade.done)="onDone($event)" class="pic-content"[ngStyle]="{'background-image': 'url('+segment.centerImage+')'}" (click)="go()">
+      </div> -->
+      <ion-slides [options]="slideOptions" pager="false" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)">
+        <ion-slide *ngFor="let route of routes" (click)="go(route)">
+          <!-- <ion-img class="slide-img" [src]="'./../../../assets/imgs/payments/' + route.image + '.png'"></ion-img> -->
+          <div class="pic-content" [ngStyle]="{'background-image': 'url('+route.image+'.png)'}"></div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <div class="w-100 tab-parent bottom">
+      <ion-segment mode="ios" class="tab-segment" [(ngModel)]="segment.bottom" [value]="segment.bottomValue" (ngModelChange)="segmentBottomChanged($event)">
+        <ion-segment-button class="tab-button" value="airtime">
+          <ion-label class="font-10px mtt-02 tab-label">Airtime</ion-label>
+          <ion-icon class="w-40 h-40" src="../../../assets/icon/trupay/landing/airtime.svg"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button class="tab-button" value="education">
+          <ion-label class="font-10px mtt-02 tab-label">Education</ion-label>
+          <ion-icon class="w-40 h-40" src="../../../assets/icon/trupay/landing/education.svg"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button class="tab-button" value="remittance">
+          <ion-label class="font-10px mtt-02 tab-label">Remittance</ion-label>
+          <ion-icon class="w-40 h-40" src="../../../assets/icon/trupay/landing/remittance.svg"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button class="tab-button" value="borrowpower">
+          <ion-label class="font-10px mtt-02 tab-label">BorrowPower</ion-label>
+          <ion-icon class="w-40 h-40" src="../../../assets/icon/trupay/landing/borrowpower.svg"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button class="tab-button" value="more">
+          <ion-label class="font-10px mtt-02 tab-label">More</ion-label>
+          <ion-icon class="w-40 h-40" src="../../../assets/icon/trupay/landing/more.svg"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+  </div>
+
+
+
+
+</ion-content>

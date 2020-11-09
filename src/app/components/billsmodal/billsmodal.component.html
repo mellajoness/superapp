@@ -1,0 +1,266 @@
+<ion-content>
+  <div class="border"></div>
+
+  <!-- <div class="search" *ngIf="sharedData.modalOption !== 'water'">
+    <ion-searchbar showCancelButton="focus" mode="md" detail="false"></ion-searchbar>
+    <ion-icon name="search" class="searchicon"></ion-icon>
+  </div> -->
+
+  <ng-container *ngIf="sharedData.modalOption === 'airtime'">
+    <ion-grid mode="ios">
+      <ion-row mode="ios" class="mt-10">
+        <ion-col size="4" class="item-v-center" (click)="pay('airtime', 'AIRTELVTU')">
+          <img src="../../../assets/icon/billspayments/airtel.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('airtime', 'GLOVTU')">
+          <img src="../../../assets/icon/billspayments/glo.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('airtime', 'MTNVTU')">
+          <img src="../../../assets/icon/billspayments/mtn.png" class="img">
+        </ion-col>
+      </ion-row>
+  
+      <ion-row mode="ios" class="mt-20">
+        <!-- <ion-col size="4" class="item-v-center" (click)="pay('airtime', 'itel')">
+          <img src="../../../assets/icon/billspayments/itel.png" class="img">
+        </ion-col> -->
+        <ion-col size="4" class="item-v-center" (click)="pay('airtime', 'ETISALATVTU')">
+          <img src="../../../assets/icon/billspayments/9inemobile.png" class="img">
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+  </ng-container>
+
+  <ng-container *ngIf="sharedData.modalOption === 'cable'">
+    <ion-grid mode="ios">
+  
+      <ion-row mode="ios" class="mt-10">
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', '13')">
+          <img src="../../../assets/icon/billspayments/dstv.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', '14')">
+          <img src="../../../assets/icon/billspayments/gotv.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', '101')">
+          <img src="../../../assets/icon/billspayments/star.png" class="img">
+        </ion-col>
+      </ion-row>
+  
+      <ion-row mode="ios" class="mt-20">
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', '100')">
+          <img src="../../../assets/icon/billspayments/star.png" class="img">
+        </ion-col>
+        <!-- <ion-col size="4" class="item-v-center" (click)="pay('cable', 'actv')">
+          <img src="../../../assets/icon/billspayments/actv.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', 'daar')">
+          <img src="../../../assets/icon/billspayments/daar.png" class="img">
+        </ion-col> -->
+      </ion-row>
+  
+      <!-- <ion-row class="mt-20">
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', 'angle')">
+          <img src="../../../assets/icon/billspayments/infinity.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', 'iroko')">
+          <img src="../../../assets/icon/billspayments/iroko.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', 'linda')">
+          <img src="../../../assets/icon/billspayments/linda.png" class="img">
+        </ion-col>
+      </ion-row>
+  
+      <ion-row class="mt-20">
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', 'tstv')">
+          <img src="../../../assets/icon/billspayments/tstv.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', 'trend')">
+          <img src="../../../assets/icon/billspayments/trend.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', 'can')">
+          <img src="../../../assets/icon/billspayments/can.png" class="img">
+        </ion-col>
+      </ion-row>
+  
+      <ion-row class="mt-20">
+        <ion-col size="4" class="item-v-center" (click)="pay('cable', 'montage')">
+          <img src="../../../assets/icon/billspayments/montage.png" class="img">
+        </ion-col>
+      </ion-row> -->
+  
+    </ion-grid>
+  </ng-container>
+
+  <ng-container *ngIf="sharedData.modalOption === 'betting'">
+    <ion-grid mode="ios">
+  
+      <ion-row mode="ios" class="mt-10">
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', 'Bet 9ja')">
+          <img src="../../../assets/icon/billspayments/bet9ja.svg" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', 'BetKing')">
+          <img src="../../../assets/icon/billspayments/king.svg" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', '1960Bet')">
+          <img src="../../../assets/icon/billspayments/1960bet.svg" class="img">
+        </ion-col>
+      </ion-row>
+  
+      <ion-row mode="ios" class="mt-10">
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', '360 BET')">
+          <img src="../../../assets/icon/billspayments/360bet.svg" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', 'BETBIGA')">
+          <img src="../../../assets/icon/billspayments/betbig.svg" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', 'BETFARM')">
+          <img src="../../../assets/icon/billspayments/betfarm.svg" class="img">
+        </ion-col>
+      </ion-row>
+  
+      <ion-row mode="ios" class="mt-10">
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', '234BET.COM')">
+          <img src="../../../assets/icon/billspayments/234bet.svg" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', 'BetWazobia')">
+          <img src="../../../assets/icon/billspayments/betwazobia.svg" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', 'Channel Drill')">
+          <img src="../../../assets/icon/billspayments/cessb.svg" class="img">
+        </ion-col>
+      </ion-row>
+  
+      <ion-row mode="ios" class="mt-10">
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', 'NairaBet')">
+          <img src="../../../assets/icon/billspayments/nairabet.svg" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', 'SportyBet')">
+          <img src="../../../assets/icon/billspayments/sportybet.svg" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', 'Megabet')">
+          <img src="../../../assets/icon/billspayments/megabet.svg" class="img">
+        </ion-col>
+      </ion-row>
+  
+      <ion-row mode="ios" class="mt-10">
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', 'Merrybet Gold Limited')">
+          <img src="../../../assets/icon/billspayments/merrybet.svg" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('betting', 'Surebet247')">
+          <img src="../../../assets/icon/billspayments/surebet.svg" class="img">
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+  </ng-container>
+
+  <ng-container *ngIf="sharedData.modalOption === 'internet'">
+    <ion-grid mode="ios">
+  
+      <ion-row mode="ios" class="mt-10">
+        <ion-col size="4" class="item-v-center" (click)="pay('internet', '202')">
+          <img src="../../../assets/icon/billspayments/mtn.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('internet', '201')">
+          <img src="../../../assets/icon/billspayments/airtel.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('internet', '204')">
+          <img src="../../../assets/icon/billspayments/glo.png" class="img">
+        </ion-col>
+      </ion-row>
+
+      <ion-row mode="ios" class="mt-20">
+        <ion-col size="4" class="item-v-center" (click)="pay('internet', '203')">
+          <img src="../../../assets/icon/billspayments/9mobile.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('internet', '200')">
+          <img src="../../../assets/icon/billspayments/smile.png" class="img">
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+  </ng-container>
+
+  <ng-container *ngIf="sharedData.modalOption === 'electricity'">
+    <ion-grid mode="ios">
+
+      <ion-row mode="ios" class="mt-10">
+        <ion-col size="4" class="item-v-center" (click)="pay('electricity', '7')">
+          <img src="../../../assets/icon/billspayments/bedc.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('electricity', '1')">
+          <img src="../../../assets/icon/billspayments/ekedc.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('electricity', '3')">
+          <img src="../../../assets/icon/billspayments/eedc.png" class="img">
+        </ion-col>
+      </ion-row>
+
+      <ion-row mode="ios" class="mt-20">
+        <ion-col size="4" class="item-v-center" (click)="pay('electricity', '4')">
+          <img src="../../../assets/icon/billspayments/ibedc.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('electricity', '10')">
+          <img src="../../../assets/icon/billspayments/ice.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('electricity', '2')">
+          <img src="../../../assets/icon/billspayments/ikee.png" class="img">
+        </ion-col>
+      </ion-row>
+
+      <ion-row mode="ios" class="mt-20">
+        <ion-col size="4" class="item-v-center" (click)="pay('electricity', '11')">
+          <img src="../../../assets/icon/billspayments/jos.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('electricity', '5')">
+          <img src="../../../assets/icon/billspayments/adun.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('electricity', '9')">
+          <img src="../../../assets/icon/billspayments/kedco.png" class="img">
+        </ion-col>
+      </ion-row>
+
+      <ion-row mode="ios" class="mt-20">
+        <ion-col size="4" class="item-v-center" (click)="pay('electricity', '8')">
+          <img src="../../../assets/icon/billspayments/phed.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('electricity', '6')">
+          <img src="../../../assets/icon/billspayments/yedc.png" class="img">
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ng-container>
+
+  <ng-container *ngIf="sharedData.modalOption === 'water'">
+    <ion-grid mode="ios">
+
+      <ion-row mode="ios" class="mt-10">
+        <ion-col size="4" class="item-v-center" (click)="pay('water', 'dstv')">
+          <img src="../../../assets/icon/billspayments/wbl.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('water', 'gotv')">
+          <img src="../../../assets/icon/billspayments/coat.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('water', 'startime')">
+          <img src="../../../assets/icon/billspayments/fctw.png" class="img">
+        </ion-col>
+      </ion-row>
+
+      <ion-row mode="ios" class="mt-20">
+        <ion-col size="4" class="item-v-center" (click)="pay('water', 'kwese')">
+          <img src="../../../assets/icon/billspayments/kiwasco.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('water', 'actv')">
+          <img src="../../../assets/icon/billspayments/lagos.png" class="img">
+        </ion-col>
+        <ion-col size="4" class="item-v-center" (click)="pay('water', 'daar')">
+          <img src="../../../assets/icon/billspayments/ogswc.png" class="img">
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ng-container>
+
+</ion-content>

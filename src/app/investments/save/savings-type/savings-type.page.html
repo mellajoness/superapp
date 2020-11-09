@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div [routerLink]="['/','investments', 'save']" routerDirection="back" class="icon-container nav">
+        <img src="assets/icon/left-arrow.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3></h3>
+      </div>
+      <div class="icon-container settings">
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<div class="instruction-section">
+  <h3><b> Save for a Goal</b></h3>
+  <p class="description">
+    Kickstart a long-term saving target for something you care about
+  </p>
+</div>
+
+<div class="savings-type-container">
+  <div class="savings-item"  [routerLink]="['/', 'investments', 'save', 'custom-goal']">
+    <img src="assets/icon/savings-icns/Custom.svg" alt="">
+    <p class="type">Custom</p>
+  </div>
+  <div class="savings-item" (click)="openPresetGoal(this.homePage)">
+    <img src="assets/icon/savings-icns/home.svg" alt="">
+    <p class="type">Home</p>
+  </div>
+  <div class="savings-item"  (click)="openPresetGoal(this.educationPage)">
+    <img src="assets/icon/savings-icns/Education.svg" alt="">
+    <p class="type">Education</p>
+  </div>
+  <div class="savings-item"  (click)="openPresetGoal(this.businessPage)">
+    <img src="assets/icon/savings-icns/Business.svg" alt="">
+    <p class="type">Business</p>
+  </div>
+  <div class="savings-item"  (click)="openPresetGoal(this.rainydayPage)">
+    <img src="assets/icon/savings-icns/Rainy.svg" alt="">
+    <p class="type">Rainy Day</p>
+  </div>
+  <div class="savings-item"  (click)="openPresetGoal(this.vacationPage)">
+    <img src="assets/icon/savings-icns/Vacation.svg" alt="">
+    <p class="type">Vacation</p>
+  </div>
+  <div class="savings-item"  (click)="openPresetGoal(this.weddingPage)">
+    <img src="assets/icon/savings-icns/Wedding.svg" alt="">
+    <p class="type">Wedding</p>
+  </div>
+</div>
+
+</ion-content>

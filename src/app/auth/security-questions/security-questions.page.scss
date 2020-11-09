@@ -1,0 +1,121 @@
+$instructionsCol: #323a5d;
+$color-primary: #0e237e;
+$color-primaryOp: #0e237e;
+$color-bg: #f9f9fa;
+$color-input-border: #dcdcdc;
+$signupbtnbg: #f9f9fa;
+$placeholderCol: rgba(50, 58, 93, 0.6);
+$border-col: rgba(24, 25, 26, 0.2);
+
+* {
+  font-family: "Gilroy-Light" !important;
+}
+
+ion-content,
+ion-toolbar {
+  // --ion-background-color: $color-bg;
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+
+ion-header {
+  ion-toolbar {
+    --background: #fafafa;
+  }
+}
+
+.my-content {
+  --background: #fafafa;
+}
+
+.instruction-container {
+  margin-top: 1rem;
+  color: $instructionsCol;
+
+  h4 {
+    // font-family: 'poppins-bold';
+    font-weight: 900;
+    color: $instructionsCol;
+  }
+}
+
+.form-container {
+  width: 100%;
+  padding: 5px;
+  max-width: 400px;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.button-container {
+  // transform: translate3d(0, 20vh, 0);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+
+  button {
+    width: 100%;
+    height: calc(3em + 2px);
+    margin-top: 15px;
+    //   border-radius: 5px;
+    outline: none;
+  }
+
+  #login-btn {
+    background-color: $color-bg;
+    color: $color-primary;
+    border: 3px solid $color-primaryOp;
+    border-radius: 5px;
+  }
+
+  #login-btn:disabled {
+    opacity: 0.5
+  }
+
+  #login-btn2 {
+    background-color: $color-bg;
+    color: $color-primary;
+    border: 3px solid $color-primaryOp;
+    border-radius: 5px;
+  }
+
+  #login-btn2:disabled {
+    opacity: 0.5
+  }
+}
+
+.parent {
+  padding: 20px;
+  background-color: #fafafa;
+  height: 100%;
+  width: 100%;
+}
+
+ion-input {
+  border: 1px solid $color-input-border;
+  border-radius: 4px;
+  --padding-start: 16px !important;
+  line-height: 22px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+}
+
+.label {
+  font-size: 17px;
+  margin-bottom: 1rem;
+}
+
+ion-select {
+  border: 1px solid $color-input-border;
+  border-radius: 4px;
+  --padding-start: 16px !important;
+  line-height: 22px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  color: $color-primary;
+  height: 42px;
+}

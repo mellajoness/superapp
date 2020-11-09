@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div>
+        <!-- <img src="assets/icon/left-arrow.svg" alt=""> -->
+      </div>
+      <div class="header-title">
+        <h5>Please enter your pin below</h5>
+      </div>
+      <div class="icon-container settings" (click)="dismiss()">
+          <img src="assets/icon/cancel.svg" alt="">
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="pin-container">
+    <ng-otp-input type="number" inputmode="numeric" #ngOtpInput (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-input>
+  </div>
+
+  <div class="clear-input-container">
+    <ion-button class="clr-btn" shape="round" fill="outline" (click)="clearOTP()" size="small">Clear PIN</ion-button>
+   </div>
+
+  <div class="submit-button-container">
+    <ion-item class="form-button-item" lines="none">
+      <ion-button *ngIf="!hideButton()" expand="block" (click)="getPin()">Proceed
+        <!-- <ion-icon slot="end" name="checkmark"></ion-icon> -->
+      </ion-button>
+    </ion-item>
+  </div>
+</ion-content>

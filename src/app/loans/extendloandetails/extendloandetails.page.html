@@ -1,0 +1,142 @@
+<!-- <ion-header no-border>
+  <ion-toolbar mode="ios">
+      <ion-buttons slot="start"  (click)="back()">
+        <img src="../../../assets/img/arrow-left.png"><img>
+       </ion-buttons> 
+    <ion-title>
+      {{loanDataResp.loan_Category}} Loan Extension
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding fullscreen>
+  <div [ngClass]="'extend'">
+    <img src="../../../assets/img/extend.png">
+  </div>
+
+  <div class="parent">
+   <div class="how">Your {{loanDataResp.loan_Category}} loan extension is</div>
+    <div class="max">&#8358;{{loanDataResp.total_Eligible_Amount | number:'1.2-2'}}</div>
+
+    <div class="row">
+    <div class="left">
+       <div class="text">Due Date</div>
+       <div class="text">Interest Rate</div>
+       <div class="text">Management Rate</div>
+       <div class="text">Insurance Rate</div>
+       <div class="text">Extension Rate</div>
+    </div>
+
+    <div class="right">
+      <div class="text">{{loanDataResp.dueDate | date}}</div>
+      <div class="text">{{loanDataResp.interestRate}}% </div>
+      <div class="text">{{loanDataResp.managementRate}}% </div>
+      <div class="text">{{loanDataResp.insuranceFlatFee}}%</div>
+      <div class="text">{{loanDataResp.extensionFeePercent}}%</div>
+    </div>
+  </div>
+  
+
+<div class="tctext">Convinience charge ₦{{loanDataResp.serviceCharge | number:'1.2-2'}} applies. Please confirm that you have read and agreed to the <a class="tc" (click)="terms()">Terms and Conditions</a></div>
+
+
+  <div class="btn" (click)="accept()">
+    Accept
+  </div>
+
+  <div (click)="changed()" class="change">I changed my mind</div>
+  </div>
+
+
+  
+    </ion-content> -->
+
+
+
+
+    <ion-header>
+      <ion-toolbar>
+       
+       <div class="header">
+        <ion-icon name="arrow-back-outline" class="menu" (click)="goBack()"></ion-icon>
+        <div class="loanstext">Confirm Loan</div>
+        <ion-icon name="" class="menu"></ion-icon>
+      </div>
+    
+     
+     
+      <img src="../../../../../../assets/imgs/loan/loanprogessbar3.png"  class="photo">
+    
+      <div class="headerbox">
+         <div class="headerboxtext">Your {{loanDataResp.loan_Category}} loan extension is</div>
+         <div class="totalloanamount">&#8358;{{loanDataResp.total_Eligible_Amount | number:'1.0-0'}}</div>
+      </div>
+    
+    
+    
+    
+      
+    
+      
+      </ion-toolbar>
+    </ion-header>
+    
+    
+      <ion-content>
+      <div class=" body">
+      <div class="confirm">
+    
+    
+        <div>
+          <p>Due Date</p>
+          <p>{{loanDataResp.dueDate | date}}</p>
+        </div>
+    
+        <div>
+          <p>Interest Rate</p>
+          <p>{{loanDataResp.interestRate}}%</p>
+        </div>
+    
+        <div>
+          <p>Management Rate</p>
+          <p>{{loanDataResp.managementRate}}%</p>
+        </div>
+    
+        <div>
+          <p>Insurance Rate</p>
+          <p>{{loanDataResp.insuranceFlatFee}}%</p>
+        </div>
+    
+        <div>
+          <p>Extension Rate</p>
+          <p>{{loanDataResp.extensionFeePercent}}%</p>
+        </div>
+    
+      
+    
+      
+    
+      
+    
+     
+     
+      </div>
+    
+      <div class="terms">
+        <p>Convinience charge ₦{{loanDataResp.serviceCharge | number:'1.0-0'}} applies. Please confirm that you have read and agreed to the
+          <a (click)="terms()">Terms and Conditions</a>
+        </p>
+      </div>
+    
+      <div class="next">
+        <button ion-button (click)="accept()"><span>Accept</span> </button>
+      </div>
+    
+    
+    
+    
+      <div class="changed">
+        <p (click)="changed()">Reject</p>
+      </div>
+    </div>
+    </ion-content>

@@ -1,0 +1,20 @@
+<ion-content fullscreen>
+
+  <div [ngClass]="'pic'">
+    <ion-img src="../../assets/imgs/loan/sorry.png"></ion-img>
+  </div>
+
+  <div [ngClass]="'note'" padding>
+    <!-- <p>Sorry!</p> -->
+    <p>{{userMessage}}</p>
+  </div>
+
+  <div [ngClass]="'second'" padding>
+    <!-- <p>You’ve been debited ₦200 for the credit check</p> -->
+  </div>
+
+  <div [ngClass]="'next'">
+    <button ion-button (click)="gotoDashboard()"><span>Go to dashboard</span> </button>
+  </div>
+
+</ion-content>

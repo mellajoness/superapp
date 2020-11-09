@@ -1,0 +1,145 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="mt-10">
+      <ion-grid>
+        <ion-row>
+          <ion-text class="title-text">Select a funding source</ion-text>
+        </ion-row>
+
+        <ng-container *ngIf="sharedData.billsPaymentsMode !== 'wallet'">
+          <ion-row *ngIf="sharedData.userProfile && sharedData.userProfile.walletAcctNumber" class="mt-30">
+            <div class="box" (click)="proceed('wallet')" style="width: 100%;display: flex;align-items: center;justify-content: space-between;">
+              <div class="firstbox item-v-center">
+                <img src="../../assets/icon/wallet.png" class="img pr-10">
+                <div class="text">Wallet</div>
+              </div>
+              <img src="../../assets/icon/billspayments/chevron-right-blue.png" class="img">
+            </div>
+          </ion-row>
+
+          <ion-row *ngIf="sharedData.userProfile && !sharedData.userProfile.walletAcctNumber" class="mt-30">
+            <div class="box" (click)="createWallet('payments/wallet/walletcreation')" style="width: 100%;display: flex;align-items: center;justify-content: space-between;">
+              <div class="firstbox item-v-center">
+                <img src="../../assets/icon/wallet.png" class="img pr-10">
+                <div class="text">Create Wallet</div>
+              </div>
+              <img src="../../assets/icon/billspayments/chevron-right-blue.png" class="img">
+            </div>
+          </ion-row>
+
+          <!-- <ion-row class="mt-10">
+            <ion-text class="header-2">CARDS</ion-text>
+            <div class="box-1" (click)="proceed('card')">
+              <div class="firstbox">
+                <img src="../../assets/icon/billspayments/mastercard.png" class="img">
+                <div class="text">**** **** **** 5090</div>
+              </div>
+              <img src="../../assets/icon/billspayments/chevron-right-blue.png" class="img">
+            </div>
+  
+            <div class="box-1" (click)="proceed('card')">
+              <div class="firstbox">
+                <img src="../../assets/icon/billspayments/visa.png" class="img">
+                <div class="text">**** **** **** 6455</div>
+              </div>
+              <img src="../../assets/icon/billspayments/chevron-right-blue.png" class="img">
+            </div>
+  
+            <div class="box-1" (click)="proceed('card')">
+              <div class="firstbox">
+                <img src="../../assets/icon/billspayments/mastercard.png" class="img">
+                <div class="text">**** **** **** 5567</div>
+              </div>
+              <img src="../../assets/icon/billspayments/chevron-right-blue.png" class="img">
+            </div>
+          </ion-row>
+  
+          <div class="text-center item-v-center mt-10" (click)="addNewCard('payments/addcard')">
+            <ion-text class="header-3 text-center">Pay with a new card</ion-text>
+          </div> -->
+
+          <ng-container *ngIf="paymentData.accounts">
+            <ion-row class="mt-20">
+              <ion-text class="header-2">ACCOUNTS</ion-text>
+              <div class="box-1" *ngIf="paymentData.accounts.length > 0">
+                <div class="firstbox">
+                  <img src="../../assets/icon/wallet.png" class="img mtt-05">
+                  <div class="item-wrapper">
+                    <ion-select class="pl-20 pt-10" interface="popover" mode="ios" placeholder="Select Account"
+                      name="billPlans" [selectedText]="selectedAccount" [(ngModel)]="selectedAccount"
+                      [ngModelOptions]="{standalone: true}" (ionChange)="accountSelected()">
+                      <ion-select-option *ngFor="let account of paymentData.accounts" value="{{account.foracid}}">
+                        {{account.foracid}} - &#8358;{{account.balance}}
+                      </ion-select-option>
+                    </ion-select>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="box-1" *ngIf="paymentData.accounts.length < 1">
+                <div class="firstbox w100">
+                  <div *ngFor="let item of [0]" class="w100"><ion-skeleton-text animated class="item-skeleton"></ion-skeleton-text></div>
+                </div>
+              </div>
+            </ion-row>
+
+            <ion-button *ngIf="selectedAccount" class="no-transform payment-button mt-10" fill="clear" expand="block"
+              (click)="proceedWithAccount('account')">
+              Proceed with account
+            </ion-button>
+          </ng-container>
+
+          <ng-container *ngIf="!paymentData.accounts">
+            <ion-row class="mt-30">
+              <div class="box" (click)="validateFidelityCustomer()" style="width: 100%;display: flex;align-items: center;justify-content: space-between;">
+                <div class="firstbox item-v-center">
+                  <img src="../../assets/icon/wallet.png" class="img pr-10">
+                  <div class="text">Pay with account</div>
+                </div>
+                <img src="../../assets/icon/billspayments/chevron-right-blue.png" class="img">
+              </div>
+            </ion-row>
+
+            <ion-button *ngIf="selectedAccount" class="no-transform payment-button mt-10" fill="clear" expand="block"
+              (click)="proceedWithAccount('account')">
+              Proceed with account
+            </ion-button>
+          </ng-container>
+
+        </ng-container>
+
+        <ng-container *ngIf="sharedData.billsPaymentsMode === 'wallet'">
+          <ion-row class="mt-30">
+            <ion-text class="header-2">PAY WITH CARD</ion-text>
+
+            <div class="box-1" (click)="proceed('card')">
+              <ion-button class="no-transform payment-button mt-10 w100" fill="clear" expand="block">
+                Pay
+              </ion-button>
+            </div>
+
+          </ion-row>
+        </ng-container>
+
+      </ion-grid>
+    </div>
+  </div>
+
+</ion-content>

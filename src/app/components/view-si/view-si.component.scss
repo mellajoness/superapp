@@ -1,0 +1,35 @@
+$instructionsCol:#323A5D;
+$color-primary: #0E237E;
+$color-primaryOp: #0E237E;
+$color-bg: #F9F9FA;
+$signupbtnbg: #F9F9FA;
+$placeholderCol:  rgba(50, 58, 93, 0.6);
+$border-col: rgba(24, 25, 26, 0.2);
+
+ion-content, ion-toolbar {
+  // --ion-background-color: $color-bg;
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+
+ion-header{
+  ion-toolbar{
+    --background: #fafafa;
+  }
+}
+
+.my-content{
+  --background: #fafafa;
+}
+
+.parent {
+  padding: 20px 0px;
+  background-color: #fafafa;
+  height: 100%;
+  width: 100%;
+}
+
+.arrow {
+    color: #0E237E;
+    font-size: 1.5em;
+}

@@ -1,0 +1,69 @@
+.custom-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem .5rem;
+    background-color: #f9f9f9;
+}
+
+ion-header ion-toolbar:first-of-type {
+    padding-top: 0 !important; 
+}
+
+ion-content, ion-toolbar{
+    --background: #f9f9f9;
+}
+
+#currency{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.form-container {
+    padding: 20px;
+}
+
+.form-instruction-container{
+    h4{
+        margin-bottom: 10%;
+        text-align: start;
+    }
+}
+
+.select-tenure-container{
+    padding: 20px;
+    background: #ffffff;
+    height: 300px;
+}
+
+ion-footer{
+    height: 300px;
+    background: #560BD0;
+}
+
+.result-container{
+    padding: 20px;
+    color: white;
+}
+
+.amount-maturity{
+    font-size: 40px;
+}
+
+.invest-btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    ion-button{
+        margin: 10px;
+        --background:  #ffffff;
+        color: #560BD0;
+    }
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (-webkit-device-pixel-ratio: 3) {
+    ion-footer{
+        height: 150px;
+    }
+}

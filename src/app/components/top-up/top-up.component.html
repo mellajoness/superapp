@@ -1,0 +1,190 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div>
+        <!-- <img src="assets/icon/left-arrow.svg" alt=""> -->
+      </div>
+      <div class="header-title">
+        <h3></h3>
+      </div>
+      <div class="icon-container settings" (click)="dismiss()">
+          <img src="assets/icon/cancel.svg" alt="">
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="slide-container" >
+    <ion-slides #slide pager="false" [options]="slideOpts">
+  
+    <!-- ----------- SLIDE ONE --------------------- -->
+    <ion-slide class="slide-1">
+      <div class="form-container">
+        <div class="form-instruction-container">
+            <h3> How much would you like to top up this plan?</h3>
+        </div>
+        <div class="form-input-container">
+          <form [formGroup]="slideOneForm">
+            <ion-item>
+              <ion-label class="form-input-label ion-float-left" position="floating">Amount <span
+                  id="currency">(₦)</span></ion-label>
+              <ion-input *ngIf="planData.isGoalAccountFunded" formControlName="amount" type="number" [placeholder]="['₦' + this.goalSavingBoundaries?.minimumFrequencyAmount]" maxlength="25" (ionBlur)="checkStatusFunded()"></ion-input>
+              <ion-input *ngIf="!planData.isGoalAccountFunded" formControlName="amount" type="number" [placeholder]="['₦' + planData.frequencyAmount]" maxlength="25" (ionBlur)="checkStatusNotFunded()"></ion-input>
+            </ion-item>
+          </form>
+        </div>
+        <div class="form-button-container">
+          <ion-item class="form-button-item" lines="none">
+            <ion-button [disabled]="!slideOneForm.valid" (click)="slideToNextGetAccount(slide)">OK
+              <ion-icon slot="end" name="checkmark"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </div>
+      </div>
+    </ion-slide>
+  
+    <!-- ----------- SLIDE TWO --------------------- -->
+
+    <ion-slide class="slide-2">
+     <div class="form-container">
+
+      <div class="form-instruction-container">
+        <h3>Please select a mode of payment.</h3>
+      </div>
+
+      <div class="payment-mode" *ngFor="let mode of paymentMode" >
+          <ion-button (click)="setPaymentMode(mode, slide)" class="mode-btn" expand="block">{{mode}}</ion-button>
+      </div>
+
+     </div>
+    </ion-slide>
+
+    <!-- ----------- SLIDE TWO. 5 --------------------- -->
+    <ion-slide class="slide-2">
+      <div class="payment-source-container">
+        <div class="form-instruction-container">
+          <h3>Select a funding <br> source.</h3>
+        </div>
+
+        <app-payment-source-loader *ngIf="accounts.length === 0 && !noAccountMessage && selectedPaymentMode === 'ACCOUNT'"></app-payment-source-loader>
+        <div class="wallet-item-container"  *ngIf="selectedPaymentMode === 'WALLET'">
+          <div class="item-header">
+            <h5>WALLET</h5>
+          </div>
+          <div class="wallet-item source-item" *ngIf="!noWalletIdMsg" (click)="onSelectWallet()">
+            <div class="icon-holder">
+              <img src="assets/icon/top-up-icns/id-card.svg">
+            </div>
+            <div class="name-holder">
+              <p>{{wallet}}</p>
+            </div>
+            <div class="detail-icon">
+              <!-- <img src="assets/icon/top-up-icns/chevron-right.svg"> -->
+            </div>
+          </div>
+          <div class="wallet-item source-item" *ngIf="noWalletIdMsg" >
+            <div class="icon-holder">
+              <img src="assets/icon/top-up-icns/id-card.svg">
+            </div>
+            <div class="name-holder">
+              <p style="font-size: 13px;">{{noWalletIdMsg}}</p>
+            </div>
+            <div class="detail-icon">
+              <!-- <img src="assets/icon/top-up-icns/chevron-right.svg"> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-item-container">
+          <!-- <div class="card-item source-item">
+            <div class="icon-holder"></div>
+            <div class="name-holder"></div>
+            <div class="detail-icon"></div>
+          </div> -->
+        </div>
+
+        <div class="form-instruction-container" *ngIf="noAccountMessage && selectedPaymentMode === 'ACCOUNT'">
+          <h3>{{noAccountMessage}}</h3>
+        </div>
+
+        <div class="accounts-item-container"  *ngIf="accounts.length > 0 && selectedPaymentMode === 'ACCOUNT'">
+          <div class="item-header">
+            <h5>ACCOUNTS</h5>
+          </div>
+          <div class="account-item source-item" *ngFor="let account of accounts" (click)="onSelectSource(account)">
+            <div class="icon-holder">
+              <img src="assets/icon/top-up-icns/id-card.svg">
+            </div>
+            <div class="name-holder">
+              <p class="number">{{account.foracid}}</p>
+              <p class="balance">Balance {{account.balance | currency: 'NGN': ' '}}</p>
+            </div>
+            <div class="detail-icon">
+              <img src="assets/icon/top-up-icns/chevron-right.svg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </ion-slide>
+
+
+    <!-- ----------- SLIDE THREE --------------------- -->
+     <ion-slide class="slide-3">
+        <div class="form-container">
+          <div class="form-instruction-container">
+            <h3>Yes! Please confirm we got your entries right.</h3>
+          </div>
+          <div class="form-input-container">
+            <div class="highlight">
+              <div class="row row-1">
+                <div class="column-1">
+                  <p>Goal Name</p>
+                  <!-- <h6>{{plan.startDate | date:'mediumDate'}}</h6> -->
+                  <h6>{{titleCase(planData.goalName)}}</h6>
+                </div>
+                <div class="column-2">
+                  <p>Maturity Date</p>
+                  <h6 *ngIf="planData.startDate !== '0001-01-01T00:00:00'">{{planData.maturityDate | date:'mediumDate'}}</h6>
+                  <h6 *ngIf="planData.startDate === '0001-01-01T00:00:00'">***, ***, 20**</h6>
+                </div>
+              </div>
+              <div class="row row-2">
+                <div class="column-1">
+                  <p>Top-up</p>
+                  <h6><span id="currency"><b>₦</b></span>{{slideOneForm.get('amount').value | currency: 'NGN': ' '}}</h6>
+                </div>
+                <div class="column-2">
+                  <p>Expected Amount</p>
+                  <h6 id="primary"><span id="currency"><b>₦</b></span>{{planData.targetAmount | currency: 'NGN': ' '}}</h6>
+                </div>
+              </div>
+              <div class="row row-3">
+                <div class="column-1">
+                  <p>Save</p>
+                  <h6>{{planData.frequencyOfSaving}}</h6>
+                </div>
+                <div class="column-2">
+                  <p>Interest p.a</p>
+                  <h6 id="green">{{planData.interestRate}}%</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="caveat">
+            <p>You agree to be debited from the funding source now and periodically as selected. You also agree to the <a> Terms and Conditions</a> of this application</p>
+          </div>
+          <div class="submit-button-container">
+            <ion-item class="form-button-item" lines="none">
+              <ion-button expand="block" [disabled]="!slideOneForm.valid" (click)="presentPin()">Top-up my Plan
+                <!-- <ion-icon slot="end" name="checkmark"></ion-icon> -->
+              </ion-button>
+            </ion-item>
+          </div>
+        </div>
+     </ion-slide>
+  
+    </ion-slides>
+  </div>
+</ion-content>

@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="profile-section">
+      <!-- <div class="profile-img-container" (click)="toggleMenu()">
+        <img class="profile-img" src="../../../assets/icon/logo.png" alt="">
+      </div> -->
+      <div class="w100">
+        <!-- <h5>Hello, {{userProfile?.firstName}} {{userProfile?.lastName}}</h5> -->
+        <h5 class="ml-20 text-center fidelityblue">History</h5>
+      </div>
+    </div>
+    <!-- <ion-icon slot="end" style="font-size: 28px;" name="notifications-outline"></ion-icon> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card scrollY="true" class="scroll h100 ion-no-margin ion-margin-horizontal">
+    <ion-card-content class="ion-no-padding">
+      <ion-grid class="ion-no-padding" *ngFor="let txn of consolidatedTransactions">
+        <ion-row class="pt-03 pb-03 ion-no-padding">
+          <ion-col size="8" class="ion-no-padding">
+            <ion-item class="item-no-padding ion-no-margin ion-no-padding item-trasnparent" lines="none">
+              <ion-icon slot="start" name="happy-outline"></ion-icon>
+              <h6 class="fidelityblue">{{txn.transNarration}}</h6>
+            </ion-item>
+          </ion-col>
+          <ion-col size="4" class="ion-no-padding">
+            <ion-item class="item-no-padding ion-no-margin ion-no-padding item-trasnparent" lines="none">
+              <ion-grid>
+                <ion-row>
+                  <ion-col color="trupaysecondary" class="font-7px text-right" size="12">
+                    {{txn.dateOfTransaction | date: 'd/M/y' }}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col color="trupaysecondary" class="font-13px text-right" size="12">
+                    <h6 class="fidelitygreen" *ngIf="txn.creditDebit[0] === 'C'">₦{{txn.transactionAmount.toLocaleString()}}</h6>
+                    <h6 class="fidelityred" *ngIf="txn.creditDebit[0] === 'D'">₦{{txn.transactionAmount.toLocaleString()}}</h6>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              <ion-icon color="fidelitygreen" class="ion-no-margin" *ngIf="txn.creditDebit[0] === 'C'" slot="end" name="arrow-up"></ion-icon>
+              <ion-icon color="fidelityred" class="ion-no-margin" *ngIf="txn.creditDebit[0] === 'D'" slot="end" name="arrow-down"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

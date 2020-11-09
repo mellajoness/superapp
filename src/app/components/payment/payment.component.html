@@ -1,0 +1,99 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div class="icon-container nav">
+        <!-- <img src="assets/icon/left-arrow.svg" alt=""> -->
+      </div>
+      <div class="header-title">
+        <h3></h3>
+      </div>
+      <div class="icon-container settings" (click)="dismiss()">
+          <img src="assets/icon/cancel.svg" alt="">
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides #slide pager="false" [options]="slideOpts">
+
+    <!-- ------------------- SLIDE 1 ----------------  -->
+    <ion-slide>
+     <div class="form-container">
+      <div class="instruction-container">
+        <h5>How much would you like to top-up this plan?</h5>
+      </div>
+      <div class="form-input-container">
+        <form [formGroup]="slideOneForm">
+          <ion-item>
+            <ion-label class="form-input-label ion-float-left" position="floating">Amount <span
+                id="currency">(₦)</span></ion-label>
+            <ion-input min="9000" formControlName="amount" type="number" placeholder="N250 000" maxlength="25"></ion-input>
+          </ion-item>
+        </form>
+        <div class="form-button-container">
+          <ion-item class="form-button-item" lines="none">
+            <ion-button [disabled]="!slideOneForm.valid" (click)="slideToNext()">OK
+              <ion-icon slot="end" name="checkmark"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </div>
+      </div>
+     </div>
+    </ion-slide>
+
+   <!-- ------------------- SLIDE 2 ----------------  --->
+
+   <ion-slide class="slide-2">
+     <div class="form-container">
+       <div class="form-instruction-container">
+         <h3>Yes! Please confirm we got your entries right.</h3>
+       </div>
+       <div class="form-input-container">
+         <div class="hightlight">
+           <div class="row row-1">
+             <div class="goal-type">
+               <p>Goal Name</p>
+               <h6>{{slideOneForm.get('amount').value}}</h6>
+             </div>
+             <div class="maturity-date">
+               <p>Maturity Date</p>
+               <h6>***, ***, 20**</h6>
+             </div>
+           </div>
+           <div class="row row-2">
+             <div class="goal-target">
+               <p>Top-up</p>
+               <h6><span id="currency">₦</span>{{slideOneForm.get('amount').value}}</h6>
+             </div>
+             <div class="frequency-amount">
+               <p>Target Amount</p>
+               <h6><span id="currency">₦</span>ssssssss</h6>
+             </div>
+           </div>
+           <div class="row row-3">
+             <div class="save-duration">
+               <p>Frequency</p>
+               <!-- <h6>{{slideFourForm.get('goalFrequency').value}}</h6> -->
+               <!-- <h6>{{this.displayFrequency}}</h6> -->
+               <h6>fghgffg</h6>
+             </div>
+             <div class="interest">
+               <p>Interest</p>
+               <h6>10%</h6>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="form-button-container">
+         <ion-item class="form-button-item" lines="none">
+           <ion-button (click)="submitAction()">OK
+             <ion-icon slot="end" name="checkmark"></ion-icon>
+           </ion-button>
+         </ion-item>
+       </div>
+     </div>
+   </ion-slide>
+      
+ </ion-slides>
+</ion-content>

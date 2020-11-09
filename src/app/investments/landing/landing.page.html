@@ -1,0 +1,141 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div [routerLink]="['/','home']" routerDirection="back" class="icon-container nav">
+        <img src="assets/icon/left-arrow.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3>My Plans</h3>
+      </div>
+      <div class="icon-container settings">
+        <!-- <img src="assets/icon/cog.svg" alt=""> -->
+      </div>
+    </div>
+  </ion-toolbar>
+  <ion-segment mode="md" (ionChange)="onFilterUpdate($event)" value="savings">
+    <ion-segment-button value="savings">Savings</ion-segment-button>
+    <ion-segment-button value="investment">Investments</ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+
+  <!------------------------ Savings View ---------------------------->
+  <div class="section" *ngIf="switchview === 0">
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+          <ion-refresher-content
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing..."></ion-refresher-content>
+      </ion-refresher>
+
+    <!-- <div class="loader-container" *ngIf="!(savingsData.length > 0) && !(displayState === 'data')"> -->
+    <div class="loader-container" *ngIf="!(savingsData.length > 0) && !(displayState === 'no-data')">
+      <app-plan-item-loader></app-plan-item-loader>
+    </div>
+
+    <div class="no-data-container" *ngIf="(displayState === 'no-data')">
+      <p>You don't have any target goals</p>
+    </div>
+
+    <div *ngIf="(savingsData.length > 0) && (displayState === 'data')">
+      <div class="savings-plan-items" *ngFor="let item of savingsData">
+
+        <div class="plan-item" (click)="openPlanItem(item)">
+          <div class="plan-item-header-section">
+            <h4>{{titleCase(item.goalName)}}</h4>
+            <!-- <span class="savings-type">Group</span> -->
+            <ion-badge class="savings-type-badge">{{item.savingsType}}</ion-badge>
+          </div>
+          <div class="status">
+            <p class="status-text" *ngIf="item.isGoalAccountFunded === true">Active</p>
+            <p class="status-text" *ngIf="!item.isGoalAccountFunded === true">Inactive</p>
+          </div>
+          <hr id="hr">
+          <div class="plan-item-amount-section">
+            <h3 class="account-balance"><span id="currency"><b>₦</b></span>{{item.targetAmount | currency: 'NGN': ' '}}</h3>
+            <h3 *ngIf="!item?.yieldInterest === false" class="interestpa">{{item.interestRate}}%</h3>
+          </div>
+          <div class="pia-title-section">
+            <p class="status-text">My Contribution</p>
+            <p *ngIf="!item?.yieldInterest === false" class="status-text">Interest P/A</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!------------------------ Investment View ---------------------------->
+
+    <div class="section" *ngIf="switchview === 1">
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+
+      <div class="loader-container" *ngIf="!(investmentsData.length > 0) && !(fdDisplay === 'no-data')">
+        <app-plan-item-loader></app-plan-item-loader>
+      </div>
+
+      <div class="no-data-container" *ngIf="(fdDisplay === 'no-data')">
+        <p>You don't have any Investments</p>
+      </div>
+
+      <div class="no-account-container" *ngIf="!(accounts.length > 0) && (fdDisplay === 'no-data')">
+        <p>You need an account to access this feature</p>
+        <div class="create-account-button-container">
+          <ion-button class="open-btn" shape="round" (click)="proceedToOpenAccount()">Open Account</ion-button>
+        </div>
+        <div style="margin-top: 40px;">
+          <p>Are you a Fidelity Bank customer? </p>
+          <div class="create-account-button-container">
+            <ion-button class="open-btn" shape="round" (click)="enroll()">Enroll</ion-button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="(investmentsData.length > 0) && (fdDisplay === 'data')">
+
+        <div class="investment-plan-items" *ngFor="let item of investmentsData">
+          <div class="plan-item"  (click)="openFDItem(item)">
+
+            <div class="plan-item-header-section">
+              <h5>{{item.tdAccount}} <span class="lock-icon"><img src="assets/icon/lock-icon.svg" alt=""></span></h5>
+              <ion-badge class="savings-type-badge">FIXED DEPOSIT</ion-badge>
+            </div>
+
+            <div class="status">
+              <p class="status-text"></p>
+            </div>
+            <hr id="hr">
+
+            <div class="plan-item-amount-section">
+              <h3 class="account-balance">{{item.tenorDays}} days</h3>
+              <h3 class="interestpa">{{item.rate}}%</h3>
+            </div>
+
+            <div class="pia-title-section">
+              <p class="status-text">Tenure</p>
+              <p class="status-text">Rate</p>
+            </div>
+
+          </div>
+        </div>
+      </div> 
+
+    </div>
+  
+
+    <ion-fab  *ngIf="switchview === 0" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="openPage('save')">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab  *ngIf="switchview === 1" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="openPage('invest')" *ngIf="(accounts.length > 0)">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+</ion-content>

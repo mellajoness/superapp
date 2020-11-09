@@ -1,0 +1,32 @@
+<ion-content>
+  <div class="nav-header">
+    <div class="nav-arrow">
+      <!-- <img src="assets/icon/left-arrow.svg" alt=""> -->
+    </div>
+  </div>
+
+  <div class="instruction-container">
+    <h4 class="text15 fw700 mt-20 mb-15">Please reaffirm</h4>
+
+    <div class="instructions">
+      <p class="comment">
+        The first name and last name provided is as captured on your <strong>Bank Verification Number</strong>. Kindly confirm all details provided are correct.
+      </p>
+
+      <p class="mt-05 small">First Name: {{signupData?.firstName}}</p>
+      <p class="mt-05 small">Last Name: {{signupData?.lastName}}</p>
+      <p class="mt-05 small">Email: {{signupData?.emailAddress}}</p>
+      <p class="mt-05 small">Phone number: {{signupData?.phoneNumber}}</p>
+      
+      <div>
+        <a [routerLink]="['/auth/sign-up']" routerDirection="back"><p class="mt-20">Wrong Details?</p></a>
+      </div>
+    </div>
+
+    <ion-button class="no-transform confirm-button mt-30" fill="clear" expand="block" (click)="registerAction()">
+      Yes, kindly proceed
+    </ion-button>
+  </div>
+
+
+</ion-content>

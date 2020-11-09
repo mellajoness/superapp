@@ -1,0 +1,64 @@
+
+<ion-content>
+  <div class="header">
+    <div></div>
+    <!-- <img src="../../../assets/img/arrow-left.png" class="image"> -->
+    <div class="name">Pay Loan</div>
+    <div></div>
+  </div>
+
+
+
+<div *ngIf="success">
+  <div class="move">
+ 
+  <div class="good">
+   <img src="../../../assets/img/pay-success.png" >
+  </div>
+ 
+  </div>
+ <div class="success">{{responseMsg}}</div>
+ <div class="parent">
+
+<div class="btn" (click)="landing()"> 
+  <div class="text">Done</div> 
+</div>
+  </div>
+</div>
+
+
+<div *ngIf="failed">
+  <div class="move">
+ 
+  <div class="good">
+   <img src="../../../assets/img/failed.png" >
+  </div>
+
+  </div>
+ <div class="success">{{responseMsg}}</div>
+ <div class="parent">
+
+<div class="btn" (click)="landing()"> 
+  <div class="text">Done</div> 
+</div>
+  </div>
+</div>
+
+<div *ngIf="caution">
+  <div class="move">
+  
+  <div class="good">
+   <img src="../../../assets/img/caution.png" >
+  </div>
+
+  </div>
+ <div class="success">{{responseMsg}}</div>
+ <div class="parent">
+
+<div class="btn" (click)="landing()"> 
+  <div class="text">Done</div> 
+</div>
+  </div>
+</div>
+
+</ion-content>

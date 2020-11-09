@@ -1,0 +1,165 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Confirm Transaction</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+    <div *ngIf="sharedData.billsPaymentsMode !== 'wallet'" class="text-center">
+      <ion-text class="text-frame">
+        Enter your 4-digit PIN to confirm <span *ngIf="sharedData.paymentInfo['amount']"
+          class="other-text">&#8358;{{sharedData.paymentInfo['amount'] | currencyConverter : "comma"}}</span>
+        payment
+        <span *ngIf="sharedData.paymentInfo['paymentBody']">
+          to <span class="other-text">{{sharedData.paymentInfo['paymentId']}}</span> -
+          <span class="other-text">{{sharedData.paymentInfo['paymentBody']}}</span>
+        </span>
+        <br>
+        <span class="convenience">A
+          <span class="other-text">Convenience Fee </span> of
+          <span
+            class="other-text">&#8358;{{sharedData.paymentInfo['convenienceFee'] ? sharedData.paymentInfo['convenienceFee'] : '0'}}</span>
+          will be
+          deducted from your
+          {{sharedData.paymentObj['paymentMethod'] || sharedData.paymentObj['serviceChargePaymentMethod']}}
+        </span>
+      </ion-text>
+    </div>
+
+    <ng-container *ngIf="sharedData.billsPaymentsMode === 'wallet'">
+      <div *ngIf="sharedData.wallet.pageView === 'withdrawal'" class="text-center">
+        <ion-text class="text-frame">
+          Enter your 4-digit PIN to confirm <span class="other-text">&#8358;{{sharedData.paymentInfo['amount']}}</span>
+          withdrawal from wallet to <span class="other-text">{{sharedData.paymentInfo['accountNo']}} -
+            {{sharedData.paymentInfo['name']}} Fidelity Bank Plc</span>
+        </ion-text>
+      </div>
+
+      <div *ngIf="sharedData.wallet.pageView === 'transfer-wallet'" class="text-center">
+        <ion-text class="text-frame">
+          Enter your 4-digit PIN to confirm <span class="other-text">&#8358;{{sharedData.paymentInfo['amount']}}</span>
+          transfer from wallet to wallet - <span class="other-text">{{sharedData.paymentInfo['accountNo']}} {{sharedData.paymentInfo['name']}}</span>
+        </ion-text>
+      </div>
+
+      <div *ngIf="sharedData.wallet.pageView === 'transfer-bank'" class="text-center">
+        <ion-text class="text-frame">
+          Enter your 4-digit PIN to confirm <span class="other-text">&#8358;{{sharedData.paymentInfo['amount']}}</span>
+          transfer from wallet to <span class="other-text">{{sharedData.paymentInfo['accountNo']}} -
+            {{sharedData.paymentInfo['name']}} {{sharedData.paymentInfo['bank']}}</span>
+        </ion-text>
+      </div>
+
+      <div *ngIf="sharedData.wallet.pageView === 'fundwallet-bank'" class="text-center">
+        <ion-text class="text-frame">
+          Enter your 4-digit PIN to confirm <span class="other-text">&#8358;{{sharedData.paymentInfo['amount']}}</span>
+          topup to wallet
+        </ion-text>
+      </div>
+    </ng-container>
+
+    <div class="ion-text-center mt-15">
+      <ion-text >Enter PIN</ion-text>
+
+      <ion-grid class="mt-10">
+        <ion-row lines="none" class="form-bg text-center ion-transparent item-space-around justify-center"
+          (ionChange)="update('null')">
+          <ion-col size="2" class="text20 border-bottom-2 h2 mx-07">
+            {{ password.length >= 1 ? (password.substring(0, 1) | mask) : "" }}</ion-col>
+          <ion-col size="2" class="text20 border-bottom-2 h2 mx-07">
+            {{ password.length >= 2 ? (password.substring(1, 2) | mask) : "" }}</ion-col>
+          <ion-col size="2" class="text20 border-bottom-2 h2 mx-07">
+            {{ password.length >= 3 ? (password.substring(2, 3) | mask) : "" }}</ion-col>
+          <ion-col size="2" class="text20 border-bottom-2 h2 mx-07">
+            {{ password.length == 4 ? (password.substring(3, 4) | mask) : "" }}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="ion-text-center scroll" scrollY="true">
+    <form class="mt-10">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="item-v-center" size="1.5">{{" "}}</ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button [disabled]="password.length >= 4" color="outline" class="text-center mpin_btn" (click)="val(1)">
+              1</ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button [disabled]="password.length >= 4" color="outline" class="text-center mpin_btn" (click)="val(2)">
+              2</ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button [disabled]="password.length >= 4" color="outline" class="text-center mpin_btn" (click)="val(3)">
+              3</ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="1.5">{{" "}}</ion-col>
+          <ion-col class="item-v-center" size="1.5">{{" "}}</ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button [disabled]="password.length >= 4" color="outline" class="text-center mpin_btn" (click)="val(4)">
+              4</ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button [disabled]="password.length >= 4" color="outline" class="text-center mpin_btn" (click)="val(5)">
+              5</ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button [disabled]="password.length >= 4" color="outline" class="text-center mpin_btn" (click)="val(6)">
+              6</ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="1.5">{{" "}}</ion-col>
+          <ion-col class="item-v-center" size="1.5">{{" "}}</ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button [disabled]="password.length >= 4" color="outline" class="text-center mpin_btn" (click)="val(7)">
+              7</ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button [disabled]="password.length >= 4" color="outline" class="text-center mpin_btn" (click)="val(8)">
+              8</ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button [disabled]="password.length >= 4" color="outline" class="text-center mpin_btn" (click)="val(9)">
+              9</ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="1.5">{{" "}}</ion-col>
+          <ion-col class="item-v-center" size="1.5">{{" "}}</ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button (click)="delete()" color="outline" class="text-center mpin_btn">
+              <ion-icon color="danger" name="trash"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button [disabled]="password.length >= 4" color="outline" class="text-center mpin_btn" (click)="val(0)">
+              0</ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="3">
+            <ion-button color="outline" class="text-center mpin_btn">
+              <ion-icon color="secondary" name="checkmark"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col class="item-v-center" size="1.5">{{" "}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+
+    <!-- <div class="mtt-05"> -->
+    <div class="mtt-05" *ngIf="sharedData.billsPaymentsMode === 'wallet'">
+      <div class="item-v-center">
+        <ion-button class="no-transform" fill="clear" expand="block" (click)="resetWalletPin()">Reset PIN</ion-button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

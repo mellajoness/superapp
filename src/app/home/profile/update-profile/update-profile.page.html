@@ -1,0 +1,76 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" [routerLink]="['/','home', 'profile']" routerDirection="back">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Update Profile</div>
+    </ion-title>
+    <ion-buttons class="pr-10" slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="header-bg-white">
+  <div class="page-wrapper page-wrapper-white custom" style="height: 100%;">
+    <div class="slide-container" style="height: 100%;">
+      <!-- <div class="profile-container">
+        <div class="avatar-container">
+          <div class="avatar-circle">
+            <div class="badge deg45">
+              <img id="badge" src="assets/icon/edit-badge.svg" alt="">
+            </div>
+            <img id="profile" src="assets/imgs/johndoe2.png" alt="">
+          </div>
+        </div>
+      </div> -->
+      
+      <div class="scroll" scrollY="true">
+        <div class="form-container">
+          <form  [formGroup]="formone">
+            <div class="form-group">
+              <label for="firstname">First Name</label>
+              <input [formControlName]="'firstName'" placeholder="{{userData?.firstName}}" required type="text" id="firstname" />
+            </div>
+            <div class="form-group">
+              <label for="lastname">Last Name</label>
+              <input [formControlName]="'lastName'"  placeholder="{{userData?.lastName}}" required type="text" id="lastName" />
+            </div>
+              
+            <div class="form-group date" >
+              <label for="dob">Date of Birth</label>
+              <ion-datetime mode="ios" formControlName="dob" displayFormat="DD MMM YYYY" placeholder="Select Date"></ion-datetime>
+            </div>
+              
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select formControlName="gender" (change)="changeGender($event)" >
+                <option value="">Choose one</option>
+                <option [value]="gender" *ngFor="let gender of Gender">{{gender}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="phoneNumber">Phone Number</label>
+              <input [formControlName]="'phoneNumber'" placeholder="{{userData?.phoneNumber}}" required type="tel" id="phoneNumber" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input [formControlName]="'emailAddress'"  placeholder="{{userData?.emailAddress}}" required  type="email" id="email" />
+            </div>
+            <div class="form-group">
+              <label for="address">Home Address</label>
+              <input formControlName="address"  placeholder="{{userData?.contactAddress}}" required type="text" id="address" />
+            </div>
+          </form>
+        </div>
+  
+        <div class="button-container">
+          <ion-button [disabled]="!allowNext" class="no-transform payment-button" fill="clear" expand="block" (click)="submitAction()">Update</ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

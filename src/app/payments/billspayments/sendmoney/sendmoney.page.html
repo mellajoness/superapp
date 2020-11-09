@@ -1,0 +1,55 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Transfer Options</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="box">
+      <ion-list class="w100">
+        <!-- <div class="mb-12" (click)="go('payments/billspayments/sendmoney/self')">
+          <ion-item mode="ios" lines="none" class="ion-activatable padding-vertical border-radius-5">
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-label mode="ios">
+              <h3 class="text1 text-dark">Transfer to Self</h3>
+            </ion-label>
+            <ion-icon class="text12" name="chevron-forward"></ion-icon>
+          </ion-item>
+        </div> -->
+        
+        <div class="mb-12" (click)="go('payments/billspayments/sendmoney/fidelity')">
+          <ion-item mode="ios" lines="none" class="ion-activatable padding-vertical border-radius-5">
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-label mode="ios">
+              <h3 class="text1 text-dark">Transfer to another Fidelity account</h3>
+            </ion-label>
+            <ion-icon class="text12" name="chevron-forward"></ion-icon>
+          </ion-item>
+        </div>
+
+        <div class="mb-12" (click)="go('payments/billspayments/sendmoney/otherbanks')">
+          <ion-item mode="ios" lines="none" class="ion-activatable padding-vertical border-radius-5">
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-label mode="ios">
+              <h3 class="text1 text-dark">Transfer to Other Banks</h3>
+            </ion-label>
+            <ion-icon class="text12" name="chevron-forward"></ion-icon>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+
+  </div>
+</ion-content>

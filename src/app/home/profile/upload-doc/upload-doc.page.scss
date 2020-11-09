@@ -1,0 +1,133 @@
+$header-font : #40325D;
+$color--light-grey : #E6E6E6;
+$color--white: #FFFFFF;
+$color--black: #000000;
+$color--grey: #D4D4D4;
+$color--dark-grey:  #959595;
+$color--primary: #0E237E;
+$color--secondary: #0E647D;
+
+.form-group {
+    margin-top: 10px;
+    padding: 15px 3px 5px 20px;
+    color: $header-font;
+    // width: 100%;
+    border-bottom: 1px solid $color--light-grey;
+}
+
+#valididnum {
+    background: transparent;
+    border: none;
+    width: 45%;
+    outline: none;
+    // margin-left: 30px;
+    // border-bottom: 1px solid #000000;
+    text-align: end;
+}
+
+.custom-header{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $header-font;
+}
+
+//     background: #560BD0;
+
+.custom-file-upload {
+    color: #323A5D;
+    margin-bottom: 25px;
+
+    label {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+}
+
+.form-container {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    color: #323A5D;
+}
+
+.upload-item-container{
+    width: 100%;
+    padding: 5px 0px;
+
+    .grey{
+        --background: #F6F5FA;
+    }
+
+    h4 {
+        font-size: 15px;
+        font-weight: bolder;
+    }
+}
+
+.pct-100{
+    width: 100%;
+}
+
+.btn-u{
+    --padding-bottom: 20px;
+    --padding-top: 20px;
+    --background: #0E237E;
+}
+
+.btn-p{
+    --padding-bottom: 20px;
+    --padding-top: 20px;
+}
+
+.upload-buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.button-container {
+    // margin: 0 auto;
+    margin-top: 10vh;
+    max-width: 600px;
+    text-align: center;
+
+    button {
+        border-radius: 4px;
+        color: #ffffff;
+        background: $color--primary;
+        width: 30%;
+        height: 50px;
+    }
+}
+
+.select {
+    margin-top: 30px;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+}
+
+.section-header {
+    padding: 20px 5px 5px 25px;
+    color: #0E237E;
+}
+
+.upload-form-container {
+    padding: 20px 24px;
+}
+
+.id-type-item {
+    --background: #fafafa;
+    --padding-start: 18px;
+    --padding-end: 18px;
+}
+
+.select-form {
+    margin: 5px;
+}
+
+.arrow {
+    color: #0E237E;
+    font-size: 1.5em;
+}

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "649954096986",
+    "firebase_url": "https://superapp-54429.firebaseio.com",
+    "project_id": "superapp-54429",
+    "storage_bucket": "superapp-54429.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649954096986:android:19983fefbf39e7687ba563",
+        "android_client_info": {
+          "package_name": "com.fidelitybankng.digital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649954096986-ofdjlvmpn7rec5sen1764vk019qfit02.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrekEO0m15U08ZjFqJY3hcrnfpYuPzHmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649954096986-ofdjlvmpn7rec5sen1764vk019qfit02.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

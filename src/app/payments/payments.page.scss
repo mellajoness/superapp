@@ -1,0 +1,27 @@
+ion-content {
+    --background: #fafafa!important;
+}
+
+.menu-container {
+    margin-top: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+ion-item {
+    --background: none;
+    --padding: none;
+}
+
+.button-container {
+    padding: 5px 5px;
+    border-radius: 13px;
+    margin-bottom: 10px;
+}
+
+.button-container-with-bg {
+    padding: 5px 5px;
+    background: #fff !important;
+    border-radius: 13px;
+    margin-bottom: 10px;
+}

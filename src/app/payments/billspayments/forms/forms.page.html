@@ -1,0 +1,672 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="trupayprimary" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title color-trupayprimary header-text">{{formHeader}}</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div>
+
+<!-- AIRTIME CONTAINER BEGINS -->
+      <ng-container *ngIf="sharedData.paymentType === 'airtime' && bills">
+        <form [formGroup]='billForm'>
+          <div class="item-wrapper-2">
+            <ion-label class="stacked-label">Select Network</ion-label>
+            <ion-select class="mtt-05" interface="popover" mode="ios" placeholder="Select Network" name="bills" [selectedText]="selectedBill" [(ngModel)]="selectedBill" [ngModelOptions]="{standalone: true}" (ionChange)="billSelected()">
+              <ion-select-option *ngFor="let bill of bills" value="{{bill.billerName}}">
+                {{bill.billerName}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+  
+          <div class="item-wrapper">
+            <ion-label class="stacked-label">Select a Plan</ion-label>
+            <ion-select class="mtt-05" interface="popover" mode="ios" placeholder="Select Plan" name="billPlans"
+              [selectedText]="selectedBillPlan" [(ngModel)]="selectedBillPlan" [ngModelOptions]="{standalone: true}"
+              (ionChange)="billPlanSelected()">
+              <ion-select-option *ngFor="let plan of billPlans" value="{{plan.planName}}">
+                {{plan.planName}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="item-wrapper" *ngIf="beneficiaries && !newBeneficiaryChange">
+            <ion-label class="stacked-label">Select Phone Number</ion-label>
+            <ion-select class="mtt-05" interface="popover" mode="ios" placeholder="Select Phone Number"
+              name="selectedBeneficiary" [selectedText]="selectedBeneficiary" [(ngModel)]="selectedBeneficiary" [ngModelOptions]="{standalone: true}"
+              (ionChange)="beneficiarySelected()">
+              <ion-select-option *ngFor="let benef of beneficiaries" value="{{benef.beneficiaryId}}">
+                {{benef.beneficiaryAlias}} - {{benef.beneficiaryId}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+
+          <div *ngIf="!beneficiaries || newBeneficiaryChange" class="item-wrapper">
+            <ion-label class="stacked-label">Phone Number</ion-label>
+            <ion-input class="pt-05 pl-10" inputmode="numeric" type="text" maxLength="11" minLength="11"
+            placeholder="Enter Phone Number" (ionChange)="uniqueIdChange()" [(ngModel)]="uniqueID"
+            [ngModelOptions]="{standalone: true}"></ion-input>
+          </div>
+          
+          <div *ngIf="beneficiaries" class="form-bg item-v-center item-space-between mb-10 text-white text08" color="light">
+            <ion-toggle mode="md" slot="start" name="kiwi" color="secondary" (ionChange)="newBeneficiary()"
+              [(ngModel)]="newBeneficiaryChange" [ngModelOptions]="{standalone: true}"></ion-toggle>
+            <ion-label>New Phone Number</ion-label>
+          </div>
+  
+          <div class="item-wrapper">
+            <ion-label class="stacked-label">Amount</ion-label>
+            <ion-input class="pt-05 pl-10" inputmode="numeric" type="text" minLength="2"
+              placeholder="Enter Amount" (ionChange)="amountChange()" [(ngModel)]="amount" formControlName="amount">
+              </ion-input>
+          </div>
+          <div *ngIf="amount" class="py-05">
+            <ion-text>Convenience Fee: <span>&#8358;{{billerObj.convenienceFee}}</span></ion-text>
+          </div>
+
+          <div class="item-wrapper" *ngIf="doSaveBeneficiary">
+            <ion-label class="stacked-label">Phone Number Alias</ion-label>
+            <ion-input class="pt-05 pl-10" type="text" placeholder="Enter Phone Number Alias"
+              (ionChange)="beneficiaryAliasChange()" [(ngModel)]="beneficiaryAlias"
+              [ngModelOptions]="{standalone: true}" maxLength="20"></ion-input>
+          </div>
+  
+          <ion-list class="list-bg" *ngIf="!beneficiaries || newBeneficiaryChange" mode="md">
+            <ion-item lines="none" class="item-bg">
+              <ion-checkbox class="mr-10 ml-0" mode="md" slot="start" color="primary" [(ngModel)]="doSaveBeneficiary"
+                (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+              <ion-label class="ion-text-wrap">Save Phone Number</ion-label>
+            </ion-item>
+          </ion-list>
+  
+          <ion-button
+            [disabled]="!selectedBill || (!beneficiaries && !uniqueID) || (beneficiaries && newBeneficiaryChange &&
+            !uniqueID) || (beneficiaries && !newBeneficiaryChange && !selectedBeneficiary) || !selectedBillPlan || !billForm.valid || (doSaveBeneficiary && !beneficiaryAlias)" class="no-transform payment-button mt-20" 
+            fill="clear" expand="block" (click)="makePayment()">
+            Make Payment
+          </ion-button>
+        </form>
+      </ng-container>
+<!-- AIRTIME CONTAINER ENDS -->
+
+<!-- CABLE CONTAINER BEGINS -->
+      <ng-container *ngIf="sharedData.paymentType === 'cable' && bills">
+        <div class="item-wrapper-2">
+          <ion-label class="stacked-label">Select Service Provider</ion-label>
+          <ion-select [disabled]="busy" class="mtt-05" interface="popover" mode="ios"
+            placeholder="Select Service Provider" name="bills" [selectedText]="selectedBill" [(ngModel)]="selectedBill"
+            [ngModelOptions]="{standalone: true}" (ionChange)="billSelected()">
+            <ion-select-option *ngFor="let bill of bills" value="{{bill.billerName}}">
+              {{bill.billerName}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div *ngIf="!beneficiaries || newBeneficiaryChange" class="item-wrapper">
+          <ion-label class="stacked-label">Smart Card Number</ion-label>
+          <ion-input [disabled]="busy" class="pt-05 pl-10" inputmode="numeric" type="text" maxLength="15" minLength="11"
+            placeholder="Enter Smart Card Number"
+            (ionChange)="uniqueIdChange()" [(ngModel)]="uniqueID"></ion-input>
+        </div>
+
+        <div class="item-wrapper-4" *ngIf="beneficiaries && !newBeneficiaryChange">
+          <ion-label class="stacked-label">Select Smart Card Number</ion-label>
+          <ion-select [disabled]="busy" class="mtt-05" interface="popover" mode="ios" placeholder="Select Smart Card Number"
+            name="selectedBeneficiary" [selectedText]="selectedBeneficiary" [(ngModel)]="selectedBeneficiary"
+            [ngModelOptions]="{standalone: true}" (ionChange)="beneficiarySelected()">
+            <ion-select-option *ngFor="let benef of beneficiaries" value="{{benef.beneficiaryId}}">
+              {{benef.beneficiaryAlias}} - {{benef.beneficiaryId}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div *ngIf="beneficiaries" class="form-bg item-v-center item-space-between mb-10 text-white text08"
+          color="light">
+          <ion-toggle [disabled]="busy" mode="md" slot="start" name="kiwi" color="secondary"
+            (ionChange)="newBeneficiary()"
+            [(ngModel)]="newBeneficiaryChange" [ngModelOptions]="{standalone: true}"></ion-toggle>
+          <ion-label>New Smart Card Number</ion-label>
+        </div>
+
+        <div class="item-wrapper" *ngIf="userDetails && billPlans">
+          <ion-label class="stacked-label">Select Bouquet</ion-label>
+          <ion-select class="mtt-05" interface="popover" mode="ios" placeholder="Select Bouquet" name="billPlans"
+            [selectedText]="selectedBillPlan" [(ngModel)]="selectedBillPlan" [ngModelOptions]="{standalone: true}"
+            (ionChange)="billPlanSelected()">
+            <ion-select-option *ngFor="let plan of billPlans" value="{{plan.name}}">
+              {{plan.name}}
+            </ion-select-option>
+          </ion-select>
+
+          <div *ngIf="userDetails && billPlans" class="mt-10 user-details">
+            <div class="py-05">
+              <div class="text-center">
+                <ion-text>Customer Name:</ion-text>
+                <p class="fw700 ion-no-margin">{{userDetails.customerName}}</p>
+              </div>
+            </div>
+          
+            <div class="pb-05">
+              <div class="text-center">
+                <ion-text>Customer Address:</ion-text>
+                <p class="fw700 ion-no-margin">{{userDetails.customerAddress}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-wrapper-1" *ngIf="userDetails && billPlans">
+          <ion-label class="stacked-label">Amount</ion-label>
+          <ion-input disabled class="pt-05 pl-10" inputmode="numeric" type="text" minLength="2" placeholder="Amount"
+            (ionChange)="amountChange()" [(ngModel)]="amount" ></ion-input>
+        </div>
+        <div *ngIf="amount" class="py-05">
+          <ion-text>Convenience Fee: <span>&#8358;{{billerObj.convenienceFee}}</span></ion-text>
+        </div>
+
+        <div class="item-wrapper" *ngIf="doSaveBeneficiary">
+          <ion-label class="stacked-label">Smart Card Number Alias</ion-label>
+          <ion-input class="pt-05 pl-10" type="text" placeholder="Enter Smart Card Number Alias"
+            (ionChange)="beneficiaryAliasChange()" [(ngModel)]="beneficiaryAlias" [ngModelOptions]="{standalone: true}"
+            maxLength="20"></ion-input>
+        </div>
+
+        <ion-list class="list-bg" mode="md" *ngIf="(userDetails && billPlans && !beneficiaries) || (newBeneficiaryChange && userDetails && billPlans)">
+          <ion-item lines="none" class="item-bg">
+            <ion-checkbox class="mr-10 ml-0" mode="md" slot="start" name="doSaveBeneficiary" color="primary" [(ngModel)]="doSaveBeneficiary" (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+            <ion-label class="ion-text-wrap">Save Smart Card Number</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="item-v-center">
+          <ion-spinner *ngIf="busy" name="bubbles" mode="ios" color="primary"></ion-spinner>
+        </div>
+
+        <ion-button *ngIf="!billPlans || !userDetails"
+          [disabled]="!selectedBill || (!beneficiaries && !uniqueID) || (beneficiaries && newBeneficiaryChange &&
+          !uniqueID) || (beneficiaries && !newBeneficiaryChange && !selectedBeneficiary) || busy"
+          class="no-transform payment-button mt-20"
+          fill="clear" expand="block"
+          (click)="getSmartCardNumberPlans()">
+          Validate Smart Card Number
+        </ion-button>
+
+        <ion-button *ngIf="userDetails && billPlans" class="no-transform payment-button mt-20" fill="clear"
+          expand="block"
+          (click)="makePayment()" [disabled]="!selectedBill || !selectedBillPlan || (doSaveBeneficiary &&
+          !beneficiaryAlias)">
+          Make Payment
+        </ion-button>
+      </ng-container>
+<!-- CABLE CONTAINER ENDS -->
+
+<!-- INTERNET CONTAINER BEGINS -->
+      <ng-container *ngIf="sharedData.paymentType === 'internet' && bills && billPlans">
+        <div class="item-wrapper-2">
+          <ion-label class="stacked-label">Select Provider</ion-label>
+          <ion-select class="mtt-05" interface="popover" mode="ios" placeholder="Select Provider" name="bills" [selectedText]="selectedBill" [(ngModel)]="selectedBill" [ngModelOptions]="{standalone: true}" (ionChange)="billSelected()">
+            <ion-select-option *ngFor="let bill of bills" value="{{bill.billerName}}">
+              {{bill.billerName}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">Account Type</ion-label>
+          <ion-select class="mtt-05" interface="popover" mode="ios" placeholder="Select Account Type" name="bundleBillPlans"
+            [selectedText]="selectedBundleBillPlans" [(ngModel)]="selectedBundleBillPlans"
+            [ngModelOptions]="{standalone: true}" (ionChange)="bundleBillPlanSelected()">
+            <ion-select-option *ngFor="let plan of bundleBillPlans" value="{{plan.planName}}">
+              {{plan.planName}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">Select a Plan</ion-label>
+          <ion-select class="mtt-05" interface="popover" mode="ios" placeholder="Select a Plan" name="billPlans"
+            [selectedText]="selectedBillPlan" [(ngModel)]="selectedBillPlan" [ngModelOptions]="{standalone: true}"
+            (ionChange)="billPlanSelected()">
+            <ion-select-option *ngFor="let plan of billPlans" value="{{plan.bundleDescription}}">
+              {{plan.bundleDescription}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+        <div *ngIf="internetPlanObj" class="py-05">
+          <ion-text>Duration: <span>{{internetPlanObj.validityDays}}</span></ion-text>
+        </div>
+
+        <div class="item-wrapper" *ngIf="beneficiaries && !newBeneficiaryChange">
+          <ion-label class="stacked-label">Select {{billerNameAtFirstIndex}} Phone Number</ion-label>
+          <ion-select class="mtt-05" interface="popover" mode="ios"
+            placeholder="Select {{billerNameAtFirstIndex}} Phone Number"
+            name="selectedBeneficiary" [selectedText]="selectedBeneficiary" [(ngModel)]="selectedBeneficiary"
+            [ngModelOptions]="{standalone: true}" (ionChange)="beneficiarySelected()">
+            <ion-select-option *ngFor="let benef of beneficiaries" value="{{benef.beneficiaryId}}">
+              {{benef.beneficiaryAlias}} - {{benef.beneficiaryId}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper" *ngIf="(!beneficiaries || newBeneficiaryChange) && billPlans">
+          <ion-label class="stacked-label">{{billerNameAtFirstIndex}} Phone Number</ion-label>
+          <ion-input class="pt-05 pl-10" inputmode="numeric" type="text" maxLength="11" minLength="11"
+          placeholder="Enter your {{billerNameAtFirstIndex}} Phone Number"
+          (ionChange)="uniqueIdChange()" [(ngModel)]="uniqueID"></ion-input>
+        </div>
+
+        <div *ngIf="beneficiaries" class="form-bg item-v-center item-space-between mb-10 text-white text08"
+          color="light">
+          <ion-toggle mode="md" slot="start" name="kiwi" color="secondary" (ionChange)="newBeneficiary()"
+            [(ngModel)]="newBeneficiaryChange" [ngModelOptions]="{standalone: true}"></ion-toggle>
+          <ion-label>New Phone Number</ion-label>
+        </div>
+        
+        <div class="item-wrapper" *ngIf="billPlans">
+          <ion-label class="stacked-label">Amount</ion-label>
+          <ion-input disabled class="pt-05 pl-10" inputmode="numeric" type="text" minLength="2"
+            placeholder="Enter Amount"
+            (ionChange)="amountChange()" [(ngModel)]="amount"></ion-input>
+        </div>
+        <div *ngIf="amount" class="py-05">
+          <ion-text>Convenience Fee: <span>&#8358;{{billerObj.convenienceFee}}</span></ion-text>
+        </div>
+
+        <div class="item-wrapper" *ngIf="doSaveBeneficiary">
+          <ion-label class="stacked-label">Phone Number Alias</ion-label>
+          <ion-input class="pt-05 pl-10" type="text" placeholder="Enter Phone Number Alias"
+            (ionChange)="beneficiaryAliasChange()" [(ngModel)]="beneficiaryAlias" [ngModelOptions]="{standalone: true}"
+            maxLength="20"></ion-input>
+        </div>
+
+        <ion-list class="list-bg" mode="md" *ngIf="(!beneficiaries || newBeneficiaryChange) && billPlans">
+          <ion-item lines="none" class="item-bg">
+            <ion-checkbox class="mr-10 ml-0" mode="md" slot="start" name="doSaveBeneficiary" color="primary"
+              [(ngModel)]="doSaveBeneficiary" (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+            <ion-label class="ion-text-wrap">Save {{billerNameAtFirstIndex}} Phone Number</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-button required class="no-transform payment-button mt-20" fill="clear" expand="block"
+          (click)="makePayment()" [disabled]="!selectedBill || (!beneficiaries && !uniqueID) || (beneficiaries &&
+          newBeneficiaryChange && !uniqueID) || (beneficiaries && !newBeneficiaryChange && !selectedBeneficiary) || !selectedBillPlan ||
+          (doSaveBeneficiary && !beneficiaryAlias)">
+          Make Payment
+        </ion-button>
+      </ng-container>
+<!-- INTERNET CONTAINER ENDS -->
+
+<!-- TOLLPAYMENT CONTAINER BEGINS -->
+      <ng-container *ngIf="sharedData.paymentType === 'tollpayment' && bills">
+        <div class="item-wrapper-2">
+          <ion-label class="stacked-label">Toll Company</ion-label>
+          <p class="pt-02 pl-10">Lekki Concession Company Toll Payment</p>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">Plan</ion-label>
+          <p class="pt-02 pl-10">Toll Payment Top-up</p>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">LCC Account Number</ion-label>
+          <ion-input class="pt-05 pl-10"></ion-input>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">Amount</ion-label>
+          <ion-input class="pt-05 pl-10"></ion-input>
+        </div>
+
+        <ion-list class="list-bg" mode="md">
+          <ion-item lines="none" class="item-bg">
+            <ion-checkbox class="mr-10 ml-0" mode="md" slot="start" name="doSaveBeneficiary" color="primary"
+              [(ngModel)]="doSaveBeneficiary" (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+            <ion-label class="ion-text-wrap">Save LCC Account Number</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-button required class="no-transform payment-button mt-20" fill="clear" expand="block"
+          (click)="makePayment()">
+          Make Payment
+        </ion-button>
+      </ng-container>
+<!-- TOLLPAYMENT CONTAINER ENDS -->
+
+<!-- ELECTRICITY CONTAINER BEGINS -->
+      <ng-container *ngIf="sharedData.paymentType === 'electricity' && bills">
+        <div class="item-wrapper-2">
+          <ion-label class="stacked-label">Select Electricity Company</ion-label>
+          <ion-select [disabled]="busy" class="mtt-05" interface="popover" mode="ios" placeholder="Select Electricity Company" name="bills"
+            [selectedText]="selectedBill" [(ngModel)]="selectedBill" [ngModelOptions]="{standalone: true}" (ionChange)="billSelected()">
+            <ion-select-option *ngFor="let bill of bills" value="{{bill.billerName}}">
+              {{bill.billerName}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">Select a Plan</ion-label>
+          <ion-select [disabled]="busy" class="mtt-05" interface="popover" mode="ios" placeholder="Select Plan" name="billPlans"
+            [selectedText]="selectedBillPlan" [(ngModel)]="selectedBillPlan" [ngModelOptions]="{standalone: true}" (ionChange)="billPlanSelected()">
+            <ion-select-option *ngFor="let plan of billPlans" value="{{plan.planName}}">
+              {{plan.planName}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper mb-05" *ngIf="beneficiaries && !newBeneficiaryChange">
+          <ion-label class="stacked-label">Select Meter Number</ion-label>
+          <ion-select [disabled]="busy" class="mtt-05" interface="popover" mode="ios" placeholder="Select Meter Number"
+            name="selectedBeneficiary" [selectedText]="selectedBeneficiary" [(ngModel)]="selectedBeneficiary"
+            [ngModelOptions]="{standalone: true}" (ionChange)="beneficiarySelected()">
+            <ion-select-option *ngFor="let benef of beneficiaries" value="{{benef.beneficiaryId}}">
+              {{benef.beneficiaryAlias}} - {{benef.beneficiaryId}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper mb-05" *ngIf="!beneficiaries || newBeneficiaryChange">
+          <ion-label class="stacked-label">Meter Number</ion-label>
+          <ion-input [disabled]="busy" class="pt-05 pl-10" inputmode="numeric" type="text" maxLength="15" minLength="11"
+            placeholder="Enter Meter Number" (ionChange)="uniqueIdChange()" [(ngModel)]="uniqueID"></ion-input>
+        </div>
+
+        <div *ngIf="beneficiaries" class="form-bg item-v-center item-space-between mb-10 text-white text08"
+          color="light">
+          <ion-toggle [disabled]="busy" mode="md" slot="start" name="kiwi" color="secondary" (ionChange)="newBeneficiary()"
+            [(ngModel)]="newBeneficiaryChange" [ngModelOptions]="{standalone: true}"></ion-toggle>
+          <ion-label>New Meter Number</ion-label>
+        </div>
+          
+        <div *ngIf="userDetails" class="mt-10 user-details">
+          <div class="py-05">
+            <div class="text-center">
+              <ion-text>Customer Name:</ion-text>
+              <p class="fw700 ion-no-margin">{{userDetails.customerName}}</p>
+            </div>
+          </div>
+
+          <div class="pb-05">
+            <div class="text-center">
+              <ion-text>Customer Address:</ion-text>
+              <p class="fw700 ion-no-margin">{{userDetails.customerAddress}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-wrapper-2" *ngIf="userDetails">
+          <ion-label class="stacked-label">Amount</ion-label>
+          <ion-input class="pt-05 pl-10" inputmode="numeric" type="text" minLength="2" placeholder="Amount"
+            (ionChange)="amountChange()" [(ngModel)]="amount"></ion-input>
+        </div>
+        <div *ngIf="amount" class="py-05">
+          <ion-text>Convenience Fee: <span>&#8358;{{billerObj.convenienceFee}}</span></ion-text>
+        </div>
+
+        <div class="item-wrapper" *ngIf="doSaveBeneficiary">
+          <ion-label class="stacked-label">Meter Number Alias</ion-label>
+          <ion-input class="pt-05 pl-10" type="text" placeholder="Enter Meter Number Alias"
+            (ionChange)="beneficiaryAliasChange()" [(ngModel)]="beneficiaryAlias" [ngModelOptions]="{standalone: true}"
+            maxLength="20"></ion-input>
+        </div>
+
+        <ion-list class="list-bg" mode="md" *ngIf="(!beneficiaries || newBeneficiaryChange) && userDetails">
+          <ion-item lines="none" class="item-bg">
+            <ion-checkbox class="mr-10 ml-0" mode="md" slot="start" name="doSaveBeneficiary" color="primary"
+              [(ngModel)]="doSaveBeneficiary" (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+            <ion-label class="ion-text-wrap">Save Meter Number</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="item-v-center">
+          <ion-spinner *ngIf="busy" name="bubbles" mode="ios" color="primary"></ion-spinner>
+        </div>
+
+        <ion-button *ngIf="!userDetails"
+          [disabled]="!selectedBill || !selectedBillPlan || (!beneficiaries && !uniqueID) || (beneficiaries &&
+          !newBeneficiaryChange && !selectedBeneficiary) || (beneficiaries && newBeneficiaryChange && !uniqueID) || busy"
+          class="no-transform payment-button mt-20" fill="clear" expand="block" (click)="validateMeterNumber()">
+          Validate Meter Number
+        </ion-button>
+
+        <ion-button *ngIf="userDetails" [disabled]="!selectedBillPlan || (doSaveBeneficiary && !beneficiaryAlias)"
+          class="no-transform payment-button mt-20" fill="clear" expand="block" (click)="makePayment()">
+          Make Payment
+        </ion-button>
+      </ng-container>
+<!-- ELECTRICITY CONTAINER ENDS -->
+
+<!-- WATER CONTAINER BEGINS -->
+      <ng-container *ngIf="sharedData.paymentType === 'water' && bills">
+        <div class="item-wrapper-2">
+          <ion-label class="stacked-label">Select Water Company</ion-label>
+          <ion-select class="mtt-05 pl-10" interface="action-sheet" mode="ios" placeholder="Benin Electricity Distribution Company">
+            <ion-select-option>Cross River Water Board</ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">Select a Plan</ion-label>
+          <ion-select class="mtt-05 pl-10" interface="action-sheet" mode="ios" placeholder="">
+            <ion-select-option></ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">Meter Number/Account Number</ion-label>
+          <ion-input class="pt-05 pl-10"></ion-input>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">Amount</ion-label>
+          <ion-input class="pt-05 pl-10"></ion-input>
+        </div>
+
+        <ion-list class="list-bg" mode="md">
+          <ion-item lines="none" class="item-bg">
+            <ion-checkbox class="mr-10 ml-0" mode="md" slot="start" name="doSaveBeneficiary" color="primary"
+              [(ngModel)]="doSaveBeneficiary" (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+            <ion-label class="ion-text-wrap">Save Meter/Account Number</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-button required class="no-transform payment-button mt-20" fill="clear" expand="block"
+          (click)="makePayment()">
+          Make Payment
+        </ion-button>
+      </ng-container>
+<!-- WASTE CONTAINER ENDS -->
+
+<!-- WASTE CONTAINER BEGINS -->
+      <ng-container *ngIf="sharedData.paymentType === 'waste' && bills">
+        <div class="item-wrapper-2">
+          <ion-label class="stacked-label">Select Waste Company</ion-label>
+          <ion-select class="mtt-05 pl-10" interface="action-sheet" mode="ios" placeholder="Edo Waste Management">
+            <ion-select-option></ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">Select a Plan</ion-label>
+          <ion-select class="mtt-05 pl-10" interface="action-sheet" mode="ios" placeholder="Edo Waste Management">
+            <ion-select-option></ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">House Code</ion-label>
+          <ion-input class="pt-05 pl-10"></ion-input>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">Amount</ion-label>
+          <ion-input class="pt-05 pl-10"></ion-input>
+        </div>
+
+        <ion-list class="list-bg" mode="md">
+          <ion-item lines="none" class="item-bg">
+            <ion-checkbox class="mr-10 ml-0" mode="md" slot="start" name="doSaveBeneficiary" color="primary"
+              [(ngModel)]="doSaveBeneficiary" (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+            <ion-label class="ion-text-wrap">Save House Code</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-button required class="no-transform payment-button mt-20" fill="clear" expand="block"
+          (click)="makePayment()">
+          Make Payment
+        </ion-button>
+      </ng-container>
+<!-- WASTE CONTAINER ENDS -->
+
+<!-- BORROWPOER CONTAINER BEGINS -->
+      <ng-container *ngIf="sharedData.paymentType === 'boropower' && bills">
+        <div class="item-wrapper-2">
+          <ion-label class="stacked-label">Select Electricity Company</ion-label>
+          <ion-select class="mtt-05" interface="popover" mode="ios" placeholder="Select Electricity Company"
+            name="bills"
+            [selectedText]="selectedBill" [(ngModel)]="selectedBill" [ngModelOptions]="{standalone: true}"
+            (ionChange)="billSelected()">
+            <ion-select-option *ngFor="let bill of bills" value="{{bill.billerName}}">
+              {{bill.billerName}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper">
+          <ion-label class="stacked-label">Select a Plan</ion-label>
+          <ion-select [disabled]="busy" class="mtt-05" interface="popover" mode="ios" placeholder="Select a Plan" name="billPlans"
+            [selectedText]="selectedBillPlan" [(ngModel)]="selectedBillPlan" [ngModelOptions]="{standalone: true}" (ionChange)="billPlanSelected()">
+            <ion-select-option *ngFor="let plan of billPlans" value="{{plan.planName}}">
+              {{plan.planName}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper mb-05" *ngIf="beneficiaries && !newBeneficiaryChange">
+          <ion-label class="stacked-label">Select Meter Number</ion-label>
+          <ion-select [disabled]="busy" class="mtt-05" interface="popover" mode="ios" placeholder="Select Meter Number"
+            name="selectedBeneficiary" [selectedText]="selectedBeneficiary" [(ngModel)]="selectedBeneficiary"
+            [ngModelOptions]="{standalone: true}" (ionChange)="beneficiarySelected()">
+            <ion-select-option *ngFor="let benef of beneficiaries" value="{{benef.beneficiaryId}}">
+              {{benef.beneficiaryAlias}} - {{benef.beneficiaryId}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+        
+        <div class="item-wrapper mb-05" *ngIf="!beneficiaries || newBeneficiaryChange">
+          <ion-label class="stacked-label">Meter Number</ion-label>
+          <ion-input [disabled]="busy" class="pt-05 pl-10" inputmode="numeric" type="text" maxLength="15" minLength="11"
+            placeholder="Enter Meter Number" (ionChange)="uniqueIdChange()" [(ngModel)]="uniqueID"></ion-input>
+        </div>
+
+        <div *ngIf="beneficiaries" class="form-bg item-v-center item-space-between mb-10 text-white text08"
+          color="light">
+          <ion-toggle [disabled]="busy" mode="md" slot="start" name="kiwi" color="trupayprimary"
+            (ionChange)="newBeneficiary()" [(ngModel)]="newBeneficiaryChange" [ngModelOptions]="{standalone: true}"></ion-toggle>
+          <ion-label>New Meter Number</ion-label>
+        </div>
+          
+        <div *ngIf="boroPoweruserDetails && userDetails" class="mt-10 user-details">
+          <div class="py-05">
+            <div class="text-center">
+              <ion-text>Customer Name:</ion-text>
+              <p class="fw700 ion-no-margin">{{userDetails.customerName}}</p>
+            </div>
+          </div>
+
+          <div class="pb-05">
+            <div class="text-center">
+              <ion-text>Customer Address:</ion-text>
+              <p class="fw700 ion-no-margin">{{userDetails.customerAddress}}</p>
+            </div>
+          </div>
+
+          <div class="text-right mt-10">
+            <ion-text>Credit Limit: <span class="fw700">&#8358;{{boroPoweruserDetails.creditLimit}}</span>
+            </ion-text>
+          </div>
+        </div>
+
+        <div *ngIf="boroPoweruserDetails && userDetails" class="item-wrapper-5">
+          <ion-label class="stacked-label">Amount</ion-label>
+          <ion-input class="pt-05 pl-10" inputmode="numeric" type="text" minLength="2" placeholder="Enter Amount"
+            (ionChange)="amountChange()" [(ngModel)]="amount"></ion-input>
+        </div>
+        <div *ngIf="amount" class="py-05">
+          <ion-text>Convenience Fee: <span>&#8358;{{billerObj.convenienceFee}}</span></ion-text>
+        </div>
+
+        <div class="item-wrapper" *ngIf="doSaveBeneficiary">
+          <ion-label class="stacked-label">Meter Number Alias</ion-label>
+          <ion-input class="pt-05 pl-10" type="text" placeholder="Enter Meter Number Alias"
+            (ionChange)="beneficiaryAliasChange()" [(ngModel)]="beneficiaryAlias" [ngModelOptions]="{standalone: true}"
+            maxLength="20"></ion-input>
+        </div>
+
+        <ion-list class="list-bg" *ngIf="(!beneficiaries || newBeneficiaryChange) && boroPoweruserDetails && userDetails" mode="md">
+          <ion-item lines="none" class="item-bg">
+            <ion-checkbox class="mr-10 ml-0" mode="md" slot="start" name="doSaveBeneficiary" color="primary"
+              [(ngModel)]="doSaveBeneficiary" (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}">
+            </ion-checkbox>
+            <ion-label class="ion-text-wrap">Save Meter Number</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="item-v-center">
+          <ion-spinner *ngIf="busy" name="bubbles" mode="ios" color="primary"></ion-spinner>
+        </div>
+
+        <ion-button *ngIf="!boroPoweruserDetails || !userDetails"
+          [disabled]="!selectedBill || !selectedBillPlan || (!beneficiaries && !uniqueID) || (beneficiaries &&
+          !newBeneficiaryChange && !selectedBeneficiary) || (beneficiaries && newBeneficiaryChange && !uniqueID) || busy"
+          class="no-transform payment-button mt-20" fill="clear" expand="block" (click)="validateBoroPowerUser()">
+          Validate Meter Number
+        </ion-button>
+
+        <ion-button *ngIf="boroPoweruserDetails && userDetails"
+          [disabled]="!selectedBillPlan || (doSaveBeneficiary && !beneficiaryAlias)"
+          class="no-transform payment-button mt-20" fill="clear" expand="block"
+          (click)="makePayment()">
+          Make Payment
+        </ion-button>
+      </ng-container>
+<!-- BORROWPOER CONTAINER ENDS -->
+
+<!-- SKELETON CONTAINER BEGINS -->
+      <ng-container *ngIf="(sharedData.paymentType === 'internet') && (!bills || !billPlans)">
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+      </ng-container>
+      <ng-container *ngIf="sharedData.paymentType !== 'internet' && !bills">
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+        <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+      </ng-container>
+<!-- SKELETON CONTAINER ENDS -->
+
+    </div>
+  </div>
+</ion-content>

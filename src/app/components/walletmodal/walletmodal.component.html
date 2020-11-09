@@ -1,0 +1,76 @@
+<ion-content>
+  <ng-container *ngIf="view === 'fund'">
+    <ion-grid class="p-20">
+      <ion-row class="item-v-center mb-15">
+        <div class="text-black">
+          <ion-text>How would you like to top-up your wallet?</ion-text>
+        </div>
+      </ion-row>
+
+      <ion-row mode="ios" class="mt-10 px-10">
+        <ion-list mode="ios" class="w100 mb-10" (click)="go('payments/wallet/fundwallet/accounts', 'fundwallet-bank')">
+          <ion-item mode="ios" lines="none" class="ion-activatable ion-no-padding border-radius-10">
+            <ion-ripple-effect></ion-ripple-effect>
+            <img src="../../../assets/icon/wallet/bank.png" class="img icon-img mr-15">
+            <ion-label mode="ios">
+              <div>
+                <h3 class="text1 text-black">Through Bank Transfer</h3>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-list mode="ios" class="w100" (click)="go('payments/wallet/fundwallet/topup', 'fundwallet-card')">
+        <!-- <ion-list mode="ios" class="w100" (click)="go('payments/comingsoon', '', 'fundwallet-card')"> -->
+          <ion-item mode="ios" lines="none" class="ion-activatable ion-no-padding border-radius-10">
+            <ion-ripple-effect></ion-ripple-effect>
+            <img src="../../../assets/icon/wallet/credit-card.png" class="img icon-img mr-15">
+            <ion-label mode="ios">
+              <div>
+                <h3 class="text1 text-black">Through Debit Card</h3>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+
+  <ng-container *ngIf="view === 'transfer'">
+    <ion-grid class="p-20">
+      <ion-row class="item-v-center mb-15">
+        <div class="text-black">
+          <ion-text>Where would you like to transfer to?</ion-text>
+        </div>
+      </ion-row>
+
+      <ion-row mode="ios" class="mt-10 px-10">
+        <ion-list mode="ios" class="w100 mb-10" (click)="go('payments/wallet/transfer', 'transfer-wallet')">
+          <ion-item mode="ios" lines="none" class="ion-activatable ion-no-padding border-radius-10">
+            <ion-ripple-effect></ion-ripple-effect>
+            <img src="../../../assets/icon/wallet/wallet1.png" class="img icon-img mr-15">
+            <ion-label mode="ios">
+              <div>
+                <h3 class="text1 text-black">Wallet</h3>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-list mode="ios" class="w100" (click)="go('payments/wallet/transfer', 'transfer-bank')">
+          <ion-item mode="ios" lines="none" class="ion-activatable ion-no-padding border-radius-10">
+            <ion-ripple-effect></ion-ripple-effect>
+            <img src="../../../assets/icon/wallet/bank.png" class="img icon-img mr-15">
+            <ion-label mode="ios">
+              <div>
+                <h3 class="text1 text-black">Bank</h3>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+</ion-content>

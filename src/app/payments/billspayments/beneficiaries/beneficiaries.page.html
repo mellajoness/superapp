@@ -1,0 +1,68 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Beneficiaries</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="box">
+      <ion-list class="w100">
+        <ng-container *ngIf="loading && beneficiaries">
+          <div class="mb-10" *ngFor="let beneficiary of beneficiaries">
+            <ion-item-sliding mode="ios" class="ion-no-margin ion-no-padding" (ionSwipe)="deleteBeneficiary(beneficiary)">
+              <ion-item-options mode="ios" side="end" style="border-bottom: none;" class="ion-no-margin ion-no-padding">
+                <ion-item-option mode="ios" color="none" (click)="deleteBeneficiary(beneficiary)" expandable>
+                  <ion-icon mode="ios" name="trash" mode="ios" color="danger" class="text20"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+              <ion-item mode="ios" lines="none" class="ion-activatable ion-no-padding bg-white border-radius-10">
+                <ion-ripple-effect></ion-ripple-effect>
+                <img [src]="beneficiary.billerId | icon" class="img icon-img mx-15">
+                <ion-label mode="ios">
+                  <div style="display: flex; justify-content: space-between;">
+                    <h3 class="text1 text-dark">{{beneficiary.beneficiaryAlias}}</h3>
+                  </div>
+                  <p class="shorten text1 text-dark">{{beneficiary.beneficiaryId}}</p>
+                </ion-label>
+              </ion-item>
+            </ion-item-sliding>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="!loading">
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+        </ng-container>
+      </ion-list>
+    </div>
+
+  </div>
+</ion-content>

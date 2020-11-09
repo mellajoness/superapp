@@ -1,0 +1,87 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="handlers.navPop()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">{{heading}}</div>
+    </ion-title>
+    <ion-buttons slot="primary"> </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+    <ng-container *ngIf="!phoneNumberVerified">
+      <div>
+        <p class="fw500 ion-padding-end">
+          Enter Phone Number attached to your Fidelity Account
+        </p>
+      </div>
+      <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.firstPan}">
+        <ion-label class="stacked-label">Phone Number</ion-label>
+        <ion-input class="pt-05 pl-20" clear-input="true" [(ngModel)]="fidelityPhoneNumber" type="tel"></ion-input>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="phoneNumberVerified && page === 'card'">
+      <!-- <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.firstPan}">
+        <ion-label class="stacked-label">First six digits of Card PAN</ion-label>
+        <ion-input type="tel" inputmode="numeric" class="pt-05 pl-20" clear-input="true" maxlength="6"
+          [(ngModel)]="firstPan">
+        </ion-input>
+      </div>
+      <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.lastPan}">
+        <ion-label class="stacked-label">Last four digits of Card PAN</ion-label>
+        <ion-input type="tel" inputmode="numeric" class="pt-05 pl-20" clear-input="true" maxlength="4"
+          [(ngModel)]="lastPan">
+        </ion-input>
+      </div> -->
+      <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.pin}">
+        <ion-label class="stacked-label">Card Type</ion-label>
+        <ion-select class="mtt-05" interface="popover" type="tel" [(ngModel)]="cardType">
+          	<ion-select-option *ngFor="let type of allCardTypes" [value]="type">{{type}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="mb--20 mt-40px">
+        <ion-label color="trupayprimary">Expiration Date</ion-label>
+      </div>
+      <div class="d-flex">
+        <div class="item-wrapper small-input" [ngClass]="{'invalid-input': invalidInputs.pin}">
+          <ion-label class="stacked-label">MM</ion-label>
+          <ion-input type="tel" inputmode="numeric" maxlength="2" class="pt-05 pl-20"
+             [(ngModel)]="expirationMonth"></ion-input>
+        </div>
+        <div class="item-wrapper small-input ml-10" [ngClass]="{'invalid-input': invalidInputs.pin}">
+          <ion-label class="stacked-label">YY</ion-label>
+          <ion-input type="tel" inputmode="numeric" minlength="4" maxlength="4" class="pt-05 pl-12"
+             [(ngModel)]="expirationYear"></ion-input>
+        </div>
+      </div>
+      <div class="item-wrapper small-input" [ngClass]="{'invalid-input': invalidInputs.pin}">
+        <ion-label class="stacked-label2">Card PIN</ion-label>
+        <ion-input type="tel" inputmode="numeric" style="-webkit-text-security: disc;" maxlength="4" class="pt-05 text-center"
+           [(ngModel)]="pin"></ion-input>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="phoneNumberVerified && page !== 'card'">
+      <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.token}">
+        <ion-label class="stacked-label">Account Number</ion-label>
+        <ion-input type="tel" inputmode="numeric" maxlength="10" class="pt-05 pl-20"
+          clear-input="true" [(ngModel)]="accountNo"></ion-input>
+      </div>
+      <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.token}">
+        <ion-label class="stacked-label">Fidelity Token</ion-label>
+        <ion-input type="tel" inputmode="numeric" style="-webkit-text-security: disc;" maxlength="8" class="pt-05 pl-20"
+          clear-input="true" [(ngModel)]="token"></ion-input>
+      </div>
+    </ng-container>
+
+    <ion-button required class="no-transform payment-button mt-30" fill="clear" expand="block" (click)="submit()">
+      Submit
+    </ion-button>
+  </div>
+</ion-content>

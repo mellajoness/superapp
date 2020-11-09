@@ -1,0 +1,63 @@
+<ion-content fullscreen>
+  <!-- <ion-header no-border> -->
+    <ion-toolbar transparent mode="ios">
+      <ion-buttons slot="start">
+        <ion-button (click)="goBack()">
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>
+        Loan Balance
+      </ion-title>
+    </ion-toolbar>
+   
+  <!-- </ion-header> -->
+  
+  
+    <!-- <div class="outstanding">
+      <p>Your outstanding {{ view.loanType }} loan balance is</p>
+      <span
+        >&#8358;
+        {{ view.totalOutstanding || view.principal | number: "1.0-0" }}</span
+      >
+    </div> -->
+  
+    <div class="list">
+      <div>
+        <p>Amount Paid</p>
+        <p>Outstanding Balance</p>
+        <p>Start Date</p>
+        <p>Due Date</p>
+        <p>Loan amount</p>
+        <p>Loan term</p>
+        <p>Loan interest</p>
+      </div>
+  
+      <div>
+        <p>₦{{ view.totalPaid | number: "1.0-0" }}</p>
+        <p>₦{{ view.totalOutstanding | number: "1.0-0" }}</p>
+        <p>{{ view.disbursedDate | date }}</p>
+        <p>{{ view.dueDate | date }}</p>
+        <p>₦{{ view.principal | number: "1.0-0" }}</p>
+        <p>{{ view.tenor }} day(s)</p>
+        <p *ngIf="view.loanType === 'Migo' ">₦{{ view.interest | number: "1.0-0"}}</p>
+        <p *ngIf="view.loanType !== 'Migo' ">{{ view.interest}}%</p>
+      </div>
+  
+     
+  
+    </div>
+  
+    <div class="timelap">
+      <div class="timeleft">{{view.dayLeft}} days </div>
+      <div class="timeleft">{{view.hoursLeft}} hours</div>
+   </div>
+  
+   <div class="timeleftmin">{{view.minuteLeft}} minutes left</div>
+  
+   <div class="btn"  (click)="payLoan()">
+     Pay Loan
+   </div>
+  
+  </ion-content>
+  

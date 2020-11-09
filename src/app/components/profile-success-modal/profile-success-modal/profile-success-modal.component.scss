@@ -1,0 +1,38 @@
+.modal{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.status-icon-container{
+    margin: 10px auto;
+}
+
+.status-text{
+    text-align: center;
+    padding: 20px;
+}
+
+#ok-btn{
+    margin: auto 10px;
+    width: 50%;
+    background-color: #0E237E !important;
+    color: #fff;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.button-container {
+    max-width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info {
+    
+}

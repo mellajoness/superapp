@@ -1,0 +1,65 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Transfers</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="item-wrapper mb-05">
+      <ion-label class="stacked-label">Select Source Account</ion-label>
+      <div class="pt-10 pl-20 pr-05 item-space-between" (click)="showAccounts('from')">
+        <div>
+          <ion-text [ngClass]="!atd ? 'care-color' : 'care-color-sharp'">
+            {{accountToDebit}}
+          </ion-text>
+        </div>
+        <div>
+          <ion-icon class="text08 care-color" name="caret-down"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-wrapper mb-05">
+      <ion-label class="stacked-label">Select Destination Account</ion-label>
+      <div class="pt-10 pl-20 pr-05 item-space-between" (click)="showAccounts('to')">
+        <div>
+          <ion-text [ngClass]="!atc ? 'care-color' : 'care-color-sharp'">
+            {{accountToCredit}}
+          </ion-text>
+        </div>
+        <div>
+          <ion-icon class="text08 care-color" name="caret-down"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-wrapper mb-05">
+      <ion-label class="stacked-label">Amount</ion-label>
+      <ion-input class="pt-05 pl-20" inputmode="numeric" type="text" placeholder="Enter Amount"
+        (ionChange)="amountChange()" [(ngModel)]="amount"></ion-input>
+    </div>
+
+    <div class="item-wrapper mb-05">
+      <ion-label class="stacked-label">Narration</ion-label>
+      <ion-input class="pt-05 pl-20" type="text" placeholder="Enter Narration"(ionChange)="narrationChange()" [(ngModel)]="narration"></ion-input>
+    </div>
+
+    <ion-button [disabled]="!atd || !atc || !narration || !amount" class="no-transform payment-button mt-30" fill="clear" expand="block"
+      (click)="proceed('payments/billspayments/sendmoney/pin')">
+      Proceed
+    </ion-button>
+
+  </div>
+</ion-content>

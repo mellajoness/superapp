@@ -1,0 +1,21 @@
+<div class="modal">
+  <div style="height: 100%;" class="w100">
+    <div class="text1 info">
+      <div>
+        <div style="padding: 5px 10px;">{{successMessage.title}}</div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="w100 body_" style="height: 60%;">
+      <div class="status-text">
+        <p>{{successMessage.body}}</p>
+      </div>
+    </div>
+    <div class="button-container px-15">
+      <div style="padding: 10px;" class="w100">
+        <ion-button id="ok-btn-clear" fill="clear" expand="block" (click)="dismiss('no')">Close</ion-button>
+      </div>
+    </div>
+  </div>
+
+</div>

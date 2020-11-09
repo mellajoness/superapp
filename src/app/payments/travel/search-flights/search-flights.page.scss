@@ -1,0 +1,123 @@
+.header-bg-map {
+  background: url("../../../../assets/imgs/payments/travel/map.png");
+  background-size: cover;
+}
+
+.header-bg-blue {
+  background: #0E237E;
+  background-size: cover;
+}
+
+.header-position {
+  position: fixed;
+  width: 100%;
+}
+
+.temp-border {
+  border: thin solid black;
+}
+
+.width100 {
+  width: 100%;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.drop-shadow {
+  box-shadow: 0px 20px 40px rgba(54, 201, 154, 0.1);
+}
+
+.mt-55 {
+  margin-top: -55px;
+}
+
+.pt40 {
+  padding-top: 40px;
+}
+
+.custom-placeholder {
+  font-size: 15px;
+  color: #000000;
+  opacity: 50%;
+}
+
+.h9 {
+  height: 9rem !important;
+}
+
+.mt75 {
+  margin-top: 7.5rem;
+}
+
+.mt-5 {
+  margin-top: -5rem;
+}
+
+.back-button {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+
+.submit-button {
+  background-color: var(--ion-color-trupaysecondary);
+  color: white;
+  width: 251px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50px;
+}
+
+.item-v-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-border {
+  border: 1px solid rgba(41, 76, 129, 0.5);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+div.item-inner {
+  padding-right: 0px !important;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.location-faux-input {
+  border: 1px solid rgba(41, 76, 129, 0.5);
+  box-sizing: border-box;
+  border-radius: 5px;
+  // margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.location-placeholder {
+  color: rgba(111, 116, 108, 0.5);
+}
+.location-city {
+  color: #444747;
+}
+
+.counter {
+  --border-color: rgba(111, 116, 108, 0.5);
+  --border-width: 1px;
+  --border-radius: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+  color: --var(--ion-color-trupayprimary);
+  width: 2.5rem;
+}
+
+.white {
+  color: white;;
+}

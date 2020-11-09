@@ -1,0 +1,381 @@
+<!-- <ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar class="header-bg-map">
+
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button color="color-white" defaultHref="travel" text="" icon="arrow-back"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Search Flights</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-content class="ion-padding-bottom">
+  <div class="h9 header-bg-blue header-position">
+    <div class="h9 header-bg-map"></div>
+    <!-- <ion-item class="mt-7" color="none" lines="none">
+      <ion-icon slot="start" color="light" name="arrow-back" (click)="handlers.navigate().back()"></ion-icon>
+    </ion-item> -->
+    <!-- <ion-toolbar class="mt-7" mode="ios"> -->
+    <ion-buttons class="mt-5 ion-padding-start" slot="start">
+      <ion-button class="mtt-02 no-transform white" fill="clear" (click)="handlers.navigate().back()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- </ion-toolbar> -->
+  </div>
+
+  <ion-card class="mt75 drop-shadow z-index10">
+    <ion-radio-group name="auto" mode="md" [(ngModel)]="tripWay" (ionChange)="selectTripWay(tripWay)">
+      <ion-item lines="none">
+        <ion-radio color="trupayprimary" value="oneway"></ion-radio>
+        <ion-label class="font-12px">&nbsp; One Way</ion-label>
+
+        <ion-radio color="trupayprimary" value="roundtrip"></ion-radio>
+        <ion-label class="font-12px">&nbsp; Round Trip</ion-label>
+
+        <!-- <ion-radio color="trupayprimary" value="multicity"></ion-radio>
+        <ion-label class="font-12px">&nbsp; Multi-City</ion-label> -->
+      </ion-item>
+    </ion-radio-group>
+  </ion-card>
+
+  <ng-container *ngFor="let multi of multiCity.count; let m = index">
+
+    <ion-card [ngStyle]="{'z-index': 9-m}" class="drop-shadow z-index4 mt-55 pt40">
+
+      <!-- Departure Trip -->
+      <ion-item class="item-transparent ion-no-padding ion-no-margin ion-no-padding-right location-faux-input mt30"
+        lines="none" (click)="pickCity('departure', m)">
+        <ion-grid fixed class="ion-no-padding">
+          <!-- First Row -->
+          <ion-row class="ion-no-padding ion-padding-start">
+            <!-- From -->
+            <ion-col class="ion-no-padding" size="6">
+              <ion-grid class=" text-center ion-no-padding" fixed>
+                <ion-row class="ion-no-padding">
+                  <ion-col class="ion-no-padding ion-align-self-start text-left location-placeholder font-14px">
+                    {{selectedDeparture.location}}</ion-col>
+                </ion-row>
+                <ion-row class="ion-no-padding">
+                  <ion-col class="ion-no-padding ion-align-self-start text-left pt-02 location-city font-14px">
+                    {{sharedData.travel.departureCity[m] ? sharedData.travel.departureCity[m].name : ''}}</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+
+
+
+
+            <ion-col class="ion-no-padding align-self-end text-right location-placeholder font-18px" size="6">
+              {{sharedData.travel.departureCity[m] ? sharedData.travel.departureCity[m].code : ''}}
+            </ion-col>
+
+
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <!-- Arrival Trip -->
+      <ion-item class="item-transparent ion-no-padding ion-no-margin ion-no-padding-right location-faux-input mt30"
+        lines="none" (click)="pickCity('arrival', m)">
+        <ion-grid fixed class="ion-no-padding">
+          <!-- First Row -->
+          <ion-row class="ion-no-padding ion-padding-start">
+            <!-- From -->
+            <ion-col class="ion-no-padding" size="6">
+              <ion-grid class=" text-center ion-no-padding" fixed>
+                <ion-row class="ion-no-padding">
+                  <ion-col class="ion-no-padding ion-align-self-start text-left location-placeholder font-14px">
+                    {{selectedArrival.location}}</ion-col>
+                </ion-row>
+                <ion-row class="ion-no-padding">
+                  <ion-col class="ion-no-padding ion-align-self-start text-left pt-02 location-city font-14px">
+                    {{sharedData.travel.arrivalCity[m] ? sharedData.travel.arrivalCity[m].name : ''}}</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+
+
+
+
+            <ion-col class="ion-no-padding align-self-end text-right location-placeholder font-18px" size="6">
+              {{sharedData.travel.arrivalCity[m] ? sharedData.travel.arrivalCity[m].code : ''}}
+            </ion-col>
+
+
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+
+      <ng-container>
+        <ion-card-header class="ion-no-padding ion-padding-top ion-padding-horizontal">
+          <ion-card-subtitle>
+            <ion-grid class="ion-no-padding" fixed>
+              <ion-row class="ion-justify-content-around">
+                <ion-col size="6">Departure Date</ion-col>
+                <ion-col size="6">
+                  <ng-container *ngIf="tripWay === 'roundtrip'">Arrival Date</ng-container>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-grid fixed class="ion-no-padding">
+          <ion-row class="ion-justify-content-around ion-no-padding">
+            <ion-col size="6" class="ion-no-padding">
+              <ion-datetime color="trupayprimary" mode="ios" displayFormat="D MMM YYYY" [(ngModel)]="selectedDeparture.date[m]"
+                [min]="todaysDate" [max]="todaysDate | travelMethods: 'maxDate'" placeholder="Select"
+                (ionBlur)="regularizeDates(m, 'departure')">
+              </ion-datetime>
+            </ion-col>
+            <ion-col size="6" class="ion-no-padding">
+              <ion-datetime color="trupayprimary" *ngIf="tripWay === 'roundtrip'" mode="ios" displayFormat="D MMM YYYY"
+                [(ngModel)]="selectedArrival.date[m]"
+                [min]="selectedDeparture.date[m] ? selectedDeparture.date[m] : todaysDate"
+                [max]="todaysDate | travelMethods: 'maxDate'" placeholder="Select"
+                (ionBlur)="regularizeDates(m, 'arrival')">
+              </ion-datetime>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ng-container>
+    </ion-card>
+
+  </ng-container>
+
+  <ion-item *ngIf="tripWay === 'multicity' && multiCity.count.length < 4"
+    class="item-transparent ion-no-padding ion-no-margin ion-margin-start ion-no-padding-right mt20" lines="none"
+    style="color: rgba(41, 76, 129, 0.5)" (click)="multiCityMethods().add()">
+    <ion-label>
+      Add Trip
+    </ion-label>
+    <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+  </ion-item>
+
+  <!-- <ng-container *ngIf="tripWay==='multicity'">
+
+    <ng-container *ngFor="let multi of multiCity.count; let m = index;">
+      <ion-item-sliding (ionSwipe)="multiCityMethods().remove(m, multi)">
+        <ion-item-options class="mt30" side="end">
+          <ion-item-option color="danger" (click)="multiCityMethods().remove(m, multi)" expandable>Remove
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item (ionSwipe)="multiCityMethods().remove(m, multi)"
+          class="item-transparent ion-no-padding ion-no-margin ion-no-padding-right location-faux-input mt30"
+          lines="none" (click)="pickCity('departure')">
+          <ion-grid fixed class="ion-no-padding">
+            <ion-row class="ion-no-padding ion-padding-start">
+              <ion-col class="ion-no-padding" size="6">
+                <ion-grid class=" text-center ion-no-padding" fixed>
+                  <ion-row class="ion-no-padding">
+                    <ion-col class="ion-no-padding ion-align-self-start text-left location-placeholder font-14px">
+                      {{multiCity.placeholder}} {{multiCity.count[m]}}</ion-col>
+                  </ion-row>
+                  <ion-row class="ion-no-padding">
+                    <ion-col class="ion-no-padding ion-align-self-start text-left pt-02 location-city font-14px">
+                      {{sharedData.travel.departureCity ? sharedData.travel.departureCity.name : ''}}</ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+              <ion-col class="ion-no-padding align-self-end text-right location-placeholder font-18px" size="6">
+                {{sharedData.travel.departureCity ? sharedData.travel.departureCity.code : ''}}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-item-sliding>
+    </ng-container>
+
+  </ng-container> -->
+
+
+
+  <ion-card class="drop-shadow z-index3">
+    <!-- <ion-card-header class="ion-no-padding ion-padding-top ion-padding-horizontal">
+      <ion-card-subtitle>
+        <ion-grid class="ion-no-padding" fixed>
+          <ion-row class="ion-justify-content-around">
+            <ion-col size="6">Departure Date</ion-col>
+            <ion-col size="6">
+              <ng-container *ngIf="tripWay === 'roundtrip'">Arrival Date</ng-container>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-grid fixed class="ion-no-padding">
+      <ion-row class="ion-justify-content-around ion-no-padding">
+        <ion-col size="6" class="ion-no-padding">
+          <ion-datetime color="trupayprimary" mode="ios" displayFormat="D MMM YYYY" [(ngModel)]="selectedDeparture.date" [min]="todaysDate"
+            [max]="todaysDate | travelMethods: 'maxDate'" placeholder="Select" (ionBlur)="regularizeDates()">
+          </ion-datetime>
+        </ion-col>
+        <ion-col size="6" class="ion-no-padding">
+          <ion-datetime color="trupayprimary" *ngIf="tripWay === 'roundtrip'" mode="ios" displayFormat="D MMM YYYY"
+            [(ngModel)]="selectedArrival.date" [min]="selectedDeparture.date ? selectedDeparture.date : todaysDate"
+            [max]="todaysDate | travelMethods: 'maxDate'" placeholder="Select" (ionBlur)="regularizeDates()">
+          </ion-datetime>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+
+    <ion-card-header class="ion-no-padding ion-padding-top ion-padding-horizontal">
+      <ion-card-subtitle>
+        <ion-grid class="ion-no-padding" fixed>
+          <ion-row class="ion-no-padding">
+            <ion-col size="6">Adults</ion-col>
+            <ion-col size="6">Children</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-row class="ion-no-padding ion-justify-content-around">
+      <ion-col size="6">
+        <!-- <ion-label position="floating">Adults</ion-label> -->
+        <!-- <ion-select lines="none" class="width100" interface="action-sheet" [(ngModel)]="passengers.adult"
+          placeholder="Select">
+          <ion-select-option *ngFor="let number of handlers.generateArrayOfNumbers(1, 9)" lines="none" [value]="number">
+            {{number}}
+            {{number > 1 ? "Adults":"Adult"}}</ion-select-option>
+        </ion-select> -->
+
+        <ion-col col-5 style="align-self: center;">
+          <ion-button size="small" class="counter" fill="outline" (click)="counter('adult')">
+            <ion-icon style="font-size: 15px;" slot="icon-only" name="remove"></ion-icon>
+          </ion-button>
+          <ion-button size="small" class="counter" fill="outline">
+            <span color="trupayprimary" style="font-size: 15px;">{{passengers.adult}}</span>
+          </ion-button>
+          <ion-button size="small" class="counter" fill="outline" (click)="counter('adult', true)">
+            <ion-icon style="font-size: 15px;" slot="icon-only" name="add"></ion-icon>
+          </ion-button>
+
+        </ion-col>
+
+
+
+
+
+
+
+      </ion-col>
+      <ion-col class="no-padding-left" size="6">
+        <!-- <ion-label position="floating">Children</ion-label> -->
+        <!-- <ion-select lines="none" class="width100" interface="action-sheet" [(ngModel)]="passengers.child"
+          placeholder="Select">
+          <ion-select-option *ngFor="let number of handlers.generateArrayOfNumbers(0, 9)" lines="none" [value]=number>
+            {{number}}
+            {{number > 1 ? "Children":"Child"}}</ion-select-option>
+        </ion-select> -->
+
+
+        <ion-col class="no-padding-left" col-5 style="align-self: center;">
+          <ion-button size="small" class="counter" fill="outline" (click)="counter('child')">
+            <ion-icon style="font-size: 15px;" slot="icon-only" name="remove"></ion-icon>
+          </ion-button>
+          <ion-button size="small" class="counter" fill="outline">
+            <span color="trupayprimary" style="font-size: 15px;">{{passengers.child}}</span>
+          </ion-button>
+          <ion-button size="small" class="counter" fill="outline" (click)="counter('child', true)">
+            <ion-icon style="font-size: 15px;" slot="icon-only" name="add"></ion-icon>
+          </ion-button>
+
+        </ion-col>
+
+
+
+
+
+
+      </ion-col>
+    </ion-row>
+
+    <ion-card-header class="ion-no-padding ion-padding-top ion-padding-horizontal">
+      <ion-card-subtitle>
+        <ion-grid class="ion-no-padding" fixed>
+          <ion-row class="ion-no-padding">
+            <ion-col size="6">Infants</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-row class="ion-no-padding">
+      <ion-col size="6">
+        <!-- <ion-label position="floating">Infants</ion-label> -->
+        <!-- <ion-select lines="none" class="width100" interface="action-sheet" [(ngModel)]="passengers.infant"
+          placeholder="Select">
+          <ion-select-option *ngFor="let number of handlers.generateArrayOfNumbers(0, 9)" lines="none" [value]=number>
+            {{number}}
+            {{number > 1 ? "Infants":"Infant"}}</ion-select-option>
+        </ion-select> -->
+
+
+
+        <ion-col col-5 style="align-self: center;">
+          <ion-button size="small" class="counter" fill="outline" (click)="counter('infant')">
+            <ion-icon style="font-size: 15px;" slot="icon-only" name="remove"></ion-icon>
+          </ion-button>
+          <ion-button size="small" class="counter" fill="outline">
+            <span color="trupayprimary" style="font-size: 15px;">{{passengers.infant}}</span>
+          </ion-button>
+          <ion-button size="small" class="counter" fill="outline" (click)="counter('infant', true)">
+            <ion-icon style="font-size: 15px;" slot="icon-only" name="add"></ion-icon>
+          </ion-button>
+
+        </ion-col>
+
+
+
+
+
+
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-card class="z-index2">
+    <ion-card-header class="ion-no-padding ion-padding-top ion-padding-horizontal">
+      <ion-card-subtitle>Cabin Class</ion-card-subtitle>
+    </ion-card-header>
+    <!-- <ion-label position="stacked">Cabin Class</ion-label> -->
+    <ion-radio-group mode="md" allow-empty-selection="true" [(ngModel)]="cabin">
+
+      <ion-item lines="none">
+
+        <!-- <ion-radio value="All"></ion-radio>
+        <ion-label class="font-12px">&nbsp; All</ion-label> -->
+
+        <ion-radio color="trupayprimary" value="Economy"></ion-radio>
+        <ion-label class="font-12px">&nbsp; Economy</ion-label>
+
+        <ion-radio color="trupayprimary" value="Business"></ion-radio>
+        <ion-label class="font-12px">&nbsp; Business</ion-label>
+
+        <ion-radio color="trupayprimary" value="Premium"></ion-radio>
+        <ion-label class="font-12px">&nbsp; Premium</ion-label>
+
+        <ion-radio color="trupayprimary" value="First"></ion-radio>
+        <ion-label class="font-12px">&nbsp; First</ion-label>
+
+      </ion-item>
+    </ion-radio-group>
+  </ion-card>
+
+  <ion-button class="submit-button item-v-center mt-10" fill="clear" shape="round" (click)="searchFlights()">
+    Search Flights
+  </ion-button>
+
+  <!-- <ion-button class="submit-button item-v-center" [routerLink]="['available-flights']" fill="clear" shape="round">
+    Next Page
+  </ion-button> -->
+
+  <!-- <ion-button class="submit-button item-v-center" (click)="load()" fill="clear" shape="round">
+    Loader
+  </ion-button> -->
+
+
+</ion-content>

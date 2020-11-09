@@ -1,0 +1,49 @@
+<ion-content>
+  <div>
+    <div (click)="hide()">
+      <ion-icon name="close" class="close"></ion-icon>
+    </div>
+    <ion-grid mode="ios">
+      <ion-row mode="ios" class="mt-10">
+        <div class='card'>
+          <ion-row>
+            <ion-col size="4" class="item-v-center">
+              <img src="../../../assets/icon/location-mark.png" class="img" style="height: 4rem;">
+            </ion-col>
+            <ion-col size="8" style="line-height: 1.8;" class="pl-10">
+              <div class="text1">Fidelity ATM {{sharedData.location.sol_Desc}}</div>
+              <div class="text08">{{sharedData.location.distanceFromLocation}} Km(s)</div>
+              <div class="tex08">
+                <ion-icon name="star" color="warning"></ion-icon>
+                <ion-icon name="star" color="warning"></ion-icon>
+                <ion-icon name="star" color="warning"></ion-icon>
+                <ion-icon name="star" color="warning"></ion-icon>
+                <ion-icon name="star" color="warning"></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="w100 pr-05 pl-05">
+            <div class="w100 mt-10" style="line-height: 1.8;">
+              <div class="text1 fw600">Address</div>
+              <div class="text08">{{sharedData.location.address}} Km(s)</div>
+            </div>
+          </ion-row>
+          <ion-row class="w100 pr-05 pl-05">
+            <div class="w100">
+              <ion-button (click)="hide()" class="no-transform direction mt-15" fill="clear" expand="block">
+                <ion-row class="w100">
+                  <ion-col size="4" class="item-v-center" style="justify-content: flex-end;"><img src="../../../assets/icon/walker.svg" class="img" style="height: 40px;"></ion-col>
+                  <ion-col size="8" style="line-height: 1.8; text-align: left;">
+                    <div class="text08">Direction</div>
+                    <div class="text07">{{sharedData.location.distanceFromLocation}}</div>
+                  </ion-col>
+                </ion-row>
+              </ion-button>
+            </div>
+          </ion-row>
+        </div>
+      </ion-row>  
+    </ion-grid>
+  </div>
+
+</ion-content>

@@ -1,0 +1,120 @@
+.header{
+    display:flex;
+    padding-left: 15px;
+    padding-right: 15PX;
+    align-items: center;
+    justify-content: space-between;
+}
+.menu{
+    font-size:1.7em;
+    color: gray;
+ }
+ .history{
+    font-family: Gilroy;
+    font-size: 18px;
+    line-height: 21px;
+    color: #0E237E;
+    padding-top: 15px;
+    font-weight: bold;
+    padding-bottom: 15px;
+ }
+ .you{
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #9C9E9B;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 31px;
+    padding-bottom: 15px;
+ }
+ 
+ .loan{
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    color: #0E237E;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .loanhistorydiv{
+    display: flex;
+    padding-top: 40px;
+ }
+ .loantype{
+    font-family: Gilroy;
+    font-style: normal;
+    font-size: 0.8em;
+    line-height: 17px;
+    color: #9C9E9B;
+    padding-left: 2PX;
+    padding-right:5px;
+    padding-top: 7px;
+ }
+ .firstrow{
+     display: flex;
+     justify-content: space-between;
+ }
+ .body{
+     padding-top: 20px;
+     padding-left: 20px;
+     padding-right: 15px;
+ }
+ .transid{
+    font-family: Gilroy;
+    font-size: 0.8em;
+    line-height: 12px;
+    color: #9C9E9B;
+    padding-right:28px;
+ }
+ .moneyicon{
+     display: flex;
+ }
+ .disbmoneyrow{
+     display: flex;
+     justify-content: space-between;
+     padding-top: 15px;
+}
+.loandistext{
+    font-family: Gilroy;
+    font-size: 1.1em;
+    line-height: 16px;
+    color: #000000;
+}
+.money{
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: bold;
+    font-size:1.1em;
+    line-height: 17px;
+    color: #FF0000;
+}
+.upicon{
+    color: red;
+    font-size: 1.6em;
+    position: relative;
+    bottom: 19px;
+  }
+  .card{
+    height: 40px;
+    justify-content: center;
+    display: flex;
+    border-radius: 5px;
+    border: 1px solid #AAAAAA;
+    box-sizing: border-box;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+ 
+ 
+ 
+ 

@@ -1,0 +1,164 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Transfers</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <ng-container *ngIf="pageReady">
+      <ion-grid *ngIf="!noBenef" class="ion-no-padding mb-20">
+        <ion-row class="w100">
+          <ion-col size="6" class="ion-no-padding pr-05">
+            <ion-button [disabled]="busy || busy_" (click)="benefType('old')" class="no-transform" fill="clear" expand="block"
+              [ngClass]="bType === 'old' ? 'option-button-solid' : 'option-button-clear'">
+              Existing Beneficiary
+            </ion-button>
+          </ion-col>
+          <ion-col size="6" class="ion-no-padding pl-05">
+            <ion-button [disabled]="busy || busy_" (click)="benefType('new')" class="no-transform" fill="clear" expand="block"
+              [ngClass]="bType === 'new' ? 'option-button-solid' : 'option-button-clear'">
+              New Beneficiary
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+      <div class="item-wrapper-2 mb-05">
+        <ion-label class="stacked-label">Select an Account</ion-label>
+        <div class="pt-10 pl-20 pr-05 item-space-between" (click)="showAccounts('from')">
+          <div>
+            <ion-text [ngClass]="!atd ? 'care-color' : 'care-color-sharp'">
+              {{accountToDebit}}
+            </ion-text>
+          </div>
+          <div>
+            <ion-icon class="text08 care-color" name="caret-down"></ion-icon>
+          </div>
+        </div>
+      </div>
+  
+      <ng-container *ngIf="bType === 'old'">
+        <div class="item-wrapper mb-05">
+          <ion-label class="stacked-label">Beneficiary</ion-label>
+          <div class="pt-10 pl-20 pr-05 item-space-between" (click)="openBeneficiaries('payments/billspayments/sendmoney/beneficiaries')">
+            <div>
+              <ion-text class="text08" *ngIf="sharedData.beneficiary" [ngClass]="!ben ? 'care-color' : 'care-color-sharp'">
+                {{beneficiary.name}}
+              </ion-text>
+              <ion-text *ngIf="!sharedData.beneficiary" [ngClass]="!ben ? 'care-color' : 'care-color-sharp'">
+                {{beneficiary}}
+              </ion-text>
+            </div>
+            <div>
+              <ion-icon class="text08 care-color" name="caret-down"></ion-icon>
+            </div>
+          </div>
+        </div>
+    
+        <div class="item-wrapper mb-05" *ngIf="sharedData.beneficiary && ben">
+          <ion-label class="stacked-label">Beneficiary Account Number</ion-label>
+          <div class="pt-10 pl-20 pr-05 item-space-between">
+            <div>
+              <ion-text class="care-color-sharp">
+                {{beneficiary.beneficiaryAccountNo}}
+              </ion-text>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+  
+      <ng-container *ngIf="bType === 'new'">
+        <div class="item-wrapper mb-05">
+          <ion-label class="stacked-label">Bank</ion-label>
+          <div class="pt-10 pl-20 pr-05 item-space-between" (click)="showBanks()">
+            <div>
+              <ion-text class="text08" *ngIf="bankObj" [ngClass]="!ban ? 'care-color' : 'care-color-sharp'">
+                {{bankObj.role.name}}
+              </ion-text>
+              <ion-text *ngIf="!bankObj" [ngClass]="!ban ? 'care-color' : 'care-color-sharp'">
+                Select a bank
+              </ion-text>
+            </div>
+            <div>
+              <ion-icon class="text08 care-color" name="caret-down"></ion-icon>
+            </div>
+          </div>
+        </div>
+  
+        <div class="item-wrapper mb-05">
+          <ion-label class="stacked-label">Beneficiary Account Number</ion-label>
+          <ion-input [disabled]="busy || busy_" maxlength="10" class="pt-05 pl-20" inputmode="numeric" type="text" placeholder="Account Number"
+            (ionChange)="benefChange()" [(ngModel)]="benefAccountNo"></ion-input>
+        </div>
+  
+        <div class="item-wrapper mb-05" *ngIf="benefAccountObj">
+          <ion-label class="stacked-label">Beneficiary Name</ion-label>
+          <div class="pt-10 pl-20 pr-05 item-space-between">
+            <div><ion-text class="care-color-sharp">{{benefAccountObj.accountName}}</ion-text></div>
+          </div>
+        </div>
+      </ng-container>
+  
+      <div class="item-wrapper mb-05">
+        <ion-label class="stacked-label">Amount</ion-label>
+        <ion-input [disabled]="busy || busy_" class="pt-05 pl-20" inputmode="numeric" type="text" placeholder="Enter Amount"
+          (ionChange)="amountChange()" [(ngModel)]="amount"></ion-input>
+      </div>
+  
+      <div class="item-wrapper mb-05">
+        <ion-label class="stacked-label">Narration</ion-label>
+        <ion-input [disabled]="busy || busy_" class="pt-05 pl-20" type="text" placeholder="Enter Narration" (ionChange)="narrationChange()" maxlength="100"
+          [(ngModel)]="narration"></ion-input>
+      </div>
+  
+      <div class="item-wrapper-grow mb-05">
+        <ion-label class="stacked-label-grow">Additional Information</ion-label>
+        <ion-textarea [disabled]="busy || busy_" class="pt-05 pl-20" pattern="[a-zA-Z0-9 ]*" rows="6" type="text" placeholder="Enter Additional Informamtion" (ionChange)="additionalInfoChange()"
+          [(ngModel)]="additionalInfo" maxlength="1000"></ion-textarea>
+      </div>
+  
+      <ion-list *ngIf="bType === 'new'" mode="md" class="list-bg">
+        <ion-item lines="none" class="item-bg">
+          <ion-checkbox [disabled]="busy || busy_" class="mr-10 ml-0" mode="md" slot="start" name="doSaveBeneficiary" color="primary"
+            [(ngModel)]="doSaveBeneficiary" (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}">
+          </ion-checkbox>
+          <ion-label class="ion-text-wrap">Save Beneficiary</ion-label>
+        </ion-item>
+      </ion-list>
+  
+      <div class="item-v-center">
+        <ion-spinner *ngIf="busy || busy_" name="bubbles" mode="ios" color="primary"></ion-spinner>
+      </div>
+  
+      <ion-button
+        [disabled]="busy || busy_ || !atd || (bType === 'old' && !ben) || !narration || !amount || (bType === 'new' && !benefAccountObj) || (bType === 'new' && !ban)"
+        (click)="proceed('payments/billspayments/sendmoney/pin')"
+        class="no-transform payment-button mt-15" fill="clear" expand="block">
+        Proceed
+      </ion-button>
+    </ng-container>
+
+    <ng-container *ngIf="!pageReady">
+      <div><ion-skeleton-text animated class="item-wrapper-skeleton-0"></ion-skeleton-text></div>
+      <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+      <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+      <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+      <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+      <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+      <div><ion-skeleton-text animated class="item-wrapper-skeleton"></ion-skeleton-text></div>
+    </ng-container>
+
+  </div>
+</ion-content>

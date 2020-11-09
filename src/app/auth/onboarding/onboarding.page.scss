@@ -1,0 +1,57 @@
+$instructionsCol:#323A5D;
+$color-primary: #0E237E;
+$color-primaryOp: #0E237E;
+$color-bg: #F9F9FA;
+$signupbtnbg: #F9F9FA;
+$placeholderCol:  rgba(50, 58, 93, 0.6);
+$border-col: rgba(24, 25, 26, 0.2);
+
+ion-content, ion-toolbar {
+  // --ion-background-color: $color-bg;
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+
+ion-header{
+  ion-toolbar{
+    --background: #fafafa;
+  }
+}
+
+.my-content{
+  --background: #fafafa;
+}
+
+.parent {
+  padding: 20px;
+  background-color: #fafafa;
+  height: 100%;
+  width: 100%;
+}
+
+.slide_ {
+    width: 335px;
+    display: block;
+    height: 30%;
+    margin-top: 10vh;
+}
+
+.swiper-slide img {
+    margin-bottom: 5vh;
+}
+
+.payment-button {
+    background-color: #0E237E !important;
+    color: #fff;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+    width: 8rem;
+}
+
+.next-btn {
+    transform: translate3d(0, 10vh, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

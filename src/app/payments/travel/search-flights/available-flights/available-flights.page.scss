@@ -1,0 +1,220 @@
+.temp-border {
+  border: thin solid red;
+}
+
+ion-card {
+  border-radius: 8px;
+}
+
+ion-header {
+  background: #f6f7f9;
+  padding-top: 2.5rem;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+h-230 {
+  height: 230px;
+}
+
+h-95 {
+  height: 95px;
+}
+
+w-125 {
+  width: 125px;
+}
+
+.swiper-slide {
+  border: thin solid transparent;
+}
+
+.mh-16 {
+  margin-left: -16px;
+  margin-right: -10px;
+}
+
+.slide-img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
+.page-heading {
+  margin-bottom: 65px;
+}
+
+.absolute {
+  display: absolute;
+}
+
+.card-label {
+  position: absolute;
+  bottom: 0px;
+  border: thin solid white;
+  border-radius: 5px;
+  background-color: white;
+  color: var(--ion-color-primary);
+  padding: 5px;
+}
+
+.text-08 {
+  font-size: 0.8rem;
+}
+
+.text-12 {
+  font-size: 0.8rem;
+}
+
+.mt-64 {
+  margin-top: 64px;
+}
+
+.tab-active {
+  margin-top: 0px;
+  border-radius: 5px;
+  border: 2px solid var(--ion-color-primary);
+}
+
+.text-center {
+  text-align: center;
+}
+
+ion-card {
+  border-radius: 0px;
+}
+
+ion-card-subtitle {
+  font-size: 18px;
+}
+
+ion-card-title {
+  font-size: 18px;
+}
+
+.card-content-date {
+  font-size: 9px;
+}
+
+.airline-logo {
+  width: 27px;
+  height: 23px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.box-shadow {
+  box-shadow: 0px 30px 60px rgba(138, 149, 158, 0.2);
+}
+
+.btn1 {
+  position: absolute;
+  top: -12px;
+  right: -5px;
+}
+
+.edge-dot-to {
+  position: absolute;
+  bottom: -2px;
+  right: -4px;
+  opacity: 1 !important;
+}
+
+.edge-dot-fro {
+  position: absolute;
+  bottom: -2px;
+  left: -4px;
+  opacity: 1 !important;
+}
+
+.border-bottom-spaced-dash {
+  /* width: 200px;
+    height: 100px; */
+  background: black;
+  text-align: center;
+  /* line-height: 100px; */
+  background: linear-gradient(to right, #6f746c 50%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(blue 0%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(to right, green 0%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(red 0%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-size: 12px 1px;
+}
+
+.no-padding-right {
+  padding-right: 0px !important;
+}
+
+.padding-right {
+    padding: 16px;
+}
+
+.absolute-bottom-center {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  margin: auto;
+}
+
+.vertical-align-image {
+  margin-top: auto;
+  margin-bottom: auto;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.h-6 {
+  height: 6rem;
+}
+
+ion-segment-button {
+    margin-top: -1rem;
+    // --color: var(--ion-color-light) !important;
+    --color-checked :var(--ion-color-secondary) !important;
+    --color-activated :transparent !important;
+    --indicator-color: transparent !important;
+    // --indicator-color-checked: transparent !important;
+    --background: transparent !important;
+    --background-hover: transparent !important;
+    --background-checked: transparent !important;
+    --background-activated: transparent !important;
+}
+
+.item-trns {
+	border-color: transparent;
+	background-color: transparent;
+	color: transparent; 
+}
+
+.submit-button {
+    background-color: #0E237E;
+    color: white;
+    width: 251px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// .transition-height {
+//   height: 450px;
+//   transition: height 2.3s ease-out;
+// }
+
+.trail {
+  height: 1.5rem;
+  border-left: 1px dashed grey;
+}

@@ -1,0 +1,40 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Confirm Transfer</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="background">
+  <div class="parent">
+    <div class="text-center">
+      <ion-text class="text-frame">Enter your 4-digit PIN to confirm ₦{{data.transferAmount.toLocaleString()}} payment to {{data['beneficiaryName']}}</ion-text>
+    </div>
+
+    <ng-container>
+      <div class="item-v-center mb-50 mt-40" style="height: 240px;">
+        <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="config" inputClass="otp-input-container"></ng-otp-input>
+      </div>
+
+      <div class="mx-10">
+        <ion-button *ngIf="otp && otp.length === 4" required class="no-transform payment-button mt-20" fill="clear"
+          expand="block" (click)="submit('payments/billspayments/sendmoney/success')">
+          Submit
+        </ion-button>
+      </div>
+
+    </ng-container>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-split-pane contentId="main">
+  <ion-menu side="start" disabled="false" menuId="home-menu" contentId="main">
+    <ion-content>
+      <div class="main-content">
+
+        <div class="profile-container">
+          <div class="profile-content">
+            <div>
+              <div class="img-container">
+                <!-- <img src="https://dtptest.fidelitybank.ng/MoneyZipapp/Uploads/MoneyZipDocs/e2a0c6de-0f81-4fb3-8001-5e44ce86de87_blob\" alt=""> -->
+                <img [src]="photo" alt="" style="height: 100%;width: 100%;border-radius: 50%;">
+              </div>
+              <div class="profile-others">
+               <h4>{{userProfile?.walletAcctNumber}}</h4>
+               <!-- <h5>{{userName}}</h5> -->
+                <ion-menu-toggle>
+                    <button (click)="navigate()">Profile</button>
+                </ion-menu-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="links-container">
+  
+          <ion-menu-toggle *ngFor="let p of pages">
+            <div (click)="navigate(p.url)" class="menu-item">
+                <img [src]="p.icon" alt="">
+                <span>{{p.title}}</span>
+            </div>
+          </ion-menu-toggle>
+  
+          <ion-menu-toggle (click)="logout()">
+            <div class="menu-item">
+              <img src="../../../assets/icon/menu-icns/logout.svg" alt="">
+              <span>Logout</span>
+            </div>
+          </ion-menu-toggle>
+        </div>
+      </div>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-split-pane>

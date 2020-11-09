@@ -1,0 +1,43 @@
+.custom-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem 1rem;
+}
+
+.pin-container{
+    margin-top: 30px;
+}
+
+.clear-input-container{
+    margin: 30px auto;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .clr-btn{
+        --padding-end: 20px;
+        --padding-start: 20px;
+        --padding-top: 10px;
+        --padding-bottom: 10px;
+    }
+}
+
+.submit-button-container{
+    margin-top: 20px;
+    width: 100%;
+    // padding: 10px;
+
+    ion-button{
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    width: 100%;
+    }
+
+}
+
+.form-button-item {
+    --min-height: 100px;
+}

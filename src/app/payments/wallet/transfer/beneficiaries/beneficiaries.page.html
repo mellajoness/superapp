@@ -1,0 +1,72 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Beneficiaries</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="search-container px-15 mt-20 mb-10">
+    <ion-item class="ion-item-gray rounded search contacts" lines="none">
+      <ion-searchbar mode="md" showCancelButton="focus" class="ion-no-padding" (ionChange)="onSearchContact($event)"
+        detail="false" [(ngModel)]="searchContact" placeholder="Search">
+      </ion-searchbar>
+      <ion-icon name="search" class="searchicon"></ion-icon>
+    </ion-item>
+  </div>
+
+  <div class="scrollable" scrollY="true">
+
+    <!-- <ion-list class="w100 pb-02 mb-10  border-bottom" (click)="go('beneficiary')">
+      <ion-item-sliding mode="ios" class="ion-no-margin ion-no-padding" (ionSwipe)="deleteBeneficiary('beneficiary')">
+        <ion-item-options mode="ios" side="end" style="border-bottom: none;" class="ion-no-margin ion-no-padding">
+          <ion-item-option mode="ios" color="none" (click)="deleteBeneficiary('beneficiary')" expandable>
+            <ion-icon mode="ios" name="trash" mode="ios" color="danger" class="text20"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item lines="none" class="ion-activatable ion-no-padding border-radius-10">
+          <ion-ripple-effect></ion-ripple-effect>
+          <img src="../../../assets/icon/logo.png" class="img icon-img mr-10">
+          <ion-label>
+            <div>
+              <h3 class="text08 text-black">OLUWASEUN JOHN - 5050175156</h3>
+            </div>
+            <p class="shorten text-dark text08 mtt-02">FIDELITY</p>
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list> -->
+    <ng-container *ngIf="beneficiaries">
+      <div *ngFor="let beneficiary of beneficiaries">
+        <ion-list class="w100 pb-02 mb-10  border-bottom" (click)="go(beneficiary)">
+          <ion-item-sliding mode="ios" class="ion-no-margin ion-no-padding" (ionSwipe)="deleteBeneficiary(beneficiary)">
+            <ion-item-options mode="ios" side="end" style="border-bottom: none;" class="ion-no-margin ion-no-padding">
+              <ion-item-option mode="ios" color="none" (click)="deleteBeneficiary(beneficiary)" expandable>
+                <ion-icon mode="ios" name="trash" mode="ios" color="danger" class="text20"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+            <ion-item lines="none" class="ion-activatable ion-no-padding border-radius-10">
+              <ion-ripple-effect></ion-ripple-effect>
+              <img src="../../../assets/icon/limit-vector.svg" class="img icon-img mr-10">
+              <ion-label>
+                <div>
+                  <h3 class="text08 text-black">{{beneficiary.beneficiary_name}} - {{beneficiary.beneficiary_account_number}}</h3>
+                </div>
+                <p class="shorten text-dark text08 mtt-02">{{beneficiary.bank_name}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+      </div>
+    </ng-container>
+  </div>
+
+</ion-content>

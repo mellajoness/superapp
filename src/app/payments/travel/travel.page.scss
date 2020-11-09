@@ -1,0 +1,113 @@
+// ion-card {
+//     border: thin solid black;
+// }
+
+.h-250 {
+  height: 250px;
+}
+
+.h-95 {
+  height: 95px;
+}
+
+.w-120 {
+  width: 120px !important;
+}
+
+.w-125 {
+  width: 125px;
+}
+
+.mh-16 {
+  margin-left: -16px;
+  margin-right: -10px;
+}
+
+.slide-img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
+.page-heading {
+  margin-bottom: 50px;
+}
+
+.absolute {
+  display: absolute;
+}
+
+.card-label {
+  position: absolute;
+  bottom: -15px;
+  border: thin solid white;
+  border-radius: 5px;
+  background-color: white;
+  color: var(--ion-color-primary);
+  padding: 5px;
+}
+
+.text-08 {
+  font-size: 0.8rem;
+}
+
+.text-12 {
+  font-size: 0.8rem;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.tab-active {
+  margin-top: 0px;
+  border-radius: 5px;
+  border: 2px solid var(--ion-color-primary);
+}
+
+.text-center {
+  text-align: center;
+}
+
+ion-card {
+  border-radius: 0px;
+}
+
+ion-card-subtitle {
+  font-size: 18px;
+}
+
+ion-card-title {
+  font-size: 18px;
+}
+
+.card-content-date {
+  font-size: 9px;
+}
+
+.airline-logo {
+  width: 27px;
+  height: 23px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.box-shadow {
+  box-shadow: 0px 30px 60px rgba(55, 78, 179, 0.3);
+}
+
+.manage-booking {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 70%;
+  padding: 14px 30px;
+  color: #0E237E;
+}
+
+.img-manage-booking  {
+  width: 100%;
+}

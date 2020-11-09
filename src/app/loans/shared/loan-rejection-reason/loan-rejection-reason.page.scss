@@ -1,0 +1,111 @@
+
+ion-content {
+    --ion-text-color: var(--ion-color-primary-contrast);
+    --background-size: cover;
+    --background-repeat: no-repeat;
+  }
+  
+  ion-content ion-item {
+    --background: transparent !important;
+  }
+  
+  ion-item {
+    --border-color: var(--ion-color-primary-contrast);
+  }
+  
+  ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    ion-back-button{
+      --color: #0E237E;;
+    }
+    height: 55px;
+  }
+  
+    .logo {
+      // text-align: center;
+      justify-content: center;
+      display: flex;
+      // margin-top: 30px;
+      ion-img {
+       
+        width: 68%;
+  padding-top: 20px;
+  display: flex;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+      }
+    }
+  
+    .center{
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  
+    .reason{
+        text-align: center;
+        margin: 40px 5px;
+        p{
+          font-family: Gilroy-Medium;
+          font-size: 14px;
+          line-height: 21px;
+          line-height: 8px;
+          color: gray;
+        }
+    }
+  
+    // boxes
+  
+    .card{
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      button {
+        width: 85%;
+        height: 50px;
+        border: 1px solid gray;
+        box-sizing: border-box;
+        border-radius: 5px;
+        background-color: transparent !important;
+        color: gray;
+        p {
+          font-family: Gilroy-Medium;
+          font-size: 18px;
+          line-height: 21px;
+          font-size: 13px;
+        }
+      }
+    }
+  
+    .changed {
+      margin-top: 30px;
+      text-align: center;
+      p {
+        font-family: Gilroy-Medium;
+        font-size: 18px;
+        line-height: 21px;
+          font-size: 13px;
+          line-height: 16px;
+          color: gray;
+      }
+    }
+    ion-header ion-toolbar:first-of-type {
+      padding-top: 0px;
+      padding-left: 15px;
+      padding-right: 15px;
+  }
+  .confirmtext{
+    font-family: Gilroy-Medium;
+    font-size: 18px;
+    line-height: 21px;
+    color: #0E237E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

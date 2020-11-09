@@ -1,0 +1,64 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div [routerLink]="['/','investments', 'save', 'group-detail']" routerDirection="back" class="icon-container nav">
+        <img src="assets/icon/left-arrow.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3>Leaderboard</h3>
+      </div>
+      <div class="icon-container settings">
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="isloading" *ngIf="!users">
+    <div class="user-card-container">
+      <div class="user-card">
+        <ion-skeleton-text animated style="width: 100%; height: 100%;"></ion-skeleton-text>
+      </div>
+    </div>
+    <div class="members-container">
+      <div class="members-card">
+        <ion-skeleton-text animated style="width: 100%; height: 100%;"></ion-skeleton-text>
+      </div>
+      <div class="members-card">
+        <ion-skeleton-text animated style="width: 100%; height: 100%;"></ion-skeleton-text>
+      </div>
+    </div>
+  </div>
+
+  <div class="isloaded" *ngIf="users">
+    <div class="user-card-container">
+      <div class="user-card">
+        <div class="name">
+          <p>{{currentUser?.fullName}}</p>
+          <p class="status" *ngIf="!userIsAdmin">You: Member</p>
+          <p class="status" *ngIf="userIsAdmin">You: Admin</p>
+        </div>
+        <div class="month-amount">
+          <p><span id="currency">₦</span>{{currentUser?.principalBalance | number}}</p>
+          <p id="month">{{currentUser?.lastTrxnDate | date:'LLLL'}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="members-container">
+      <div class="members-card" *ngFor="let user of filteredUsers; let rowIndex=index">
+        <p>{{rowIndex+1}}</p>
+        <div class="name">
+          <p>{{user?.fullName}}</p>
+        </div>
+        <div class="month-amount">
+          <p id="amount"><span id="currency">₦</span>{{user?.principalBalance | number}}</p>
+          <p id="month">{{user?.lastTrxnDate | date:'LLLL'}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  
+</ion-content>

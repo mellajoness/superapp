@@ -1,0 +1,68 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Exchange Rates</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="box">
+      <ion-list class="w100">
+        <!-- <ng-container> -->
+        <ng-container *ngIf="!loading && rates">
+          <div class="mb-10" *ngFor="let rate of rates">
+            <ion-item mode="ios" lines="none" class="ion-no-padding bg-white border-radius-5 padding-vertical">
+              <div class="icon mx-15">
+                <img [src]="rate.currencyCode == 'USD' ? '../../../assets/icon/usa.svg' : rate.currencyCode == 'GBP' ? '../../../assets/icon/uk.svg' : '../../../assets/icon/europe.png'" class="img icon-img">
+              </div>
+              <ion-label mode="ios">
+                <div style="display: flex; justify-content: space-between;">
+                  <div>
+                    <h3 class="text08 text-dark"> {{rate.currencyCode == 'USD' ? 'United State of America' : rate.currencyCode == 'GBP' ? 'United Kingdom' : 'Europe'}}</h3>
+                  </div>
+                  <div>
+                    <h3 class="shorten text08 text-dark fw600">₦{{rate.price}}</h3>
+                  </div>
+                </div>
+                <h3 class="shorten text08 text-dark" style="margin-top: 5px;">1 {{rate.currencyCode}}</h3>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="loading">
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+          <div class="mb-10">
+            <ion-skeleton-text class="border-radius-10" animated style="height: 55px;"></ion-skeleton-text>
+          </div>
+        </ng-container>
+      </ion-list>
+    </div>
+
+  </div>
+</ion-content>

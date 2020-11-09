@@ -1,0 +1,143 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div [routerLink]="['/','investments', 'landing']" routerDirection="back" class="icon-container nav">
+        <img src="assets/icon/left-arrow.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3>{{plan.goalName}}</h3>
+      </div>
+      <div class="icon-container settings">
+        <ion-icon *ngIf="plan.isGoalAccountFunded === false"  (click)="presentDeleteGoal()" style="font-size: 20px;" color="primary" name="trash-outline"></ion-icon>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="plan-item-container">
+    <div class="plan-item">
+        <div class="plan-item-header-section">
+          <h5>Goal Balance <span class="lock-icon"><img src="assets/icon/lock-icon.svg" alt=""></span></h5>
+          <!-- <span class="savings-type">Group</span> -->
+          <ion-badge class="savings-type-badge">{{plan.savingsType}}</ion-badge>
+        </div>
+        <div class="status">
+            <h3 class="account-balance"><span id="currency"><b>₦</b></span>{{plan.principalContribution | currency: 'NGN': ' '}}</h3>
+        </div>
+        <div class="plan-item-amount-section">
+          <h3 class="account-balance"></h3>
+          <p class="target">Goal Target</p>
+        </div>
+        <div class="pia-title-section">
+          <p class="status-text"*ngIf="plan.isGoalAccountFunded">{{percentageAmount}}% achieved</p>
+          <p class="status-text"*ngIf="!plan.isGoalAccountFunded">0% achieved</p>
+          <h3 class="amount"><span id="currency"><b>₦</b></span>{{plan.targetAmount | currency: 'NGN': ' '}}</h3>
+        </div>
+
+        <div class="progress-container" *ngIf="plan.isGoalAccountFunded">
+          <ion-progress-bar [value]="progress"></ion-progress-bar> 
+        </div>
+      </div>
+</div>
+<div class="action-buttons-container">
+  <div class="top-up" (click)="openTopUp()">   
+    <div class="action-button">
+      <img src="assets/icon/plan-icns/up-arrow.svg" alt="">
+    </div>
+    <p *ngIf="plan.isGoalAccountFunded === true">Top Up</p>
+    <p *ngIf="plan.isGoalAccountFunded === false">Fund</p>
+  </div>
+  <div class="withdraw" (click)="confirmLiquidate()" *ngIf="plan.isGoalAccountFunded === true">
+    <div class="action-button">
+      <img src="assets/icon/plan-icns/down-arrow.svg" alt="">
+    </div>
+    <p>Withdraw</p>
+  </div>
+  <!-- Not funded button -->
+  <div class="withdraw" *ngIf="!plan.isGoalAccountFunded === true">
+    <div class="action-button-inactive">
+      <img src="assets/icon/plan-icns/down-arrow-inactive.svg" alt="">
+    </div>
+    <p>Withdraw</p>
+  </div>
+  <!-- Transaction History Button-->
+  <div class="tran-hist" (click)="openHistory(plan)" routerDirection="forward">
+    <div class="action-button">
+      <img src="assets/icon/plan-icns/t-history.svg" alt="">
+    </div>
+    <p>Transactions</p>
+  </div>
+</div>
+
+<div class="summary-container">
+  <div class="frequency">
+    <p class="monthly">{{plan.frequencyOfSaving}}</p>
+    <p class="freq-amount"><span id="currency"><b>₦</b></span>{{plan.frequencyAmount | currency: 'NGN': ' '}}</p>
+  </div>
+  <hr>
+
+  <div class="hightlight">
+      <div class="row row-1">
+        <div class="column-1">
+          <p>Start Date</p>
+          <h6 *ngIf="plan.startDate !== '0001-01-01T00:00:00'">{{plan.startDate | date:'mediumDate'}}</h6>
+          <h6 *ngIf="plan.startDate === '0001-01-01T00:00:00'">***, ***, 20**</h6>
+        </div>
+        <div class="column-2">
+          <p>Maturity Date</p>
+          <h6 *ngIf="plan.maturityDate !== '0001-01-01T00:00:00'">{{plan.maturityDate | date:'mediumDate'}}</h6>
+          <h6 *ngIf="plan.maturityDate === '0001-01-01T00:00:00'">***, ***, 20**</h6>
+        </div>
+      </div>
+      <div class="row row-2">
+        <div class="column-1">
+            <p>Status</p>
+            <h6 *ngIf="plan.isGoalAccountFunded === true">Active</h6>
+            <h6 *ngIf="!plan.isGoalAccountFunded === true">Inactive</h6>
+        </div>
+        <div class="column-2" *ngIf="!plan?.yieldInterest === false">
+          <p>Interest p.a</p>
+          <h6>{{plan.interestRate}}%</h6>
+        </div>
+      </div>
+  </div>
+
+  <!-- <div class="hightlight" *ngIf="!(plan.savingsType === 'GOALS')">
+      <div class="row row-1">
+        <div class="start-date">
+          <p>Start Date</p>
+          <h6>kgjjgjf</h6>
+        </div>
+        <div class="maturity-date">
+          <p>Maturity Date</p>
+          <h6>***, ***, 20**</h6>
+        </div>
+      </div>
+      <div class="row row-2">
+        <div class="members">
+            <p>Members</p>
+            <h6><span
+              id="currency"></span>jfhfjjf</h6>
+        </div>
+        <div class="intrest">
+          <p>Interest p.a</p>
+          <h6><span
+            id="currency"></span></h6>
+        </div>
+      </div>
+      <div class="row row-3">
+        <div class="plan-status">
+          <p>Status</p>
+          <h6>display frequency</h6>
+        </div>
+        <div class="type">
+            <p>Type</p>
+            <h6>10%</h6>
+        </div>
+      </div>
+  </div> -->
+
+</div>
+
+</ion-content>

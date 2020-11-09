@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-title class="capitalize">{{this.sharedData.travel.cityPlaceholder}} City</ion-title>
+    </ion-toolbar>
+
+    <ion-icon name="close" class="closeicon" (click)="handlers.hide()"></ion-icon>
+
+    <!-- <div class="search">
+        <ion-searchbar class="ion-no-padding" [placeholder]="placeholder" showCancelButton="never" autofocus mode="md"
+            [(ngModel)]="userInput" (ionChange)="getCities()"></ion-searchbar>
+    </div> -->
+    <div class="search">
+
+        <ion-item class="search-bar-item" lines="full">
+            <ion-icon class="ion-padding-horizontal search-icon" name="search-outline" slot="start"></ion-icon>
+            <ion-input class="ion-padding search-bar ion-no-margin" [placeholder]="placeholder" showCancelButton="never"
+                autofocus="true" mode="md" [(ngModel)]="userInput" (ionChange)="getCities()">
+            </ion-input>
+        </ion-item>
+    </div>
+</ion-header>
+
+
+<ion-content>
+    <!-- <div class="border"></div> -->
+
+    <!-- <ion-icon name="close" class="closeicon" (click)="handlers.hide()"></ion-icon>
+    <div class="search">
+        <ion-searchbar class="ion-no-padding searchbar" [placeholder]="placeholder" clearInput="false"
+            showCancelButton="never" autofocus="true" mode="md" detail="false" [(ngModel)]="userInput"
+            (ionChange)="getCities()"></ion-searchbar>
+    </div> -->
+
+    <div class="item-v-center pt-05" *ngIf="showSpinner">
+        <ion-spinner name="crescent"></ion-spinner>
+    </div>
+
+    <ng-container *ngIf="!showSpinner && searchedCities">
+        <ng-container *ngIf="view === 'city'">
+            <ng-container *ngFor="let city of searchedCities">
+                <ion-item class="ion-padding-horizontal" lines="full" (click)="showAirportsInCity(city)">
+                    <ion-label>{{city.name}} ({{city.countryCode}}) - {{city.code}}</ion-label>
+                </ion-item>
+            </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="view === 'airport'">
+            <ng-container *ngFor="let airport of searchedAirports">
+                <ion-item class="ion-padding-horizontal" lines="full" (click)="selectAirport(airport)">
+                    <ion-label>
+                        <h2>{{airport.code}} {{airport.country_code.length > 0 ? ' - (' + airport.country_code + ')' : '' }}</h2>
+                        <p class="ion-text-wrap">{{airport.name}}</p>
+                    </ion-label>
+                </ion-item>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="trupayprimary" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+
+  <div class="parent">
+
+    <ion-item lines="none" class="ion-padding-horizontal pt-15 header trupayprimary">
+      <h3>Accounts</h3>
+      <ion-icon *ngIf="!userValidated" style="margin-top: 5px;" slot="end" name="add-circle" color="trupayprimary"
+        (click)="validateCustomer()"></ion-icon>
+    </ion-item>
+
+    <div class="mt-10">
+      <ion-slides *ngIf="finacleAccounts" mode="ios" pager="ios" [options]="accountSlideOptions">
+        <!-- <ion-slide>
+          <ion-card class="account-card">
+            <ion-img class="icon-trash" src="../../../assets/icon/trash.svg"></ion-img>
+            <ion-card-header>
+              <ion-card-subtitle class="no-transform">Account Balance</ion-card-subtitle>
+              <ion-card-title class="mt-20">N 800,000.00</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="mt-15">
+              5050175840 - Savings
+            </ion-card-content>
+          </ion-card>
+        </ion-slide> -->
+        <ion-slide *ngFor="let account of finacleAccounts; let i = index">
+          <ion-card class="account-card" [style.background-image]="accountBackground['_'+i]">
+            <!-- <ion-img class="icon-trash" src="../../../assets/icon/trash.svg"></ion-img> -->
+            <ion-card-header>
+              <ion-card-subtitle class="no-transform color-white">Account Balance</ion-card-subtitle>
+              <ion-card-title class="mt-20 color-white">₦ {{account.clR_BAL_AMT | currency: 'NGN': ' '}}
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="mt-15">
+              {{account.foracid}} - {{account.schM_TYPE | accounts}}
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+  </div>
+
+

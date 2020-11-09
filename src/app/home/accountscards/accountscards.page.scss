@@ -1,0 +1,32 @@
+.account-card {
+    height: 174px;
+    width: 320px;
+    border-radius: 6px;
+    // background-image: url('../../../assets/imgs/slider/account-card1.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: left;
+    color: white;
+}
+
+.icon-trash {
+    position: absolute;
+    bottom: 19px;
+    right: 23px;
+}
+
+.header {
+    --padding-end: 0px;
+}
+
+.parent {
+    // padding: 20px;
+    background-color: #fafafa;
+    height: 100%;
+    width: 100%;
+}
+
+ion-item {
+    --background: transparent;
+}

@@ -1,0 +1,36 @@
+<ion-split-pane contentId="main-loan">
+  <ion-menu side="start" disabled="false" menuId="loan-menu" contentId="main-loan">
+    <ion-content>
+      <div class="profile-section" padding>
+        <div class="box-wrapper">
+          <div>
+            <ion-avatar>
+          
+              <img *ngIf="!hasProfilePic" src='../../assets/imgs/loan/dummy.png'>
+              <img *ngIf="hasProfilePic" [src]="profilePicture">
+            </ion-avatar>
+          </div>
+          <div>
+            <span>{{userInfo?.FirstName}} {{userInfo?.LastName}}</span>
+            <p>{{userInfo?.EmailAddress}}</p>
+            <p>{{userInfo?.MobilePhone}}</p>
+          </div>
+        </div>
+      </div>
+
+      <ion-menu-toggle auto-hide="false" *ngFor="let p of loanMenu; let i = index">
+        <ion-item lines="none" (click)="openMenuItem(p.url)" detail="false">
+          <ion-img [src]="p.icon"></ion-img>
+          <ion-label>{{p.title}}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <div class="footer">
+        <p (click)="openDisclaimer()">Disclaimer</p>
+        <p (click)="openTermsAndConditions()">Terms and Conditions</p>
+        <p (click)="openfeedback()">Feedback</p>
+      </div>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-loan"></ion-router-outlet>
+</ion-split-pane>

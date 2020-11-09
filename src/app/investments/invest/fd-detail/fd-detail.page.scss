@@ -1,0 +1,131 @@
+.custom-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem .5rem;
+    background-color: #F9F9FA;
+    color: #323A5D;
+}
+
+ion-content, ion-header, ion-toolbar {
+    --background: #F9F9FA;
+}
+
+ion-header ion-toolbar:first-of-type {
+    padding-top: 0 !important; 
+}
+
+
+#currency{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.fd-info-card{
+    padding: 20px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 3px rgba(0,0,0,0.10);
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    h5{
+        color:  #323A5D;
+    }
+
+    h3{
+        font-weight: bolder;
+        color:  #323A5D;
+    }
+}
+
+.action-buttons-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    p{
+        font-size: 13px;
+        color: #323A5D;
+    }
+    .action-button{
+        background-color: #E7EAF6;
+        width: 80px;
+        height: 80px;
+        // text-align: center;
+        display: flex;
+        align-items: center;
+        -webkit-border-top-left-radius: 10px;
+        -webkit-border-bottom-right-radius: 10px;
+        -moz-border-radius-topleft: 10px;
+        -moz-border-radius-bottomright: 10px;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+        img{
+            margin: auto;
+        }
+    }
+}
+
+.withdraw {
+    position: relative;
+    text-align: center;
+}
+
+.caveat-container{
+    padding: 20px;
+    margin: auto;
+    p{
+        margin: 0;
+        font-size: 13px;
+        font-style: italic;
+        color: rgb(236, 51, 51);
+    }
+}
+
+.hightlight {
+    padding: 10px 35px;
+}
+
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    // align-items: center;
+    // width: 100%;
+
+    p{
+        color: #70758e;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    h6{
+        color: #323A5D;
+        font-size: 18px;
+    }
+}
+
+.maturity-date, .type, .intrest  {
+    width: 50%;
+    text-align: end;
+
+}
+.start-date, .members, .plan-status  {
+    width: 50%;
+    text-align: start;
+}
+
+.column-1 {
+    width: 50%;
+    text-align: start;
+}
+.column-2 {
+    width: 50%;
+    text-align: end;
+}

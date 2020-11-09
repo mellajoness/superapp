@@ -1,0 +1,38 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="trupayprimary" [routerLink]="['/', 'home', 'menu']" routerDirection="back">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+
+  <div class="mt-10">
+    <ion-grid>
+      <ion-row class="mb-40 ml-20">
+        <ion-text class="fw600 text15" color="trupayprimary">Settings</ion-text>
+      </ion-row>
+
+      <ion-item lines="full" detail="false">
+        <ion-label class="ml-10 ion-padding-vertical">Enable Notifications</ion-label>
+        <ion-toggle slot="end" color="trupayprimary" (ionChange)="onToggle($event)" [(ngModel)]="toggle_notifications"></ion-toggle>
+      </ion-item>
+
+      <ion-item lines="full" detail="false" *ngIf="sharedData.isBiometericsAvailable" >
+        <ion-label class="ml-10 ion-padding-vertical">Enable Biometrics</ion-label>
+        <ion-toggle slot="end" color="trupayprimary" [(ngModel)]="toggle_biometrics" [value]="toggle_biometrics" (ngModelChange)="toggleBiometrics(toggle_biometrics)" ></ion-toggle>
+      </ion-item>
+
+    </ion-grid>
+  </div>
+
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="trupayprimary" (click)="handlers.navigate().back()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white">
+      <div class="color-trupayprimary title">Tax</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="pb-10">
+
+      <ng-container>
+
+        <div class="item-wrapper mt-15">
+          <ion-label class="stacked-label">Reference ID</ion-label>
+          <ion-input class="pt-05 pl-20" clear-input="true"></ion-input>
+        </div>
+
+        <!-- <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.phone}">
+          <ion-label class="stacked-label">Amount</ion-label>
+          <ion-input class="pt-05 pl-20" type="tel" inputmode="tel" pattern="tel" clear-input="true"
+            [(ngModel)]="passengerDetails.phone"></ion-input>
+        </div> -->
+
+        <!-- <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.dob}">
+          <ion-label class="stacked-label">Date of Birth</ion-label>
+          <ion-datetime color="trupayprimary" class="pt-10 pl-20" mode="ios" [min]="todaysDate | travelMethods: 'passengerDOB' : formHeadings[index].type : 'min'"
+          [max]="todaysDate | travelMethods: 'passengerDOB' : formHeadings[index].type : 'max'" displayFormat="DD MMM YYYY"
+            [(ngModel)]="passengerDetails.dob"></ion-datetime>
+        </div> -->
+
+        <!-- <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.email}">
+          <ion-label class="stacked-label">Email Address</ion-label>
+          <ion-input class="pt-05 pl-20" type="email" inputmode="email" pattern="email" clear-input="true"
+            [(ngModel)]="passengerDetails.email"></ion-input>
+        </div> -->
+
+      </ng-container>
+
+    </div>
+    
+    <ion-button required class="no-transform payment-button mt-30" fill="clear" expand="block" (click)="verify()">
+      Verify Payer
+    </ion-button>
+  </div>
+
+</ion-content>

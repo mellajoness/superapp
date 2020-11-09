@@ -1,0 +1,111 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="back()"
+        routerDirection="back">
+        <img src="assets/icon/left-arrow2.svg" alt="" style="height: 95%;">
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons class="pr-10" slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="my-content">
+  <div class="parent">
+    <div class="instruction-container">
+      <h4>Security Questions</h4>
+    </div>
+
+    <div class="form-container">
+
+      <form *ngIf="!answerSQnA" [formGroup]="createSecretQuestionsForm">
+
+        <div class="ion-margin-top">
+          <ion-label class="label" position="fixed">Security Question 1</ion-label>
+          <ion-select [(ngModel)]="q1" formControlName="q1" class="w100 mtt-05" interface="popover" mode="ios" placeholder="Select Question">
+            <ion-select-option value="custom">Add your Question</ion-select-option>
+            <ng-container *ngFor="let question of secretQuestions">
+              <ion-select-option *ngIf="question.isActive && question.groupId === 1" [value]="question.question">{{question.question}}</ion-select-option>
+            </ng-container>
+          </ion-select>
+          <ion-input *ngIf="q1==='custom'" formControlName="cq1" class="ion-margin-top" placeholder="Add Question"
+            required type="text"> </ion-input>
+          <ion-input class="ion-margin-top" formControlName="a1" placeholder="Answer" required type="password"> </ion-input>
+        </div>
+
+        <div class="ion-margin-top">
+          <ion-label class="label" position="fixed">Security Question 2</ion-label>
+          <ion-select [(ngModel)]="q2" formControlName="q2" class="w100 mtt-05" interface="popover" mode="ios" placeholder="Select Question">
+            <ion-select-option value="custom">Add your Question</ion-select-option>
+            <ng-container *ngFor="let question of secretQuestions">
+              <ion-select-option *ngIf="question.isActive && question.groupId === 2" [value]="question.question">{{question.question}}</ion-select-option>
+            </ng-container>
+          </ion-select>
+          <ion-input *ngIf="q2==='custom'" formControlName="cq2" class="ion-margin-top" placeholder="Add Question"
+            required type="text"> </ion-input>
+          <ion-input class="ion-margin-top" formControlName="a2" placeholder="Answer" required type="password"> </ion-input>
+        </div>
+
+        <div class="ion-margin-top">
+          <ion-label class="label" position="fixed">Security Question 3</ion-label>
+          <ion-select [(ngModel)]="q3" formControlName="q3" class="w100 mtt-05" interface="popover" mode="ios" placeholder="Select Question">
+            <ion-select-option value="custom">Add your Question</ion-select-option>
+            <ng-container *ngFor="let question of secretQuestions">
+              <ion-select-option *ngIf="question.isActive && question.groupId === 3" [value]="question.question">{{question.question}}</ion-select-option>
+            </ng-container>
+          </ion-select>
+          <ion-input *ngIf="q3==='custom'" formControlName="cq3" class="ion-margin-top" placeholder="Add Question"
+            required type="text"> </ion-input>
+          <ion-input class="ion-margin-top" formControlName="a3" placeholder="Answer" required type="password"> </ion-input>
+        </div>
+
+        <div *ngIf="incompleteRegistration || updateSQnA" class="ion-margin-top">
+          <ion-label class="label" position="fixed">One-Time Password (OTP)</ion-label>
+          <ion-input class="ion-margin-top" formControlName="otp" placeholder="Enter One-Time Password (OTP)" required type="tel" inputmode="numeric"> </ion-input>
+          <ion-text class="mtt-02" (click)="requestOTP(true)">
+            Resend OTP
+          </ion-text>
+        </div>
+
+        <div class="button-container ion-margin-top">
+          <button type="submit" [disabled]="!createSecretQuestionsForm.valid" (click)="addOrUpdate()" id="login-btn">Next</button>
+        </div>
+      </form>
+
+      <form *ngIf="answerSQnA" [formGroup]="answerSecretQuestionsForm">
+
+        <div class="mt-20">
+          <ion-text>
+            <p class="text12">Kindly answer the security questions</p>
+          </ion-text>
+        </div>
+
+        <div class="mt-20" *ngIf="q1">
+          <ion-label class="label" position="fixed" color="primary">{{q1}}</ion-label>
+          <ion-input class="ion-margin-top" formControlName="a1" placeholder="Answer" required type="password"> </ion-input>
+        </div>
+
+        <div class="mt-20" *ngIf="q2">
+          <ion-label class="label" position="fixed" color="primary">{{q2}}</ion-label>
+          <ion-input class="ion-margin-top" formControlName="a2" placeholder="Answer" required type="password"> </ion-input>
+        </div>
+
+        <div class="mt-20" *ngIf="q3">
+          <ion-label class="label" position="fixed" color="primary">{{q3}}</ion-label>
+          <ion-input class="ion-margin-top" formControlName="a3" placeholder="Answer" required type="password"> </ion-input>
+        </div>
+
+        <div class="button-container ion-margin-top">
+          <button type="submit" [disabled]="!answerSecretQuestionsForm.valid" (click)="verify()" id="login-btn2">Verify</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</ion-content>

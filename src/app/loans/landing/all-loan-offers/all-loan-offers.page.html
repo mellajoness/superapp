@@ -1,0 +1,51 @@
+
+
+  <ion-header >
+    <!-- <ion-toolbar> -->
+  <div class="header">
+    <ion-icon name="arrow-back-outline" class="menu"  (click)="goBack()" ></ion-icon>
+    <div class="loanstext">Loan offer</div>
+    <ion-icon name="" class="menu"></ion-icon>
+  </div>
+<!-- </ion-toolbar> -->
+</ion-header>
+
+
+ <div class="body">
+
+  <img src="../../../assets/imgs/loan/loanofferprogress1.png"  class="photo">
+
+  <div class="headerbox" *ngIf="hasList">
+     <div class="headerboxtext">You qualify for a total loan of up to </div>
+     <div class="totalloanamount">&#8358;{{totalEligibleAmount | number:'1.0-0'}}</div>
+  </div>
+</div>
+
+
+<ion-content>
+  <div class="content">
+  <ion-grid>
+    <ion-row>
+    <ion-col   *ngFor="let loan of loanLists; let i = index" size="4" no-padding >
+      <div class="card" *ngIf="hasList" >
+    <div class="loanaction"  >
+   <div  (click)="doEligibiltyCheck(loan)" >
+    <div class="requesttext">{{loan.loan_Category}}</div>
+    <div class="loanactiontitle">&#8358;{{loan.eligible_Amount | number:'1.0-0'}}</div>
+    <div class="interest">@ {{loan.interestRate}}% {{loan.rateDuration}}</div>
+   </div>
+
+  </div>
+</div>
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+
+  <div class="noLoan" *ngIf="noList">
+
+    <p>You currently have no loan offer.</p>
+
+  </div>
+
+</div>
+</ion-content>

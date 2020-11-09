@@ -1,0 +1,24 @@
+.modal{
+    text-align: center;
+}
+
+.status-icon-container{
+    margin: 10px auto;
+}
+
+.status-text{
+    text-align: center;
+    padding: 20px;
+}
+
+#ok-btn{
+    margin: auto 10px;
+    --border-width: 1px;
+    --border-style: solid;
+    --border-color:#560BD0;
+    --background: #ffffff;
+    --color: #560BD0;
+    width: 40%;
+    --padding-bottom: 20px;
+    --padding-top: 20px;
+}

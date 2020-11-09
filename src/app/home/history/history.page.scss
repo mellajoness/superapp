@@ -1,0 +1,292 @@
+ion-content,
+ion-toolbar,
+ion-header {
+  --background: #f9f9fa;
+}
+
+ion-toolbar {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+a {
+  margin-right: 5px;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+h4 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+h6 {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  font-weight: 100;
+  line-height: 1;
+  font-size: 14px;
+}
+
+.textIcon {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-greeting-container {
+  margin-left: 20px;
+}
+
+.amount-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.profile-section {
+  display: flex;
+  // margin-top: 10px;
+}
+
+.profile-greeting-container {
+  color: #323a5d;
+}
+
+.profile-img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  box-shadow: 0px 5px 10px rgba(64, 50, 93, 0.15);
+  border: 5px solid #0e237e;
+}
+
+.wallet-card-container {
+  text-align: center;
+  padding: 8px 5px;
+}
+
+.wallet-item {
+  padding: 20px;
+  width: 90%;
+  margin: auto;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05), 0 2px 3px rgba(0, 0, 0, 0.05) !important;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  flex-direction: column;
+  background: #0e237e;
+  text-align: center;
+  border-radius: 0 15px;
+  min-height: 86px;
+  box-shadow: 15px 15px 30px rgba(179, 179, 179, 0.15);
+}
+
+.wallet-item-2 {
+  padding: 30px 40px;
+  min-height: 86px;
+  width: 90%;
+  margin: auto;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05), 0 2px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  // flex-direction: column;
+  background: #334cb3;
+  text-align: center;
+  justify-content: space-between;
+  border-radius: 0 15px;
+  box-shadow: 15px 15px 30px rgba(179, 179, 179, 0.15);
+}
+
+.plus {
+  height: 15px;
+  width: 15px;
+  color: #334cb3;
+  background: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.your-apps-container {
+  text-align: center;
+  padding: 8px 5px;
+}
+
+.your-app-item {
+  padding: 8px 16px;
+  width: 90%;
+  min-height: 53px;
+  max-height: 53px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05), 0 2px 3px rgba(0, 0, 0, 0.05);
+  margin: auto;
+  margin-bottom: 12px;
+  display: flex;
+  color: #323a5d;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 0 15px;
+  box-shadow: 15px 15px 30px rgba(179, 179, 179, 0.15);
+  h6 {
+    color: #66ad2c;
+  }
+}
+
+.marquee {
+  height: 25px;
+  width: 420px;
+
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee div {
+  display: block;
+  width: 100%;
+  height: 30px;
+
+  position: absolute;
+  overflow: hidden;
+
+  animation: marquee 8s linear infinite;
+}
+
+.marquee span a p {
+  float: left;
+  margin-left: 10px;
+  font-size: 12px;
+  // width: 50%;
+}
+
+@keyframes marquee {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.offers {
+  display: flex;
+  flex-direction: row;
+
+  a {
+    color: rgba(50, 58, 93, 0.7);
+    text-decoration-line: none;
+    // border-bottom: 1px solid rgba(50, 58, 93, 0.7);
+  }
+
+  p {
+    font-size: 13px;
+  }
+}
+
+ion-spinner {
+  --color: #fff;
+}
+
+.i-tab-bar {
+  border-top: 2px solid #0E237E !important;
+  border-radius: 15px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+ion-card {
+  padding: 8px !important;
+  padding-bottom: 58px !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+  --padding: 0 !important;
+}
+
+.h100 {
+  height: 100%;
+}
+
+ion-content {
+  --overflow: hidden;
+}
+
+.scroll {
+  overflow: auto;
+  // padding-bottom: 300px;
+  // padding-top: 10px;
+  height: 100%;
+}
+
+.btn-view-all {
+  border-radius: 5px;
+}
+
+.h60 {
+  height: 60%;
+}
+
+.h50 {
+  height: 50%;
+}
+
+.h40 {
+  height: 40%;
+}
+
+.container-flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+}
+
+
+@media screen and (max-height : 800px) {
+    .h50 {
+        height: auto !important;
+    }
+
+    ion-content {
+        --overflow: auto;
+    }
+}
+
+.fidelitygreen {
+    color: #66ad2c;
+}
+
+.fidelityblue {
+    color: #0E237E;
+}
+
+.fidelityred {
+    color: #E52836;
+}

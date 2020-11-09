@@ -1,0 +1,143 @@
+.header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15PX;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+.bar-header {
+    border: 0px !important;
+    border-bottom-color: transparent !important;
+    background-image: none !important;
+    border-bottom: none !important;
+  }
+.menu{
+    font-size:1.7em;
+    color: gray;
+ }
+ .history{
+    font-family: Gilroy;
+    font-size: 18px;
+    line-height: 21px;
+    color: #0E237E;
+    padding-top:2px;
+    font-weight: bold;
+    }
+ .you{
+    font-family: Gilroy;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #9C9E9B;
+    padding-left: 20px;
+    padding-right:4px;
+    padding-top: 7px;
+    padding-bottom: 15px;
+ }
+ 
+ .loan{
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: right;
+    color: #0E237E;
+ }
+ .loanhistorydiv{
+    display: flex;
+    padding-top: 40px;
+ }
+ .loantype{
+    font-family: Gilroy;
+    font-style: normal;
+    font-size: 0.8em;
+    line-height: 17px;
+    color: #9C9E9B;
+    padding-left: 2PX;
+    padding-right:5px;
+    padding-top: 7px;
+ }
+ .firstrow{
+     display: flex;
+     justify-content: space-between;
+ }
+ .body{
+     padding-top: 20px;
+     padding-left: 20px;
+     padding-right: 15px;
+ }
+ .transid{
+    font-family: Gilroy-Medium;
+    font-size: 11px;
+    line-height: 12px;
+    color: #000000;
+    padding-right:28px;
+ }
+ .moneyicon{
+     display: flex;
+ }
+ .disbmoneyrow{
+     display: flex;
+     justify-content: space-between;
+     padding-top:7px;
+}
+.loandistext{
+    font-family: Gilroy-Medium;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 44px;
+}
+.money{
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FF0000;
+}
+.moneycredit{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color:#34AA44;
+}
+.upicon{
+    color: red;
+    font-size: 1.6em;
+    position: relative;
+    bottom: 19px;
+  }
+  .downicon{
+    color: #34AA44;
+    font-size: 1.6em;
+    position: relative;
+    bottom: 19px;
+  }
+  .noactivity{
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 40px;
+      justify-content: center;
+      display: flex;
+  }
+  .status{
+    font-family: Gilroy;
+    font-size: 1.1em;
+    line-height: 12px;
+    color: #9C9E9B;
+    padding-right:28px;
+  }
+ 
+ 
+ 
+ 

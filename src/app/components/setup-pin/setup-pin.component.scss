@@ -1,0 +1,91 @@
+$color-primary:  #0E237E;
+.custom-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem 1rem;
+}
+
+.form-container{
+    margin-top: 10%;
+    padding: 20px;
+    height: auto;
+}
+
+ng-otp-input[type=number] {
+    -webkit-text-security: disc;
+}
+
+.pin-container{
+    margin-top: 30px;
+    text-align: center;
+    p {
+        color: #323A5D;
+    }
+}
+
+.clear-input-container{
+    margin: 30px auto;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .clr-btn{
+        --padding-end: 20px;
+        --padding-start: 20px;
+        --padding-top: 10px;
+        --padding-bottom: 10px;
+    }
+}
+
+.submit-button-container{
+    margin-top: 40px;
+    width: 100%;
+    // padding: 10px;
+
+    ion-button{
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    width: 100%;
+    }
+
+}
+
+.form-button-item {
+    --min-height: 100px;
+}
+
+.instruction-container{
+    text-align: center;
+    color: #323A5D;
+}
+.input-container{
+    // padding: 0px 20px;
+    margin-top: 35px;
+}
+
+.button-container {
+    // padding: 20px;
+}
+
+.payment-button {
+    background-color: #0E237E !important;
+    color: #fff;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.section-header {
+    // padding: 20px 5px 0px 0px;
+    color: #0E237E;
+}
+
+.parent {
+    padding: 20px;
+    background-color: #fafafa;
+    height: 100%;
+    width: 100%;
+}

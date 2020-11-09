@@ -1,0 +1,153 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Wallet</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="pageReady">
+    <div class="parent">
+      <div class="banner">
+        <div class="wallet-box item-v-center">
+          <img src="../../../assets/icon/wallet/wallet.png" class="img">
+        </div>
+        <div class="text-center wallet-bal w100">
+          <div class="mb-05">
+            <ion-text>Wallet Balance</ion-text>
+          </div>
+          <div>
+            <ion-text *ngIf="walletData" class="fw700">&#8358;{{walletData.wallet_balance.toLocaleString()}}
+            </ion-text>
+            <ion-text *ngIf="!walletData" class="fw700">&#8358;20,000:00</ion-text>
+          </div>
+        </div>
+      </div>
+
+      <div class="banner-white">
+        <ion-row class="w100">
+          <!-- <ion-col size="3" (click)="go('payments/wallet/contacts', '', 'requestmoney')"> -->
+          <ion-col size="3" (click)="go('payments/comingsoon', '', 'requestmoney')">
+            <div class="item-v-center">
+              <div class="item-v-center mb-05 frame1">
+                <img src="../../../assets/icon/wallet/receive.png" class="img">
+              </div>
+            </div>
+            <div class="text-center text08">
+              Request<br>Money
+            </div>
+          </ion-col>
+          <ion-col size="3" (click)="go('payments/wallet/withdrawal', 'setup', 'withdrawal')">
+            <div class="item-v-center">
+              <div class="item-v-center mb-05 frame2">
+                <img src="../../../assets/icon/wallet/pay.png" class="img">
+              </div>
+            </div>
+            <div class="text-center text08">
+              Withdraw
+            </div>
+          </ion-col>
+          <ion-col size="3" (click)="presentModal('fund')">
+            <div class="item-v-center">
+              <div class="item-v-center mb-05 frame3">
+                <img src="../../../assets/icon/wallet/wallet-b.png" class="img">
+              </div>
+            </div>
+            <div class="text-center text08">
+              Fund<br>Wallet
+            </div>
+          </ion-col>
+          <ion-col size="3" (click)="presentModal('transfer')">
+            <div class="item-v-center">
+              <div class="item-v-center mb-05 frame4">
+                <img src="../../../assets/icon/wallet/exchange.png" class="img">
+              </div>
+            </div>
+            <div class="text-center text08">
+              Transfer
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div class="item-space-between main">
+        <div class="text-black">
+          <ion-text class="fw700">
+            Recent Transactions  
+          </ion-text>
+        </div>
+        <div *ngIf="transactionData && transactionData.length > 10" (click)="go('payments/wallet/transactions', '', '')">
+          <ion-text>
+            View All
+          </ion-text>
+        </div>
+      </div>
+    </div>
+
+    <div class="parent-2 scroll" scrollY="true">
+      <ng-container *ngIf="transactionData && transactionData.length !== 0">
+        <div>
+          <ion-list class="w100 mb-10" mode="ios" *ngFor="let transaction of shortenTransactionData">
+            <ion-item lines="none" class="ion-activatable ion-no-padding border-radius-10">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="item-v-center text-center text08 mr-10"
+                [ngClass]="transaction.tran_type === 'Debit' ? 'icon-img-red' : 'icon-img-green'">
+                <ion-text class="icon-text">{{transaction.tran_type}}</ion-text>
+              </div>
+              <ion-label>
+                <div>
+                  <h3 class="text08 text-black">{{transaction.receiver_fullname}}</h3>
+                </div>
+                <p class="shorten text-dark text08 mtt-02">{{transaction.tran_particular_2}}</p>
+              </ion-label>
+              <ion-label>
+                <div class="shift-right">
+                  <h3 class="text1" [ngClass]="transaction.tran_type === 'Debit' ? 'text-red' : 'text-green'">
+                    <span [innerHTML]="transaction.currency | currencyConverter"> </span>
+                    <span [innerHTML]="transaction.tran_amount.toLocaleString()"> </span>
+                  </h3>
+                </div>
+                <p class="shorten text-dark shift-right text08 mtt-02">{{transaction.tran_time}}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="!transactionData || (transactionData && transactionData.length === 0)">
+        <div class="mt-40 text-center item-v-center">
+          <h5>You currently have no transaction</h5>
+        </div>
+      </ng-container>
+
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!pageReady">
+    <div class="parent">
+      <div><ion-skeleton-text animated class="banner-skeleton"></ion-skeleton-text></div>
+      <div><ion-skeleton-text animated class="banner-white-skeleton"></ion-skeleton-text></div>
+      <div class="item-space-between main">
+        <div class="text-black"><ion-text class="fw700"></ion-text></div>
+        <div><ion-text></ion-text></div>
+      </div>
+    </div>
+  
+    <div class="parent-2 scroll" scrollY="true">
+      <div>
+        <ion-list class="ion-no-padding w100 mb-10" *ngFor="let item of [0,1,2,4,5,6,7,8,9]">
+          <div><ion-skeleton-text animated class="item-skeleton"></ion-skeleton-text></div>
+        </ion-list>
+      </div>
+    </div>
+  </ng-container>
+
+</ion-content>

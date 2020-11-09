@@ -1,0 +1,52 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Waste Management</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div>
+      <div class="box" (click)="pay('waste', 'edo')">
+        <div class="firstbox">
+          <img src="../../assets/icon/billspayments/edo.png" class="img">
+          <div class="text">Edo State Waste Management</div>
+        </div>
+      </div>
+  
+      <div class="box" (click)="pay('waste', 'lawma')">
+        <div class="firstbox">
+          <img src="../../assets/icon/billspayments/lawma.png" class="img">
+          <div class="text">Lagos Waste Management Authority</div>
+        </div>
+      </div>
+
+      <div class="box" (click)="pay('waste', 'zlga')">
+        <div class="firstbox">
+          <img src="../../assets/icon/billspayments/zlga.png" class="img">
+          <div class="text">ZLGA Kaduna Waste Levy</div>
+        </div>
+      </div>
+
+      <div class="box-1" (click)="pay('waste', 'zlga')">
+        <div class="firstbox">
+          <img src="../../assets/icon/billspayments/zlga.png" class="img">
+          <div class="text">ZLGA Ondo State Waste Levy</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

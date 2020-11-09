@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border ion-margin-top ion-padding" mode="ios">
+  <ion-toolbar mode="ios">
+
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="primary" (click)="handlers.navigate().back()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- <ion-title>Travel!!</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin ion-padding">
+  <div class="pl-10 pr-10">
+    <ion-item lines="none" class="ion-no-padding ion-padding-end page-heading ion-margin-end">
+      <h3>Kindly input your flight PNR to manage your booking</h3>
+    </ion-item>
+  
+    <div class="item-wrapper">
+      <ion-label class="stacked-label">PNR</ion-label>
+      <ion-input class="pt-05 pl-20" clear-input="true" [(ngModel)]="pnr"></ion-input>
+    </div>
+  
+    <ion-button required class="no-transform mt-40" color="trupaysecondary" (click)="getPNR()">
+      Proceed
+    </ion-button>
+  </div>
+
+</ion-content>

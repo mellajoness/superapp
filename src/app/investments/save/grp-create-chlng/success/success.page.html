@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+      <div class="custom-header">
+        <div >
+          <!-- <img src="assets/icon/left-arrow.svg" alt=""> -->
+        </div>
+        <div class="header-title">
+          <h3></h3>
+        </div>
+        <div class="icon-container">
+            <!-- <img src="assets/icon/cog.svg" alt=""> -->
+        </div>
+      </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="thumb-container">
+    <img src="assets/icon/challenge-icns/success-thumb.svg">
+  </div>
+
+  <div class="success-message">
+    <h3>{{groupInfo.groupName}} challenge was created successfully.</h3>
+  </div>
+
+  <div class="instruction-container">
+    <p>Use the code below to invite your friends to join the group</p>
+  </div>
+
+  <div class="code-container">
+    <h4>{{groupInfo.groupCode}}</h4>
+  </div>
+
+  <div class="shareButton-container">
+    <ion-button class="shareBtn" expand="block" style="margin:auto" (click)="socialShare()"> Share Code
+    </ion-button>
+  </div>
+
+  <div class="proceed-button-container" (click)="navToLanding()">
+    <h6>Proceed to Group</h6>
+  </div>
+
+</ion-content>

@@ -1,0 +1,171 @@
+.header{
+  display:flex;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15PX;
+}
+.menu{
+  font-size:1.7em;
+  color: gray;
+}
+.loanstext{
+  font-family: Gilroy;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 1.1em;
+    line-height: 22px;
+    color: #3348A1;
+    padding-left: 20px;
+    align-items: center;
+    display: flex;
+ }
+ .body{
+     padding-left: 15px;
+     padding-right: 15px;
+     padding-top: 60px;
+ }
+ .photo{
+  width: 99%;
+  padding-top: 20px;
+ }
+ .headerbox{
+  background-color: #0E237E;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+ }
+ .headerboxtext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  padding-top:20px;
+  padding-right: 20px;
+  color: #9C9E9B;
+ }
+ .totalloanamount{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom:20px;
+  padding-left: 15px;
+  padding-right: 15px;
+ }
+ .loanaction{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.box{
+  height: 130px;
+  border-radius: 5px;
+  width: 48%;
+  border: 1px solid #AAAAAA;
+  box-sizing: border-box;
+}
+.loanactiontitle{
+  font-family: Gilroy;
+  font-size: 1.2em;
+  line-height: 16px;
+  color: #0E237E;
+  font-weight: bold;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 5px;
+}
+.requesttext{
+  font-family: Gilroy;
+  font-size: 0.9em;
+  line-height: 16px;
+  color:#9C9E9B;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 5px;
+}
+.border{
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+
+
+
+
+  .please{
+      padding-top:66px;
+      padding-left:20px;
+      text-align: center;
+      padding-right: 20px;
+  }
+
+  .money{
+    font-family: Lato;
+    font-style: normal;
+    font-weight:bold;
+    padding-top:20px;
+    padding-left:20px;
+    text-align: center;
+    padding-right: 20px;
+    font-size: 1.4em;
+}
+  .parent{
+      padding-top:67px;
+      margin-left: 20px;
+      margin-right: 20px;
+  }
+  .btn{
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    border-radius: 5px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 53px;
+    background-color: #0E237E
+  }
+  .text{
+    font-family: Lato;
+    font-style: normal;
+    font-weight:bold;
+    font-size:1.0em;
+    line-height: 17px;
+    color: white;
+   
+  }
+
+//   ion-item ion-input {
+//     --color: #ffffff;
+//     font-family: Lato;
+//     font-style: normal;
+//     font-weight: bold;
+//     font-size: 13px;
+//     line-height: 16px;
+//     border-bottom-width: 1px solid white;
+//   }
+
+ion-input {
+    border-bottom: 1px solid white;
+    padding-top: 20PX;
+   
+  }
+
+  ion-select {
+    border-bottom: 0.6px solid white !important;
+     padding-top: 20PX;
+   
+  }
+  .input{
+      padding-top: 30px;
+  }

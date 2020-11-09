@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div [routerLink]="['/investments', 'save']" routerDirection="back" class="icon-container nav">
+        <img src="assets/icon/left-arrow-white.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3></h3>
+      </div>
+      <div class="icon-container settings">
+          <!-- <img src="assets/icon/cog.svg" alt=""> -->
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<div class="instruction-section">
+  <h3><b>What do you intend to use the group savings for?</b></h3>
+</div>
+
+<div class="goal-item-container">
+
+  <div class="goal-item"> 
+    <div class="goal-detail-container">
+      <h6>Group Challenge (aka Collabo)</h6>
+      <p class="fade">Group savings is suitable for collections in group projects or targets. Creator and members can save into the group but only Group creator can withdraw funds at maturity.</p>
+    </div>
+  </div>
+
+  <div class="goal-item" [routerLink]="['/investments', 'save', 'groupsavings-chlng']">
+      <div class="goal-detail-container">
+        <h6>Group Collection (aka Potpourri)</h6>
+        <p class="fade">Want to motivate your circle to save and monitor their savings without you or them touching the money? This is the plan for  you, everybody can save and withdraw only their saved funds into their personal accounts at maturity.</p>
+      </div>
+  </div>
+
+</div>
+</ion-content>

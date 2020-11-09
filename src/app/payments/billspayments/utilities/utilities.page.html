@@ -1,0 +1,55 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Utilities</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div>
+      <div class="box" (click)="presentModal('electricity')">
+        <div class="firstbox">
+          <img src="../../assets/icon/billspayments/electricity.svg" class="img">
+          <div class="text">Electricity</div>
+        </div>
+        <img src="../../assets/icon/billspayments/chevron-right.png" class="img">
+      </div>
+  
+      <!-- <div class="box" (click)="tollPayment('tollpayment')">
+        <div class="firstbox">
+          <img src="../../assets/icon/billspayments/tollpay.png" class="img">
+          <div class="text">Toll Payment</div>
+        </div>
+        <img src="../../assets/icon/billspayments/chevron-right.png" class="img">
+      </div>
+  
+      <div class="box" (click)="presentModal('water')">
+        <div class="firstbox">
+          <img src="../../assets/icon/billspayments/water.png" class="img">
+          <div class="text">Water Payment</div>
+        </div>
+        <img src="../../assets/icon/billspayments/chevron-right.png" class="img">
+      </div>
+  
+      <div class="box" (click)="wasteManagement()">
+        <div class="firstbox">
+          <img src="../../assets/icon/billspayments/waste.png" class="img">
+          <div class="text">Waste Managment</div>
+        </div>
+        <img src="../../assets/icon/billspayments/chevron-right.png" class="img">
+      </div> -->
+    </div>
+  </div>
+
+</ion-content>

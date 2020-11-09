@@ -1,0 +1,208 @@
+<ion-header>
+  <div class="header">
+    <ion-icon name="arrow-back-outline" class="menu"  (click)="goBack()" ></ion-icon>
+    <div class="loanstext">Select Amount</div>
+    <ion-icon name="" class="menu"></ion-icon>
+  </div>
+</ion-header>
+
+ <div class="iconmessage">
+   <img src="../../../assets/imgs/loan/loanofferprogress1.png"  class="photo">
+   <div class="headerboxtext">Please provide an account we should credit to</div>
+ </div>
+
+<ion-content>
+  <div class="border">
+    <ion-select   placeholder="Select an Account" [(ngModel)]="account">
+      <ion-label></ion-label>
+      <ion-select-option value="savings">Savings</ion-select-option>
+      <ion-select-option value="current">Current</ion-select-option>
+    </ion-select>
+  </div>
+  <div class="row">
+    <div class="firsthalf">
+      <div class="loanamounttext">Account Number</div>
+    </div>
+  <!-- <form [formGroup]="LoanForm" (ngSubmit)="gotoloanConfirmation()"> -->
+   
+    <div class="secondhalf">
+      <ion-item lines="full">
+    
+        <ion-input type="number"  name="loanAmount"></ion-input>
+      </ion-item>
+      <!-- <div>
+        <p *ngIf="!LoanForm.controls.loanAmount.valid && LoanForm.controls.loanAmount.touched
+        && LoanForm.controls.loanAmount.value < 1">Enter Loan Amount</p>
+        
+        <p *ngIf="LoanForm.controls.loanAmount.value > eligibilityInfo?.total_Eligible_Amount">Loan amount must not exceed ₦{{eligibilityInfo?.total_Eligible_Amount}} total eligible amount.</p>
+        <p *ngIf="LoanForm.controls.loanAmount.value < eligibilityInfo?.minAmount && LoanForm.controls.loanAmount.touched">Value entered is below the ₦{{eligibilityInfo?.minAmount}} minimum amount.</p>
+      </div> -->
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="firsthalf">
+      <div class="loanamounttext">Bvn</div>
+    </div>
+  <!-- <form [formGroup]="LoanForm" (ngSubmit)="gotoloanConfirmation()"> -->
+   
+    <div class="secondhalf">
+      <ion-item lines="full">
+    
+        <ion-input type="number"  name="loanAmount"></ion-input>
+      </ion-item>
+      <!-- <div>
+        <p *ngIf="!LoanForm.controls.loanAmount.valid && LoanForm.controls.loanAmount.touched
+        && LoanForm.controls.loanAmount.value < 1">Enter Loan Amount</p>
+        
+        <p *ngIf="LoanForm.controls.loanAmount.value > eligibilityInfo?.total_Eligible_Amount">Loan amount must not exceed ₦{{eligibilityInfo?.total_Eligible_Amount}} total eligible amount.</p>
+        <p *ngIf="LoanForm.controls.loanAmount.value < eligibilityInfo?.minAmount && LoanForm.controls.loanAmount.touched">Value entered is below the ₦{{eligibilityInfo?.minAmount}} minimum amount.</p>
+      </div> -->
+    </div>
+  </div>
+  <div class="bordertwo">
+    <ion-select   placeholder="Account Type" [(ngModel)]="account">
+      <ion-label></ion-label>
+      <ion-select-option value="savings">Savings</ion-select-option>
+      <ion-select-option value="current">Current</ion-select-option>
+    </ion-select>
+  </div>
+
+  <div class="next">
+    <button ion-button (click)="submitDetailss()"><span>Proceed</span> </button>
+   </div>
+  <!-- </form> -->
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-content no-padding fullscreen>
+
+  <div [ngClass]="'ion-header'">
+      <div [ngClass]="'header-overlay'">
+        <ion-toolbar mode="ios">
+            <ion-buttons slot="start">
+                <ion-button (click)="closeModal()">
+                  <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+                </ion-button>
+              </ion-buttons> 
+          <ion-title>Account Information</ion-title>
+        </ion-toolbar>
+        <div [ngClass]="'offers'">
+          <p>50% Complete</p>
+          <ion-img src="../../../../../assets/img/progress2.png"></ion-img>
+        
+          <div [ngClass]="'line'">
+            <p>Loan Offers</p>
+            <p>Select Bank</p>
+            <p>Payment Card</p>
+            <p>Confirm Loan</p>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+
+
+    <div>
+
+
+    <div class="provide">
+        <p>Please provide account we should credit to</p>
+      </div>
+  
+      <div (ngSubmit)="submitDetails()">
+  
+        <ion-list>
+            <ion-item lines="full">
+                <ion-label>Select a bank</ion-label>
+                <ion-select  name="bank" (ionChange)="onChange($event)">
+                  <ion-select-option *ngFor="let b of banks" [value]="b.code">{{b.name}}</ion-select-option>
+                </ion-select> 
+              </ion-item>
+
+        <div *ngIf="isFidelityAccount" class="fidelity_account">
+
+          <ion-item lines="none">
+            <ion-label>
+               <h4>{{accountName}}</h4>
+               <p>BVN: {{responseBvn}} </p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item lines="full">
+              <ion-label>Fidelity Account(s)</ion-label>
+              <ion-select  name="fidelity">
+                <ion-select-option *ngFor="let f of FidelityAccount" [value]="f.accountNumber">{{f.accountNumber}}</ion-select-option>
+              </ion-select> 
+          </ion-item>
+
+          <ion-item lines="full">
+              <ion-label>Account Type</ion-label>
+              <ion-select name="accountType">
+                <ion-select-option value="savings">Savings</ion-select-option>
+                <ion-select-option value="current">Current</ion-select-option>
+              </ion-select> 
+            </ion-item>
+         
+        </div>
+
+        <div *ngIf="isNotFidelityAccount" class="non_fidelity_account">
+
+            <ion-item lines="full">
+            <ion-label position="floating">Account number</ion-label>
+            <ion-input max="10"  name="accountNo" type="tel" (keyup)="press($event.target.value)"></ion-input>
+        </ion-item>
+
+            <ion-item lines="full">
+                <ion-label position="floating">BVN</ion-label>
+                <ion-input  name="bvn" type="tel"></ion-input>
+            </ion-item>
+  
+            <ion-item lines="full">
+                <ion-label>Account Type</ion-label>
+                <ion-select  name="accountType">
+                  <ion-select-option value="savings">Savings</ion-select-option>
+                  <ion-select-option value="current">Current</ion-select-option>
+                </ion-select> 
+              </ion-item>
+           
+          </div>
+  
+        <ion-item style="margin-top: 20px;" lines="none">
+            <ion-label>Save account</ion-label>
+            <ion-checkbox slot="start"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </div>
+  
+      <div class="next">
+          <button ion-button (click)="submitDetails()"><span>Submit</span> </button>
+      </div>
+
+    </div>
+
+
+
+</ion-content> -->

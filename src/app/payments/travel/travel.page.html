@@ -1,0 +1,127 @@
+<ion-header class="ion-no-border ion-margin-top ion-padding" mode="ios">
+  <ion-toolbar mode="ios">
+
+    <ion-buttons slot="start">
+      <!-- <ion-button>
+        <ion-icon color="primary" slot="start" name="arrow-back"> </ion-icon>
+        <ion-back-button color="primary" text="" icon="arrow-back"></ion-back-button>
+      </ion-button> -->
+      <ion-button class="mtt-02 no-transform" fill="clear" color="trupayprimary" (click)="back()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- <ion-title>Travel!!</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin-top">
+  <ion-item lines="none" class="ion-padding-horizontal page-heading">
+    <h3 class="color-trupayprimary">Book Flights and <br> Hotels</h3>
+  </ion-item>
+
+  <ion-slides class="ion-padding-vertical" [options]="slideOptions">
+
+    <ion-slide class="swiper-slide h-250 pr-03" [routerLink]="['search-flights']" >
+      <ion-img class="slide-img" src="../../../assets/imgs/payments/travel/plane.png"></ion-img>
+      <div class="card-label text-08">Book a Flight</div>
+    </ion-slide>
+
+
+    <ion-slide class="swiper-slide h-250 pr-03" [routerLink]="['/payments/comingsoon']" >
+      <ion-img class="slide-img rotate-180" src="../../../assets/imgs/payments/travel/beach.png"></ion-img>
+      <div class="card-label text-08">Book a Hotel</div>
+    </ion-slide>
+
+
+    <ion-slide class="swiper-slide h-250" [routerLink]="['/payments/comingsoon']" >
+      <ion-img class="slide-img" src="../../../assets/imgs/payments/travel/resort.png"></ion-img>
+      <div class="card-label text-08">Travel Deals</div>
+    </ion-slide>
+
+
+  </ion-slides>
+
+  <ion-grid fixed class="ion-no-margin mt-50 ion-padding-horizontal">
+    <ion-row class="ion-no-margin ion-justify-content-around">
+      <ion-col size="4" style="vertical-align: bottom;" class="text-08 ion-no-padding text-center"><strong>Reservations</strong></ion-col>
+      <ion-col size="4" class="text-08 ion-no-padding text-center"></ion-col>
+      <ion-col size="4" class="text-08 ion-no-padding text-center"></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" [routerLink]="['manage-booking']">
+        <img class="img-manage-booking opacity05 mt-05" src="../../../assets/imgs/payments/travel/manage-booking.png" >
+        <div class="manage-booking text-center border-radius-5">Manage my booking</div>
+      </ion-col>
+    </ion-row>
+
+    <!-- <ion-row class="ion-justify-content-around">
+      <ion-col size="3.5">
+        <div class="tab-active text-center"></div>
+      </ion-col>
+
+      <ion-col size="3.5">
+        <div class="tab-active text-center"></div>
+      </ion-col>
+
+      <ion-col size="3.5">
+        <div class="tab-active text-center"></div>
+      </ion-col>
+    </ion-row> -->
+  </ion-grid>
+
+  <!-- <ion-slides class="ion-padding-vertical mh-1rem" [options]="slideOptions">
+
+    <ion-slide class="swiper-slide h-95 w-125" [routerLink]="['search-flights']">
+      <ion-card class="ion-padding ion-no-margin box-shadow">
+        <ion-card-header class="ion-no-margin ion-no-padding">
+          <ion-card-subtitle class="text-center margin ion-margin-bottom" style="word-spacing: 8px;">LAG - LON
+          </ion-card-subtitle>
+          <ion-card-title class="text-center ion-margin-bottom">N400,000</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="text-center ion-no-margin ion-no-padding">
+          <ion-text class="card-content-date">14th Feb. '20 - 1st Mar. '20</ion-text>
+        </ion-card-content>
+        <ion-img class="airline-logo" src="../../../assets/imgs/payments/travel/virgin.png"></ion-img>
+      </ion-card>
+    </ion-slide>
+
+
+    <ion-slide class="swiper-slide h-95 w-125">
+      <ion-card class="ion-padding ion-no-margin box-shadow">
+        <ion-card-header class="ion-no-margin ion-no-padding">
+          <ion-card-subtitle class="text-center margin ion-margin-bottom" style="word-spacing: 8px;">LAG - LON
+          </ion-card-subtitle>
+          <ion-card-title class="text-center ion-margin-bottom">N400,000</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="text-center ion-no-margin ion-no-padding">
+          <ion-text class="card-content-date">14th Feb. '20 - 1st Mar. '20</ion-text>
+        </ion-card-content>
+        <ion-img class="airline-logo" src="../../../assets/imgs/payments/travel/virgin.png"></ion-img>
+      </ion-card>
+    </ion-slide>
+
+
+    <ion-slide class="swiper-slide h-95 w-125">
+      <ion-card class="ion-padding ion-no-margin box-shadow">
+        <ion-card-header class="ion-no-margin ion-no-padding">
+          <ion-card-subtitle class="text-center margin ion-margin-bottom" style="word-spacing: 8px;">LAG - LON
+          </ion-card-subtitle>
+          <ion-card-title class="text-center ion-margin-bottom">N400,000</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="text-center ion-no-margin ion-no-padding">
+          <ion-text class="card-content-date">14th Feb. '20 - 1st Mar. '20</ion-text>
+        </ion-card-content>
+        <ion-img class="airline-logo" src="../../../assets/imgs/payments/travel/virgin.png"></ion-img>
+      </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+
+  <ion-item lines="none" class="h-95" [routerLink]="['manage-booking']" >
+    <ion-label color="primary">Manage your reservations here</ion-label>
+  </ion-item> -->
+
+
+</ion-content>

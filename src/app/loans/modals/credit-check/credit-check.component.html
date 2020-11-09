@@ -1,0 +1,26 @@
+
+
+<ion-content padding>
+
+  <div class="parent">
+  <div [ngClass]="'check'">
+    <p>Credit Check</p>
+  </div>
+
+  <div [ngClass]="'pic'">
+    <ion-img src="../../assets/imgs/loan/creditcheck.png" class="creditcheckicon"></ion-img>
+  </div>
+
+  <div [ngClass]="'note'" padding>
+    <p>In line with CBN policy, {{params?.userMessage}}</p>
+  </div>
+
+  <div [ngClass]="'next'">
+      <button ion-button (click)="accept()"><span>Accept</span> </button>
+  </div>
+
+  <div [ngClass]="'reject'">
+    <p (click)="reject()">Reject</p>
+  </div>
+</div>
+</ion-content>

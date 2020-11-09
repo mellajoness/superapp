@@ -1,0 +1,67 @@
+.modal{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.status-icon-container{
+    margin: 10px auto;
+}
+
+.status-text{
+    text-align: center;
+    padding: 10px 24px;
+    color: #66AD2C;
+}
+
+#ok-btn{
+    margin: 0px;
+    width: 100%;
+    background-color: #0E237E !important;
+    color: #fff;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+#ok-btn-clear {
+    margin: 0px;
+    width: 100%;
+    background-color: #fff !important;
+    color: #0E237E;
+    height: 40px;
+    font-size: 14px;
+    border: 1px solid #0E237E;
+    border-radius: 5px;
+}
+
+.button-container {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+}
+
+.info {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #0E237E;
+}
+
+.body_ {
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.line {
+    border-bottom: 1px solid #555555;
+}

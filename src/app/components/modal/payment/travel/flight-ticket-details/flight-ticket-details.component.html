@@ -1,0 +1,145 @@
+<ion-header class="ion-no-border ion-padding" mode="ios">
+  <div class="mb-10 item-v-center anchor">
+
+  </div>
+  <ion-segment color="trupayprimary" (ionChange)="segmentChanged($event)" mode="md" [value]="tab" [(ngModel)]="tab" scrollable="true">
+    <ion-segment-button color="trupayprimary" class="no-ripple" mode="md" value="details">
+      <!-- <ion-icon mode='md' name="wallet"></ion-icon> -->
+      <ion-label class="no-transform">Details</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button color="trupayprimary" class="no-ripple" mode="md" value="itinerary">
+      <!-- <ion-icon mode='md' name="search"></ion-icon> -->
+      <ion-label class="no-transform">Itinerary</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content class="mb-10">
+  <ng-container [ngSwitch]="tab">
+
+    <ng-container *ngSwitchCase="'details'">
+      <div class="padding-right transition-height ion-margin-horizontal">
+        <ion-item lines="none" class="ion-no-border ion-no-padding item-transparent">
+          <ion-icon name="airplane-outline" size="small" slot="start"></ion-icon>
+          <!-- <ion-icon name="" color="success" size="small" slot="end"></ion-icon> -->
+          <ion-grid fixed class="ion-no-padding">
+            <ion-row class="ion-no-padding justify-content-around">
+              <ion-col class="ion-no-padding" size="4">Airline</ion-col>
+              <ion-col class="ion-no-padding text-right">
+                {{itinerary.origin_destinations[0].segments[0].marketing_airline.name}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+
+        <ion-item lines="none" class="ion-no-border ion-no-padding item-transparent">
+          <ion-icon name="home-outline" size="small" slot="start"></ion-icon>
+          <!-- <ion-icon name="" size="small" slot="end"></ion-icon> -->
+          <ion-grid fixed class="ion-no-padding">
+            <ion-row class="ion-no-padding justify-content-around">
+              <ion-col class="ion-no-padding" size="4">Cabin</ion-col>
+              <ion-col class="ion-no-padding text-right">{{sharedData.travel.searchParameters.cabin}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+
+        <ion-item lines="none" class="ion-no-border ion-no-padding item-transparent">
+          <ion-icon name="refresh-outline" class="mirror" size="small" slot="start"></ion-icon>
+          <!-- <ion-icon src="../../../../../assets/icon/blank.svg" color="success" size="small" slot="end"></ion-icon> -->
+          <ion-grid fixed class="ion-no-padding">
+            <ion-row class="ion-no-padding justify-content-around">
+              <ion-col class="ion-no-padding" size="4">Refunds</ion-col>
+              <ion-col class="ion-no-padding text-right">{{refund(itinerary)}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+
+        <ion-item lines="none" class="ion-no-border ion-no-padding item-transparent">
+          <!-- <ion-icon name="grid-outline" size="small" slot="start"></ion-icon> -->
+          <!-- <ion-icon src="../../../../../assets/icon/blank.svg" color="success" size="small" slot="end"></ion-icon> -->
+          <ion-grid fixed class="ion-no-padding">
+            <ion-row class="ion-no-padding justify-content-around">
+              <ion-col class="ion-no-padding" size="7"></ion-col>
+              <ion-col class="ion-no-padding text-right">Total:
+                <strong color="trupayprimary">
+                  <!-- <span [innerHTML]="itinerary.pricing.portal_fare.currency.code | currencyConverter"></span> -->
+                  <span
+                    [innerHTML]="itinerary.pricing.portal_fare.total_fare | currency : itinerary.pricing.portal_fare.currency.code : 'symbol-narrow' : '3.0'"></span>
+                </strong></ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </div>
+    </ng-container>
+
+
+    <ng-container *ngSwitchCase="'itinerary'">
+      <div class="padding-right pb-10 ion-margin-horizontal">
+        <ion-item *ngFor="let origin_dest of itinerary.origin_destinations; let o = index" lines="none"
+          class="ion-no-border ion-no-padding item-transparent">
+          <!-- <ion-icon src="../../../../../assets/icon/briefcase.svg" size="small" slot="start"></ion-icon>
+        <ion-icon name="checkmark" color="success" size="small" slot="end"></ion-icon> -->
+          <ion-grid fixed class="ion-no-padding">
+
+            <ng-container *ngFor="let segment of origin_dest.segments; let s = index">
+
+
+              <ng-container>
+                <ion-row class="ion-no-padding justify-content-around">
+                  <ion-col class="ion-no-padding">{{segment.departure.date | date : 'MMM d'}}</ion-col>
+                  <ion-col size="7" class="ion-no-padding">
+                    <span>{{segment.departure.time | slice : 0 : 5}}</span> <br>
+                    <span>{{segment.departure.airport.name}}</span>
+                  </ion-col>
+                  <ion-col class="ion-no-padding text-right"></ion-col>
+                </ion-row>
+              </ng-container>
+
+
+              <ion-row class="ion-no-padding ion-margin-vertical justify-content-around font-12px">
+                <ion-col class="ion-no-padding"></ion-col>
+                <ion-col size="7" class="ion-no-padding">
+                  <div class="trail"></div>
+                  <div>
+                    <span>{{segment.marketing_airline.name}}</span> <br>
+                    <span>{{segment.equipment.name}}</span> <br>
+                    <span>{{segment.cabins[0].res_book_desig_cabin_name}}</span>
+                  </div>
+                  <div class="trail"></div>
+                </ion-col>
+                <ion-col class="ion-no-padding text-right item-v-center">
+                  {{formatDuration(segment.flight_duration)}}</ion-col>
+              </ion-row>
+
+
+              <ion-row class="ion-no-padding justify-content-around" [ngClass]="{'mb-30': s != origin_dest.length}">
+                <ion-col class="ion-no-padding">{{segment.arrival.date  | date : 'MMM d'}}</ion-col>
+                <ion-col size="7" class="ion-no-padding">
+                  <span>{{segment.arrival.time | slice : 0 : 5}}</span> <br>
+                  <span>{{segment.arrival.airport.name}}</span>
+                </ion-col>
+                <ion-col class="ion-no-padding text-right"></ion-col>
+              </ion-row>
+
+            </ng-container>
+
+
+          </ion-grid>
+        </ion-item>
+        {{itinerary.origin_destination}}
+      </div>
+    </ng-container>
+
+  </ng-container>
+
+  <ion-button class="submit-button ion-margin-horizontal item-v-center mb-10" color="trupaysecondary" fill="solid"
+    (click)="selectItinerary(itinerary)">
+    Select
+  </ion-button>
+
+  <!-- <ion-button class="submit-button ion-margin-horizontal item-v-center mb-10 hidden" disabled color="trupayprimary" fill="solid"
+    (click)="selectItinerary(itinerary)">
+    Select
+  </ion-button> -->
+
+</ion-content>

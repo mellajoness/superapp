@@ -1,0 +1,67 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white" style="height: 120px!important;">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow-1"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Notification</div>
+    </ion-title>
+
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="parent">
+    <ng-container *ngIf="sharedData.NOTIFICATIONS">
+      <div class="mb-10" *ngFor="let notification of notifications">
+        <ion-item-sliding mode="ios" class="ion-no-margin ion-no-padding" (ionSwipe)="deleteNotification(notification)">
+          <ion-item-options mode="ios" side="end" style="border-bottom: none;" class="ion-no-margin ion-no-padding">
+            <ion-item-option mode="ios" color="none" (click)="deleteNotification(notification)" expandable>
+              <ion-icon mode="ios" name="trash" mode="ios" color="danger" class="text20"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+          <ion-item (click)="showNotification(notification)" mode="ios" lines="none" class="ion-activatable ion-no-padding border-radius-10">
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-label>
+              <div class="notification text08">
+                <ion-row>
+                  <ion-col size="2" style="padding: 0px!important;">
+                    <div class="icon">
+                      <img src="assets/icon/limit-vector.svg">
+                    </div>
+                  </ion-col>
+                  <ion-col size="10" style="padding: 0px!important;display:flex;align-items: center;">
+                    <div class="message" [ngClass]="notification.read ? null : 'fw700'">{{notification.body}}</div>
+                  </ion-col>
+                </ion-row>  
+              </div>
+              <div class="notification text08">
+                <ion-row>
+                  <ion-col size="2" style="padding: 0px!important;">
+                    <div class="icon_"></div>
+                  </ion-col>
+                  <ion-col size="10" style="padding: 0px!important;">
+                    <div class="date">{{notification.date}}</div>
+                  </ion-col>
+                </ion-row>  
+              </div>  
+            </ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!sharedData.NOTIFICATIONS || (sharedData.NOTIFICATIONS && sharedData.NOTIFICATIONS.length < 1)">
+      <div class="mb-10">
+        <div class="notification text08 text-center">
+            You currently do not have any notification
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ion-content>

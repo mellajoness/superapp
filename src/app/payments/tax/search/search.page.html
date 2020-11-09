@@ -1,0 +1,37 @@
+<ion-header class="text-white ion-no-border" mode="ios" transluscent>
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="trupayprimary" (click)="handlers.navigate().back()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Select Agency</div>
+    </ion-title>
+    <ion-buttons slot="primary"> </ion-buttons>
+  </ion-toolbar>
+
+  <div class="search">
+
+    <ion-item class="item-transparent search-bar-item" lines="full">
+      <ion-icon class="ion-padding-horizontal search-icon" name="search-outline" slot="end"></ion-icon>
+      <ion-input placeholder="Search for an angency" class="ion-padding search-bar ion-no-margin" showCancelButton="never" autofocus="true" mode="md">
+      </ion-input>
+    </ion-item>
+  </div>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <ion-item class="item-transparent item-bottom-border" lines="none" detail="true">
+      <ion-label>Validate Reference</ion-label>
+    </ion-item>
+    <ion-item class="item-transparent item-bottom-border" lines="none" detail="true">
+      <ion-label>Generate Reference</ion-label>
+    </ion-item>
+
+
+  </div>
+</ion-content>

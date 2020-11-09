@@ -1,0 +1,49 @@
+.custom-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem .5rem;
+}
+
+ion-header ion-toolbar:first-of-type {
+    padding-top: 0 !important; 
+}
+
+.instruction-section{
+    color: #1E282B;
+}
+
+
+.goal-item {
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-bottomright: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100%;
+    height: auto;
+    background: #f1f2fa;
+    padding: 15px 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    // box-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 3px rgba(0,0,0,0.10);
+
+    h6{
+        margin-top: 10px;
+        font-weight: 500;
+    }
+}
+
+.goal-item-icon{
+    width: 200px;
+    // height: 200px;
+    margin: 0px 10px 0px 0px;
+}
+
+.fade {
+    color: #81869e;
+    font-size: 13px;
+}

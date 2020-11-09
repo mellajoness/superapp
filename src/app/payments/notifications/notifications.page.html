@@ -1,0 +1,135 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white" style="height: 120px!important;">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow-1"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="primary">
+      <div class="icons">
+        <div class="notification">
+          <img src="../../../assets/icon/bell.png" class="img">
+          <ion-badge class="number item-inline-center">99</ion-badge>
+        </div>
+      </div>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="parent">
+
+    <ion-row>
+      <ion-text class="title-text">Notifications</ion-text>
+    </ion-row>
+
+    <div class="mt-10">
+      
+      <div class="item-v-center parent-box" (click)="showNotification('first')">
+        <div class="box-a"></div>
+        <div class='box-b'></div>
+        <div class='box-c'>
+          <h6 class="ion-no-margin mb-05 notification-title">
+            Upgrade your Trupay Application
+          </h6>
+  
+          <div class="notification-body">
+            <ion-text>
+              You need to upgrade your trupay app to use the new feature released.
+            </ion-text>
+          </div>
+  
+          <div class="notification-footer">
+            <ion-row>
+              <ion-col class="ion-no-padding item-v-center" size="4">
+                <div class="notification-footer-text"><span class="day pr-05">TODAY</span><span class="time">1:43 PM</span></div>
+              </ion-col>
+              <ion-col size="1"></ion-col>
+              <ion-col class="ion-no-padding item-v-center" size="7">
+                <ion-item class="notification-footer-badges" lines="none">
+                  <div class="badge-rec">NEW FEATURE</div>
+                  <div class="arrow-bg item-v-center ml-15">
+                    <ion-icon slot="start" name="arrow-forward" class="arrow"></ion-icon>
+                  </div>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-v-center parent-box-1" (click)="showNotification('second')">
+        <div class="box-a"></div>
+        <div class='box-b'></div>
+        <div class='box-c'>
+          <h6 class="ion-no-margin mb-05 notification-title">
+            Transaction not Successful
+          </h6>
+  
+          <div class="notification-body">
+            <ion-text>
+              You made a transfer to Emmanuel Diala Today at 3.30pm and the transaction was not successful.
+            </ion-text>
+          </div>
+  
+          <div class="notification-footer">
+            <ion-row>
+              <ion-col class="ion-no-padding item-v-center" size="4">
+                <div class="notification-footer-text"><span class="day pr-05">TODAY</span><span class="time">3:43 PM</span></div>
+              </ion-col>
+              <ion-col size="1"></ion-col>
+              <ion-col class="ion-no-padding item-v-center" size="7">
+                <ion-item class="notification-footer-badges" lines="none">
+                  <div class="badge-rec">NEW FEATURE</div>
+                  <div class="arrow-bg item-v-center ml-15">
+                    <ion-icon slot="start" name="arrow-forward" class="arrow"></ion-icon>
+                  </div>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+    
+      <div class="item-v-center parent-box-2" (click)="showNotification('third')">
+        <div class="box-a"></div>
+        <div class='box-b'></div>
+        <div class='box-c'>
+          <h6 class="ion-no-margin mb-05 notification-title">
+            Upgrade your Trupay Application
+          </h6>
+  
+          <div class="notification-body">
+            <ion-text>
+              You need to upgrade your trupay app to use the new feature released.
+            </ion-text>
+          </div>
+  
+          <div class="notification-footer">
+            <ion-row>
+              <ion-col class="ion-no-padding item-v-center" size="4">
+                <div class="notification-footer-text"><span class="day pr-05">TODAY</span><span class="time">1:43 PM</span></div>
+              </ion-col>
+              <ion-col size="1"></ion-col>
+              <ion-col class="ion-no-padding item-v-center" size="7">
+                <ion-item class="notification-footer-badges" lines="none">
+                  <div class="badge-rec">NEW FEATURE</div>
+                  <div class="arrow-bg item-v-center ml-15">
+                    <ion-icon slot="start" name="arrow-forward" class="arrow"></ion-icon>
+                  </div>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+
+  </div>
+
+
+</ion-content>

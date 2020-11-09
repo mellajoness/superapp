@@ -1,0 +1,179 @@
+$header-font : #40325D;
+$email-font:  #323A5D;
+$border: 1px solid rgba(196, 196, 196, 0.62);
+$grey-border: #EAEEF4;
+$circle-size: 200px;
+$badge-size: 40px;
+$color-primary: #560BD0;
+
+.custom-header{
+    padding: 1em 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $header-font;
+}
+
+.avatar-container{ 
+
+    .avatar-circle {
+        position: relative;
+        margin: 0px auto 0px;
+        border-radius: 50%;
+        width: $circle-size;
+        height: $circle-size;
+        background: #ffffff;
+        border: $border;
+
+        .badge{
+            z-index: 10;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -($badge-size/ 2);
+           
+            #badge{
+                width: $badge-size;
+                height: $badge-size;
+            }
+        }
+
+        .badge:active{
+            border-radius: 50%;
+            background: rgba($color: $color-primary, $alpha: 0.1);
+        }
+        #profile{
+            // margin: auto;
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            vertical-align: middle;
+    
+    
+            left: 50%;
+            margin-left: -75px; //half of #profile width
+            top: 50%;
+            margin-top: -75px;
+        }
+    }
+}
+
+.deg45 { transform: rotate(45deg) translate(($circle-size/2)) rotate(-45deg); }
+
+
+.profile-container{
+        // padding-bottom: 5px;
+        // margin-top: 1vh;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .name-container{
+        color: $email-font;
+        width: 100%;
+        font-family: 'poppins-bold';
+        text-align: center;
+    }
+}
+
+.form-container{
+    margin: 10px 0px 0px 0px;
+    text-align: start;
+
+    .form-group {
+        margin-top: 10px;
+        padding: 15px 3px 5px 20px;
+        color: $header-font;
+        // width: 100%;
+        border-bottom: 1px solid $grey-border;
+    }
+    label{
+        display: inline-block;
+        // font-size: 13px;
+        width: 40%;
+    }
+
+    input {
+        background: transparent;
+        border: none;
+        width: 45%;
+        float: right;
+        margin-right: 14px;
+        outline: none;
+        // margin-left: 30px;
+        // border-bottom: 1px solid #000000;
+        text-align: end;
+    }
+
+    .date{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        clear: both;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    ion-datetime{
+        margin-right: 14px;
+    }
+
+    select {
+        background: transparent;
+        border: none;
+        outline: none;
+        width: auto;
+        float: right;
+        margin-right: 14px;
+        text-align: center;
+    }
+}
+
+.section-header {
+  padding: 20px 5px 5px 15px;
+  color: $header-font;
+}
+
+.button-container {
+    // margin: 0 auto;
+    margin-top: 4vh;
+    max-width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px;
+
+    button {
+        border-radius: 4px;
+        color: #ffffff;
+        background: $color-primary;
+        width: 50%;
+        height: 50px;
+    }
+}
+
+ion-content {
+    --overflow: hidden;
+    display: grid;
+}
+
+.scroll {
+    overflow: auto;
+    padding-bottom: 240px;
+    height: 100%;
+}
+
+.payment-button {
+    background-color: #0E237E !important;
+    color: #fff;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.arrow {
+    color: #0E237E;
+    font-size: 1.5em;
+}

@@ -1,0 +1,51 @@
+<ion-header no-border class=".header">
+  <div class="headerrow">
+    <ion-icon name="arrow-back" class="backicon"></ion-icon>
+     <div class="feedback" (click)="goBack()">Feedback</div>
+     <div></div>
+  </div>
+  
+ 
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="provide">
+    <p>We will like to hear from you.</p>
+  </div>
+
+  <form>
+    <ion-item lines="full">
+      <ion-label position="stacked">Customer Name</ion-label>
+        <ion-input type="text" >{{firstName}}&nbsp;&nbsp;{{lastName}}</ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="stacked">Phone Number</ion-label>
+        <ion-input type="tel" >{{phoneNumber}}</ion-input>
+    </ion-item>
+
+
+    <ion-item lines="full">
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input type="email" >{{emailAddress}}</ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Select Error Type</ion-label>
+    <ion-select [(ngModel)]="type" name="type" >
+      <ion-select-option [value]="e.feedbacks" *ngFor="let e of errors; let i = index">{{e.feedbacks}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="stacked">Message</ion-label>
+    <ion-textarea [(ngModel)]="message" name="message"  type="text" rows="3" cols="6" placeholder="Enter more complaints or feedback here..."></ion-textarea>
+</ion-item>
+
+</form>
+
+<div class="next">
+  <button ion-button (click)="postFeedback()"><span>Send Feedback</span> </button>
+</div>
+
+</ion-content>

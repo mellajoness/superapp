@@ -1,0 +1,432 @@
+$color-primary: #06205D;
+$color-secondary: #5BA6FF;
+$color-tertiary: #7044ff;
+$signupbtnbg: #F9F9FA;
+
+.my-content{
+  --background: #06205D;
+  --padding-start: 12px;
+  --padding-end: 12px;
+}
+
+ion-content {
+  --background-size: cover !important;
+    --overflow: hidden !important;
+    display: grid!important;
+}
+
+.arrow {
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+.nav-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // color: $color-transaction;
+  padding: 0px 0px 5px;
+  position: static;
+
+  .nav-arrow{
+      text-align: center;
+      margin-top: 13px;
+      outline: none;
+      z-index: 10;
+      // background: red;
+  }
+  .nav-arrow:active{
+      outline: none;
+      transform: translateY(1px);
+      background: rgba(48, 47, 47, 0.1);
+      border-radius: 50%;
+  }
+}
+
+.custom{
+    display: flex;
+    padding: 40px 10px 10px 10px;
+}
+
+.form-container{
+    // transform: translate3d(0, 20vh, 0);
+    // display: flex;
+    padding: 10px;
+    max-width: 400px;
+    align-items: center;
+    margin: 0 auto;
+    // justify-content: space-around;
+}
+
+.input-container{
+  position: relative;
+  // height: 4rem;
+  .identity-input{
+    margin: 5px 0px 0px 0px;
+    position: relative;
+  }
+  .prompt {
+    position: absolute;
+    left: 50%;
+    color: red;
+    font-size: 10px;
+    padding: 2px;
+    // margin: 0px 0px 20px 0px;
+    margin-top: 3px;
+    transform: scaleX(1.25);
+    transition: all 0.5s ease-in-out;
+    animation: sweepright cubic-bezier(0.785, 0.135, 0.15, 0.86) 800ms forwards;
+    z-index: 1;
+  }
+}
+
+.password-major{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  background: #ffffff;
+  position: relative;
+
+  .password-input{
+    height: calc(3em + 2px);
+
+    input{
+      &[type="text"]{
+        border: 0px solid $color-primary;
+      }
+    }
+  }
+
+  .pwd-visible{
+    background: url('../../../assets/icon/login-icns/hidden-eye-dark.svg') no-repeat center;
+    border: none;
+    outline: none;
+    width: 30px;
+    height: 30px;
+  }
+
+  .pwd-hidden{
+    background: url('../../../assets/icon/login-icns/visible.svg') no-repeat center;
+    width: 30px;
+    height: 30px;
+  }
+
+  .password-input{
+    height: calc(3em + 2px);
+    position: relative;
+  }
+
+  .image-holder{
+    height: calc(3em + 2px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    outline: none;
+    
+    img{
+      margin: auto 10px;
+      padding: 3px;
+    }
+  }
+}
+
+.loginbtn-container{
+  // transform: translate3d(0, 20vh, 0);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+ 
+
+  button{
+    width: 100%;
+    height: 2.5rem;
+    margin-top: 15px;
+    border-radius: 5px;
+    outline: none;
+}
+
+ #login-btn {
+    background-color: #66AD2C;
+    color: #ffffff;
+  }
+
+  #login-btn:disabled {
+    opacity: 0.4;
+  }
+}
+
+.forgotPassword-container{
+  text-align: center;
+  // transform: translate3d(0, 20vh, 0);
+  font-size: 13px;
+  padding-right: 10px;
+
+  a{
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+.create-container{
+  text-align: center;
+  transform: translate3d(0, 4vh, 0);
+  font-size: 13px;
+  padding-right: 10px;
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+
+  a{
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+@mixin calc($property, $value) {
+    #{$property}: -webkit-calc(#{$value});
+    #{$property}:         calc(#{$value});
+  }
+  
+  // First, pass in the important variables.
+  @mixin adaptive-placeholder($height, $radius, $margin: 1em, $border: 1px) {
+    $borders: ($border * 2); // <- To avoid repeating below
+    box-sizing: border-box;  // <- Important for accurate sizing
+    width: 100%;             // <- Could be almost anything
+    @include calc(height, '#{$height} + #{$borders}'); 
+    margin: 0 0 $margin;
+    padding: 1em 1em 1em 3em;;
+    border: $border solid #fff;
+    border-radius: $radius;
+    background: #ffffff;
+    resize: none;  // <- For textareas
+    outline: none; // <- Because ugly
+    //
+    // Following block controls all the color change
+    //
+    &[required] {
+      &:focus {
+        border-color: #fff;
+        + label {
+          &[placeholder] {
+            &:before {
+              background-color: $color-primary;
+              color: #fff;
+            }
+          }
+        }
+      }
+      &:valid {
+        + label {
+          &[placeholder] {
+            &:before {
+              background-color: $color-primary;
+              color: #fff;
+            }
+          }
+        }
+      }
+      //
+      // Following block selects label directly adjacent toinput
+      //
+      &:focus,
+      &:valid {
+        + label {
+          &[placeholder] {
+            &:before {
+              transition-duration: .2s;
+              //
+              // Following lines move placeholder out of the way
+              //
+              transform: translate(0, ($margin * -1.5)) scale(.9, .9);
+            }
+          }
+        }
+      }
+      //
+      // Following block injects string from label's 'alt' attr.
+      // It comes before the other 'content' property so I can
+      // override it. Uses "invalid" pseudo-selector to know
+      // when to do that.
+      //
+      &:invalid {
+        + label {
+          &[placeholder] {
+            &[alt] {
+              &:before {
+                content: attr(alt); // Content property 1 of 2
+              }
+            }
+          }
+        }
+      }
+      + label {
+        &[placeholder] {
+          display: block;
+          pointer-events: none; // Allows clicking thru label
+          line-height: $margin;
+          margin-left: 30px;
+          // Following pulls label into position
+          @include calc(margin-top, '-#{$height} - #{$borders}');
+          // Following offsets that above
+          @include calc(margin-bottom, '(#{$height} - #{$margin}) + #{$borders}');
+          //
+          // Following ':before' is needed to switch between
+          // different strings.
+          //
+          &:before {
+            content: attr(placeholder); // Content property 2 of 2
+            display: inline-block;
+            margin: 0;
+            @include calc(margin-left, '#{$margin} + #{$borders}');
+            @include calc(margin-right, '#{$margin} + #{$borders}');
+            padding: 0 2px;
+            color: $color-primary;
+            white-space: nowrap;
+            transition: .3s ease-in-out;
+            //
+            // Following lines lets me use solid color as bkg img.
+            // This lets me size bkg to something more sublte
+            //
+            // background-image: linear-gradient(to bottom, #fff, #fff);
+            background-color: transparent;
+            background-size: 100% 5px;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+      }
+    }
+  }
+  //
+  // Following block is how I call the above function
+  //
+  input {
+    $height: 3em; 
+    &[type="text"] {
+      @include adaptive-placeholder($height, 4px);
+    }
+    color: #fff;
+  }
+
+  input {
+    $height: 3em; 
+    &[type='password'] {
+      @include adaptive-placeholder($height, 4px, $border: 0px);
+    }
+
+    color: $color-primary;
+  }
+
+
+  @keyframes sweepright {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .pw-icon {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    z-index: 1;
+  }
+
+  .pw-icon-2 {
+    position: absolute;
+    top: 38%;
+    left: 5%;
+    z-index: 1;
+  }
+
+.user-phase {
+  height: 45%;
+  width: 100%;
+}
+
+.form-phase {
+  height: 55%;
+  width: 100%;
+}
+
+.form-phase-container {
+  height: 100%;
+  width: 100%;
+  padding: 0px 10px;
+}
+
+.parent {
+  height: 100%;
+  width: 100%;
+}
+
+.user-phase-content {
+  width: 100%;
+  height: 100%;
+}
+
+.user-phase-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+}
+
+.user-pic-frame {
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1vh;
+  overflow: hidden;
+
+  img {
+    max-width: 110%;
+  }
+}
+
+.user-picture {
+  display: flex;
+  justify-content: center;
+  height: 20vh;
+  width: 20vh;
+}
+
+.create-account {
+  padding-left: 5px;
+  text-decoration: underline;
+  color: #66AD2C;
+}
+
+.arc {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: -50px;
+}
+
+ .scroll {
+    overflow: auto;
+    padding-bottom: 25vh;
+    // height: 100%;
+}
+
+.scroll-content
+{
+  padding-bottom: 0 !important;
+}

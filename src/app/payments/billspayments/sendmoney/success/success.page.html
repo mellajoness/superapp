@@ -1,0 +1,52 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Success</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="mt-30">
+
+      <div class=" item-v-center">
+        <img src="../../../../../assets/icon/done.png" />
+      </div>
+
+      <div class="text-center">
+        <h4 class="pt-20 fw700">
+          Transaction Successful
+        </h4>
+      </div>
+
+
+      <div class="item-v-center">
+        <div class="text-black mx-10 my-20 text-center text12">
+          <ion-text>Your transfer is on its way to {{sharedData.paymentObj['beneficiaryName']}}</ion-text>
+        </div>
+      </div>
+
+      <div class="text-center px-05 py-20 success-text">
+        <ion-text>
+          Thank you! An automated receipt will be sent to your registered email address
+        </ion-text>
+      </div>
+
+    </div>
+
+    <ion-button required class="no-transform payment-button mt-20" fill="clear" expand="block" (click)="goBack()">
+      Done
+    </ion-button>
+  </div>
+
+
+</ion-content>

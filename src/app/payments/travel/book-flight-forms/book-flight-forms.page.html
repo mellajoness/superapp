@@ -1,0 +1,122 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="trupayprimary" (click)="handlers.navigate().back()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white">
+      <div class="color-trupayprimary title">Passenger Information</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div [class]="formHeadings.length > 1 ? 'mt-30 pb-10' : 'pb-10'" >
+
+      <ng-container>
+
+        <ion-item *ngIf="formHeadings.length > 1" class="bg-transparent item-trns mb--30" lines="none" [ngClass]="{'mt-20':true}">
+          <span class="text">{{formHeadings[index].name | uppercase}}</span>
+        </ion-item>
+
+        <div class="item-wrapper" [ngClass]="{'mt-10': formHeadings.length <= 1, 'invalid-input': invalidInputs.title}">
+          <ion-label class="stacked-label">Title</ion-label>
+          <ion-select class="mtt-05 pl-20" interface="popover" mode="ios" [(ngModel)]="passengerDetails.title">
+            <ion-select-option value="Mr">Mr.</ion-select-option>
+            <ion-select-option value="Mrs">Mrs.</ion-select-option>
+            <ion-select-option value="Ms">Ms.</ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.surname}">
+          <ion-label class="stacked-label">Surname</ion-label>
+          <ion-input class="pt-05 pl-20" clear-input="true" [(ngModel)]="passengerDetails.surname"></ion-input>
+        </div>
+
+        <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.otherNames}">
+          <ion-label class="stacked-label">Other Names</ion-label>
+          <ion-input class="pt-05 pl-20" clear-input="true" [(ngModel)]="passengerDetails.otherNames"></ion-input>
+        </div>
+
+        <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.dob}">
+          <ion-label class="stacked-label">Date of Birth</ion-label>
+          <!-- <ion-input class="pt-05 pl-20" type="date" clear-input="true"></ion-input> -->
+          <ion-datetime color="trupayprimary" class="pt-10 pl-20" mode="ios" [min]="todaysDate | travelMethods: 'passengerDOB' : formHeadings[index].type : 'min'"
+          [max]="todaysDate | travelMethods: 'passengerDOB' : formHeadings[index].type : 'max'" displayFormat="DD MMM YYYY"
+            [(ngModel)]="passengerDetails.dob"></ion-datetime>
+        </div>
+
+        <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.email}">
+          <ion-label class="stacked-label">Email Address</ion-label>
+          <ion-input class="pt-05 pl-20" type="email" inputmode="email" pattern="email" clear-input="true"
+            [(ngModel)]="passengerDetails.email"></ion-input>
+        </div>
+
+        <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.phone}">
+          <ion-label class="stacked-label">Phone Number</ion-label>
+          <ion-input class="pt-05 pl-20" type="tel" inputmode="tel" pattern="tel" clear-input="true"
+            [(ngModel)]="passengerDetails.phone"></ion-input>
+        </div>
+
+        <ng-container *ngIf="sharedData.travel.searchParameters.flightType === 'international'">
+
+          <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.idType}">
+            <ion-label class="stacked-label">Identity Type</ion-label>
+            <ion-select class="mtt-05 pl-20" interface="popover" mode="ios" [(ngModel)]="idType">
+              <ion-select-option value="PASSPORT">Passport</ion-select-option>
+              <ion-select-option *ngIf="flightType !== 'international'" value="NATIONALIDCARD">National ID</ion-select-option>
+              <ion-select-option *ngIf="flightType !== 'international'" value="VISA">VISA</ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.id}">
+            <ion-label class="stacked-label">Identity Number</ion-label>
+            <ion-input class="pt-05 pl-20" pattern="tel" clear-input="true" [(ngModel)]="id"></ion-input>
+          </div>
+
+          <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.issuingCountry}">
+            <ion-label class="stacked-label">Issuing County</ion-label>
+            <ion-select class="mtt-05 pl-20" interface="popover" mode="ios" [(ngModel)]="issuingCountry">
+              <!-- <ion-select-option value="NGA">Nigeria</ion-select-option> -->
+              <ion-select-option *ngFor="let country of sharedData.travel.countries" [value]="country.isO3">{{country.nicename}}</ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="item-wrapper" [ngClass]="{'invalid-input': invalidInputs.expiryDate}">
+            <ion-label class="stacked-label">Expiry Date</ion-label>
+            <ion-datetime color="trupayprimary" class="pt-10 pl-20" mode="ios" [min]="todaysDate" [max]="maxExpiryDate"
+              displayFormat="DD MMM YYYY" [(ngModel)]="expiryDate"></ion-datetime>
+          </div>
+
+        </ng-container>
+
+
+
+      </ng-container>
+
+      <ion-button *ngIf="formHeadings.length-1 > index" required class="no-transform payment-button mt-20" fill="clear"
+        expand="block" (click)="continue()">
+        Continue
+      </ion-button>
+
+      <ion-button *ngIf="formHeadings.length-1 === index" required class="no-transform payment-button mt-20"
+        fill="clear" expand="block" (click)="bookFlight()">
+        Book Flight
+      </ion-button>
+
+      <!-- <ion-button class="no-transform payment-button hidden"
+        fill="clear" expand="block" (click)="bookFlight()" disabled>
+        Book Flight
+      </ion-button> -->
+
+    </div>
+  </div>
+
+</ion-content>

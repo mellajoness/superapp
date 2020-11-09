@@ -1,0 +1,265 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+      <div class="custom-header">
+        <div [routerLink]="['/','investments','save', 'groupsavings-chlng']" routerDirection="back" class="icon-container nav">
+          <img src="assets/icon/left-arrow.svg" alt="">
+        </div>
+        <div class="header-title">
+          <h3></h3>
+        </div>
+        <div class="icon-container">
+            <!-- <img src="assets/icon/cog.svg" alt=""> -->
+        </div>
+      </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="slide-container">
+    <ion-slides #slide pager="false" [options]="slideOpts">
+
+      <!---------------------------- Slide One   -------------------->
+      <ion-slide class="slide-1">
+        <div class="form-container">
+          <div class="form-instruction-container">
+              <h3> What name would you like to call this group challenge?</h3>
+          </div>
+          <div class="form-input-container">
+           <form [formGroup]="slideOneForm">
+            <ion-item>
+              <ion-label class="form-input-label ion-float-left" position="floating">Group Name</ion-label>
+              <ion-input formControlName="groupName" placeholder="Example: Dubai Trip" maxlength="20"></ion-input>
+            </ion-item>
+            <ion-item style="margin-top: 20px;">
+              <ion-label class="form-input-label ion-float-left" position="floating">Description</ion-label>
+              <ion-textarea formControlName="groupDescription" placeholder="Description comes here" maxlength="100"></ion-textarea>
+            </ion-item>
+           </form>
+          </div>
+          <div class="form-button-container">
+            <ion-item class="form-button-item" lines="none">
+              <ion-button [disabled]="!slideOneForm.valid" (click)="slideToNext()">OK
+                  <ion-icon slot="end" name="checkmark"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </div>
+        </div>
+      </ion-slide>
+
+      <!-- ----------- SLIDE TWO --------------------- -->
+
+      <ion-slide>
+        <div class="form-container">
+          <form [formGroup]="slideTwoForm">
+          <div class="form-instruction-container">
+            <h3>Set a target amount for this challenge.</h3>
+          </div>
+          <div class="form-input-container">
+              <ion-item>
+                <ion-label class="form-input-label ion-float-left" position="floating">Goal Target Amount &nbsp;<span
+                    id="currency">₦</span></ion-label>
+                <ion-input formControlName="groupTarget" type="number" placeholder="N250 000" maxlength="25"></ion-input>
+              </ion-item>
+          </div>
+          <div class="small-warning">
+            <p>Amount you intend to save by maturity date, Minimum N20,000</p>
+          </div>
+
+          <div class="spacing">
+            <div class="form-input-container">
+              <ion-label color="primary">Number Of Group Members</ion-label>
+              <ion-item lines="none">
+                <ion-range [(ngModel)]="groupMembers" snaps=true formControlName="noOfgroupMembers" min="2" max="50" step="1">
+                  <ion-icon size="small" slot="start" name="person-remove-outline"></ion-icon>
+                  <ion-icon size="small" slot="end" name="person-add-outline"></ion-icon>
+                </ion-range>
+              </ion-item>
+              <div class="value-display">
+                <p>{{groupMembers}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-button-container">
+            <ion-item class="form-button-item" lines="none">
+              <ion-button  [disabled]="!slideTwoForm.valid" (click)="slideToNext()">OK
+                <ion-icon slot="end" name="checkmark"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </div>
+
+          <div class="prev-btn-container">
+            <ion-button (click)="previousSlide()" size="small" shape="round" fill="outline">
+              <ion-icon name="return-down-back-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </form>
+        </div>
+      </ion-slide>
+
+      <!-----------------------------------SLIDE 3 ------------------------>
+      <ion-slide class="slide-3">
+        <div class="form-container">
+          <div class="form-instruction-container">
+            <h3>Pick a duration for this challenge</h3>
+          </div>
+          <div class="form-input-container">
+            <form [formGroup]="slideThreeForm">
+              <ion-item>
+                <ion-label>Choose Duration</ion-label>
+                <ion-select formControlName="groupDuration">
+                  <ion-select-option value="90" selected>3 Months</ion-select-option>
+                  <ion-select-option value="180">6 Months</ion-select-option>
+                  <ion-select-option value="270" selected>9 Months</ion-select-option>
+                  <ion-select-option value="360">12 Months</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </form>
+            <!-- <ion-text>{{slideThreeForm.value | json}}</ion-text> -->
+          </div>
+          <div class="form-button-container">
+            <ion-item class="form-button-item" lines="none">
+              <ion-button [disabled]="!slideThreeForm.valid" (click)="slideToNext()">OK
+                <ion-icon slot="end" name="checkmark"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </div>
+
+          <div class="prev-btn-container">
+            <ion-button (click)="previousSlide()" size="small" shape="round" fill="outline">
+              <ion-icon name="return-down-back-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </ion-slide>
+
+      <!----------------------- Slide Four  -------------->
+      <ion-slide class="slide-4">
+        <div class="form-container" style="padding: 0;">
+         
+          <div class="form-input-container">
+            <form [formGroup]="slideFourForm">
+              <ion-item class="margin-top-10 full-width" lines="none">
+                <ion-label>Interest on savings?</ion-label>
+                <ion-toggle (ionChange)="toggleYieldInterest($event)" [value]="isYieldInterest" formControlName="yieldInterest"></ion-toggle>
+              </ion-item>
+
+              <ion-item class="margin-top-5 full-width" lines="none">
+                <ion-label>Auto-debit?</ion-label>
+                <ion-toggle (ionChange)="toggleAutoDebit($event)" [value]="isAutoDebit" formControlName="automateGoal"></ion-toggle>
+              </ion-item>
+
+              <ion-item  lines="none">
+                <div class="form-instruction-container">
+                  <h5>How do you want to be debited?</h5>
+                </div>
+               </ion-item>
+
+              <ion-item *ngIf="isAutoDebit">
+                <ion-label>Frequency</ion-label>
+                <ion-select formControlName="groupFrequency">
+                  <ion-select-option value="daily" selected>Daily</ion-select-option>
+                  <ion-select-option value="weekly">Weekly</ion-select-option>
+                  <ion-select-option value="monthly">Monthly</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item class="margin-top-10 full-width">
+                <ion-label class="form-input-label ion-float-left" position="floating">Reference Code</ion-label>
+                <ion-input formControlName="staffReference" placeholder="Staff Reference Code" maxlength="20"></ion-input>
+              </ion-item>
+            </form>
+
+            <!-- <ion-text>{{ slideFourForm.value | json }}</ion-text> -->
+          </div>
+          <div class="form-button-container">
+            <ion-item class="form-button-item" lines="none">
+              <ion-button [disabled]="!slideFourForm.valid" (click)="getFreqAmount()">OK
+                <ion-icon slot="end" name="checkmark"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </div>
+
+          <div class="prev-btn-container">
+            <ion-button (click)="previousSlide()" size="small" shape="round" fill="outline">
+              <ion-icon name="return-down-back-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </ion-slide>
+
+      <!---------------- Slide Five ---------------------->
+      <ion-slide class="slide-5">
+        <div class="form-container">
+            <div class="form-instruction-container">
+              <h3>Yes! Please confirm we got your entries right.</h3>
+            </div>
+            <div class="form-input-container">
+              <div class="hightlight">
+
+                <div class="row row-1">
+                  <div class="goal-type">
+                    <p>Group Name</p>
+                    <h6>{{titleCase(slideOneForm.get('groupName').value)}}</h6>
+                  </div>
+                  <div class="maturity-date">
+                    <p>Maturity Date</p>
+                    <h6>***, ***, 20**</h6>
+                  </div>
+                </div>
+
+                <div class="row row-2">
+                  <div class="goal-target">
+                    <p>Goal Target</p>
+                    <h6><span id="currency">₦</span>{{slideTwoForm.get('groupTarget').value | number}}</h6>
+                  </div>
+                  <div class="frequency-amount">
+                    <p>{{this.tenorTypeString}} Amount</p>
+                    <h6 *ngIf="freqAmount"><span id="currency">₦</span>{{freqAmount | number}}</h6>
+                     <div *ngIf="!freqAmount">
+                        <ion-spinner name="lines"></ion-spinner>
+                     </div>
+                  </div>
+                </div>
+
+                <div class="row row-3">
+                  <div class="save-duration">
+                    <p>Frequency</p>
+                    <h6 *ngIf="isAutoDebit">{{this.displayFrequency}}</h6>
+                    <h6 *ngIf="!isAutoDebit">Manual</h6>
+                  </div>
+                  <div class="interest">
+                    <p>Interest</p>
+                    <h6 *ngIf="slideFourForm.get('yieldInterest').value === true">{{this.interestRate}}%</h6>
+                    <h6 *ngIf="!slideFourForm.get('yieldInterest').value === true">0%</h6>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+            <div class="caveat">
+              <p>* Maturity date is subject to change on funding</p>
+            </div>
+            <div class="form-button-container">
+              <ion-item class="form-button-item" lines="none">
+                <ion-button style="margin:auto" [disabled]="!freqAmount" (click)="submitAction()">Create Challenge
+                </ion-button>
+              </ion-item>
+            </div>
+            
+            <div class="prev-btn-container">
+              <ion-button (click)="previousSlide()" size="small" shape="round" fill="outline">
+                <ion-icon name="return-down-back-outline"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+
+         
+    </ion-slide>
+
+    </ion-slides>
+
+  </div>
+
+</ion-content>

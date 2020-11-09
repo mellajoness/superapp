@@ -1,0 +1,74 @@
+
+
+ <ion-header class="bar-header">
+  <div class="header">
+    <ion-icon name="arrow-back-outline" class="menu"  (click)="goBack()" ></ion-icon>
+    <div class="loanstext">Loan offers</div>
+    <ion-icon name="" class="menu"></ion-icon>
+  </div>
+</ion-header>
+
+  
+  
+  <ion-content >
+  <div class="headerbox" *ngIf="show">
+     <div class="headerboxtext">Your total loan balance is  </div>
+     <div class="totalloanamount">&#8358;{{total | number:'1.0-0'}}</div>
+  </div>
+  
+
+  <div *ngIf="show">
+  <div>
+      <div   [ngClass]="'graph'">
+        <div class="holder">
+            <canvas  height="210" #barCanvas></canvas>
+        </div>
+      </div>
+    </div>
+
+  
+  <!-- <div >
+        <div class="loanaction"  >
+          <div class="box" (click)="loanBalance(g)" *ngFor="let g of graph; let i = index">
+           <div class="requesttext">{{g.loanType}}</div>
+           <div class="loanactiontitle">&#8358; {{g.totalOutstanding | number:'1.2-2'}}</div>
+           <div class="requesttext">{{g.dueDate | date}}</div>
+          </div>
+         </div> 
+        
+      </div> -->
+<div class="content">
+    <ion-grid>
+       <ion-row >
+          <ion-col *ngFor="let g of graph; let i = index" size="4" no-padding>
+            
+            <div class="card" (click)="loanBalance(g)">
+              <div class="fixedline">
+                <div class="requesttext">{{g.loanType}}</div>
+                <div class="loanactiontitle">&#8358;{{g.totalOutstanding | number:'1.0-0'}}</div>
+
+                <div class="daterow">
+                  <div class="due">Due date:</div>
+                  <div class="date">{{g.dueDate | date}}</div>
+              </div>
+
+              </div>
+            </div>
+
+          </ion-col>
+       </ion-row>
+    </ion-grid>
+  </div>
+
+
+
+      <div class="btn" (click)="payLoan()">Pay Loan </div>
+    
+  </div>
+
+  <div class="noLoan" *ngIf="!show">
+
+    <div class="nobal">You currently have no loan balance.</div>
+
+  </div>
+</ion-content>

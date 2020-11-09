@@ -1,0 +1,55 @@
+
+<ion-content no-padding fullscreen>
+
+  <div [ngClass]="'ion-header'">
+      <div [ngClass]="'header-overlay'">
+        <ion-toolbar mode="ios">
+            <ion-buttons slot="start">
+                <ion-button (click)="goBack()">
+                  <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+                </ion-button>
+              </ion-buttons> 
+          <ion-title>Loan Topup</ion-title>
+        </ion-toolbar>
+     
+        <div class="offers">
+          <ion-img src="../../assets/img/almost.png"></ion-img>
+        </div>
+      </div>
+    </div>
+
+    <div  class="qualify">
+      <p class="your">Your loan topup offers</p>
+    </div>
+
+    <!-- <div >
+      <div (click)="presentModal()" [ngClass]="'holder'" >
+  
+        <div>
+          <h5>Personal</h5>
+          <div class="pic">
+              <span>&#8358; 50,0000</span>
+              <ion-img src="../../assets/img/chevrons-right.png"></ion-img>
+          </div>
+          <p>@ 3.5</p>
+
+        </div>
+
+      </div>
+    </div> -->
+
+
+  <div class="parent" (click)="presentModal()">
+       <div class="personal">Personal</div>
+       <div class="row">
+        <div class="money">&#8358; 50,0000</div>   <ion-img src="../../../assets/img//chevrons-right.png"></ion-img>
+       </div>
+       <div class="rate">@ 3.5% </div>
+  </div>
+
+    <div *ngIf="noList" [ngClass]="'noLoan'">
+      <p>You currently have no topup offer.</p>
+    </div>
+
+
+</ion-content>

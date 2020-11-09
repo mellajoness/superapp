@@ -1,0 +1,71 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light">
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons class="pr-10" slot="primary" (click)="dismiss()">
+      <img src="assets/icon/cancel.svg" alt="">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="header-bg-white">
+  <div class="parent">
+    <div class="section-header">
+      <h3>Reset PIN</h3>
+    </div>
+  
+    <ion-slides #slide pager="false" [options]="slideOpts">
+      <!-- ----------------------- SLIDE - ONE ------------------------- -->
+      <ion-slide>
+        <div class="form-container">
+          <div class="instruction-container">
+            <h5>Enter the otp sent to {{sharedData.resetWalletPinData.email}} </h5>
+            <!-- <h5>Enter the otp sent to {{sharedData.userProfile.walletAcctNumber}} </h5> -->
+          </div>
+          <div class="pin-container">
+            <ng-otp-input type="number" inputmode="numeric" #ngOtpInput (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-input>
+          </div>
+        
+          <div class="button-container" *ngIf="otp && otp.length === 6">
+            <ion-button (click)="slideToNext()" class="no-transform payment-button mt-15" fill="clear" expand="block">Confirm</ion-button>
+          </div>
+        </div>
+      </ion-slide>
+  
+      <!-- ----------------------- SLIDE - TWO ------------------------- -->
+      <ion-slide>
+        <div class="form-container">
+          <div class="instruction-container text-left">
+            <h5>Reset wallet transaction PIN </h5>
+          </div>
+
+          <div class="item-wrapper mb-05">
+            <ion-label class="stacked-label text1">Old PIN</ion-label>
+            <ion-input class="pt-05 pl-10 text-left text1" [(ngModel)]="oldPin" (ionChange)="oldPinChange()" inputmode="numeric" type="password" maxLength="4" minLength="4" placeholder="Enter Old PIN"></ion-input>
+          </div>
+          
+          <div class="item-wrapper mb-05">
+            <ion-label class="stacked-label text1">New PIN</ion-label>
+            <ion-input class="pt-05 pl-10 text-left text1" [(ngModel)]="newPin" (ionChange)="newPinChange()" inputmode="numeric" type="password" maxLength="4" minLength="4"
+              placeholder="Enter New PIN"></ion-input>
+          </div>
+          
+          <div class="item-wrapper mb-05">
+            <ion-label class="stacked-label text1">Confirm New PIN</ion-label>
+            <ion-input class="pt-05 pl-10 text-left text1" [(ngModel)]="confirmPin" (ionChange)="confirmPinChange()" inputmode="numeric" type="password" maxLength="4" minLength="4"
+              placeholder="Confirm New PIN"></ion-input>
+          </div>
+
+          <ion-button [disabled]="(!oldPin || oldPin && oldPin.length < 4) || (!newPin || newPin && newPin.length < 4) || (!confirmPin || confirmPin && confirmPin.length < 4)" (click)="setPin()" class="no-transform payment-button mt-15" fill="clear" expand="block">Set Pin</ion-button>
+          
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

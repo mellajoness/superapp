@@ -1,0 +1,46 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Transactions</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="parent">
+    <div>
+      <ion-list class="w100 mb-10" mode="ios" *ngFor="let transaction of transactionData">
+        <ion-item lines="none" class="ion-activatable ion-no-padding border-radius-10">
+          <ion-ripple-effect></ion-ripple-effect>
+          <div class="item-v-center text-center text08 mr-10"
+            [ngClass]="transaction.tran_type === 'Debit' ? 'icon-img-red' : 'icon-img-green'">
+            <ion-text class="icon-text">{{transaction.tran_type}}</ion-text>
+          </div>
+          <ion-label>
+            <div>
+              <h3 class="text08 text-black">{{transaction.receiver_fullname}}</h3>
+            </div>
+            <p class="shorten text-dark text08 mtt-02">{{transaction.tran_particular_2}}</p>
+          </ion-label>
+          <ion-label>
+            <div class="shift-right">
+              <h3 class="text1" [ngClass]="transaction.tran_type === 'Debit' ? 'text-red' : 'text-green'">
+                <span [innerHTML]="transaction.currency | currencyConverter"> </span>
+                <span [innerHTML]="transaction.tran_amount.toLocaleString()"> </span>
+              </h3>
+            </div>
+            <p class="shorten text-dark shift-right text08 mtt-02">{{transaction.tran_time}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>

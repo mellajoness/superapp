@@ -1,0 +1,80 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div [routerLink]="['/','investments']" routerDirection="back" class="icon-container nav">
+        <img src="assets/icon/left-arrow.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3>{{plan.tdAccount}}</h3>
+      </div>
+      <div class="icon-container settings">
+          <!-- <img src="assets/icon/ellipsis.svg" alt=""> -->
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="fd-info-card">
+
+    <div class="left">
+      <h5>Fixed Deposit</h5>
+      <p>{{plan.tenorDays}} days</p>
+    </div>
+    <div class="right">
+      <h3><span id="currency"><b>₦</b></span>{{plan.transAmount | currency: 'NGN': ' '}}</h3>
+    </div>
+
+  </div>
+
+  <div class="action-buttons-container">
+    <div class="withdraw" (click)="displayPinModal()">
+      <div class="action-button">
+        <img src="assets/icon/plan-icns/down-arrow.svg" alt="">
+      </div>
+      <p>Liquidate</p>
+    </div>
+  </div>
+
+  <div class="caveat-container">
+    <p>Pre-liquidation attracts 20% penal charge on your interest</p>
+  </div>
+
+  <div class="hightlight">
+    <div class="row row-1">
+      <div class="column-1">
+        <p>Start Date</p>
+        <h6 *ngIf="plan.dateCreated !== '0001-01-01T00:00:00'">{{plan.dateCreated | date:'mediumDate'}}</h6>
+        <h6 *ngIf="plan.dateCreated === '0001-01-01T00:00:00'">Not Funded</h6>
+      </div>
+      <div class="column-2">
+        <p>Maturity Date</p>
+        <h6 *ngIf="plan.maturityDate !== '0001-01-01T00:00:00'">{{plan.maturityDate | date:'mediumDate'}}</h6>
+        <h6 *ngIf="plan.maturityDate === '0001-01-01T00:00:00'">Not Funded</h6>
+      </div>
+    </div>
+    <div class="row row-2">
+      <div class="column-1">
+          <p>Purchased Amount</p>
+          <h6><span id="currency"><b>₦</b></span>{{plan.transAmount | currency: 'NGN': ' '}}</h6>
+      </div>
+      <div class="column-2">
+        <p>Rate</p>
+        <h6>{{plan.rate}}%</h6>
+      </div>
+    </div>
+    <!-- <div class="row row-3">
+      <div class="column-1">
+          <p>Status</p>
+          <h6 *ngIf="plan.isGoalAccountFunded === true">Active</h6>
+          <h6 *ngIf="!plan.isGoalAccountFunded === true">Inactive</h6>
+      </div>
+      <div class="column-2">
+        <p>Rate</p>
+        <h6>{{plan.rate}}%</h6>
+      </div>
+    </div> -->
+</div>
+
+</ion-content>

@@ -1,0 +1,82 @@
+
+<ion-header>
+  <div class="header">
+    <ion-icon name="arrow-back-outline" class="menu"  (click)="goBack()" ></ion-icon>
+    <div class="loanstext">Select Amount</div>
+    <ion-icon name="" class="menu"></ion-icon>
+  </div>
+</ion-header>
+
+ <div class="body">
+  <img src="../../../assets/imgs/loan/loanofferprogress1.png"  class="photo">
+     <div class="headerboxtext" >You are eligible for the following amount</div>
+</div>
+
+
+<ion-content >
+ <ion-grid>
+
+  <ion-row class="row">
+  <ion-col    size="6" no-padding >
+   <div class="card" (click)="next()"  >
+    <div >
+    <div class="loanactiontitle">&#8358;7888</div>
+    <div class="requesttext">@23 % due in 14days</div>
+    </div>
+  </div>
+  </ion-col>
+
+  <!-- <ion-col    size="6" no-padding >
+    <div class="card"  >
+     <div  (click)="testselectloan(offer)" >
+     <div class="loanactiontitle">&#8358;7888</div>
+     <div class="requesttext">@23 % due in 14days</div>
+     </div>
+   </div>
+   </ion-col> -->
+
+   <!-- <ion-col    size="6" no-padding >
+    <div class="card"  >
+     <div  (click)="testselectloan(offer)" >
+     <div class="loanactiontitle">&#8358;7888</div>
+     <div class="requesttext">@23 % due in 14days</div>
+     </div>
+   </div>
+   </ion-col>
+ 
+   <ion-col    size="6" no-padding >
+     <div class="card"  >
+      <div  (click)="testselectloan(offer)" >
+      <div class="loanactiontitle">&#8358;7888</div>
+      <div class="requesttext">@23 % due in 14days</div>
+      </div>
+    </div>
+    </ion-col> -->
+
+</ion-row>
+
+
+
+
+</ion-grid>
+  
+
+
+    <!-- <div *ngIf="offers.length">
+    <div class="body">
+     <div class="eligible">You are eligible for the following offers</div>
+    </div>
+ 
+    <div class="parent" (click)="selectloan(offer)" *ngFor="let offer of offers; let i = index">
+      <div class="row">
+       <div class="money">&#8358; {{offer.principal}}</div>   <ion-img src="../../../../assets/img/arrowforward.png" class="arrow"></ion-img>
+      </div>
+      <div class="rate">{{offer.fee}}% interest, due in {{offer.term}} days</div>
+    </div>
+  </div>
+
+  <div  class="body" *ngIf="!offers.length">
+    <div class="eligible">{{message}}</div>
+  </div> -->
+
+</ion-content>

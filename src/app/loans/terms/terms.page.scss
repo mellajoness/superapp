@@ -1,0 +1,80 @@
+ion-content {
+    height: 100%;
+  }
+  
+  ion-toolbar {
+    // --background: linear-gradient(180deg, #247BA0 0%, #0A2463 100%);
+    ion-title {
+      font-family: Gilroy;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      text-align: center;
+      color: #0E237E;
+    }
+    ion-back-button{
+      --color:#0E237E;
+    }
+    height: 55px;
+  }
+  
+  
+  ion-menu-button {
+    color: white;
+  }
+  
+  ion-title {
+    color: white;
+  }
+
+  .terms{
+    margin: 0 auto !important;
+    display: flex;
+    flex-direction: column;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 30px;
+   
+    p{
+      font-family: Gilroy;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 16px;
+    color: #354670;
+    white-space: normal;
+    margin: 6px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+    } 
+  }
+
+  ion-header ion-toolbar:first-of-type {
+    padding-top: 0px;
+}
+.link{
+  color: red;
+}
+
+.header{
+  display:flex;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15PX;
+  padding-bottom: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu{
+  font-size:1.7em;
+  color: #0E237E;
+}
+.loanstext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size:1.1em;
+  line-height: 22px;
+  color: #3348A1;
+ }

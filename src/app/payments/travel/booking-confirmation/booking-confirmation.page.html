@@ -1,0 +1,316 @@
+<ion-header class="ion-no-border ion-padding" mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="trupayprimary" (click)="handlers.navigate().back()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="font-18px pl-30 pr-30">Booking Confirmation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin-top">
+
+
+  <!-- From Search Page -->
+  <ng-container *ngIf="sharedData.travel.bookingInfoType !== 'pnr'">
+    <ion-card class="box-shadow">
+      <div>
+        <ion-item mode="ios" lines="none">
+          <p>
+            {{sharedData.travel.departureCity[0].shortName ? sharedData.travel.departureCity[0].shortName : sharedData.travel.departureCity[0].name}}
+            &nbsp;
+            <span>
+              <ion-icon [name]="arrowIcon"></ion-icon>
+            </span> &nbsp;
+            {{sharedData.travel.arrivalCity[sharedData.travel.arrivalCity.length - 1].shortName ? sharedData.travel.arrivalCity[sharedData.travel.arrivalCity.length - 1].shortName : sharedData.travel.arrivalCity[sharedData.travel.arrivalCity.length - 1].name}}
+          </p>
+          <ion-text slot="end" class="fare">{{this.bookingDetails.data.body.data.pricing.portal_fare.total_fare | currency : 'NGN' : 'symbol-narrow'}}</ion-text>
+        </ion-item>
+
+        <div class="ion-padding-start">
+          <p>
+            {{dates.departure}}<span *ngIf="sharedData.travel.roundtrip"> - {{dates.arrival}}</span>
+          </p>
+          <p>
+            {{sharedData.travel.searchParameters.cabin}}
+          </p>
+        </div>
+      </div>
+    </ion-card>
+
+
+    <ion-list class="mt-30 ion-margin-horizontal box-shadow">
+
+      <ng-container *ngFor="let level1 of bookedItinerary; let i1 = index">
+        <ng-container *ngFor="let level2 of level1; let i2 = index">
+          <ng-container *ngFor="let level3 of level2; let i3 = index">
+            <ng-container *ngFor="let level4 of level3; let i4 = index">
+              <ion-item class="mtt-05 mb-05 ion-no-padding " mode="ios" lines="full">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      Departure
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.departure.airport.name}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.departure.date | travelMethods : 'DayName_dd_Mon_YYYY' : true}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.departure.time | slice : 0 : 5}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.marketing_airline.name}}
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+
+              <ion-item class="mtt-05 mb-05 ion-no-padding " mode="ios" lines="full">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      Arrival
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.arrival.airport.name}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.arrival.date | travelMethods : 'DayName_dd_Mon_YYYY' : true}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.arrival.time | slice : 0 : 5}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.marketing_airline.name}}
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+
+      </ng-container>
+
+
+      <ion-item class="mtt-05 mb-05 ion-no-padding " mode="ios" lines="full">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              Flight PNR
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              {{bookingDetails.data.body.data.pnr}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+
+      <ion-item class="mtt-05 mb-05 ion-no-padding " mode="ios" lines="none" (click)="fareRules()">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              Flight Fare Rules
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Click here to see flight fare rules
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+  <!-- From Search Page  -->
+
+
+
+
+
+
+
+
+  <!-- From Get PNR -->
+  <ng-container *ngIf="sharedData.travel.bookingInfoType === 'pnr'">
+    <ion-card class="box-shadow">
+      <div>
+        <ion-item mode="ios" lines="none">
+          <p>
+            {{sharedData.travel.departureCity[0].name}} &nbsp;
+            <span>
+              <ion-icon [name]="arrowIcon"></ion-icon>
+            </span> &nbsp;
+            {{sharedData.travel.arrivalCity[sharedData.travel.arrivalCity.length - 1].name}}
+          </p>
+          <ion-text slot="end" class="fare">{{this.bookingDetails.pricing.portal_fare.total_fare | currency : 'NGN' : 'symbol-narrow'}}</ion-text>
+        </ion-item>
+
+        <div class="ion-padding-start">
+          <p>
+            {{dates.departure}}<span *ngIf="sharedData.travel.roundtrip"> - {{dates.arrival}}</span>
+          </p>
+          <p>
+            {{bookedItinerary[0][0][0][0].cabins[0].res_book_desig_cabin_name}}
+          </p>
+        </div>
+      </div>
+    </ion-card>
+
+
+    <ion-list class="mt-30 ion-margin-horizontal box-shadow">
+
+      <ng-container *ngFor="let level1 of bookedItinerary; let i1 = index">
+        <ng-container *ngFor="let level2 of level1; let i2 = index">
+          <ng-container *ngFor="let level3 of level2; let i3 = index">
+            <ng-container *ngFor="let level4 of level3; let i4 = index">
+              <ion-item class="mtt-05 mb-05 ion-no-padding " mode="ios" lines="full">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      Departure
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.departure.airport.name}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.departure.date | travelMethods : 'DayName_dd_Mon_YYYY' : true}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.departure.time | slice : 0 : 5}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.marketing_airline.name}}
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+
+              <ion-item class="mtt-05 mb-05 ion-no-padding " mode="ios" lines="full">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      Arrival
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.arrival.airport.name}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.arrival.date | travelMethods : 'DayName_dd_Mon_YYYY' : true}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.arrival.time | slice : 0 : 5}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      {{level4.marketing_airline.name}}
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+
+      </ng-container>
+
+
+      <ion-item class="mtt-05 mb-05 ion-no-padding " mode="ios" lines="full">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              Flight PNR
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              {{ sharedData.travel.bookingInfoType === 'pnr' ? sharedData.travel.bookingDetails.pnr : bookingDetails.data.body.data.pnr}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item class="mtt-05 mb-05 ion-no-padding " mode="ios" lines="none" (click)="fareRules()">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              Flight Fare Rules
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Click here to see flight fare rules
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+  <!-- From Get PNR -->
+
+
+
+
+
+
+  <div class="ml-10 mr-10 pt-10 pb-10">
+
+    <ion-item class="mt-30 ion-no-padding pl-10" lines="none">
+      <ion-text class="text-justify" color="danger">
+        Kindly pay before
+        {{ sharedData.travel.bookingInfoType === 'pnr' ? (sharedData.travel.bookingDetails.ticket_time_limit | travelMethods : 'DayName_dd_Mon_YYYY' : true) : bookingDetails.data.body.data.ticket_time_limit | travelMethods : 'DayName_dd_Mon_YYYY' : true}}
+        {{ sharedData.travel.bookingInfoType === 'pnr' ? (sharedData.travel.bookingDetails.ticket_time_limit.split('T')[1] | slice : 0 : 5) : bookingDetails.data.body.data.ticket_time_limit.split('T')[1] | slice : 0 : 5}}
+        if not your booking would be
+        cancelled.
+      </ion-text>
+    </ion-item>
+
+    <ion-button class="mt-20 h-50px" fill="solid" color="trupaysecondary" expand="block" (click)="payNow()">
+      Pay Now
+    </ion-button>
+
+    <ion-button *ngIf="sharedData.travel.bookingInfoType !== 'pnr'" class="mt-10 mb-10" fill="clear" color="trupaysecondary"
+      expand="block" [routerLink]="['booking-successful']">
+      Pay Later
+    </ion-button>
+  </div>
+
+</ion-content>

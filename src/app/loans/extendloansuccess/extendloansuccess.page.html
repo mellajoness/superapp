@@ -1,0 +1,49 @@
+<ion-content no-padding fullscreen>
+
+
+  <div *ngIf="success">
+  <div class="complete">
+    <p>100% complete</p>
+  </div>
+  
+  <div class="text">
+    <ion-img src="../../../assets/img/thumbs.png"></ion-img>
+  </div>
+  
+  <div class="congrats" padding>
+    <p>Congratulations!</p>
+    <p>{{message}}</p>
+  </div>
+  
+  <div class="next">
+      <button ion-button (click)="dashboard()"><span>Got it</span> </button>
+  </div>
+</div>
+
+
+
+
+<div *ngIf="failed">
+  <div class="complete">
+    <p>100% complete</p>
+  </div>
+  
+  <div class="text">
+    <ion-img src="../../../assets/img/sorry.png"></ion-img>
+  </div>
+  
+  <div class="congrats" padding>
+    <p>Sorry!</p>
+    <p>{{message}}</p>
+  </div>
+  
+  <div class="next">
+      <button ion-button (click)="dashboard()"><span>Got it</span> </button>
+  </div>
+</div>
+
+
+
+
+
+  </ion-content>

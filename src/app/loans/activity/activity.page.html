@@ -1,0 +1,46 @@
+
+ 
+  
+  <ion-header class="bar-header">
+  <div class="header">
+    <ion-icon name="arrow-back-outline" class="menu"  (click)="goBack()"></ion-icon>
+    <div class="history">Recent Activity</div>
+    <ion-icon name="" class="menu"></ion-icon>
+  </div>
+  </ion-header>
+
+
+  
+  <ion-content> 
+  <div  *ngIf="hasActivity">
+  <div class="body" *ngFor="let a of activities; let i = index">
+    <div  class="firstrow">
+        <div class="transid">{{a.loanType}}</div>
+        <div class="transid">{{a.entryDate | date}}</div>
+    </div>
+
+    <div class="disbmoneyrow">
+    <div class="loandistext">{{a.action}}</div>
+
+    <div class="moneyicon" *ngIf="a.type==='Debit'">
+     <div class="money">- &#8358;{{a.amount | number:'1.0-0'}}</div>
+     <ion-icon name="arrow-up-outline" class="upicon"></ion-icon>
+    </div>
+
+    <div class="moneyicon" *ngIf="a.type==='Credit'">
+      <div class="moneycredit">+ &#8358;{{a.amount | number:'1.0-0'}}</div>
+      <ion-icon name="arrow-down-outline" class="downicon"></ion-icon>
+     </div>
+
+  </div>
+  </div>
+</div>
+
+
+<div class="noactivity" *ngIf="noActivites">
+   <div class="status">You currently have no activity</div>
+</div>
+
+
+
+</ion-content>

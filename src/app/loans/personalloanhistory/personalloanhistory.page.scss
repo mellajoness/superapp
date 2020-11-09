@@ -1,0 +1,136 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    background-color: #247BA0;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .name{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 17px;
+    text-align: center;
+    color: #e5e5e5;
+}
+.details{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 17px;
+    color: #504C5F;
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 35px;
+}
+.divider{
+    border: 2px solid  #BBE3AC;
+    margin-top: 35px;
+}
+
+.dividertwo{
+ border:0.5px solid  #f3f1f1;
+}
+
+.firstrow{
+    width: 25%;
+   
+}
+.secondrow{
+    width: 25%;
+   
+}
+.thirdrow{
+    width: 25%;
+   
+}
+.fourthtrow{
+    width: 25%;
+   
+}
+.parent{
+    display: flex;   
+}
+
+.title{
+text-align: center;
+color: #000000;
+font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size:1.0em;
+line-height: 17px;
+padding-top:5px;
+padding-bottom:5px;
+}
+.loanid{
+ color: #5b5869;
+ padding-left: 5px;
+ padding-top:10px;
+ padding-bottom:10px;
+ color: #000000;
+ font-family: Lato;
+ font-style: normal;
+ font-weight: normal;
+ font-size: 0.8em;
+}
+.date{
+color: #4eb1d3;
+font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 17px;
+padding-top:10px;
+padding-bottom:10px;
+font-size: 0.8em;
+}
+.credittbtn{
+    font-family: Lato;
+    font-size: 0.8em;
+    text-align: center;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    color:  #f4442e;  
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top:7px;
+    height: 20px;
+    border: 1px solid #f4442e;
+    justify-content: center;
+    padding-top: 2px;
+ 
+}
+
+.btn{
+color:  #f4442e; 
+font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 17px;
+padding-top:10px;
+padding-bottom:10px;
+font-size: 0.8em;
+background-color: green;
+text-align: center;
+border: 1px solid #f4442e;
+border-radius: 5px;
+}
+
+.amount{
+    color: #444054;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 0.8em;
+    font-family: Lato;
+    font-style: normal;
+    font-weight:bold;
+
+}
+

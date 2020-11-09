@@ -1,0 +1,82 @@
+<!-- 
+    <ion-list>
+        <ion-radio-group name="auto" value="ascending" [(ngModel)]="sortType">
+            <ion-list-header class="bold">
+                <ion-label>Sort By</ion-label>
+        </ion-list-header>
+        <ion-item (click)="ascending()">
+            <ion-label>Lowest Price</ion-label>
+            <ion-radio value="ascending"></ion-radio>
+        </ion-item>
+        <ion-item  (click)="descending()">
+            <ion-label>Highest Price</ion-label>
+            <ion-radio value="descending"></ion-radio>
+        </ion-item>
+    </ion-radio-group>
+</ion-list> -->
+
+
+<ion-header>
+    <ion-toolbar>
+
+        <ion-segment (ionChange)="segmentChanged($event)" mode="md" [value]="tab" [(ngModel)]="tab" scrollable="true">
+            <ion-segment-button class="no-ripple" mode="md" value="sort">
+                <!-- <ion-icon mode='md' name="wallet"></ion-icon> -->
+                <ion-label class="no-transform">Sort</ion-label>
+            </ion-segment-button>
+    
+            <ion-segment-button class="no-ripple" mode="md" value="filter">
+                <!-- <ion-icon mode='md' name="search"></ion-icon> -->
+                <ion-label class="no-transform">Filter</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+
+    </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content>
+    <ng-container>
+
+        <ng-container [ngSwitch]="tab">
+
+            <ng-container *ngSwitchCase="'sort'">
+                <ion-list>
+                    <ion-radio-group name="auto" value="ascending" [(ngModel)]="sortType">
+                        <ion-item-divider>
+                            <ion-label>Price</ion-label>
+                        </ion-item-divider>
+                        <ion-item lines="full" (click)="ascending()">
+                            <ion-label>Lowest Price</ion-label>
+                            <!-- <ion-radio value="ascending"></ion-radio> -->
+                        </ion-item>
+                        <ion-item lines="full" (click)="descending()">
+                            <ion-label>Highest Price</ion-label>
+                            <!-- <ion-radio value="descending"></ion-radio> -->
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'filter'">
+                <ion-item-divider>
+                    <ion-label>Airlines</ion-label>
+                    <ion-button class="font-13px no-transform" fill="clear" slot="end" style="color: #999999;" (click)="clearFilters()" >Clear</ion-button>
+                </ion-item-divider>
+
+                <ion-item lines="full" *ngFor="let airline of sharedData.travel.listAirlines" (click)="filterByAirline(airline)" >
+                    <ion-label>{{airline.name}}</ion-label>
+                    <ion-checkbox [checked]="airline.checked" slot="end"></ion-checkbox>
+                </ion-item>
+            </ng-container>
+
+
+        </ng-container>
+
+
+
+
+    </ng-container>
+</ion-content>

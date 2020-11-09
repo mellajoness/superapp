@@ -1,0 +1,44 @@
+.custom-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1.5rem;
+}
+
+ion-header ion-toolbar:first-of-type {
+    padding-top: 0 !important; 
+}
+
+.container{
+    padding: 25px;
+}
+
+.code-container{
+    margin-top: 10px;
+    width: 100%;
+    color: #1E282B;
+    font-weight: bolder;
+    text-align: center;
+    padding: 20px;
+    border: 0.5px solid #0000006c;
+    border-radius: 3px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.shareButton-container{
+    // margin: 20px 20px 20px 20px;
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.shareBtn{
+    --padding-top: 25px;
+    --padding-bottom: 25px;
+    --background: #0E237E;
+    --color: #ffffff;
+}

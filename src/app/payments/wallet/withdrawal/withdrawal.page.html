@@ -1,0 +1,79 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Withdrawal</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="item-wrapper-5 mb-05">
+      <ion-label class="stacked-label">Bank</ion-label>
+      <ion-select [disabled]="busy || (accounts && accounts.length < 1)" class="mtt-05" interface="popover" mode="ios" placeholder="Select Bank" name="selectedBank"
+        [selectedText]="selectedBank" [(ngModel)]="selectedBank" [ngModelOptions]="{standalone: true}" (ionChange)="bankSelected()">
+        <ion-select-option *ngFor="let bank of banks" value="{{bank.bankName}}">
+          {{bank.bankName}}
+        </ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="item-wrapper mb-05">
+      <ion-label class="stacked-label">Account Number</ion-label>
+      <ion-select [disabled]="busy || (accounts && accounts.length < 1)" class="mtt-05" interface="popover" mode="ios" placeholder="Select Account Number" name="selectedAccount"
+        [selectedText]="selectedAccount" [(ngModel)]="selectedAccount" [ngModelOptions]="{standalone: true}" (ionChange)="accountSelected()">
+        <ion-select-option *ngFor="let account of accounts" value="{{account.foracid}}">
+          {{account.foracid}} - &#8358;{{account.balance}}
+        </ion-select-option>
+      </ion-select>
+    </div>
+
+    <div *ngIf="accountDetails">
+      <div class="item-space-between text08 mb-05">
+        <div>Account Name:</div>
+        <div>{{accountDetails[0].accountName}}</div>
+      </div>
+
+      <div class="item-space-between text08">
+        <div>Account Balance:</div>
+        <div>
+          <span [innerHTML]="accountDetails[0].accountCurrency | currencyConverter"></span>
+          <span [innerHTML]="accountDetails[0].ledgerBalance.toLocaleString()"> </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-wrapper mb-05">
+      <ion-label class="stacked-label">Amount</ion-label>
+      <ion-input [disabled]="busy || (accounts && accounts.length < 1)" class="pt-05 pl-20" inputmode="numeric" type="text" placeholder="Enter Amount"
+        (ionChange)="amountChange()" [(ngModel)]="amount"></ion-input>
+    </div>
+
+    <div class="item-wrapper mb-05">
+      <ion-label class="stacked-label">Narration</ion-label>
+      <ion-input [disabled]="busy || (accounts && accounts.length < 1)" class="pt-05 pl-20" type="text" maxLength="40" placeholder="Enter Narration"
+        (ionChange)="narrationChange()" [(ngModel)]="narration"></ion-input>
+    </div>
+
+    <div class="item-v-center">
+      <ion-spinner *ngIf="busy || (accounts && accounts.length < 1)" name="bubbles" mode="ios" color="primary">
+      </ion-spinner>
+    </div>
+
+    <ion-button [disabled]="busy || !narration || !amount || !selectedAccount ||!selectedBank || !accountDetails || (accountDetails && accountDetails.length === 0) || (accounts && accounts.length < 1)"
+      (click)="proceed('payments/validate')"
+      class="no-transform payment-button mt-30" fill="clear" expand="block">
+      Proceed
+    </ion-button>
+
+  </div>
+</ion-content>

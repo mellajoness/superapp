@@ -1,0 +1,76 @@
+<ion-header class="bar-header">
+  <div class="header">
+    <ion-icon name="arrow-back-outline" class="menu"  (click)="goBack()" ></ion-icon>
+    <div class="loanstext">Laptop Loan</div>
+    <ion-icon name="" class="menu"></ion-icon>
+  </div>
+</ion-header>
+
+<div class="body">
+
+  <img src="../../../assets/imgs/loan/loanofferprogress1.png"  class="photo">
+
+  <div class="headerbox" >
+     <div class="headerboxtext">You qualify for a total loan of up to </div>
+     <div class="totalloanamount">&#8358;{{total_Eligible_Amount | number:'1.0-0'}}</div>
+  </div>
+</div>
+
+
+<ion-content >
+  <div class="content">
+    <ion-grid>
+      <ion-row>
+      <ion-col    *ngFor="let laptop of laptopSpecs; let i = index" size="4" no-padding >
+        <div class="card"  >
+      <div class="loanaction"  >
+     <div  (click)="goToDetails(laptop)" >
+      <div class="requesttext">{{laptop.fullInfo}}</div>
+      <div class="loanactiontitle">&#8358;{{laptop.amount | number:'1.0-0'}}</div>
+      <div class="interest">@ {{interestRate}}% {{tenorDuration}}</div>
+     </div>
+  
+    </div>
+  </div>
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+  
+  
+  </div>
+
+
+<!-- <div class="parent">
+  <div>
+<div class="eliamount">Eligible Amount</div>
+  <div class="elegibility">
+    <div>&#8358;{{total_Eligible_Amount}}</div>
+  </div>
+</div>
+
+
+
+<div class="secondelement">
+  <div class="border">
+  <ion-select   placeholder="Select Laptop Type" [(ngModel)]="account"  *ngFor="let laptop of laptopSpecs; let i = index">
+     <ion-select-option value={{laptop.fullInfo}}>{{laptop.fullInfo}}</ion-select-option> 
+  </ion-select>
+  </div>
+
+
+
+  <div class="elegibilitysecond">
+    <ion-select   placeholder="Select Tenure" [(ngModel)]="accounttwo">
+      <ion-label></ion-label>
+       <ion-select-option value={{tenorDuration}}>{{tenorDuration}}</ion-select-option> 
+    
+    </ion-select>
+  </div>
+</div>
+
+
+<div class="btn" (click)="pay()">
+   Confirm
+</div> 
+  </div> -->
+</ion-content>

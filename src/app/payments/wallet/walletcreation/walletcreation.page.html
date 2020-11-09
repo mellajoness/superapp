@@ -1,0 +1,85 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button *ngIf="verificationSuccess === undefined" class="mtt-02 no-transform" fill="clear" color="light" (click)="close()">
+        <ion-icon slot="start" name="close" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div *ngIf="verificationSuccess === undefined" class="title header-text"></div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="mt-10" *ngIf="verificationSuccess === undefined">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="title-text">Wallet Setup</ion-text>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <div class="px-02 mt-10 text1 w100">
+            <div>
+              <ion-text class="body-title">
+                {{ sharedData.userProfile.bvn ? "Please provide a unique 4 digits PIN" : "Please provide your BVN and a unique 4 digits PIN" }}
+              </ion-text>
+            </div>
+
+            <div *ngIf="!sharedData.userProfile.bvn || !sharedData.userProfile.isBvnSET" class="item-wrapper mb-05">
+              <ion-label class="stacked-label">BVN</ion-label>
+              <ion-input class="pt-05 pl-20" inputmode="numeric" type="text" maxLength="30" minLength="10"
+                placeholder="Enter BVN" (ionChange)="bvnChange()" [(ngModel)]="bvn"></ion-input>
+            </div>
+
+            <div class="item-wrapper mb-05">
+              <ion-label class="stacked-label">PIN</ion-label>
+              <ion-input class="pt-05 pl-20" inputmode="numeric" type="password" maxLength="4" minLength="4"
+                placeholder="Enter PIN" (ionChange)="pinChange()" [(ngModel)]="pin"></ion-input>
+            </div>
+
+            <div class="item-wrapper mb-05">
+              <ion-label class="stacked-label">Confirm PIN</ion-label>
+              <ion-input class="pt-05 pl-20" inputmode="numeric" type="password" maxLength="4" minLength="4"
+                placeholder="Confirm PIN" (ionChange)="confirmPinChange()" [(ngModel)]="confirmPin"></ion-input>
+            </div>
+            <div class="text08 text-green mb-05">
+              <div>The wallet transaction is a unique 4 digits pin that will be used for all wallet transactions, you
+                should use your Super App transaction pin for ease of remebering.</div>
+            </div>
+
+            <div *ngIf="busy" class="item-v-center">
+              <ion-spinner name="bubbles" mode="ios" color="primary"></ion-spinner>
+            </div>
+
+            <ion-button *ngIf="!enrollmentData" (click)="submit()" [disabled]="busy || !bvn || !pin || !confirmPin" class="no-transform payment-button mt-30"
+              fill="clear" expand="block">
+              Finish Setup
+            </ion-button>
+            <ion-button *ngIf="enrollmentData" (click)="walletAccountUpdateByPhone(sharedData.userPhone)" [disabled]="busy || !bvn || !pin || !confirmPin" class="no-transform payment-button mt-30"
+              fill="clear" expand="block">
+              Finish Setup
+            </ion-button>
+          </div>
+        </ion-row>
+
+      </ion-grid>
+    </div>
+
+
+    <div class="mt-10" *ngIf="verificationSuccess === false || verificationSuccess === true">
+      <div class="ion-text-center mt-10">
+        <img src='../../../assets/img/pleasewait.png' />
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

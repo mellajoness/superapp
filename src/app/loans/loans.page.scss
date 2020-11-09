@@ -1,0 +1,96 @@
+ion-content {
+  --background: url("../../assets/imgs/loan/Frame.png") no-repeat center center / cover !important;
+  --ion-text-color: var(--ion-color-primary-contrast);
+
+.profile-section{
+    border-bottom: 1px solid #e5e5e5;
+    height: 18vh;
+    .box-wrapper {
+      display: flex;
+      padding-top: 4vh;
+      div:nth-child(1) {
+        ion-avatar {
+          height: 80px;
+          width: 80px;
+          padding-left: 5px;
+        }
+      }
+      div:nth-child(2) {
+        padding-top: 12px;
+        display: flex;
+        flex-direction: column;
+        span {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 16px;
+          color: #e5e5e5;
+        }
+        p:nth-child(1) {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 13px;
+          color: #e5e5e5;
+        }
+        p:nth-child(2) {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 13px;
+          color: #e5e5e5;
+        }
+  
+        p {
+          margin: 3px;
+        }
+      }
+  
+      div:nth-child(1),
+      div:nth-child(2) {
+        margin: 0 5px;
+      }
+    }
+}
+ 
+  
+  ion-item{
+    --background: transparent !important;
+    ion-label {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      color: #e5e5e5;
+    }
+
+    ion-img {
+      width: 16px;
+      height: 16px;
+    }
+
+    ion-label,
+    ion-img {
+      margin: 0 10px;
+    }
+  }
+}
+
+
+
+  .footer {
+    padding-left: 20px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    p {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      color: #e5e5e5;
+      margin: 5px;
+    }
+  }

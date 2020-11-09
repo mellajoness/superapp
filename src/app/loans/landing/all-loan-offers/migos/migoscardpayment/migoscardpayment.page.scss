@@ -1,0 +1,205 @@
+.header{
+  display:flex;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15PX;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu{
+  font-size:1.7em;
+  color: #0E237E;
+}
+.loanstext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size:1.1em;
+  line-height: 22px;
+  color: #3348A1;
+ }
+ .iconmessage{
+     padding-left: 15px;
+     padding-right: 15px;
+ }
+ .changecard{
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 60px;
+  text-align: center;
+ }
+ .photo{
+  width: 99%;
+  padding-top: 20px;
+ }
+ .headerbox{
+  background-color: #0E237E;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 30px;
+ }
+ .headerboxtext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1em;
+  line-height: 22px;
+  padding-top: 15px;
+  padding-right: 20px;
+  color: #9C9E9B;
+ }
+ .totalloanamount{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.4em;
+  line-height: 22px;
+  color: #ffffff;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+ }
+ .loanaction{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+}
+
+
+// ion-title {
+//     font-family: Lato;
+//     font-style: normal;
+//     font-weight: normal;
+//     font-size: 14px;
+//     line-height: 17px;
+//     text-align: center;
+//     color: white;
+//   }
+  
+//   .ion-header {
+//     background: linear-gradient(0deg, #174075 34.38%, #247ba0 100%);
+//     background-position: center;
+//     background-attachment: fixed;
+//     background-size: cover;
+//     width: 100%;
+//     height: 153px;
+//     position: fixed;
+//     top: 0px;
+//     z-index: 1;
+//     .header-overlay {
+//       background: linear-gradient(0deg, #174075 34.38%, #247ba0 100%);
+//       padding-bottom: 20px;
+//       height: 100%;
+//     }
+//     ion-toolbar {
+//       --background: transparent !important;
+//       ion-buttons ion-button ion-icon {
+//         color: white;
+//         font-size: 30px;
+//       }
+//     }
+  
+//     ion-back-button{
+//       --color: #FFFFFF;
+//     }
+//   }
+  
+//   .offers {
+//     text-align: center;
+//     display: flex;
+//     flex-direction: column;
+//     ion-img {
+//       padding-left: 20px;
+//       padding-right: 20px;
+//     }
+//     p {
+//       color: white;
+//       font-family: Lato;
+//       font-style: normal;
+//       font-weight: normal;
+//       font-size: 14px;
+//       line-height: 17px;
+//     }
+//     .line {
+//       display: flex;
+//       justify-content: space-between;
+//       padding-left: 20px;
+//       padding-right: 20px;
+//       p {
+//         font-family: Lato;
+//         font-style: normal;
+//         font-weight: normal;
+//         font-size: 11px;
+//         color: white;
+//       }
+//     }
+//     ion-img,
+//     .line {
+//       margin: 0 !important;
+//     }
+//   }
+// .body{
+//     padding-top:190px;
+// }
+// .eligible{
+//     text-align: center;
+//     font-family: Lato;
+//     font-style: normal;
+//     font-weight: normal;
+//     font: size 1em;;
+//     color:#174075;
+// }
+// .addcard{
+//     padding-top: 20px;
+//     text-align: center;
+//     font-family: Lato;
+//     font-style: normal;
+//     font-weight: normal;
+//     font: size 1em;;
+//     color:#174075;
+// }
+// .row{
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding-top: 10px;
+//     padding-bottom: 10px;
+// }
+// .parent{
+//   background-color: #eff3f7;
+//   border: 1px solid #89b7cb;
+//   margin-left: 10px;
+//   margin-right: 10px;
+//   padding-left: 10px;
+//   padding-right: 10px;
+//   margin-top: 25px;
+// }
+// .personal{
+//   font-family: Lato;
+//   font-style: normal;
+//   font-weight: 600;
+//   font-size:1.3em;
+//   color: #174075;
+//   padding-top: 10px;
+// }
+// .money{
+//   font-family: Lato;
+//   font-style: normal;
+//   font-weight: 600;
+//   font-size:1.1em;
+//   color: #174075;
+// }
+// .rate{
+//     color: #7a9ab3;
+//     padding-top: 10px;
+//     padding-bottom: 10px;
+//     font-family: Lato;
+//     font-style: normal;
+//     font-weight:normal;
+//     font-size:0.9em;
+// }
+// .arrow{
+
+// }

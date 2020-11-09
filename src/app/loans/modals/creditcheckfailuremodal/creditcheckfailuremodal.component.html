@@ -1,0 +1,25 @@
+
+
+<ion-content padding>
+
+  <div class="parent">
+  <div [ngClass]="'check'" *ngIf ="params">
+    <p>Failed</p>
+  </div>
+
+  <div [ngClass]="'pic'">
+    <ion-img src="../../assets/imgs/loan/payloanfailure.png" class="creditcheckicon"></ion-img>
+  </div>
+
+  <div class="message" *ngIf ="params">
+    {{userMessage}}
+  </div>
+
+ 
+
+  <div [ngClass]="'next'">
+    <button ion-button (click)="gotoDashboard()"><span>Go to dashboard</span> </button>
+  </div>
+
+</div>
+</ion-content>

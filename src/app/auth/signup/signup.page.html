@@ -1,0 +1,139 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" [routerLink]="['/','auth']" routerDirection="back">
+        <img src="assets/icon/left-arrow2.svg" alt="" style="height: 95%;">
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons class="pr-10" slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="my-content">
+  <div class="parent">
+    <div class="instruction-container">
+      <h4>Create an account</h4>
+    </div>
+  
+    <div class="form-container">
+  
+      <form [formGroup]="registrationForm">
+  
+        <!-- FIRSTNAME -->
+        <div class="input-container">
+          <div *ngIf="firstName.invalid && firstName.touched" class="errors">
+            <small class="prompt" *ngIf="firstName.errors?.minlength">Name is too short</small>
+            <small class="prompt" *ngIf="firstName.errors?.required">First Name is required</small>
+          </div>
+          <div class="identity-input form-group">
+            <input [class.is-invalid]="firstName.invalid && firstName.touched" formControlName="firstName" required
+              type="text">
+            <label [class.label-invalid]="firstName.invalid && firstName.touched" alt='First Name'
+              placeholder="First Name"></label>
+          </div>
+        </div>
+  
+        <!-- LASTNAME -->
+        <div class="input-container">
+          <div *ngIf="lastName.invalid && lastName.touched" class="errors">
+            <small class="prompt" *ngIf="lastName.errors?.minlength">Name is too short</small>
+            <small class="prompt" *ngIf="lastName.errors?.required">Last Name is required</small>
+          </div>
+          <div class="identity-input form-group">
+            <input [class.is-invalid]="lastName.invalid && lastName.touched" formControlName="lastName" required
+              type="text">
+            <label [class.label-invalid]="lastName.invalid && lastName.touched" alt='Last Name'
+              placeholder="Last Name"></label>
+          </div>
+        </div>
+  
+        <!-- EMAIL -->
+        <div class="input-container">
+          <div *ngIf="email.invalid && email.touched" class="errors">
+            <small class="prompt" *ngIf="email.errors?.required">Email is required</small>
+            <!-- <small class="prompt" *ngIf="email.errors?.email">Enter valid email</small> -->
+          </div>
+          <div class="identity-input form-group">
+            <input [class.is-invalid]="email.invalid && email.touched" formControlName="email" required type="text">
+            <label [class.label-invalid]="email.invalid && email.touched" alt='Email Address'
+              placeholder="Email Address"></label>
+          </div>
+        </div>
+  
+        <!-- PhoneNumber -->
+        <div class="input-container">
+          <div *ngIf="phone.invalid && phone.touched" class="errors">
+            <small class="prompt" *ngIf="phone.errors?.required">Phone number is required</small>
+          </div>
+          <div class="identity-input form-group">
+            <input [class.is-invalid]="phone.invalid && phone.touched" formControlName="phone" required type="tel">
+            <label [class.label-invalid]="phone.invalid && phone.touched" alt='Phone Number'
+              placeholder="Phone Number"></label>
+          </div>
+        </div>
+  
+        <!-- PASSWORD -->
+        <div class="input-container">
+          <div *ngIf="password.invalid && password.touched" class="errors">
+            <small class="pw-prompt" *ngIf="password.errors?.required">Password is required</small>
+            <small class="pw-prompt" *ngIf="password.errors?.minlength">Password is too short</small>
+            <small class="pw-prompt" *ngIf="password.hasError('hasNumber')">Must contain a number</small>
+            <small class="pw-prompt" *ngIf="password.hasError('hasCapitalCase')">Must contain uppercase letter</small>
+            <small class="pw-prompt" *ngIf="password.hasError('hasSmallCase')">Must contain lowercase letter</small>
+            <small class="pw-prompt" *ngIf="password.hasError('hasSpecialCharacters')">Must contain a special char</small>
+          </div>
+          <div [class.is-invalid]="password.invalid && password.touched" class="password-major" tabindex="-1">
+            <div class="password-input">
+              <input formControlName="password" required [type]="passwordType">
+              <label [class.label-invalid]="password.invalid && password.touched" alt='Password'
+                placeholder="Password"></label>
+            </div>
+            <div class="image-holder" (click)="toggleVisibility()">
+              <img [class]="passwordShown === true ? 'pwd-visible' : 'pwd-hidden' "
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+            </div>
+          </div>
+        </div>
+  
+        <!-- CONFIRM PASSWORD -->
+        <div class="input-container">
+          <div class="errors">
+            <small class="prompt" *ngIf="registrationForm.errors?.misMatch">Passwords don't match</small>
+          </div>
+          <div [class.is-invalid]="registrationForm.errors?.misMatch" class="password-major" tabindex="-1">
+            <div class="password-input">
+              <input formControlName="confirmPassword" required [type]="passwordType">
+              <label alt='Confirm Password' placeholder="Confirm Password"></label>
+            </div>
+            <div class="image-holder" (click)="toggleVisibility()">
+              <img [class]="passwordShown === true ? 'pwd-visible' : 'pwd-hidden' "
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+            </div>
+          </div>
+        </div>
+        
+        <ion-item class="item-transparent ion-no-padding caveat mtt-0 ion-no-margin" lines="none">
+          <ion-label class="white-space-normal">By clicking you accept the <a [routerLink]="['']">Data Protection Policy</a></ion-label>
+          <ion-checkbox formControlName="dataPolicy" slot="start" ></ion-checkbox>
+        </ion-item>
+  
+        <div class="button-container">
+          <button type="submit" [disabled]="!registrationForm.valid" (click)="openConfirm()"
+            id="login-btn">Next</button>
+        </div>
+      </form>
+  
+    </div>
+  
+    <div class="caveat">
+      <p>By tapping on "Next" you have read <a [routerLink]="['']">the privacy policy </a> and agreed with the <a
+          [routerLink]="['']">Terms and Conditions.</a> </p>
+    </div>
+  </div>
+
+</ion-content>

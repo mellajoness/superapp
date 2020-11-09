@@ -1,0 +1,146 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" [routerLink]="['/', 'home', 'menu']" routerDirection="back">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Profile</div>
+    </ion-title>
+    <!-- <ion-buttons class="pr-10" slot="primary" [routerLink]="['/','home', 'settings']" routerDirection="forward">
+      <img src="assets/icon/cog.svg" alt="">
+    </ion-buttons> -->
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="header-bg-white">
+  <div class="profile-container">
+    <div class="avatar-container">
+      <div class="avatar-circle">
+        <div class="badge deg45" (click)="selectImageSource()">
+          <img id="badge" src="assets/icon/edit-badge.svg" alt="">
+        </div>
+        <ion-avatar slot="start">
+          <img id="profile" [src]="photo">
+        </ion-avatar>
+      </div>
+    </div>
+    <div class="name-container">
+      <h4 class="font-18px">{{this.currentUser?.firstName}} {{this.currentUser?.lastName}}</h4>
+    </div>
+  </div>
+
+  <div class="page-url-container scroll" scrollY="true">
+
+    <!-- -------------------------- BVN ------------------- -->
+    <div *ngIf="state.hasBVN" class="link-item">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/network.svg" alt="">
+      </div>
+      <div class="title">BVN - {{BVN}}</div>
+      <div class="icon-end">
+        <img src="assets/icon/profile-icns/tick.svg" alt="">
+      </div>
+    </div>
+    <div *ngIf="!state.hasBVN && !state.hasDob" class="link-item disabled">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/network.svg" alt="">
+      </div>
+      <div class="title">BVN - Please Update Profile</div>
+      <div class="icon-end">
+      </div>
+    </div>
+    <div *ngIf="!state.hasBVN && state.hasDob" class="link-item disabled" [routerLink]="['bvn']" routerDirection="forward">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/network.svg" alt="">
+      </div>
+      <div class="title">BVN - Please Update BVN</div>
+      <div class="icon-end">
+      </div>
+    </div>
+
+    <!-- ------------------------ Profile -------------------------------  -->
+    <div class="link-item" *ngIf="!state.hasDob" [routerLink]="['update-profile']" routerDirection="forward">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/updateprof.svg" alt="">
+      </div>
+      <div class="title">Update Profile</div>
+      <div class="icon-end">
+        <img src="assets/icon/profile-icns/right-arrow-blck.svg" alt="">
+      </div>
+    </div>
+    <div class="link-item" *ngIf="state.hasDob">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/updateprof.svg" alt="">
+      </div>
+      <div class="title">Profile Updated</div>
+      <div class="icon-end">
+        <img src="assets/icon/profile-icns/tick.svg" alt="">
+      </div>
+    </div>
+
+    <!-- Next Of Kin-->
+    <div class="link-item" *ngIf="!state.hasNok" [routerLink]="['nextofkin']" routerDirection="forward">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/updateprof.svg" alt="">
+      </div>
+      <div class="title">Update Next Of Kin</div>
+      <div class="icon-end">
+        <img src="assets/icon/profile-icns/right-arrow-blck.svg" alt="">
+      </div>
+    </div>
+    <div *ngIf="state.hasNok" class="link-item">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/updateprof.svg" alt="">
+      </div>
+      <div class="title">Next Of Kin Updated</div>
+      <div class="icon-end">
+        <img src="assets/icon/profile-icns/tick.svg" alt="">
+      </div>
+    </div>
+
+
+    <!-- -------------------------- Documents -------------------------  -->
+    <div class="link-item" *ngIf="!state.hasDocuments" [routerLink]="['upload-doc']" routerDirection="forward">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/upload.svg" alt="">
+      </div>
+      <div class="title">Upload Documents</div>
+      <div class="icon-end">
+        <img src="assets/icon/profile-icns/right-arrow-blck.svg" alt="">
+      </div>
+    </div>
+    <div class="link-item" *ngIf="state.hasDocuments">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/upload.svg" alt="" >
+      </div>
+      <div class="title">Documents Uploaded</div>
+      <div class="icon-end">
+        <img src="assets/icon/profile-icns/tick.svg" alt="">
+      </div>
+    </div>
+
+    <div class="link-item" [routerLink]="['passwordpin']" routerDirection="forward">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/lock.svg" alt="">
+      </div>
+      <div class="title">Password & Pin</div>
+      <div class="icon-end">
+        <img src="assets/icon/profile-icns/right-arrow-blck.svg" alt="">
+      </div>
+    </div>
+
+    <div class="link-item" (click)="updateSQnA()">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/lock.svg" alt="">
+      </div>
+      <div class="title">Update Security Questions and Answers</div>
+      <div class="icon-end">
+        <img src="assets/icon/profile-icns/right-arrow-blck.svg" alt="">
+      </div>
+    </div>
+  </div>
+
+</ion-content>

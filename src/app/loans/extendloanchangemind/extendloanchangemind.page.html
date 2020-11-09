@@ -1,0 +1,71 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-back-button mode="md" defaultHref slot="start"></ion-back-button>
+    <div class="confirmtext">Confirm Loan</div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="logo">
+    <ion-img src="../../../../assets/imgs/loan/migofour.png"></ion-img>
+  </div>
+
+  <div class="reason" padding>
+    <p>{{userInfo?.firstName}}, you rejected your loan.</p>
+    <p>Please what could have been the reason?</p>
+  </div>
+
+  <div [ngClass]="'center'">
+
+    <div class="card" *ngFor="let why of feedback; let i = index">
+      <button id="myBtn" ion-button (click)="reason(why)">
+        <p>{{why.reason}}</p>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="changed">
+    <p (click)="gotoDashBoard()">I don't have a reason</p>
+  </div>
+
+</ion-content>
+
+
+
+<!-- 
+<ion-content>
+  <div class="header" (click)="back()">
+    <img src="../../../assets/img/arrow-left.png" class="image">
+    
+  </div>
+
+<div class="logodiv">
+  <img src="../../../assets/img/ff.png" class="logo">
+</div>
+
+  <div class="please">{{userInfo.FirstName}}, you rejected your loan. Please what could have been the problem ?</div>
+  <div class="top">
+
+    <div *ngFor="let buttonList of array; let i = index" >
+      <div class="btn" (click)="reason(buttonList)">
+        {{buttonList.reason}}
+      </div>
+    </div>
+
+   
+
+
+     <div class="btntwo" (click)="noReason()">
+      I don't have a reason
+     </div>
+
+     
+
+
+
+
+
+  </div>
+
+</ion-content> -->

@@ -1,0 +1,60 @@
+.custom-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem .5rem;
+}
+
+ion-header ion-toolbar:first-of-type {
+    padding-top: 0 !important; 
+}
+
+ion-content, ion-header, ion-toolbar {
+    --background: #f9f9fa;
+}
+
+
+.instruction-section{
+    color: #1E282B;
+}
+
+.description{
+    color: #9d96ab;
+}
+
+
+.savings-type-container {
+    width: 100%;
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.savings-item{
+    width: 40vw;
+    height: 150px;
+    background-color: #ffffff;
+    margin:auto;
+    margin-top: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-bottomright: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.05);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    img{
+        margin-top: 20px;
+    }
+
+    .type{
+        color: #323A5D;
+    }
+
+}

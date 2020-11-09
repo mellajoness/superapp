@@ -1,0 +1,108 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div (click)="back()" class="icon-container nav">
+        <img src="assets/icon/left-arrow.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3>Transaction History</h3>
+      </div>
+      <div class="icon-container settings">
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="history-container">
+
+   <!-- ------------------- NO DATA -----------------------  -->
+   <ng-container *ngIf="!(historyData?.length > 0)">
+    <div *ngIf="historyData" style="width:100%; text-align: center;">
+      <h5 style="color: #323A5D;"> No Transaction for this goal</h5>
+    </div>
+   </ng-container>
+
+    <!-- ----------------------- LOADER --------------------  -->
+   <ng-container *ngIf="!historyData">
+    <div class="history-item">
+      <div class="left">
+        <div class="icon-container">
+          <ion-skeleton-text animated style="width: 16px; height: 20px;"></ion-skeleton-text>
+        </div>
+        <div class="transaction-type">
+          <ion-skeleton-text animated style="width: 16px; height: 20px;"></ion-skeleton-text>
+        </div>
+      </div>
+      <div class="center">
+        <div class="transaction-src">
+          <ion-skeleton-text animated style="width: 100px; height: 20px;"></ion-skeleton-text>
+        </div>
+        <div class="transaction-date">
+          <ion-skeleton-text animated style="width: 100px; height: 20px;"></ion-skeleton-text>
+        </div>
+      </div>
+      <div class="right">
+        <div class="amount-container">
+          <ion-skeleton-text animated style="width: 80px; height: 20px;"></ion-skeleton-text>
+        </div>
+      </div>
+    </div>
+    <div class="history-item">
+      <div class="left">
+        <div class="icon-container">
+          <ion-skeleton-text animated style="width: 16px; height: 20px;"></ion-skeleton-text>
+        </div>
+        <div class="transaction-type">
+          <ion-skeleton-text animated style="width: 16px; height: 20px;"></ion-skeleton-text>
+        </div>
+      </div>
+      <div class="center">
+        <div class="transaction-src">
+          <ion-skeleton-text animated style="width: 100px; height: 20px;"></ion-skeleton-text>
+        </div>
+        <div class="transaction-date">
+          <ion-skeleton-text animated style="width: 100px; height: 20px;"></ion-skeleton-text>
+        </div>
+      </div>
+      <div class="right">
+        <div class="amount-container">
+          <ion-skeleton-text animated style="width: 80px; height: 20px;"></ion-skeleton-text>
+        </div>
+      </div>
+    </div>
+   </ng-container>
+
+   <!-- ----------------------- CONTENT ---------------------  -->
+   <ng-container *ngIf="historyData?.length > 0">
+    <div class="history-item" *ngFor="let data of historyData">
+      <div class="left">
+        <div class="icon-container">
+          <img *ngIf="data.transType === 'D'" src="assets/icon/plan-icns/debit.svg" alt="">
+          <img *ngIf="data.transType === 'C'" src="assets/icon/plan-icns/credit.svg" alt="">
+        </div>
+        <div class="transaction-type">
+          <p *ngIf="data.transType === 'D'">DR</p>
+          <p *ngIf="data.transType === 'C'">CR</p>
+        </div>
+      </div>
+      <div class="center">
+        <div class="transaction-src">
+          <p>{{data.sourceAccount}}</p>
+        </div>
+        <div class="transaction-date">
+          <p>{{data.transDate | date:'short'}}</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="amount-container">
+          <h4 class="account-balance"><span id="currency"><b>₦</b>{{data.transAmount | number}}</span></h4>
+          <!-- <h3 class="account-balance"><span id="currency"><b>₦</b></span>{{plan.principalContribution | currency: 'NGN': ' '}}</h3> -->
+        </div>
+      </div>
+    </div>
+   </ng-container>
+  </div>
+
+</ion-content>

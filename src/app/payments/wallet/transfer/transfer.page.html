@@ -1,0 +1,219 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text" *ngIf="sharedData.wallet.pageView === 'transfer-wallet'">Wallet Transfer</div>
+      <div class="title header-text" *ngIf="sharedData.wallet.pageView === 'transfer-bank'">Bank Transfer</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <ng-container *ngIf="sharedData.wallet.pageView === 'transfer-wallet'">
+      
+      <div class="item-wrapper-5 mb-05" *ngIf="beneficiaries && !newBeneficiaryChange">
+        <ion-label class="stacked-label">Wallet ID</ion-label>
+        <div class="pt-10 pl-20 pr-05 item-space-between" (click)="showBeneficiaries('payments/wallet/transfer/beneficiaries')">
+          <div>
+            <ion-text class="text08" *ngIf="sharedData.walletBeneficiary" [ngClass]="!ben ? 'care-color' : 'care-color-sharp'">
+              {{beneficiary.name}}
+            </ion-text>
+            <ion-text *ngIf="!sharedData.walletBeneficiary" [ngClass]="!ben ? 'care-color' : 'care-color-sharp'">
+              {{beneficiary}}
+            </ion-text>
+          </div>
+          <div>
+            <ion-icon class="text08 care-color" name="caret-down"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="sharedData.walletBeneficiary">
+        <div class="item-space-between text08 mb-05">
+          <div>Wallet ID:</div>
+          <div>{{beneficiary.beneficiary_account_number}}</div>
+        </div>
+      </div>
+
+      <div class="item-wrapper-5 mb-05" *ngIf="!beneficiaries || newBeneficiaryChange">
+        <ion-label class="stacked-label">Wallet ID</ion-label>
+        <ion-input [disabled]="busy" class="pt-05 pl-20" type="text" maxLength="11" minLength="11" inputmode="numeric"
+          placeholder="Enter Wallet ID" (ionChange)="walletIdChange()" [(ngModel)]="walletId"></ion-input>
+      </div>
+
+      <div *ngIf="beneficiaries" class="form-bg item-v-center item-space-between mb-10 text-white text08" color="light">
+        <ion-toggle [disabled]="busy" mode="md" slot="start" name="kiwi" color="secondary" (ionChange)="newBeneficiary()"
+          [(ngModel)]="newBeneficiaryChange" [ngModelOptions]="{standalone: true}"></ion-toggle>
+        <ion-label style="color: #0E237E;">New Wallet ID</ion-label>
+      </div>
+
+      <div *ngIf="accountDetails">
+        <div class="item-space-between text08 mb-05">
+          <div>Account Name:</div>
+          <div>{{accountDetails.full_name}}</div>
+        </div>
+      </div>
+      
+      <div class="mb-05" [ngClass]="beneficiaries ? 'item-wrapper-5' : 'item-wrapper'">
+        <ion-label class="stacked-label">Amount</ion-label>
+        <ion-input [disabled]="busy" class="pt-05 pl-20" inputmode="numeric" type="text" placeholder="Enter Amount"
+          (ionChange)="amountChange()" [(ngModel)]="amount"></ion-input>
+      </div>
+
+      <div class="item-wrapper mb-05">
+        <ion-label class="stacked-label">Narration</ion-label>
+        <ion-input [disabled]="busy" class="pt-05 pl-20" type="text" maxLength="40" placeholder="Enter Narration"
+          (ionChange)="narrationChange()" [(ngModel)]="narration"></ion-input>
+      </div>
+
+      <ion-list *ngIf="!beneficiaries || newBeneficiaryChange" class="list-bg" mode="md">
+        <ion-item lines="none" class="item-bg">
+          <ion-checkbox [disabled]="busy" class="mr-10 ml-0" mode="md" slot="start" name="doSaveBeneficiary" color="primary"
+            [(ngModel)]="doSaveBeneficiary" (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}">
+          </ion-checkbox>
+          <ion-label class="ion-text-wrap">Save Wallet ID</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div class="item-v-center">
+        <ion-spinner *ngIf="busy" name="bubbles" mode="ios" color="primary"></ion-spinner>
+      </div>
+  
+      <ion-button [disabled]="!narration || (!beneficiaries && !accountDetails) || (beneficiaries && !newBeneficiaryChange && !sharedData.walletBeneficiary) ||
+        (beneficiaries && newBeneficiaryChange && !accountDetails) || !amount || busy" (click)="proceed('payments/validate')" class="no-transform payment-button mt-20" fill="clear"
+        expand="block">
+        Proceed
+      </ion-button>
+    </ng-container>
+
+    <ng-container *ngIf="sharedData.wallet.pageView === 'transfer-bank'">
+
+      <div class="item-wrapper-5 mb-05" *ngIf="beneficiaries && !newBeneficiaryChange">
+        <ion-label class="stacked-label">Account Number</ion-label>
+        <div class="pt-10 pl-20 pr-05 item-space-between" (click)="showBeneficiaries('payments/wallet/transfer/beneficiaries')">
+          <div>
+            <ion-text class="text08" *ngIf="sharedData.walletBeneficiary" [ngClass]="!ben ? 'care-color' : 'care-color-sharp'">
+              {{beneficiary.name}}
+            </ion-text>
+            <ion-text *ngIf="!sharedData.walletBeneficiary" [ngClass]="!ben ? 'care-color' : 'care-color-sharp'">
+              {{beneficiary}}
+            </ion-text>
+          </div>
+          <div>
+            <ion-icon class="text08 care-color" name="caret-down"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="sharedData.walletBeneficiary">
+        <div class="item-space-between text08 mb-05">
+          <div>Account Number:</div>
+          <div>{{beneficiary.beneficiary_account_number}}</div>
+        </div>
+      </div>
+      <div *ngIf="sharedData.walletBeneficiary">
+        <div class="item-space-between text08 mb-05">
+          <div>Bank:</div>
+          <div>{{beneficiary.bank_name}}</div>
+        </div>
+      </div>
+
+      <div class="item-wrapper-5 mb-05" *ngIf="!beneficiaries || newBeneficiaryChange">
+        <ion-label class="stacked-label">Bank</ion-label>
+        <div class="pt-10 pl-20 pr-05 item-space-between" (click)="showBanks('payments/wallet/transfer/banks')">
+          <div>
+            <ion-text class="text08" *ngIf="sharedData.walletBank" [ngClass]="!ban ? 'care-color' : 'care-color-sharp'">
+              {{bank.name}}
+            </ion-text>
+            <ion-text *ngIf="!sharedData.walletBank" [ngClass]="!ben ? 'care-color' : 'care-color-sharp'">
+              {{bank}}
+            </ion-text>
+          </div>
+          <div>
+            <ion-icon class="text08 care-color" name="caret-down"></ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div *ngIf="!beneficiaries || newBeneficiaryChange" class="item-wrapper-5 mb-05">
+        <ion-label class="stacked-label">Bank</ion-label>
+        <ion-select [disabled]="busy" class="mtt-05" interface="popover" mode="ios" placeholder="Select Bank" name="selectedBeneficiary"
+          [selectedText]="selectedBank" [(ngModel)]="selectedBank" [ngModelOptions]="{standalone: true}"
+          (ionChange)="bankSelected()">
+          <ion-select-option *ngFor="let institution of institutions" value="{{institution.name}}">
+            {{institution.name}}
+          </ion-select-option>
+        </ion-select>
+      </div> -->
+
+      <div class="item-wrapper mb-05" *ngIf="!beneficiaries || newBeneficiaryChange">
+        <ion-label class="stacked-label">Account Number</ion-label>
+        <ion-input [disabled]="busy" class="pt-05 pl-20" inputmode="numeric" type="text" maxLength="10" minLength="10"
+          placeholder="Enter Account Number" (ionChange)="accountNoChange()" [(ngModel)]="accountNo"></ion-input>
+      </div>
+
+      <div *ngIf="beneficiaries" class="form-bg item-v-center item-space-between mb-10 text-white text08" color="light">
+        <ion-toggle [disabled]="busy" mode="md" slot="start" name="kiwi" color="secondary" (ionChange)="newBeneficiary()"
+          [(ngModel)]="newBeneficiaryChange" [ngModelOptions]="{standalone: true}"></ion-toggle>
+        <ion-label style="color: #0E237E;">New Account</ion-label>
+      </div>
+
+      <div *ngIf="accountDetails && (selectedBankObj.numericCode === '000007' || selectedBankObj.numericCode === '070')">
+        <div class="item-space-between text08 mb-05">
+          <div>Account Name:</div>
+          <div>{{accountDetails[0].accountName}}</div>
+        </div>
+      </div>
+
+      <div *ngIf="accountDetails && (selectedBankObj.numericCode !== '000007' && selectedBankObj.numericCode !== '070')">
+        <div class="item-space-between text08 mb-05">
+          <div>Account Name:</div>
+          <div>{{accountDetails}}</div>
+        </div>
+      </div>
+      
+      <div class="mb-05" [ngClass]="beneficiaries ? 'item-wrapper-5' : 'item-wrapper'">
+        <ion-label class="stacked-label">Amount</ion-label>
+        <ion-input [disabled]="busy" class="pt-05 pl-20" inputmode="numeric" type="text" placeholder="Enter Amount"
+          (ionChange)="amountChange()" [(ngModel)]="amount"></ion-input>
+      </div>
+
+      <div class="item-wrapper mb-05">
+        <ion-label class="stacked-label">Narration</ion-label>
+        <ion-input [disabled]="busy" class="pt-05 pl-20" type="text" maxLength="40" placeholder="Enter Narration"
+          (ionChange)="narrationChange()" [(ngModel)]="narration"></ion-input>
+      </div>
+
+      <ion-list *ngIf="!beneficiaries || newBeneficiaryChange" class="list-bg" mode="md">
+        <ion-item lines="none" class="item-bg">
+          <ion-checkbox [disabled]="busy" class="mr-10 ml-0" mode="md" slot="start" name="doSaveBeneficiary" color="primary"
+            [(ngModel)]="doSaveBeneficiary" (ionChange)="saveBeneficiary()" [ngModelOptions]="{standalone: true}">
+          </ion-checkbox>
+          <ion-label class="ion-text-wrap">Save Account Number</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div class="item-v-center">
+        <ion-spinner *ngIf="busy" name="bubbles" mode="ios" color="primary"></ion-spinner>
+      </div>
+
+      <ion-button [disabled]="!narration || (!selectedBank && !beneficiaries && (!accountDetails || (accountDetails && accountDetails.length === 0))) || 
+        (beneficiaries && !newBeneficiaryChange && !sharedData.walletBeneficiary) ||
+        (beneficiaries && newBeneficiaryChange && (!accountDetails || (accountDetails && accountDetails.length === 0))) ||
+        !amount || busy" (click)="proceed('payments/validate')" class="no-transform payment-button mt-20" fill="clear"
+        expand="block">
+        Proceed
+      </ion-button>
+    </ng-container>
+
+  </div>
+</ion-content>

@@ -1,0 +1,319 @@
+// Header Section
+
+ion-title {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: white;
+  }
+  
+  .ion-header {
+    background: linear-gradient(0deg, #174075 34.38%, #247ba0 100%);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    height: 117px;
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+    .header-overlay {
+      background: linear-gradient(0deg, #174075 34.38%, #247ba0 100%);
+      padding-bottom: 20px;
+      height: 100%;
+    }
+    ion-toolbar {
+      --background: transparent !important;
+      ion-buttons ion-button ion-icon {
+        color: white;
+        font-size: 30px;
+      }
+  
+      ion-back-button{
+        --color: #FFFFFF;
+      }
+    }
+  }
+  
+  .offers {
+    text-align: center;
+    ion-img{
+      padding-left: 15px;
+      padding-right: 15px;
+      height: 30px;
+      margin-top: 20px;
+    }
+    p {
+      color: white;
+      font-family: Lato;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+  
+  .qualify {
+    text-align: center;
+    margin-top: 140px;
+    .your {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      color: #174075;
+    }
+    p {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 13px;
+      color: #174075;
+    }
+  
+    span {
+      font-family: Lato;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 30px;
+      color: #174075;
+    }
+  
+    span,
+    .your {
+      margin-top: 40px;
+    }
+  }
+  
+  .noLoan {
+    text-align: center;
+    margin-top: 350px;
+    p {
+      white-space: normal;
+      font-family: Lato;
+      font-style: normal;
+      font-size: 14px;
+      color: #174075;
+    }
+  }
+  
+  .loans {
+    width: 342px;
+    height: 122px;
+    margin: 0 auto;
+    background: #f2f6f9;
+    border: 0.5px solid #247ba0;
+    box-sizing: border-box;
+    margin-top: 15px;
+    // Payday
+    .payday {
+      display: flex;
+      margin-bottom: 50px;
+      div:nth-child(1) {
+        flex: 1;
+        padding-left: 20px;
+        p {
+          white-space: normal;
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          color: #174075;
+        }
+  
+        button {
+          width: 130.98px;
+          height: 26.29px;
+          background: linear-gradient(90deg, #1e3e6a 0%, #247ba0 100.02%);
+          span {
+            text-align: center;
+            font-family: Lato;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 12px;
+            color: white;
+          }
+        }
+      }
+      div:nth-child(2) {
+        flex: 1;
+        padding-left: 60px;
+        span {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 20px;
+          color: #174075;
+        }
+        p {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 17px;
+          color: #174075;
+        }
+        b {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 16px;
+          color: #174075;
+        }
+      }
+    }
+  
+    // Kwikmoney
+  
+    .kwikmoney {
+      display: flex;
+      div:nth-child(1) {
+        flex: 1;
+        padding-left: 20px;
+        p {
+          white-space: normal;
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          color: #174075;
+        }
+  
+        button {
+          width: 130.98px;
+          height: 26.29px;
+          background: linear-gradient(90deg, #1e3e6a 0%, #247ba0 100.02%);
+          span {
+            text-align: center;
+            font-family: Lato;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 12px;
+            color: white;
+          }
+        }
+      }
+      div:nth-child(2) {
+        flex: 1;
+        padding-left: 60px;
+        span {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 20px;
+          color: #174075;
+        }
+        p {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 17px;
+          color: #174075;
+        }
+        b {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 16px;
+          color: #174075;
+        }
+      }
+    }
+  }
+  
+  .holder {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    margin: 0 auto;
+    background: #eff3f7;
+    border: 1px solid #247ba0;
+    width: 352.7px;
+    height: 96px;
+    margin-bottom: 15px;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+     div:nth-child(1)  {
+      display: flex;
+      h5 {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 17px;
+        display: flex;
+        align-items: center;
+        color: #174075;
+      }
+      .pic {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        span {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 23px;
+          line-height: 28px;
+          display: flex;
+          align-items: center;
+          color: #174075;
+        }
+  
+        ion-img{
+          height: 20px;
+          width: 20px;
+        }
+      }
+      p {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        color: #174075;
+      }
+  
+      h5, p, .pic{
+        margin: 1px !important;
+      }
+    }
+  }
+  
+
+  .row{
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10px;
+  }
+  .parent{
+    background-color: #eff3f7;
+    border: 1px solid #89b7cb;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .personal{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size:1.3em;
+    color: #174075;
+    padding-top: 10px;
+  }
+  .money{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size:1.7em;
+    color: #174075;
+  }
+  .rate{
+      color: #7a9ab3;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }

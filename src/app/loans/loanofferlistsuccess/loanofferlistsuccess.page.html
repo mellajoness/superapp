@@ -1,0 +1,25 @@
+<ion-content no-padding fullscreen>
+  <div class="complete">
+    <p>100% complete</p>
+  </div>
+  
+  <div class="text">
+    <ion-img src="../../../assets/img/thumbs.png"></ion-img>
+  </div>
+  
+  <div class="congrats" padding>
+    <p>Congratulations!</p>
+    <p>{{details.message}}</p>
+  </div>
+  
+  <div class="owe">
+    <p>You will owe</p>
+    <span>&#8358;{{loanPay | number:'1.2-2'}}</span>
+    <p>(Loan + Interest + Fees)</p>
+  </div>
+  
+  <div class="next">
+      <button ion-button (click)="dashboard()"><span>Got it</span> </button>
+  </div>
+  
+  </ion-content>

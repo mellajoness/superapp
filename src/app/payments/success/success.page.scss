@@ -1,0 +1,48 @@
+.parent {
+    padding: 20px;
+    background-color: #fafafa;
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20px;
+    align-items: center;
+}
+
+.arrow {
+    color: #0E237E;
+    font-size: 1.5em;
+}
+
+.firstbox {
+    display: flex;
+}
+
+.text {
+    color: #000000;
+    font-size: 1.0em;
+    padding-top: 10px;
+    text-align: center;
+    padding-left: 15px;
+    font-family: Gilroy-Regular;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 19px;
+    display: flex;
+}
+
+.payment-button {
+    background-color: #0E237E !important;
+    color: #fff;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.success-text {
+    color: #555;
+}

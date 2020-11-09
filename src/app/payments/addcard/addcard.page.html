@@ -1,0 +1,92 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent">
+
+    <div class="mt-10">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="title-text">Add a new card</ion-text>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="mt-10 item-v-center">
+          <ion-col size="3" [ngClass]="num === '1' ? 'card-box-focux' : 'card-box'" (click)="card('1')">
+            <div>
+              <img src='../../../assets/icon/billspayments/verve.png' />
+            </div>
+          </ion-col>
+          <ion-col size="3" [ngClass]="num === '2' ? 'card-box-focux' : 'card-box'" (click)="card('2')">
+            <div>
+              <img src='../../../assets/icon/billspayments/mastercard.png' />
+            </div>
+          </ion-col>
+          <ion-col size="3" [ngClass]="num === '3' ? 'card-box-focux' : 'card-box'" (click)="card('3')">
+            <div>
+              <img src='../../../assets/icon/billspayments/visa.png' />
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="mt-10">
+          <ion-text class="header-2">Card Number</ion-text>
+          <ion-item lines="none" class="animated w100 fadeInUp ion-no-padding ion-margin-vertical input-bg">
+            <ion-label class="icon-bg">
+              <ion-img class="box-icon" src="../../../assets/icon/billspayments/{{icon}}" item-start></ion-img>
+            </ion-label>
+            <ion-input type="text" class="pl-02 py-05" placeholder="**** **** **** ****"></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row class="mt-10">
+          <ion-text class="header-2">Card Holder's Name</ion-text>
+          <ion-item lines="none" class="animated w100 fadeInUp ion-no-padding ion-margin-vertical input-bg">
+            <ion-input type="text" class="pl-10 py-05" placeholder="Your name"></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row class="mt-10">
+          <div class="item-space-between">
+            <div class="mr-05">
+              <ion-text class="header-2">Valid Until</ion-text>
+              <ion-item lines="none" class="animated w100 fadeInUp ion-no-padding ion-margin-vertical input-bg">
+                <ion-input type="text" class="pl-10 py-05" placeholder="Month/Year"></ion-input>
+              </ion-item>
+            </div>
+            <div class="ml-05">
+              <ion-text class="header-2">CVV</ion-text>
+              <ion-item lines="none" class="animated w100 fadeInUp ion-no-padding ion-margin-vertical input-bg">
+                <ion-input type="text" class="pl-10 py-05" placeholder="***"></ion-input>
+              </ion-item>
+            </div>
+          </div>
+        </ion-row>
+
+        <div class="form-bg item-v-center item-space-between mb-10 text-white text08" color="light">
+          <ion-toggle mode="md" slot="start" name="kiwi" color="secondary"></ion-toggle>
+          <ion-label>Save credit card information</ion-label>
+        </div>
+
+        <ion-button required class="no-transform payment-button mt-20" fill="clear" expand="block" (click)="makePayment()">
+          Proceed
+        </ion-button>
+      </ion-grid>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,191 @@
+$font-color:  #323A5D;
+$color-primary: #0E237E;
+$color-primaryOp: rgba(86, 11, 208, 0.7);
+$color-bg: #F9F9FA;
+$signupbtnbg: #F9F9FA;
+$placeholderCol:  rgba(50, 58, 93, 0.6);
+$border-col: rgba(24, 25, 26, 0.2);
+
+.istoxic{
+  box-shadow: 5px 10px #888888;;
+}
+
+.custom {
+    padding: 2rem 1rem;
+}
+
+.page-title {
+    // text-align: center;
+    width: 100%;
+    padding: 5px;
+    margin-top: 10vh;
+    color: $font-color;
+    // font-weight: 10px;
+    font-family: 'poppins-bold';
+}
+
+.page-instruction {
+    width: 100%;
+    // text-align: center;
+    padding: 5px;
+    margin-top: 2vh;
+    color: $font-color;
+    font-size: 16px;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+.button-container {
+    // margin: 0 auto;
+    margin-top: 5vh;
+    max-width: 600px;
+    text-align: center;
+
+    button {
+        border-radius: 4px;
+        color: #ffffff;
+        background: $color-primary;
+        width: 50%;
+        height: 50px;
+    }
+}
+
+
+@mixin calc($property, $value) {
+    #{$property}: -webkit-calc(#{$value});
+    #{$property}:         calc(#{$value});
+  }
+  
+  // First, pass in the important variables.
+  @mixin adaptive-placeholder($height, $radius, $margin: 1em, $border: 1px) {
+    $borders: ($border * 2); // <- To avoid repeating below
+    box-sizing: border-box;  // <- Important for accurate sizing
+    width: 100%;             // <- Could be almost anything
+    @include calc(height, '#{$height} + #{$borders}'); 
+    margin: 0 0 $margin;
+    padding: $margin;
+    border: $border solid $border-col;
+    border-radius: $radius;
+    background: transparent;
+    resize: none;  // <- For textareas
+    outline: none; // <- Because ugly
+    //
+    // Following block controls all the color change
+    //
+    &[required] {
+      &:focus {
+        border-color: $color-primary;
+        + label {
+          &[placeholder] {
+            &:before {
+              color: $color-primary;
+            }
+          }
+        }
+      }
+      //
+      // Following block selects label directly adjacent toinput
+      //
+      &:focus,
+      &:valid {
+        + label {
+          &[placeholder] {
+            &:before {
+              transition-duration: .2s;
+              //
+              // Following lines move placeholder out of the way
+              //
+              transform: translate(0, ($margin * -1.5)) scale(.9, .9);
+            }
+          }
+        }
+      }
+      //
+      // Following block injects string from label's 'alt' attr.
+      // It comes before the other 'content' property so I can
+      // override it. Uses "invalid" pseudo-selector to know
+      // when to do that.
+      //
+      &:invalid {
+        + label {
+          &[placeholder] {
+            &[alt] {
+              &:before {
+                content: attr(alt); // Content property 1 of 2
+              }
+            }
+          }
+        }
+      }
+      + label {
+        &[placeholder] {
+          display: block;
+          pointer-events: none; // Allows clicking thru label
+          line-height: $margin;
+          // Following pulls label into position
+          @include calc(margin-top, '-#{$height} - #{$borders}');
+          // Following offsets that above
+          @include calc(margin-bottom, '(#{$height} - #{$margin}) + #{$borders}');
+          //
+          // Following ':before' is needed to switch between
+          // different strings.
+          //
+          &:before {
+            content: attr(placeholder); // Content property 2 of 2
+            display: inline-block;
+            margin: 0;
+            @include calc(margin-left, '#{$margin} + #{$borders}');
+            @include calc(margin-right, '#{$margin} + #{$borders}');
+            padding: 0 2px;
+            color: $placeholderCol;
+            white-space: nowrap;
+            transition: .3s ease-in-out;
+            //
+            // Following lines lets me use solid color as bkg img.
+            // This lets me size bkg to something more sublte
+            //
+            // background-image: linear-gradient(to bottom, #fff, #fff);
+            background-color: $color-bg;
+            background-size: 100% 5px;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+      }
+    }
+  }
+  //
+  // Following block is how I call the above function
+  //
+  input {
+    $height: 3em; 
+    &[type="text"]  {
+      @include adaptive-placeholder($height, 4px);
+    //   color: $placeholderCol;
+    }
+    color: $placeholderCol;
+  }
+
+  input {
+    $height: 3em; 
+    &[type="number"]  {
+      @include adaptive-placeholder($height, 4px);
+    //   color: $placeholderCol;
+    }
+    color: $placeholderCol;
+  }
+
+  .section-header {
+    // padding: 20px 5px 5px 25px;
+    color: #0E237E;
+}
+
+.payment-button {
+  background-color: #0E237E !important;
+  color: #fff;
+  height: 40px;
+  font-size: 14px;
+  border-radius: 5px;
+}

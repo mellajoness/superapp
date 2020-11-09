@@ -1,0 +1,71 @@
+
+
+    <ion-header class="bar-header">
+      <div class="header">
+        <ion-icon name="arrow-back-outline" class="menu" (click)="goBack()"></ion-icon>
+        <div class="history">Transaction History</div>
+        <ion-icon name="" class="menu"></ion-icon> 
+      </div>
+    </ion-header>
+    
+   
+   
+    <div class="you">Please select an active loan to view detailed history</div>
+  
+    <ion-content padding class="bg-class">
+    <ion-grid>
+      <ion-row>
+  
+         <ion-col *ngFor="let l of LoanHistory; let i = index" size="6"> 
+           <div class="card" (click)="viewLoanHistory(l)">
+           
+               <div class="loan">{{l.loanType}}</div>
+  
+           </div>
+         </ion-col>
+  
+      
+     
+  
+      </ion-row>
+   </ion-grid>
+
+
+   <div class="history" *ngIf="noLoanHistory">
+    <p class="nohistory" >You currently don't have a loan history.</p>
+  </div> 
+
+
+
+
+    <!-- <div class="header">
+      <ion-icon name="arrow-back" class="backarrow" (click)="goBack()"></ion-icon>
+      <div class="name">Loan Offers</div>
+      <div></div>
+    </div>
+
+<div class="body">
+  <div class="details">Please select a loan product to view your detailed loan history</div>
+  <div class="divider"></div>
+</div>
+
+
+<div>
+ <div *ngIf="hasLoanHistory">
+<div *ngFor="let l of LoanHistory; let i = index">
+<div class="loantype" (click)="viewLoanHistory(l)">
+ <div class="loantext">{{l.loanType}}</div>
+ <img src="../../../assets/img/arrowforward.png" >
+</div>
+<div class="dividertwo"></div>
+</div>
+</div> 
+
+
+ <div class="history" *ngIf="!hasLoanHistory">
+  <p class="nohistory">You currently don't have a loan history.</p>
+</div> 
+</div>
+  -->
+
+</ion-content>

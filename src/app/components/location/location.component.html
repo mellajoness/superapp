@@ -1,0 +1,29 @@
+<ion-content>
+  <div class="border" (click)="hide()"></div>
+
+  <div class="scroll" scrollY="true">
+    <ion-grid mode="ios">
+      <ion-row mode="ios" class="mt-10">
+        <div class='card' *ngFor="let location of sharedData.atmLocations">
+          <ion-row (click)="showLocationDetails(location)">
+            <ion-col size="3" class="item-v-center">
+              <img src="../../../assets/icon/location-mark.png" class="img" style="height: 4rem;">
+            </ion-col>
+            <ion-col size="9" style="line-height: 1.8;" class="pl-10">
+              <div class="text1">Fidelity ATM {{location.sol_Desc}}</div>
+              <div class="text08">{{location.distanceFromLocation}} Km(s)</div>
+              <div class="tex08">
+                <ion-icon name="star" color="warning"></ion-icon>
+                <ion-icon name="star" color="warning"></ion-icon>
+                <ion-icon name="star" color="warning"></ion-icon>
+                <ion-icon name="star" color="warning"></ion-icon>
+                <ion-icon name="star" color="warning"></ion-icon>
+              </div>
+            </ion-col>  
+          </ion-row>
+        </div>
+      </ion-row>  
+    </ion-grid>
+  </div>
+
+</ion-content>

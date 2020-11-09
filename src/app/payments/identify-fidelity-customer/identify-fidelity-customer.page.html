@@ -1,0 +1,42 @@
+<ion-header class="ion-no-border ion-margin-top ion-padding" mode="ios" transluscent >
+  <ion-toolbar mode="ios">
+
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="primary" (click)="handlers.hide()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="background ion-padding" fullscreen>
+
+  <div class="pl-10 pr-10 position-top">
+
+    <ng-container>
+
+      <ion-item lines="none" class="ion-no-padding ion-padding-end page-heading ion-margin-end fw-600 text12">
+        <h3>Select an option for enrolment</h3>
+      </ion-item>
+    
+      <ion-card class="ion-no-margin"(click)="next('card')" >
+        <ion-card-content>
+          Debit Card
+        </ion-card-content>
+      </ion-card>
+    
+      <ion-card class="ion-no-margin ion-margin-vertical" (click)="next('token')">
+        <ion-card-content>
+          Fidelity Token
+        </ion-card-content>
+      </ion-card>
+
+    </ng-container>
+
+  </div>
+
+  
+
+</ion-content>

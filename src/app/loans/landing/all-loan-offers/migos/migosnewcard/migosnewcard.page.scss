@@ -1,0 +1,261 @@
+.header{
+  display:flex;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15PX;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu{
+  font-size:1.7em;
+  color: #0E237E;
+}
+.loanstext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size:1.1em;
+  line-height: 22px;
+  color: #3348A1;
+ }
+ .iconmessage{
+     padding-left: 15px;
+     padding-right: 15px;
+ }
+ .changecard{
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 60px;
+  text-align: center;
+ }
+ .photo{
+  width: 99%;
+  padding-top: 20px;
+ }
+ .headerbox{
+  background-color: #0E237E;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 30px;
+ }
+ .headerboxtext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1em;
+  line-height: 22px;
+  padding-top: 15px;
+  padding-right: 20px;
+  color: #9C9E9B;
+ }
+.row{
+  display: flex;
+  flex-direction: row;
+  margin-left: 15px;
+  margin-right: 15px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.loanamounttext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 0.9em;
+  line-height: 22px;
+  padding-top:5px;
+  padding-left: 5px;
+  // padding-right: 20px;
+  color: #9C9E9B;
+}
+ion-item{
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 30px;
+  
+}
+.firsthalf{
+  width: 50%;
+ 
+}
+.secondhalf{
+  width: 50%;
+}
+.border{
+margin-right: 10px;
+margin-top: 40px;
+}
+.bordertwo{
+  margin-right: 10px;
+  // margin-top: 40px;
+  }
+ion-select {
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 0.9em;
+  line-height: 22px;
+ 
+}
+
+.next {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      button {
+        width: 286px;
+        height: 50px;
+        box-sizing: border-box;
+        border-radius: 6px;
+        background-color: #0E237E;
+        color: #ffffff;
+        margin-top: 50px;
+        span {
+          font-family: Lato;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+    }
+
+
+// ion-title {
+//     font-family: Lato;
+//     font-style: normal;
+//     font-weight: normal;
+//     font-size: 14px;
+//     line-height: 17px;
+//     text-align: center;
+//     color: white;
+//   }
+  
+//   .ion-header {
+//     background: linear-gradient(0deg, #174075 34.38%, #247ba0 100%);
+//     background-position: center;
+//     background-attachment: fixed;
+//     background-size: cover;
+//     width: 100%;
+//     height: 153px;
+//     position: fixed;
+//     top: 0px;
+//     z-index: 1;
+//     .header-overlay {
+//       background: linear-gradient(0deg, #174075 34.38%, #247ba0 100%);
+//       padding-bottom: 20px;
+//       height: 100%;
+//     }
+//     ion-toolbar {
+//       --background: transparent !important;
+//       ion-buttons ion-button ion-icon {
+//         color: white;
+//         font-size: 30px;
+//       }
+//       ion-back-button{
+//         --color: #FFFFFF;
+//       }
+//     }
+//   }
+  
+//   .offers {
+//     text-align: center;
+//     display: flex;
+//     flex-direction: column;
+//     ion-img {
+//       padding-left: 20px;
+//       padding-right: 20px;
+//     }
+//     p {
+//       color: white;
+//       font-family: Lato;
+//       font-style: normal;
+//       font-weight: normal;
+//       font-size: 14px;
+//       line-height: 17px;
+//     }
+//     .line {
+//       display: flex;
+//       justify-content: space-between;
+//       padding-left: 20px;
+//       padding-right: 20px;
+//       p {
+//         font-family: Lato;
+//         font-style: normal;
+//         font-weight: normal;
+//         font-size: 11px;
+//         color: white;
+//       }
+//     }
+//     ion-img,
+//     .line {
+//       margin: 0 !important;
+//     }
+//   }
+  
+//   .provide {
+//     margin-top: 180px;
+//     text-align: center;
+//     p {
+//       font-family: Lato;
+//       font-style: normal;
+//       font-weight: normal;
+//       font-size: 13px;
+//       color: #103870;
+//     }
+//   }
+  
+//   form {
+//     padding-left: 45px;
+//     padding-right: 45px;
+//     margin-top: 10px;
+//     ion-list ion-item ion-label {
+//       font-family: Lato;
+//       font-style: normal;
+//       font-weight: normal;
+//       font-size: 14px;
+//       color: #103870;
+//     }
+//     ion-select ion-select-option {
+//       font-family: Lato;
+//       font-style: normal;
+//       font-weight: normal;
+//       font-size: 14px;
+//       color: #103870;
+//     }
+//   }
+  
+//   .next {
+//     text-align: center;
+//     display: flex;
+//     justify-content: center;
+//     margin-top: 10px;
+//     button {
+//       width: 286px;
+//       height: 50px;
+//       border: 1px solid #103870;
+//       box-sizing: border-box;
+//       border-radius: 2px;
+//       background-color: transparent !important;
+//       color: #103870;
+//       span {
+//         font-family: Lato;
+//         font-style: normal;
+//         font-weight: normal;
+//         font-size: 16px;
+//         line-height: 19px;
+//       }
+//     }
+//   }
+
+//   .fidelity_account{
+//       text-align: center;
+//       margin-top: 10px;
+//   }
+
+//   .non_fidelity_account{
+//     text-align: center;
+//     margin-top: 10px;
+//   }

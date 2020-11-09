@@ -1,0 +1,39 @@
+<ion-content no-padding fullscreen>
+  <div class="complete">
+    <p *ngIf="disbursementStatus?.isSuccess">100% complete</p>
+    <p *ngIf="!disbursementStatus?.isSuccess">0% complete</p>
+  </div>
+  
+  <div *ngIf="disbursementStatus?.isSuccess">
+    <div class="text">
+      <ion-img src="../../assets/imgs/loan/thumbs.png"></ion-img>
+    </div>
+    <div class="congrats" padding>
+      <p>Congratulations!</p>
+      <p>{{disbursementStatus?.message}}</p>
+    </div>
+    <div class="owe">
+      <p>You will owe</p>
+      <span>&#8358;{{disbursementStatus?.loanInterestFee | number:'1.2-2'}}</span>
+      <!-- <p>(Loan + Interest + Fees)</p> -->
+    </div>
+    <div class="next">
+      <button ion-button (click)="gotoDashBoard()">
+        <span>Got it</span> 
+      </button>
+  </div>
+  </div>
+  
+  <div class="failure" padding *ngIf="!disbursementStatus?.isSuccess">
+    <p>Disbursement failed!</p>
+    <p>{{disbursementStatus?.message}}</p>
+    <div class="next">
+      <button ion-button (click)="gotoDashBoard()">
+        <span>Ok</span> 
+      </button>
+  </div>
+  </div>
+ 
+  
+  </ion-content>
+  

@@ -1,0 +1,46 @@
+.parent {
+    //    padding-top:20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+.border {
+    margin-top: 30px;
+    border: 3px solid #E7E7E7;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 10px
+}
+
+.network {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.networktwo {
+    padding-top: 20px;
+    display: flex;
+    // justify-content: space-between;
+}
+
+.nine {
+    position: relative;
+    right: 36px;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+    margin-right: 15px;
+    align-items: center;
+}
+
+.searchicon {
+    font-size: 1.3em;
+    color: #c3c5c2;
+    position: relative;
+    right: 20px;
+}

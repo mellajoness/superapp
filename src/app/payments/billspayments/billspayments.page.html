@@ -1,0 +1,137 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white">
+      <div class="title header-text">Payments</div>
+    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="background">
+  <div class="parent" *ngIf="allBillers">
+  
+    <div class="box">
+      <div class="firstbox" (click)="presentModal('airtime')">
+        <img src="../../../assets/icon/billspayments/airtime.svg"  class="img">
+        <div class="mobile">Airtime</div>
+      </div>
+      
+      <div class="secondbox" (click)="presentModal('betting')"> <!-- (click)="comingsoon()" -->
+        <img src="../../../assets/icon/billspayments/betting.svg"  class="img">
+        <div class="mobile">Betting</div>
+      </div>
+      
+      <div class="thirdbox" (click)="presentModal('cable')">
+        <img src="../../../assets/icon/billspayments/cable.svg"  class="img">
+        <div class="mobile">Cable TV</div>
+      </div>
+    </div> 
+
+    <div class="box-1">
+      <div class="firstbox" (click)="comingsoon()">
+        <img src="../../../assets/icon/billspayments/events.svg"  class="img">
+        <div class="mobile">Events</div>
+      </div>
+      
+      <div class="secondbox" (click)="presentModal('internet')">
+        <img src="../../../assets/icon/billspayments/internet.svg"  class="img">
+        <div class="mobile">Internet Services</div>
+      </div>
+      
+      <div class="thirdbox" (click)="comingsoon()">
+        <img src="../../../assets/icon/billspayments/movies.svg"  class="img">
+        <div class="mobile">Movies</div>
+      </div>
+    </div> 
+
+    <div class="box-1">
+      <div class="firstbox" (click)="utilities('utilities')">
+        <img src="../../../assets/icon/billspayments/utilities.svg"  class="img">
+        <div class="mobile">Utilities</div>
+      </div>
+      
+      <div class="secondbox" (click)="boroPower('boropower')">
+        <img src="../../../assets/icon/billspayments/boro.svg"  class="img">
+        <div class="mobile">BoroPower</div>
+      </div>
+      <!-- <div class="blank"></div> -->
+
+      <div class="thirdbox" (click)="go('/payments/billspayments/sendmoney')">
+        <img src="../../../assets/icon/billspayments/transfer.svg" class="img">
+        <div class="mobile">Transfer</div>
+      </div>
+    </div> 
+    
+    <div class="box-1">
+      <div class="firstbox" (click)="manageBeneficiaries('/payments/billspayments/beneficiaries')">
+        <img src="../../../assets/icon/billspayments/beneficiary.svg" class="img">
+        <div class="mobile">Manage Beneficiary</div>
+      </div>
+      
+      <div class="secondbox" (click)="go('/payments/billspayments/standinginstruction')">
+        <img src="../../../assets/icon/billspayments/boro.svg"  class="img">
+        <div class="mobile">Standing Instruction</div>
+      </div>
+
+      <div class="blank"></div>
+    </div> 
+  </div>
+  
+  <div class="parent" *ngIf="!allBillers">
+  
+    <div class="box">
+      <div class="firstbox-skeleton">
+        <ion-skeleton-text animated style="height: 105px;"></ion-skeleton-text>
+      </div>
+      
+      <div class="secondbox-skeleton">
+        <ion-skeleton-text animated style="height: 105px;"></ion-skeleton-text>
+      </div>
+      
+      <div class="thirdbox-skeleton">
+        <ion-skeleton-text animated style="height: 105px;"></ion-skeleton-text>
+      </div>
+    </div> 
+
+    <div class="box-1">
+      <div class="firstbox-skeleton">
+        <ion-skeleton-text animated style="height: 105px;"></ion-skeleton-text>
+      </div>
+      
+      <div class="secondbox-skeleton">
+        <ion-skeleton-text animated style="height: 105px;"></ion-skeleton-text>
+      </div>
+      
+      <div class="thirdbox-skeleton">
+        <ion-skeleton-text animated style="height: 105px;"></ion-skeleton-text>
+      </div>
+    </div> 
+
+    <div class="box-1">
+      <div class="firstbox-skeleton">
+        <ion-skeleton-text animated style="height: 105px;"></ion-skeleton-text>
+      </div>
+      
+      <div class="secondbox-skeleton">
+        <ion-skeleton-text animated style="height: 105px;"></ion-skeleton-text>
+      </div>
+
+      <!-- <div class="blank-skeleton">
+        <div style="height: 105px;"></div>
+      </div> -->
+
+       <div class="thirdbox-skeleton">
+         <ion-skeleton-text animated style="height: 105px;"></ion-skeleton-text>
+       </div>
+    </div> 
+
+  </div> 
+</ion-content>
+  

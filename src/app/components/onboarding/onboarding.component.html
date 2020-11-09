@@ -1,0 +1,34 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons class="pr-10" slot="primary">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" (click)="dismiss()">
+        <span class="text1" style="color: #0E237E;">Skip</span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="parent">
+    <div style="height: 100%;">
+      <ion-slides #slide class="onboarding-slides slide-padding" pager="true" style="height: 95%;">
+        <ng-container *ngFor="let content of contents; let i = index">
+          <ion-slide class="slide_">
+            <div style="height: 100%;">
+              <img [src]="content.image">
+            </div>
+            <div class="p-15 text1" style="max-height: 24px;">{{content.message}}</div>
+            <div class="next-btn">
+              <ion-button (click)="next(i)" class="no-transform payment-button mt-15" fill="clear" expand="block">{{i < 3 ? 'Next' : 'Get Started'}}</ion-button>
+            </div>
+          </ion-slide>
+        </ng-container>
+      </ion-slides>
+    </div>
+  </div>
+</ion-content>

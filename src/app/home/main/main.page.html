@@ -1,0 +1,188 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- <img slot="start" class="profile-img" (click)="toggleMenu()" [src]="photo" alt=""> -->
+    <img slot="start" class="profile-img" [routerLink]="['/', 'home', 'menu']" routerDirection="root" [src]="photo" alt="">
+    <div class="profile-section">
+      <div class="w100">
+        <h5 class="text-center fidelityblue">Limitless</h5>
+      </div>
+    </div>
+    <div slot="end" class="notification-icon" [routerLink]="['/notifications']" routerDirection="root">
+      <div *ngIf="sharedData.NOTIFICATIONS && sharedData.NOTIFICATIONS.length > 0 && filt(sharedData.NOTIFICATIONS)" class="notification-icon-frame">
+        <div>{{filt(sharedData.NOTIFICATIONS)}}</div>
+      </div>
+      <div>
+        <ion-icon style="font-size: 28px;" name="notifications-outline"></ion-icon>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="h50">
+    <div class="h100">
+      <h5 class="profile-greeting-container">Hi {{userProfile?.firstName}},</h5>
+
+      <ng-container *ngIf="hasWallet === undefined">
+        <div class="wallet-card-container" (click)="go('payments/wallet/walletcreation')">
+          <div class="wallet-item">
+            <ng-container>
+              <ion-spinner mode="md"></ion-spinner>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="hasWallet === 'No'">
+        <div class="wallet-card-container" (click)="go('payments/wallet/walletcreation')">
+          <div class="wallet-item-2">
+            <div>Create Wallet</div>
+            <div>
+              <div class="plus item-v-center">+</div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="hasWallet === 'Yes'">
+        <div class="wallet-card-container" (click)="go('payments/wallet')">
+          <div class="wallet-item">
+            <h6>Wallet</h6>
+            <ng-container *ngIf="ready === 'Yes'">
+              <h3><b>₦ {{walletData.wallet_balance.toLocaleString()}}</b></h3>
+            </ng-container>
+            <ng-container *ngIf="ready === undefined || null">
+              <ion-spinner mode="md"></ion-spinner>
+            </ng-container>
+            <ng-container *ngIf="ready === 'No'">
+              <h3><b>₦</b></h3>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="your-apps-container">
+
+        <div class="your-app-item" id="loans" [routerLink]="['/loans']" routerDirection="root">
+          <ng-container class="card-details" *ngIf="loanData">
+            <h6>My Credits</h6>
+            <p class="font-13px">Your Total Loan Offer &nbsp;
+              <span *ngIf="globalLimit !== 0 && globalLimit">₦{{globalLimit | currency: 'NGN': ' '}}</span>
+              <span *ngIf="loanData && globalLimit == 0">₦0</span>
+            </p>
+          </ng-container>
+          <ng-container *ngIf="!loanData" style="text-align: center;">
+            <h6>My Credits</h6>
+            <!-- <ion-spinner mode="md"></ion-spinner> -->
+            <p>&nbsp;</p>
+          </ng-container>
+        </div>
+
+        <div class="your-app-item" id="lifestyle" [routerLink]="['/payments']" routerDirection="root">
+          <h6>Payments</h6>
+          <div class="textIcon">
+            <p class="font-13px">Pay Bills | Book Flights</p>
+            <img style="width: 14px;" src="assets/icon/plane.svg">
+          </div>
+          <!-- <ng-container class="offers">
+            <div class="marquee" *ngIf="paymentData">
+              <div>
+                <span *ngIf="historyItem"><a>
+                    <p>{{historyItem?.billerName}} &nbsp; ₦ {{historyItem?.amount | currency: 'NGN': ' '}}</p>
+                  </a></span> &nbsp;
+                <span *ngIf="historyItem2"><a>
+                    <p>{{historyItem2?.billerName}} &nbsp; ₦ {{historyItem2?.amount | currency: 'NGN': ' '}}</p>
+                  </a></span> &nbsp;
+              </div>
+            </div>
+          </ng-container> -->
+        </div>
+
+
+        <div class="your-app-item" id="invest" [routerLink]="['/investments/landing']" routerDirection="root">
+          <div class="card-details" *ngIf="investmentInfo">
+            <h6>Investments</h6>
+            <div class="offers">
+              <a *ngIf="savingsData">
+                <p> Savings ₦ {{savingsData.totalAmount | number}} |</p>
+              </a>
+              <a *ngIf="!savingsData">
+                <p> Savings ₦ 0 |</p>
+              </a> &nbsp;
+              <a *ngIf="investmentData">
+                <p> Fixed Deposit ₦ {{investmentData.totalAmount | number}} </p>
+              </a>
+              <a *ngIf="!investmentData">
+                <p> Fixed Deposit ₦ 0 </p>
+              </a> &nbsp;
+            </div>
+          </div>
+          <ng-container *ngIf="!investmentInfo" style="text-align: center;">
+            <h6>Investments</h6>
+            <!-- <ion-spinner mode="md"></ion-spinner> -->
+            <p>&nbsp;</p>
+          </ng-container>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="h50 ion-margin-top second-half">
+    <div class="h100">
+      <ion-item *ngIf="consolidatedTransactions.length > 0" lines="none" class="item-transparent">
+        <ion-button slot="end" expand="block" fill="solid" color="secondary" class="btn-view-all" [routerLink]="['/home/dashboard/history']">
+          View all
+        </ion-button>
+      </ion-item>
+
+      <ion-card scrollY="true" class="scroll h100 ion-no-margin ion-margin-horizontal">
+        <ion-card-content class="ion-no-padding">
+          <ng-container *ngIf="consolidatedTransactions.length <= 0">
+            <p class="text-center">You have no recent transactions</p>
+          </ng-container>
+
+          <ng-container *ngIf="consolidatedTransactions.length > 0">
+            <ion-grid class="ion-no-padding" *ngFor="let txn of consolidatedTransactions; let i = index;">
+              <ion-row class="pt-03 pb-03" *ngIf="i < 5">
+                <ion-col size="8" class="ion-no-padding">
+                  <ion-item class="item-no-padding ion-no-margin ion-no-padding item-trasnparent" lines="none">
+                    <ion-icon slot="start" name="happy-outline"></ion-icon>
+                    <h6 class="fidelityblue">{{txn.transNarration}}</h6>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="4" class="ion-no-padding">
+                  <ion-item class="item-no-padding ion-no-margin ion-no-padding item-trasnparent" lines="none">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col color="trupaysecondary" class="font-7px text-right" size="12">
+                          {{txn.dateOfTransaction | date: 'd/M/y' }}
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col color="trupaysecondary" class="font-13px text-right" size="12">
+                          <h6 class="fidelitygreen" *ngIf="txn.creditDebit[0] === 'C'">₦{{txn.transactionAmount.toLocaleString()}}</h6>
+                          <h6 class="fidelityred" *ngIf="txn.creditDebit[0] === 'D'">₦{{txn.transactionAmount.toLocaleString()}}</h6>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    <ion-icon color="fidelitygreen" class="ion-no-margin" *ngIf="txn.creditDebit[0] === 'C'" slot="end" name="arrow-up"></ion-icon>
+                    <ion-icon color="fidelityred" class="ion-no-margin" *ngIf="txn.creditDebit[0] === 'D'" slot="end" name="arrow-down"></ion-icon>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ng-container>
+          
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+
+
+</ion-content>

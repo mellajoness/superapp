@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border ion-padding" mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="primary" (click)="handlers.navigate().back()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="font-18px pl-30 pr-30">Success</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin-top ion-padding-horizontal">
+
+  <div class="pl-10 pr-10">
+
+    <div *ngIf="!sharedData.travel.paymentComplete" class="item-v-center text-center mt-40 font-24px fw600">
+      Booking Successful
+    </div>
+    <div *ngIf="sharedData.travel.paymentComplete" class="item-v-center text-center mt-40 font-24px fw600">
+      Payment Successful
+    </div>
+
+    <div *ngIf="!sharedData.travel.paymentComplete" class="item-v-center text-center mt-40 font-22px">
+      Congratulations! <br>
+      Booking has been completed successfully
+    </div>
+    <div *ngIf="sharedData.travel.paymentComplete" class="item-v-center text-center mt-40 font-22px">
+      Congratulations! <br>
+      You have successfully booked your flight ticket
+    </div>
+
+    <div *ngIf="!sharedData.travel.paymentComplete" class="item-v-center text-center mt-40 font-16px fw600">
+      Thank you for making your reservation. A reservation has been sent to your email address
+    </div>
+    <div *ngIf="sharedData.travel.paymentComplete" class="item-v-center text-center mt-40 font-16px fw600">
+      Thank you! An E-ticket has been sent to your email address
+    </div>
+
+    <div class="ml-10 mr-10 pt-10 pb-10">
+
+      <ion-item *ngIf="!sharedData.travel.paymentComplete" class="mt-30 ion-no-padding pl-10" lines="none">
+        <ion-text class="text-justify" color="danger">
+          Kindly pay before {{bookingDetails.data.body.data.ticket_time_limit | travelMethods : 'DayName_dd_Mon_YYYY' : true}} {{bookingDetails.data.body.data.ticket_time_limit.split('T')[1] | slice : 0 : 5}} if not your booking would be cancelled.
+        </ion-text>
+      </ion-item>
+
+      <ion-button class="mt-30 h-50px" color="trupaysecondary" fill="solid" expand="block" [routerLink]="['/payments']">
+        Done
+      </ion-button>
+    </div>
+
+  </div>
+
+
+
+</ion-content>

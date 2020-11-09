@@ -1,0 +1,92 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" [routerLink]="['/','home']" routerDirection="back">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text">Profile</div>
+    </ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="header-bg-white">
+
+  <div class="profile-container">
+    <div class="avatar-container">
+      <div class="avatar-circle">
+        <ion-avatar slot="start">
+          <img id="profile" [src]="photo">
+        </ion-avatar>
+        <!-- <div class="badge deg45" (click)="selectImageSource()">
+          <img id="badge" src="assets/icon/edit-badge.svg" alt="">
+        </div> -->
+      </div>
+    </div>
+    <div class="name-container">
+      <h4 class="font-18px">{{this.currentUser?.firstName}} {{this.currentUser?.lastName}} </h4>
+    </div>
+  </div>
+
+  <div class="page-url-container scroll" scrollY="true">
+    <div class="link-item" [routerLink]="['/', 'home', 'profile']" routerDirection="forward">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/user.svg" alt="">
+      </div>
+      <div class="title">Profile</div>
+      <div class="icon-end">
+        <!-- <img src="assets/icon/profile-icns/right-arrow-blck.svg" alt=""> -->
+      </div>
+    </div>
+    
+    <div class="link-item">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/gift.svg" alt="">
+      </div>
+      <div class="title">Referral</div>
+      <div class="icon-end">
+        <!-- <img src="assets/icon/profile-icns/right-arrow-blck.svg" alt=""> -->
+      </div>
+    </div>
+
+    <div class="link-item" [routerLink]="['/', 'accountscards']" routerDirection="forward">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/credit-card.svg" alt="">
+      </div>
+      <div class="title">Accounts & Cards</div>
+      <div class="icon-end">
+        <!-- <img src="assets/icon/profile-icns/right-arrow-blck.svg" alt=""> -->
+      </div>
+    </div>
+
+    <!-- <div class="link-item">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/phone.svg" alt="">
+      </div>
+      <div class="title">Talk to Us</div>
+    </div> -->
+
+    <div class="link-item" [routerLink]="['/', 'settings']" routerDirection="forward">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/settings.svg" alt="">
+      </div>
+      <div class="title">Settings</div>
+      <div class="icon-end">
+        <!-- <img src="assets/icon/profile-icns/right-arrow-blck.svg" alt=""> -->
+      </div>
+    </div>
+
+    <div class="link-item" (click)="logout()">
+      <div class="icon">
+        <img src="assets/icon/profile-icns/right-arrow-blck.svg" alt="">
+      </div>
+      <div class="title">Logout</div>
+      <div class="icon-end">
+        <!-- <img src="assets/icon/profile-icns/right-arrow-blck.svg" alt=""> -->
+      </div>
+    </div>
+  </div>
+  
+</ion-content>

@@ -1,0 +1,56 @@
+.nav-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // color: $color-transaction;
+    padding: 10px;
+    position: static;
+
+    .nav-arrow{
+        text-align: center;
+        margin-top: 13px;
+        outline: none;
+        z-index: 10;
+        // background: red;
+    }
+    .nav-arrow:active{
+        outline: none;
+        transform: translateY(1px);
+        background: rgba(48, 47, 47, 0.1);
+        border-radius: 50%;
+    }
+}
+
+.instruction-container{
+    padding-bottom: 30px;
+    color: #323A5D;
+
+    #phonenumber{
+        color: #0E237E;
+    }
+}
+
+.timer{
+    margin: 30px auto;
+    text-align: center;
+}
+
+.verify{
+    margin-top: 30px;
+    width: 100%;
+}
+
+.payment-button {
+    background-color: #0E237E !important;
+    color: #fff;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.parent {
+    padding: 20px;
+    background-color: #fafafa;
+    height: 100%;
+    width: 100%;
+  }

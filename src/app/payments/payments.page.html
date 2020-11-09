@@ -1,0 +1,25 @@
+<ion-split-pane contentId="main-loan">
+  <!-- <ion-menu side="start" disabled="false" menuId="invest-menu" contentId="main-loan">
+    <ion-content>
+      <ion-grid class="menu-container ion-margin-bottom">
+        <ion-row>
+          <div class="px-05 py-15" (click)="toggleMenu()">
+            <ion-icon name="close" class="text15"></ion-icon>
+          </div>
+
+          <ion-col size="12">
+            <ng-container *ngFor="let m of menu">
+              <div (click)="toggleMenu(m)" [ngClass]="m.name === 'Home' ? 'button-container-with-bg' : 'button-container'">
+                <ion-item lines="none">
+                  <img [src]="m.icon" class="text12 pr-10">
+                  <ion-text>{{m.name}}</ion-text>
+                </ion-item>
+              </div>
+            </ng-container>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ion-menu> -->
+  <ion-router-outlet id="main-loan"></ion-router-outlet>
+</ion-split-pane>

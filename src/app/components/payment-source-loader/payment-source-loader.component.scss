@@ -1,0 +1,16 @@
+.wallet-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.item-header{
+    color: #323A5D;
+    text-align: start;
+    
+    h5 {
+        font-size: 13px;
+    }
+}

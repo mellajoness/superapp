@@ -1,0 +1,64 @@
+.parent {
+    padding: 20px;
+    background-color: #fafafa;
+    // margin-top: 32px;
+}
+
+ion-content {
+    --background: #fafafa
+}
+
+ion-item {
+    --background: none;
+}
+
+.arrow-1 {
+    color: #0E237E;
+    font-size: 1.5em;
+}
+
+.arrow-bg {
+    background: #3145c3;
+    color: #fff;
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    box-shadow: 0px 4px 4px rgba(49, 69, 195, 0.3);
+}
+
+.icon {
+    height: 40px;
+    width: 40px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.icon_ {
+    height: 10px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.notification {
+    align-items: center;
+}
+
+img {
+    height: 80%;
+    width: 80%;
+}
+
+.message {
+    color: #0E237E;
+}
+
+.date {
+    color: #999999;
+}

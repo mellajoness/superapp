@@ -1,0 +1,277 @@
+<ion-header class="ion-no-border ion-padding" mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="trupayprimary" (click)="handlers.navigate().back()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="font-18px color-trupayprimary">Available Flights</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin-top">
+  <ion-card mode="ios" class="box-shadow">
+    <div>
+      <ion-item lines="none">
+        <ion-button (click)="handlers.navigate().back()" class="btn1 ion-padding no-transform" fill="solid" color="trupaysecondary">
+          Edit Search
+        </ion-button>
+        <p>
+          {{sharedData.travel.departureCity[0].shortName}} &nbsp;
+          <span>
+            <ion-icon [name]="arrowIcon"></ion-icon>
+          </span> &nbsp;
+          {{sharedData.travel.arrivalCity[sharedData.travel.arrivalCity.length - 1].shortName}}
+        </p>
+      </ion-item>
+
+      <div class="ion-padding-start">
+        <p>
+          {{dates.departure}}<span *ngIf="sharedData.travel.roundtrip"> - {{dates.arrival}}</span>
+        </p>
+        <p>
+          {{sharedData.travel.searchParameters.cabin}}
+        </p>
+      </div>
+    </div>
+  </ion-card>
+
+  <!-- Navgigate & Sort Button -->
+  <div class="-mb-10 pl-02 pr-02">
+    <ion-grid class="ion-no-padding ion-margin-end" fixed>
+      <ion-row class="ion-no-padding">
+        <ion-col class="font-8px  ion-no-padding" size="3">
+          <ion-button *ngIf="sharedData.travel.truncated.view > 0" class="font-14px" fill="clear" color="trupayprimary" (click)="changeView().previous()">
+            <!-- <ion-icon slot="end" (click)="sort()" [src]="'../../../../../assets/icon/sort-up.svg'" ></ion-icon> -->
+            <ion-icon slot="start" (click)="sort()" name="chevron-back"></ion-icon>
+            Prev
+          </ion-button>
+        </ion-col>
+        <ion-col class="font-8px text-center ion-no-padding" size="6">
+          <ion-button class="font-14px" fill="clear" color="trupayprimary" (click)="sort()">
+            <!-- <ion-icon slot="end" (click)="sort()" [src]="'../../../../../assets/icon/sort-up.svg'" ></ion-icon> -->
+            <ion-icon slot="end" (click)="sort()" name="funnel-outline"></ion-icon>
+            Sort/Filter
+          </ion-button>
+        </ion-col>
+        <ion-col class="font-8px text-right ion-no-padding" size="3">
+          <ion-button *ngIf="sharedData.travel.truncated.view < sharedData.travel.truncated.max" class="font-14px" fill="clear" color="trupayprimary" (click)="changeView().next()">
+            <!-- <ion-icon slot="end" (click)="sort()" [src]="'../../../../../assets/icon/sort-up.svg'" ></ion-icon> -->
+            <ion-icon slot="end" (click)="sort()" name="chevron-forward"></ion-icon>
+            Next
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+
+  <!-- <ion-grid fixed class="ion-padding-start ion-no-padding" >
+    <ion-row class="ion-no-padding" >
+      <ion-col size="3">
+        <ion-button (click)="changeView().previous()" expand="block" fill="clear" shape="round">
+          <ion-icon slot="start" name="chevron-left"></ion-icon>
+          Previous
+        </ion-button>  
+      </ion-col>
+
+      <ion-col size="6">
+        {{sharedData.travel.truncated.view + 1}} of {{sharedData.travel.truncated.max + 1}}
+      </ion-col>
+
+      <ion-col size="3">
+        <ion-button (click)="changeView().next()" expand="block" fill="clear" shape="round">
+          <ion-icon slot="start" name="chevron-left"></ion-icon>
+          Next
+        </ion-button>  
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+
+  <!-- Ticket Card -->
+  <ng-container
+    *ngFor="let itinerary of sharedData.travel.truncated.allItineraries[sharedData.travel.truncated.view]; let i = index;">
+    <ion-card mode="ios" class="box-shadow" (click)="showTicketDetails(itinerary)">
+      <!-- <ion-card  mode="ios" class="box-shadow" (click)="expandItem(itinerary)"> -->
+      <!-- To Trip -->
+      <ng-container *ngFor="let origin_destination of itinerary.origin_destinations; let o_d = index">
+        <ion-item class="ion-no-padding ion-no-margin no-padding-right" lines="none">
+          <ion-grid fixed class="ion-no-padding ion-padding-vertical">
+            <!-- First Row -->
+            <ion-row class="ion-no-padding ion-padding-start">
+              <!-- From -->
+              <ion-col class="ion-no-padding" size="2.5">
+                <ion-grid class=" text-center ion-no-padding" fixed>
+                  <ion-row class="ion-no-padding">
+                    <ion-col class="ion-no-padding ion-align-self-start text-left" color="trupayprimary">
+                      {{origin_destination.segments[0].departure.airport.code}}</ion-col>
+                  </ion-row>
+                  <ion-row class="ion-no-padding">
+                    <ion-col class="ion-no-padding ion-align-self-start text-left">
+                      {{origin_destination.segments[0].departure.time | slice : 0 : 5}}</ion-col>
+                  </ion-row>
+                  <ion-row class="ion-no-padding">
+                    <ion-col class="ion-no-padding ion-align-self-start text-left">
+                      {{origin_destination.segments[0].departure.date | date : 'MMM d'}}</ion-col>
+                    <!-- <ion-col class="ion-no-padding ion-align-self-start text-left">{{monthDay(origin_destination.segments[0].departure.date, i, o_d)}}</ion-col> -->
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+
+              <!-- Middle -->
+              <ion-col class="ion-no-padding text-center opacity05" size="7">
+                <ion-grid class="ion-no-padding" fixed>
+                  <!-- Flight Time -->
+                  <ion-row class="ion-no-padding">
+                    <ion-col class="ion-no-padding border-bottom-spaced-dash" size="12">
+                      <!-- {{flightDuration(origin_destination)}} -->
+                      {{origin_destination.elapsed_time | travelMethods : 'hrMin' : true}}
+                      <img src="../../../../../assets/icon/edge-dot.png" class="edge-dot-to" />
+                    </ion-col>
+                  </ion-row>
+
+                  <!-- No of Stops -->
+                  <ion-row class="ion-no-padding">
+                    <ion-col class="ion-no-padding" size="12">{{numberOfStops(origin_destination)}} </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+
+              <!-- To -->
+              <ion-col class="ion-no-padding" size="2.5">
+                <ion-grid class="text-center ion-no-padding" fixed>
+                  <ion-row class="ion-no-padding ion-justify-content-end">
+                    <ion-col class="ion-no-padding ion-align-self-end text-right" color="trupayprimary">
+                      <span
+                        color="trupayprimary">{{origin_destination.segments[origin_destination.segments.length - 1].arrival.airport.code}}</span>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="ion-no-padding ion-justify-content-end">
+                    <ion-col class="ion-no-padding ion-align-self-end text-right">
+                      {{origin_destination.segments[origin_destination.segments.length - 1].arrival.time | slice : 0 : 5}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="ion-no-padding ion-justify-content-end">
+                    <ion-col class="ion-no-padding ion-align-self-end text-right">
+                      {{origin_destination.segments[origin_destination.segments.length - 1].arrival.date | date : 'MMM d'}}
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+
+      </ng-container>
+
+
+
+      <!-- Fro Trip -->
+      <ion-item *ngIf="false" class="ion-no-padding ion-no-margin" lines="none">
+        <ion-grid fixed class="ion-no-padding ion-padding-vertical">
+          <!-- First Row -->
+          <ion-row class="ion-no-padding ion-padding-start">
+            <!-- From -->
+            <ion-col class="ion-no-padding" size="2.5">
+              <ion-grid class=" text-center ion-no-padding" fixed>
+                <ion-row class="ion-no-padding">
+                  <ion-col class="ion-no-padding ion-align-self-start text-left">LHR</ion-col>
+                </ion-row>
+                <ion-row class="ion-no-padding">
+                  <ion-col class="ion-no-padding ion-align-self-start text-left">12:00</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+
+            <!-- Middle -->
+            <ion-col class="ion-no-padding text-center opacity05" size="7">
+              <ion-grid class="ion-no-padding" fixed>
+                <!-- Flight Time -->
+                <ion-row class="ion-no-padding">
+                  <ion-col class="ion-no-padding border-bottom-spaced-dash" size="12">
+                    06 hrs 45 mins
+                    <img src="../../../../../assets/icon/edge-dot.png" class="edge-dot-fro" />
+                  </ion-col>
+                </ion-row>
+
+                <!-- No of Stops -->
+                <ion-row class="ion-no-padding">
+                  <ion-col class="ion-no-padding" size="12">Non-stop</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+
+            <!-- To -->
+            <ion-col class="ion-no-padding" size="2.5">
+              <ion-grid class="text-center ion-no-padding" fixed>
+                <ion-row class="ion-no-padding ion-justify-content-end">
+                  <ion-col class="ion-no-padding ion-align-self-end text-right">LOS</ion-col>
+                </ion-row>
+                <ion-row class="ion-no-padding ion-justify-content-end">
+                  <ion-col class="ion-no-padding text-right ion-align-self-end">23:00</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-grid class="ion-no-padding" fixed>
+          <ion-row class="ion-no-padding">
+            <!-- Ariline Logo -->
+            <ion-col class="ion-no-padding text-left" size="6" color="trupayprimary">
+              <!-- <img class="vertical-align-image" src="../../../../../assets/icon/turkish-airline-logo.png" /> -->
+              <!-- {{itinerary.origin_destination[0].segments[0].operating_airline.name}} -->
+              {{itinerary.origin_destinations[0].segments[0].marketing_airline.name}}
+            </ion-col>
+
+            <!-- Ticket Price -->
+            <ion-col class="ion-no-padding text-right" size="6" color="trupayprimary">
+              <!-- <span [innerHTML]="itinerary.pricing.portal_fare.currency.code | currencyConverter"></span> -->
+              <span color="trupayprimary"
+                [innerHTML]="itinerary.pricing.portal_fare.total_fare | currency : itinerary.pricing.portal_fare.currency.code : 'symbol-narrow' : '3.0'"></span>
+              <br />
+              <span *ngIf="i === 0 && sharedData.travel.truncated.view===0 " class="font-12px"
+                style="color: #D72027">{{sharedData.travel.ascending ? 'Lowest price' : 'Highest price'}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-icon class="absolute-bottom-center" name="chevron-down"></ion-icon>
+      </ion-item>
+    </ion-card>
+  </ng-container>
+
+  <!-- Navgigate & Sort Button -->
+  <div class="-mt-10 pl-02 pr-02">
+    <ion-grid class="ion-no-padding ion-margin-end" fixed>
+      <ion-row class="ion-no-padding">
+        <ion-col class="font-8px  ion-no-padding" size="3">
+          <ion-button *ngIf="sharedData.travel.truncated.view > 0" class="font-14px" fill="clear" color="trupayprimary" (click)="changeView().previous()">
+            <!-- <ion-icon slot="end" (click)="sort()" [src]="'../../../../../assets/icon/sort-up.svg'" ></ion-icon> -->
+            <ion-icon slot="start" name="chevron-back"></ion-icon>
+            Prev
+          </ion-button>
+        </ion-col>
+        <ion-col class="font-8px text-center ion-no-padding" size="6">
+          <ion-button class="font-14px" fill="clear" color="trupayprimary" (click)="changeView().scrollToTop()">
+            <!-- <ion-icon slot="end" (click)="sort()" [src]="'../../../../../assets/icon/sort-up.svg'" ></ion-icon> -->
+            <ion-icon slot="start" name="arrow-up"></ion-icon>
+            Back to top
+          </ion-button>
+        </ion-col>
+        <ion-col class="font-8px text-right ion-no-padding" size="3">
+          <ion-button *ngIf="sharedData.travel.truncated.view < sharedData.travel.truncated.max" class="font-14px" fill="clear" color="trupayprimary" (click)="changeView().next()">
+            <!-- <ion-icon slot="end" (click)="sort()" [src]="'../../../../../assets/icon/sort-up.svg'" ></ion-icon> -->
+            <ion-icon slot="end" name="chevron-forward"></ion-icon>
+            Next
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

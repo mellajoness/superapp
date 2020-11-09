@@ -1,0 +1,160 @@
+
+.header{
+  display:flex;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15PX;
+}
+.menu{
+  font-size:1.7em;
+  color: gray;
+}
+.loanstext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;  
+  font-size:1.1em;
+  line-height: 22px;
+  color: #3348A1;
+ }
+ .body{
+     padding-left: 15px;
+     padding-right: 15px;
+     padding-top: 20px;
+ }
+ .photo{
+  width: 68%;
+  padding-top: 20px;
+  display: flex;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+ }
+ .headerbox{
+  background-color: #0E237E;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 30px;
+ }
+ .headerboxtext{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #9C9E9B;
+ }
+ .totalloanamount{
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 22px;
+  
+  color: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom:20px;
+  padding-left: 15px;
+  padding-right: 15px;
+ }
+ .loanaction{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.box{
+  height: 130px;
+  border-radius: 5px;
+  width: 48%;
+  border: 1px solid #AAAAAA;
+  box-sizing: border-box;
+}
+.loanactiontitle{
+  font-family: Gilroy;
+  font-size: 1.2em;
+  line-height: 16px;
+  color: #0E237E;
+  font-weight: bold;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 5px;
+}
+.requesttext{
+  font-family: Gilroy;
+  font-size: 0.9em;
+  line-height: 16px;
+  color:#9C9E9B;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 5px;
+}
+
+
+
+
+
+
+.loanamounttext{
+  font-family: Gilroy-Medium;
+  font-size: 14px;
+  line-height: 16px;
+  color: #9C9E9B;
+
+padding-left: 15px;
+padding-right: 15px;
+padding-top: 52px;
+}
+  form {
+    margin-top: 15px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    height: 45px;
+    margin-left: 15px;
+    margin-right: 15px;
+      ion-label {
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        color:#103870;
+      }
+      div{
+        text-align: center;
+        p{
+          font-family: gilroy;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 12px;
+          color: red;
+        }
+      }
+    }
+  
+    .next {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      margin-top: 90px;
+      button {
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        background-color: #0E237E;
+        color: #ffffff;
+        margin-left: 15px;
+        margin-right: 15px;
+        span {
+          font-family: gilroy;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 19px;
+          line-height: 19px;
+        }
+      }
+    }
+  

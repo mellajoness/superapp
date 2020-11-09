@@ -1,0 +1,114 @@
+// ion-content {
+//     // --background: url("../../../../assets/imgs/loan/app.jpeg") no-repeat center center / cover !important;
+//     --ion-text-color: var(--ion-color-primary-contrast);
+//     --background-size: cover;
+//     --background-repeat: no-repeat;
+//   }
+  
+//   ion-content ion-item {
+//     --background: transparent !important;
+//   }
+  
+//   ion-item {
+//     --border-color: var(--ion-color-primary-contrast);
+//   }
+  
+//   ion-toolbar {
+//     --background: transparent;
+//     --ion-color-base: transparent !important;
+//     ion-back-button{
+//       --color: #0E237E;;
+//     }
+//     height: 55px;
+//   }
+//   ion-header ion-toolbar:first-of-type {
+//     padding-top: 0px;
+// }
+  
+// ion-content {
+//     height: 100%;
+//   }
+  
+//   ion-toolbar {
+//     --background: linear-gradient(180deg, #247BA0 0%, #0A2463 100%);
+//     ion-title {
+//       font-family: Lato;
+//       font-style: normal;
+//       font-weight: normal;
+//       font-size: 14px;
+//       line-height: 17px;
+//       text-align: center;
+//       color: #e5e5e5;
+//     }
+//     ion-back-button{
+//       --color: #FFFFFF;
+//     }
+//     height: 55px;
+//   }
+  
+  
+//   ion-menu-button {
+//     color: white;
+//   }
+  
+//   ion-title {
+//     color: white;
+//   }
+.bar-header {
+  border: 0px !important;
+  border-bottom-color: transparent !important;
+  background-image: none !important;
+  border-bottom: none !important;
+}
+
+  .terms{
+    margin: 0 auto !important;
+    display: flex;
+    line-height: 1.8;
+    flex-direction: column;
+    padding-right: 30px;
+    padding-left: 15px;
+    padding-top: 30px;
+   
+    p{
+      font-family: Gilroy;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 16px;
+      color: #0E237E;
+      white-space: normal;
+      margin: 5px !important;
+    } 
+  }
+  .tc{
+    color: #0E237E;
+    font-family: Gilroy-Medium;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .link{
+    color: #0E237E;
+    font-family: Gilroy-Medium;
+    font-size:14px;
+    line-height: 21px;
+    font-weight: bold;
+  }
+  .menu{
+    font-size:1.7em;
+    color: gray;
+ }
+ .header{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15PX;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+}

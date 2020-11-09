@@ -1,0 +1,133 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+   <div class="custom-header">
+        <div [routerLink]="['/','investments','invest']" routerDirection="back" class="icon-container nav">
+          <img src="assets/icon/left-arrow.svg" alt="">
+        </div>
+        <div class="header-title">
+          <h3></h3>
+        </div>
+        <div class="icon-container">
+            <!-- <img src="assets/icon/cog.svg" alt=""> -->
+        </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="slide-container">
+      <ion-slides #slide pager="false" [options]="slideOpts">
+
+        <!---------- Please Select An Account -->
+        <!----------- Slide One  --------------------------------->
+        <ion-slide>
+          <div class="form-container">
+
+            <div class="form-instruction-container">
+              <h3> Please select an account to fund from</h3>
+            </div>
+
+            <div class="account-item-container" *ngIf="accounts.length <= 0">
+              <app-payment-source-loader></app-payment-source-loader>
+            </div>
+
+            <div class="account-item-container" *ngIf="accounts.length > 0">
+
+              <div class="account-item"  *ngFor="let account of accounts" (click)="onSelectSource(account)">
+                <div class="icon-holder">
+                  <img src="assets/icon/top-up-icns/id-card.svg">
+                </div>
+                <div class="name-holder">
+                  <p>{{account.foracid}}</p>
+                  <p class="balance">Balance {{account.balance | currency: 'NGN': ' '}}</p>
+                </div>
+                <div class="detail-icon">
+                  <img src="assets/icon/top-up-icns/chevron-right.svg">
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </ion-slide>
+
+        <!---------- Please Enter Amount -->
+        <!----------- Slide Two  --------------------------------->
+        <ion-slide>
+          <div class="form-container">
+
+            <div class="form-instruction-container">
+              <h3> How much would you like to fund?</h3>
+            </div>
+            <div class="form-input-container">
+              <form [formGroup]="slideTwoForm">
+                <ion-item>
+                  <ion-label class="form-input-label ion-float-left" position="floating">Amount <span
+                      id="currency">(₦)</span></ion-label>
+                  <ion-input min="100000" max="200000" formControlName="amount" type="number" placeholder="N100 000" maxlength="6">
+                  </ion-input>
+                </ion-item>
+              </form>
+            </div>
+            <div class="form-button-container">
+              <ion-item class="form-button-item" lines="none">
+                <ion-button [disabled]="!slideTwoForm.valid" (click)="slideToTenor()">OK
+                    <ion-icon slot="end" name="checkmark"></ion-icon>
+                </ion-button>
+              </ion-item>
+            </div>
+
+          </div>
+        </ion-slide>
+
+        <!---------- Please Enter Amount -->
+        <!----------- Slide Three  --------------------------------->
+        <ion-slide>
+          <div class="form-container">
+
+            <div class="form-instruction-container">
+              <h3> Please select a tenor</h3>
+            </div>
+
+            <div class="tenor-container" *ngIf="tenors.length <= 0">
+              <app-payment-source-loader></app-payment-source-loader>
+            </div>
+
+            <div class="tenor-container" *ngIf="tenors.length > 0">
+
+              <div class="payment-mode" *ngFor="let tenor of tenors">
+                <ion-button (click)="setTenor(tenor)" class="mode-btn" expand="block">{{tenor}} days</ion-button>
+              </div>
+
+            </div>  
+          </div>
+        </ion-slide>
+
+        <!---------- View Rate -->
+        <!----------- Slide Four  --------------------------------->
+        <ion-slide>
+          <div class="form-container">
+
+            <div class="form-instruction-container">
+              <h3> The current rate for that amount is</h3>
+            </div>
+
+            <div class="deposit-rate-container">
+              <div *ngIf="!depositRate">
+                <ion-spinner name="lines"></ion-spinner>
+             </div>
+              <p *ngIf="depositRate">{{depositRate}} %</p>
+            </div>
+
+            <div *ngIf="depositRate" class="proceed-button-container">
+              <ion-button [routerLink]="['/investments/invest']" class="mode-btn" color="danger" fill="outline">Cancel</ion-button>
+              <ion-button (click)="checkPinStatus()" class="mode-btn" fill="outline">Proceed</ion-button>
+            </div>
+           
+          </div>
+        </ion-slide>
+
+      </ion-slides>
+  </div>
+
+</ion-content>

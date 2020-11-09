@@ -1,0 +1,59 @@
+<ion-header class="bar-header">
+  <div class="header">
+    <ion-icon name="arrow-back-outline" class="menu"  (click)="goBack()" ></ion-icon>
+    <div class="loanstext">Pay Your Loan</div>
+    <ion-icon name="" class="menu"></ion-icon>
+  </div>
+</ion-header>
+
+  
+<ion-content>
+ <div>
+  
+  
+  <div  *ngIf="hasBalance">
+   <div class="headerboxtext">Please select an active loan to pay back </div>
+  </div>
+
+
+  <ion-grid>
+    <ion-row>
+     <ion-col *ngFor="let l of loanBalance; let i = index" size="4"  no-padding>
+      <div class="card" (click)="paymentOptions(l)">
+     <!-- <ion-card-content class="fixedline"> -->
+     <div class="loanaction" *ngIf="hasBalance" >
+     <div   >
+    <div class="requesttext">{{l.loanType}}</div>
+    <div class="loanactiontitle">&#8358;{{l.totalOutstanding | number:'1.0-0'}}</div>
+
+
+    <div class="daterow">
+      <div class="due">Due date:</div>
+    <div class="requesttextdate">{{l.dueDate | date}}</div>
+  </div>
+
+   </div>
+   </div>
+  <!-- </ion-card-content> -->
+  </div>
+
+  </ion-col>
+   </ion-row>
+   </ion-grid>
+
+
+
+
+ </div>
+
+
+
+
+  <div class="noLoan" *ngIf="noBalance">
+
+    <p>You currently have no loan offer.</p>
+
+  </div>
+
+
+</ion-content>

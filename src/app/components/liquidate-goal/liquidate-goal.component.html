@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div>
+        <!-- <img src="assets/icon/left-arrow.svg" alt=""> -->
+      </div>
+      <div class="header-title">
+        <h3></h3>
+      </div>
+      <div class="icon-container settings" (click)="dismiss()">
+          <img src="assets/icon/cancel.svg" alt="">
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="warning-container">
+
+    <div class="form-container">
+      <div class="form-instruction-container">
+          <h3> How much would you like to withdraw?</h3>
+      </div>
+      <div class="form-input-container">
+        <form [formGroup]="formOne">
+          <ion-item>
+            <ion-label class="form-input-label ion-float-left" position="stacked">Amount to Withdraw &nbsp;<span
+                id="currency">(₦)</span></ion-label>
+            <ion-input *ngIf="maxWithdrawal" formControlName="amount" type="number" maxlength="25"  [placeholder]="['₦' + this.maxWithdrawal]" ></ion-input>
+            <ion-input *ngIf="!maxWithdrawal" formControlName="amount" type="number" maxlength="25"></ion-input>
+          </ion-item>
+        </form>
+      </div>
+      <div *ngIf="maxWithdrawal" class="caveat">
+        <p>Your max withdrawal on this goal is ₦ {{maxWithdrawal | number}}</p>
+      </div>
+      <div class="form-button-container">
+        <ion-item class="form-button-item" lines="none">
+          <ion-button [disabled]="!formOne.valid" (click)="proceedToPin()">OK
+            <ion-icon slot="end" name="checkmark"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </div>
+    </div>
+
+    <!-- <div class="submit-button-container">
+      <ion-button class="clr-btn" shape="round" (click)="proceedToPin()">Proceed</ion-button>
+    </div> -->
+
+    
+  </div>
+
+
+</ion-content>

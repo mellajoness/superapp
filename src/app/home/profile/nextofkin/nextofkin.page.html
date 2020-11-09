@@ -1,0 +1,58 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" [routerLink]="['/','home', 'profile']" routerDirection="back">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons class="pr-10" slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="header-bg-white">
+  <div class="page-wrapper page-wrapper-white custom">
+    <div class="section-header">
+      <h3>Next of Kin Details</h3>
+    </div>
+
+    <div class="nok-form-container">
+      <form [formGroup]="formone" class="px-10">
+
+        <div class="form-group">
+          <label for="nokName">Name</label>
+          <input formControlName="nokName" placeholder="{{userData?.nokFullName}}" id="nokName" />
+        </div>
+
+        <div class="form-group">
+          <label for="nokRelationship">Relationship</label>
+          <select formControlName="nokRelationship" (change)="changeRelationship($event)">
+            <option value="" disabled>Choose one</option>
+            <option *ngFor="let relationship of Relationship">{{relationship}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="nokPhone">Phone Number</label>
+          <input formControlName="nokPhone" placeholder="{{userData?.nokPhone}}" id="nokPhone" />
+        </div>
+
+        <div class="form-group">
+          <label for="nokEmail">Email Address</label>
+          <input formControlName="nokEmail" placeholder="{{userData?.nokEmailAddress}}" type="nokEmail" id="nokEmail" />
+        </div>
+
+      </form>
+    </div>
+   
+
+    <div class="button-container mt">
+      <ion-button [disabled]="!allowNext" class="no-transform payment-button" fill="clear" expand="block" (click)="submitAction()">Update</ion-button>
+    </div>
+
+  </div>
+</ion-content>

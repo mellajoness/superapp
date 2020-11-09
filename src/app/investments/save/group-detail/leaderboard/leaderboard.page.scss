@@ -1,0 +1,96 @@
+.custom-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem .5rem;
+    background-color: #F9F9FA;
+    color: #323A5D;
+}
+ion-header ion-toolbar:first-of-type {
+    padding-top: 0 !important; 
+}
+
+ion-content, ion-header {
+    --background: #F9F9FA;
+}
+
+.user-card-container{
+    width: 100%;
+    padding: 10px;
+}
+
+.user-card{
+    width: 300px;
+    height: 100px;
+    background-color: #0E237E;
+    margin: auto;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+    .name{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .status{
+        font-size: 13px;
+    }
+
+    p{
+        margin: 2px;
+        display: inline-block;
+        color: #ffffff;
+    }
+}
+
+.members-container{
+    width: 100%;
+    padding: 5px;
+}
+
+.members-card{
+    width: 300px;
+    height: 65px;
+    border-radius: 5px;
+    margin: auto;
+    // padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    p{
+        margin: 0;
+        display: inline-block;
+        color: #323A5D;
+    }
+
+    .name{
+        max-width: 100px;
+    }
+}
+
+.month-amount{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2px;
+    min-width: 70px;
+
+    p{
+        margin: 2px;
+    }
+
+    #amount{
+        color: #41AAA8;
+    }
+
+    #month{
+        font-size: 10px;
+    }
+}

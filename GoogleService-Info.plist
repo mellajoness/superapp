@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>649954096986-d09fqvmb92bf0ssjgpugggig2l9su4kb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.649954096986-d09fqvmb92bf0ssjgpugggig2l9su4kb</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCYWLnE_-F2XZt3rvHA_mOPnTiuESwRt-U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>649954096986</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>app.fidelitybank.ng</string>
+	<key>PROJECT_ID</key>
+	<string>superapp-54429</string>
+	<key>STORAGE_BUCKET</key>
+	<string>superapp-54429.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:649954096986:ios:8483f995b8f3dcfb7ba563</string>
+	<key>DATABASE_URL</key>
+	<string>https://superapp-54429.firebaseio.com</string>
+</dict>
+</plist>

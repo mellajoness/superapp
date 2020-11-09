@@ -1,0 +1,45 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="custom-header">
+      <div [routerLink]="['/investments', 'landing']" routerDirection="back" class="icon-container nav">
+        <img src="assets/icon/left-arrow.svg" alt="">
+      </div>
+      <div class="header-title">
+        <h3></h3>
+      </div>
+      <div class="icon-container settings">
+          <!-- <img src="assets/icon/cog.svg" alt=""> -->
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<div class="instruction-section">
+  <h3><b> Go for a plan</b></h3>
+</div>
+
+<div class="goal-item-container">
+
+  <div class="goal-item"  [routerLink]="['/investments', 'save', 'savings-type']"> 
+    <div class="icon-container">
+      <img class="goal-item-icon" src="assets/icon/plan-icns/goal-savings.svg" alt="">
+    </div>
+    <div class="goal-detail-container">
+      <h6>Goal Savings</h6>
+      <p class="fade">With 1.25% to 3% per annum as interests, you can save on your terms for a minimum of three months.</p>
+    </div>
+  </div>
+
+  <div class="goal-item" [routerLink]="['/investments', 'save', 'group-type']">
+      <div class="icon-container">
+        <img class="goal-item-icon" src="assets/icon/plan-icns/group-savings.svg" alt="">
+      </div>
+      <div class="goal-detail-container">
+        <h6>Group Savings</h6>
+        <p class="fade">You can save on your terms with interest rates ranging from 1.25% to 3% per annum, minimum duration of 3 months.</p>
+      </div>
+  </div>
+
+</div>
+</ion-content>

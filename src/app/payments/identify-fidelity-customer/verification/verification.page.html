@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border ion-margin-top ion-padding" mode="ios">
+  <ion-toolbar mode="ios">
+
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="primary" (click)="handlers.navPop()">
+        <ion-icon slot="start" name="arrow-back" class="arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="background ion-padding">
+  <div class="pl-10 pr-10">
+
+    <ng-container>
+
+      <ion-item lines="none" class="ion-no-padding ion-padding-end page-heading ion-margin-end fw-600 text12">
+        <h3>Verification</h3>
+      </ion-item>
+
+      <div class="item-v-center mb-30">
+        <ion-img class="lock-img" [src]="'../../../../assets/icon/otp-lock.png'"></ion-img>
+      </div>
+
+      <div class="text-center w100 pl-10 pr-10 mb-20">Enter the 6-digit number sent to your phone number</div>
+
+      <div class="item-v-center mb-50">
+        <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="config" inputClass="otp-input-container" ></ng-otp-input>
+      </div>
+
+      <ion-button *ngIf="otp && (otp.length === 6)" required class="no-transform submit-button mt-20"  expand="block" (click)="submit()">
+        Submit
+      </ion-button>
+
+    </ng-container>
+
+  </div>
+
+</ion-content>
+
+

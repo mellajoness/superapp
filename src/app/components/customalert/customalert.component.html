@@ -1,0 +1,126 @@
+<ng-container *ngIf="sharedData.customAlertView === 'beneficiary'">
+  <ion-content scrollY="false">
+    <div class="text-center mtt-05 px-10 pt-10">
+      <div class="item-v-center">
+        <img src="../../../assets/icon/billspayments/caution.png" class="img img-height">
+      </div>
+      <div>
+        <ion-text>Are you sure you want to delete this beneficiary</ion-text>
+      </div>
+    </div>
+
+    <div class="text-center item-v-center mt-10 response-loader">
+      <!-- <ion-spinner mode="ios" class="medium20" color="primary" name="lines"></ion-spinner> -->
+    </div>
+
+    <div class="item-v-center">
+      <div>
+        <ion-button fill="clear" class="customalert-footer-button no-transform text-white bg-primary"
+          (click)="action('yes')">Yes</ion-button>
+      </div>
+      <div>
+        <ion-button fill="clear" class="customalert-footer-button no-transform text-primary" (click)="action('no')">No
+        </ion-button>
+      </div>
+    </div>
+
+  </ion-content>
+</ng-container>
+
+<ng-container *ngIf="sharedData.customAlertView === 'identifyCustomer'">
+  <ion-content scrollY="false">
+    <div class="text-center mtt-05 px-10 pt-10">
+      <!-- <div class="item-v-center">
+        <img src="../../../assets/icon/billspayments/caution.png" class="img img-height">
+      </div> -->
+      <div>
+        <ion-text>Are you a Fidelity Customer?</ion-text>
+      </div>
+    </div>
+
+    <div class="text-center item-v-center mt-10 response-loader">
+      <!-- <ion-spinner mode="ios" class="medium20" color="primary" name="lines"></ion-spinner> -->
+    </div>
+
+    <div class="item-v-center">
+      <div>
+        <ion-button fill="clear" class="customalert-footer-button no-transform text-white bg-primary"
+          (click)="action('yes')">Yes</ion-button>
+      </div>
+      <div>
+        <ion-button fill="clear" class="customalert-footer-button no-transform text-primary" (click)="action('no')">No
+        </ion-button>
+      </div>
+    </div>
+
+  </ion-content>
+</ng-container>
+
+<ng-container *ngIf="sharedData.customAlertView === 'pinsetup'">
+  <ion-content scrollY="false">
+    <div class="text-center mtt-05 px-10 pt-10">
+      <div class="item-v-center">
+        <img src="../../../assets/icon/billspayments/caution.png" class="img img-height">
+      </div>
+      <div>
+        <ion-text>Transaction PIN has not been set. Set up Transaction PIN to complete your transaction.</ion-text>
+      </div>
+    </div>
+
+    <div class="text-center item-v-center mt-10 response-loader">
+      <!-- <ion-spinner mode="ios" class="medium20" color="primary" name="lines"></ion-spinner> -->
+    </div>
+
+    <div class="item-v-center">
+      <div>
+        <ion-button fill="clear" class="customalert-footer-button no-transform text-white bg-primary"
+          (click)="action('yes')">Yes</ion-button>
+      </div>
+      <div>
+        <ion-button fill="clear" class="customalert-footer-button no-transform text-primary" (click)="action('no')">No
+        </ion-button>
+      </div>
+    </div>
+
+  </ion-content>
+</ng-container>
+
+<ng-container *ngIf="sharedData.customAlertView === 'walletcreation'">
+  <ion-content scrollY="false">
+    <div class="text-center mtt-05 px-10 pt-10">
+      <div class="item-v-center">
+        <!-- <img src="../../../assets/icon/billspayments/caution.png" class="img img-height"> -->
+        <img src="../../../assets/icon/success-tick.svg" alt="" class="img img-height">
+      </div>
+      <div>
+        <ion-text>Wallet Account created successfully</ion-text>
+      </div>
+    </div>
+
+    <div class="text-center item-v-center mt-10 response-loader">
+      <!-- <ion-spinner mode="ios" class="medium20" color="primary" name="lines"></ion-spinner> -->
+    </div>
+
+    <div class="item-v-center">
+      <div>
+        <ion-button fill="clear" class="customalert-footer-button no-transform text-white bg-primary"
+          (click)="action('yes')">Done</ion-button>
+      </div>
+    </div>
+
+  </ion-content>
+</ng-container>
+
+<ng-container *ngIf="sharedData.customAlertView === 'wallet'">
+  <ion-content scrollY="false">
+    <div>
+      <ion-icon class="close-modal-cancel text15" name="close" (click)="closeWalletModal('payments/wallet')"></ion-icon>
+    </div>
+
+    <div class="text-center mt-40 p-20 item-v-center">
+      <div>
+        <ion-text class="request">Your request has been sent</ion-text>
+      </div>
+    </div>
+  </ion-content>
+</ng-container>

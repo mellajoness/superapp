@@ -1,0 +1,107 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light">
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons class="pr-10" slot="primary" (click)="dismiss()">
+      <img src="assets/icon/cancel.svg" alt="">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="header-bg-white">
+  <div class="parent">
+    <div class="section-header">
+      <h3>Reset PIN</h3>
+    </div>
+  
+    <ion-slides #slide pager="false" [options]="slideOpts" *ngIf="didInit">
+  
+       <!-- ------------------- SLIDE 1 ------------------  -->
+       <ion-slide>
+        <div class="form-container p-0">
+          <div class="page-instruction">
+            <p>Click below to reset your PIN</p>
+          </div>
+        
+          <div class="button-container">
+            <ion-button (click)="resetPIN()" class="no-transform payment-button mt-15" fill="clear" expand="block">RESET</ion-button>
+          </div>
+        </div>
+       </ion-slide>
+  
+      <!-- ------------------- SLIDE 2 ------------------  -->
+  
+       <ion-slide>
+        <div class="form-container">
+          <div class="instruction-container">
+            <h5>Enter the otp sent to {{this.email}} </h5>
+          </div>
+          <div class="pin-container">
+            <ng-otp-input type="number" inputmode="numeric" #ngOtpInput (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-input>
+          </div>
+        
+          <div class="button-container" *ngIf="this.displayForm === true">
+            <ion-button (click)="slideToNext()" class="no-transform payment-button mt-15" fill="clear" expand="block">Confirm</ion-button>
+          </div>
+        </div>
+       </ion-slide>
+  
+       <!-- ----------------------- SLIDE - THREEE ------------------------- -->
+      <ion-slide>
+        <div class="form-container">
+          <div class="instruction-container">
+            <h5>Enter your new PIN </h5>
+          </div>
+          <div class="pin-container">
+            <p>PIN</p>
+            <ng-otp-input type="number" inputmode="numeric" #ngOtpPinInput (onInputChange)="onPinChange($event)"
+              [config]="pinConfig"></ng-otp-input>
+          </div>
+          <div class="pin-container">
+            <p>Confirm PIN</p>
+            <ng-otp-input type="number" inputmode="numeric" #ngOtpConfirmPinInput (onInputChange)="onConfirmPinChange($event)"
+              [config]="pinConfig"></ng-otp-input>
+          </div>
+  
+          <div class="submit-button-container" *ngIf="!hideButton()">
+            <ion-item class="form-button-item" lines="none">
+              <ion-button (click)="slideToNext()" class="no-transform payment-button mt-15" fill="clear" expand="block">Set Pin</ion-button>
+            </ion-item>
+          </div>
+          </div>
+      </ion-slide>
+  
+       <!-- ----------------------- SLIDE - FOUR ------------------------- -->
+       <ion-slide>
+        <div class="form-container">
+          <div class="instruction-container">
+              <h5>To continue, please enter your password</h5>
+          </div>
+        <form [formGroup]="resetPinForm">
+          <div class="input-container">
+            <div class="password-major" tabindex="-1">
+              <div class="password-input">
+                <input formControlName="password" required [type]="passwordType">
+                <label alt='Password' placeholder="Password" style="display: flex;"></label>
+              </div>
+              <div class="image-holder" (click)="toggleVisibility()">
+                  <img class="pwd-visible" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+              </div>
+            </div>
+          </div>
+        </form>
+  
+        <div class="button-container">
+          <ion-button [disabled]="!resetPinForm.valid" (click)="changeAction()" class="no-transform payment-button mt-15" fill="clear" expand="block">Next</ion-button>
+        </div>
+      </div>
+       </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

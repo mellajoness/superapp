@@ -1,0 +1,47 @@
+<ion-header class="text-white" mode="ios">
+  <ion-toolbar class="h6 pl-05 pt-30 header-bg-white">
+    <ion-buttons slot="start">
+      <ion-button class="mtt-02 no-transform" fill="clear" color="light" [routerLink]="['/','auth']" routerDirection="back">
+        <img src="assets/icon/left-arrow2.svg" alt="" style="height: 95%;">
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-white no-padding">
+      <div class="title header-text"></div>
+    </ion-title>
+    <ion-buttons class="pr-10" slot="primary">
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="header-bg-white">
+  <div class="parent">
+    <div class="instruction-container">
+        <h4>Verify Code</h4>
+        <div class="instructions">
+          <p>Please enter the code sent to <br>
+            <span id="phonenumber">{{userPhone}}</span>
+          </p>
+        </div>
+    </div>
+
+    <div class="otp-container">
+        <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-input>
+    </div>
+
+    <div class="timer">
+        <!-- status: {{status}} <br> -->
+        <!-- <countdown #countdown  [config]="{leftTime: 50, format: 'm:s'}" (finished)="finishTest()"></countdown> -->
+            <!-- <div>
+          <button (click)="resetTimer()" class="btn btn-link btn-sm">Reset</button>
+        </div> -->
+
+        <div class="verify">
+          <ion-button (click)="verifyOTP()" class="no-transform payment-button mt-15" fill="clear" expand="block">Verify</ion-button>
+        </div>
+
+      <!-- <p *ngIf="otp">{{ otp }}</p> -->
+    </div>
+  </div>
+
+</ion-content>

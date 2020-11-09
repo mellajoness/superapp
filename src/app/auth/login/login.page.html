@@ -1,0 +1,94 @@
+<ion-content class="my-content" fullscreen>
+  <div class="parent">  
+    <div class="arc">
+      <img class="w100" src="../../assets/icon/lower-arc-2.svg" alt="">
+    </div>
+    <div class="arc">
+      <img class="w100" src="../../assets/icon/upper-arc-2.svg" alt="">
+    </div>
+    <ion-header class="bg-transparent-toolbar" slot="fixed" mode="ios">
+      <div class="user-phase">
+        <div class="user-phase-container">
+          <div style="width: 100%;margin-top: 20%;z-index: 1;">
+            <div class="user-phase-content">
+              <div class="welcom-message">
+                <img *ngIf="sharedData.firstlaunch" src="../../assets/icon/WelcomeMessage.svg" alt="">
+                <img *ngIf="!sharedData.firstlaunch" src="../../assets/icon/welcom_.svg" alt="" style="height: 8vh;margin-bottom: 2vh;margin-top: 2vh;">
+              </div>
+              <div class="item-v-center">
+                <div class="user-picture">
+                  <div class="user-pic-frame">
+                    <!-- <img src="../../assets/icon/head.svg" alt=""> -->
+                    <img [src]="photo" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center text-white py-10">
+          <div>Please login to continue</div>
+        </div>
+      </div>
+    </ion-header>
+ 
+    <div class="form-phase">
+      <div class="form-phase-container scroll" scrollY="true">
+        <div class="form-container">
+          <form [formGroup]="loginForm">
+            <div class="input-container">
+              <div *ngIf="emailOrPhone.invalid && emailOrPhone.touched" class="errors">
+                <small class="prompt" *ngIf="emailOrPhone.errors?.required">This field is required</small>
+              </div>
+              <div class="identity-input">
+                <img class="pw-icon" src="../../assets/icon/user-login.svg" alt="">
+                <input *ngIf="storedUserPhone" [value]="storedUserPhone" required type="text"
+                  formControlName="emailOrPhone" (focus)="isDivHidden_=false" (blur)="isDivHidden_=true">
+                <input *ngIf="!storedUserPhone" required type="text" formControlName="emailOrPhone" (focus)="isDivHidden_=false" (blur)="isDivHidden_=true">
+                <label alt='Email or Phonenumber' placeholder="Email or Phonenumber"></label>
+              </div>
+            </div>
+   
+            <div class="input-container">
+              <div *ngIf="password.invalid && password.touched" class="errors">
+                <small class="prompt" *ngIf="password.errors?.required">Password is required</small>
+              </div>
+              <div class="password-major">
+                <img class="pw-icon-2" src="../../assets/icon/padlock.svg" alt="">
+                <div class="password-input">
+                  <input required [type]="passwordType" formControlName="password" (focus)="isDivHidden=false" (blur)="isDivHidden=true" style="letter-spacing: 6px;">
+                  <label alt='Password' placeholder="Password"></label>
+                </div>
+                <div class="image-holder" (click)="toggleVisibility()">
+                  <img [class]="passwordShown === true ? 'pwd-visible' : 'pwd-hidden' "
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                </div>
+              </div>
+            </div>
+            <div class="forgotPassword-container">
+              <a (click)="openForgotPassword()">
+                <p>Forgot Password?</p>
+              </a>
+            </div>
+           
+            <div class="loginbtn-container">
+              <button id="login-btn" type="submit" [disabled]="!loginForm.valid" *ngIf="!canUseBiometrics"
+              (click)="loginAction()">LOGIN</button>
+            </div>
+           
+            <div class="loginbtn-container">
+              <button id="login-btn" type="submit" *ngIf="canUseBiometrics"
+              (click)="biometrics().login()">BIOMETRICS LOGIN</button>
+            </div>
+          </form>
+        </div>
+   
+       
+       
+        <div class="create-container" *ngIf="isDivHidden && isDivHidden_">
+          <a><p>Don't have an account?<span (click)="signup()" routerDirection="forward" class="create-account">Create one</span></p></a>
+        </div>   
+      </div>
+    </div>
+  </div>
+</ion-content>

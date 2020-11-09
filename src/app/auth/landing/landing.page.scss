@@ -1,0 +1,71 @@
+$color-primary: #06205D;
+$color-secondary: #5BA6FF;
+$color-tertiary: #7044ff;
+$color-transaction: #06205D;
+$signupbtnbg: #66AD2C;
+
+
+.mybg{
+    --background: #06205D;
+}
+
+ion-content {
+    --overflow: hidden;
+    display: grid;
+    position: relative;
+}
+
+.custom{
+    display: flex;
+    padding: 2rem;
+}
+
+.parent {
+    height: 100%;
+    width: 100%;
+}
+
+.content-container {
+    height: 45%;
+    width: 100%;
+}
+
+.limitless {
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.auth-button-container{
+    // transform: translate3d(0, 60vh, 0);
+    padding: 2rem;
+    // margin-top: 60vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 25%;
+
+    button{
+        width: 100%;
+        height: 2.5rem;
+        margin-top: 15px;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    #login-btn {
+        background-color: $signupbtnbg;
+        color: #ffffff;
+    }
+
+    #signup-btn {
+        background-color: $color-primary;
+        color: white;
+        border: 1px solid $signupbtnbg;
+    }
+
+}
+.arc {
+    width: 100%;
+    position: absolute;
+}
